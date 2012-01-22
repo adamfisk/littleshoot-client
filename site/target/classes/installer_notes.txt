@@ -1,0 +1,4 @@
+Installer Notes
+
+
+* You can just update the template instead of creating a new template from scratch.  Just change the existing LittleShoot.dmg file.

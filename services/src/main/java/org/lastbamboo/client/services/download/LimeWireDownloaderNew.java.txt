@@ -1,0 +1,647 @@
+package org.lastbamboo.client.services.download;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.RandomAccessFile;
+import java.net.URI;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.PriorityBlockingQueue;
+
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.math.LongRange;
+import org.lastbamboo.client.services.FileMapper;
+import org.lastbamboo.client.services.RemoteResourceRepository;
+import org.lastbamboo.common.download.Downloader;
+import org.lastbamboo.common.download.DownloaderListener;
+import org.lastbamboo.common.download.DownloaderVisitor;
+import org.lastbamboo.common.download.LaunchFileDispatcher;
+import org.lastbamboo.common.download.LaunchFileTracker;
+import org.lastbamboo.common.download.MoverDState;
+import org.lastbamboo.common.download.MsDState;
+import org.lastbamboo.common.download.Sha1DState;
+import org.lastbamboo.common.searchers.limewire.GuiDownloaderFactory;
+import org.lastbamboo.common.searchers.limewire.LimeWire;
+import org.lastbamboo.common.searchers.limewire.LimeWireResult;
+import org.lastbamboo.common.searchers.limewire.SearchResultDownloaderFactory;
+import org.lastbamboo.common.util.RuntimeIoException;
+import org.limewire.collection.Range;
+import org.limewire.io.IpPort;
+import org.limewire.io.IpPortSet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.limegroup.gnutella.FileDesc;
+import com.limegroup.gnutella.GUID;
+import com.limegroup.gnutella.IncompleteFileDesc;
+import com.limegroup.gnutella.RemoteFileDesc;
+import com.limegroup.gnutella.SaveLocationException;
+import com.limegroup.gnutella.URN;
+import com.limegroup.gnutella.Downloader.DownloadStatus;
+import com.limegroup.gnutella.downloader.DownloadListener;
+import com.limegroup.gnutella.search.HostData;
+import com.limegroup.gnutella.xml.LimeXMLProperties;
+
+/**
+ * Downloader for downloading files from LimeWire.
+ */
+public class LimeWireDownloader implements Downloader<MsDState>, 
+    DownloadListener
+    {
+
+    private final Logger m_log = LoggerFactory.getLogger(getClass());
+    
+    private final URI m_expectedSha1;
+    private final LimeWire m_limeWire;
+    private final int m_size;
+
+    private volatile LaunchFileTracker m_launchFileTracker;
+
+    private final String m_mimeType;
+
+    private final File m_completeFile;
+
+    private volatile File m_incompleteFile;
+
+    private final FileMapper m_fileMapper;
+
+    private final RemoteResourceRepository m_remoteRepository;
+
+    private volatile boolean m_started;
+
+    private volatile boolean m_complete;
+
+    private com.limegroup.gnutella.Downloader m_downloader;
+    
+    /**
+     * The current state of this downloader.
+     */
+    private volatile MsDState m_state;
+
+    private final DownloadTracker<MoverDState<Sha1DState<MsDState>>, Downloader<MoverDState<Sha1DState<MsDState>>>> m_downloadTracker;
+
+    private final Object m_trackerLock = new Object();
+
+    /**
+     * Creates a new downloader for downloading from LimeWire.
+     * @param completeFile 
+     * 
+     * @param expectedSha1 The SHA-1 hash for the file.
+     * @param size The expected size of the file.
+     * @param mimeType The MIME type for the file. 
+     * @param limeWire The interface to LimeWire.
+     * @param fileMapper The class for mapping the file in the local database.
+     * @param remoteRepository The remote repository for file data.
+     * @param downloadTracker The class that keeps track of downloads.
+     */
+    public LimeWireDownloader(final File completeFile, final URI expectedSha1, 
+        final long size, final String mimeType, final LimeWire limeWire,
+        final FileMapper fileMapper,
+        final RemoteResourceRepository remoteRepository, 
+        final DownloadTracker<MoverDState<Sha1DState<MsDState>>, Downloader<MoverDState<Sha1DState<MsDState>>>> downloadTracker)
+        {
+        this.m_downloadTracker = downloadTracker;
+        if (completeFile.exists())
+            {
+            m_log.warn("File already exists: {}", completeFile);
+            throw new IllegalArgumentException("File already exists: " +
+                completeFile);
+            }
+        this.m_fileMapper = fileMapper;
+        this.m_remoteRepository = remoteRepository;
+        this.m_completeFile = completeFile;
+        this.m_expectedSha1 = expectedSha1;
+        this.m_mimeType = mimeType;
+        
+        if (size > Integer.MAX_VALUE)
+            {
+            m_log.warn("Cannot support file size: {}", size);
+            }
+        this.m_size = (int) size;
+        this.m_limeWire = limeWire;
+        }
+
+    public String getContentType()
+        {
+        return this.m_mimeType;
+        }
+
+    public File getIncompleteFile()
+        {
+        return this.m_incompleteFile;
+        }
+
+    public int getSize()
+        {
+        return m_size;
+        }
+
+    public MsDState getState()
+        {
+        return this.m_state;
+        }
+
+    public void addListener(
+        final DownloaderListener<MsDState> listener)
+        {
+        // TODO Auto-generated method stub
+
+        }
+
+    public void removeListener(
+        final DownloaderListener<MsDState> listener)
+        {
+        // TODO Auto-generated method stub
+
+        }
+
+    public boolean isStarted()
+        {
+        return this.m_started;
+        }
+    
+    public void start()
+        {
+        if (this.m_started)
+            {
+            m_log.debug("Already started...");
+            return;
+            }
+        m_started = true;
+        download(this.m_expectedSha1);
+        }
+
+    public void write(final OutputStream os)
+        {
+        m_log.debug("Writing file...");
+        if (m_complete)
+            {
+            try
+                {
+                writeCompleteFile(os);
+                }
+            catch (final IOException e)
+                {
+                m_log.debug("Exception writing complete file", e);
+                }
+            }
+        else
+            {
+            synchronized (this)
+                {
+                if (this.m_launchFileTracker == null)
+                    {
+                    try
+                        {
+                        this.wait(20000);
+                        }
+                    catch (final InterruptedException e)
+                        {
+                        m_log.error("Exception while waiting", e);
+                        }
+                    }
+                }
+            if (this.m_launchFileTracker == null)
+                {
+                m_log.error("Still no file tracker!!");
+                return;
+                }
+            if (this.m_downloader.isPaused())
+                {
+                m_log.debug("Resuming paused download!!");
+                // We need to lock and wait here because the file tracker
+                // will be reset.
+                synchronized (this.m_trackerLock)
+                    {
+                    this.m_downloader.resume();
+                    try
+                        {
+                        this.m_trackerLock.wait(10000);
+                        }
+                    catch (final InterruptedException e)
+                        {
+                        m_log.error("Interrupted??", e);
+                        }
+                    writeToStream(os);
+                    }
+                }
+            else
+                {
+                writeToStream(os);
+                }
+            }
+        }
+
+    private void writeToStream(final OutputStream os)
+        {
+        try
+            {
+            m_launchFileTracker.write (os);
+            }
+        catch (final IOException e)
+            {
+            // The user has closed the browser window?  Not sure here.
+            m_log.debug("Exception from launch file tracker", e);
+            if (!this.m_downloader.isCompleted())
+                {
+                // We pause instead of stop entirely here because the user
+                // may want to start downloading this file again.
+                this.m_downloader.stop();
+                this.m_downloadTracker.deleteDownloader(this.m_expectedSha1);
+                }
+            }
+        catch (final Throwable t)
+            {
+            m_log.error("Throwable writing file.", t);
+            }
+        }
+
+    private void writeCompleteFile(final OutputStream os) throws IOException
+        {
+        InputStream is = null;
+        try
+            {
+            is = new FileInputStream(this.m_completeFile);
+            IOUtils.copy(is, os);
+            }
+        finally
+            {
+            IOUtils.closeQuietly(is);
+            IOUtils.closeQuietly(os);
+            }
+        }
+        
+    public void onPendingClose(final DownloadStatus status)
+        {
+        m_log.debug("File "+this.m_completeFile.getName() + 
+            " about to close with status: {}", status);
+        synchronized (this.m_trackerLock)
+            {
+            if (status == DownloadStatus.COMPLETE)
+                {
+                this.m_launchFileTracker.onFileComplete();
+                this.m_launchFileTracker.waitForLaunchersToComplete();
+                }
+            else
+                {
+                m_log.debug("RandomAccessFile closing without complete download");
+                Thread.dumpStack();
+                this.m_launchFileTracker.onFail();
+                
+                // We remove it from the downloader to a subsequent attempt doesn't
+                // try to use it again.
+                this.m_downloadTracker.deleteDownloader(this.m_expectedSha1);
+                }
+            }
+        }
+
+    public void onRangeRead(final Range range)
+        {
+        // Both range classes are documented to be inclusive on both ends.
+        final LongRange lr = new LongRange(range.getLow(), range.getHigh());
+        synchronized (this.m_trackerLock)
+            {
+            this.m_launchFileTracker.onRangeComplete(lr);
+            }
+        }
+    
+    public void onData(final File file, final RandomAccessFile raf, 
+        final int numChunks)
+        {
+        m_log.debug("Received download data for file: {}", file);
+        if (this.m_launchFileTracker != null)
+            {
+            m_log.debug("Looks like we're resuming a paused download...");
+            synchronized (this.m_trackerLock)
+                {
+                final PriorityBlockingQueue<LongRange> completedRanges =
+                    this.m_launchFileTracker.getCompletedRanges();
+                this.m_launchFileTracker = new LaunchFileDispatcher (file,
+                    raf, numChunks, this.m_expectedSha1, completedRanges);
+                this.m_incompleteFile = file;
+                this.m_trackerLock.notifyAll();
+                }
+            }
+        else
+            {
+            m_log.debug("Received data for a fresh download...");
+            this.m_launchFileTracker = new LaunchFileDispatcher (file,
+                raf, numChunks, this.m_expectedSha1);
+            this.m_incompleteFile = file;
+            synchronized (this)
+                {
+                this.notify();
+                }            
+            }
+        }
+
+    public void onComplete()
+        {
+        m_log.debug("Got file complete...");
+        if (!this.m_completeFile.isFile())
+            {
+            m_log.error("Expected file not a file: {}", this.m_completeFile);
+            return;
+            }
+        m_complete = true;
+        /*
+        try
+            {
+            // We just publish the raw file here because, even
+            // though we have the cookies and such from the initial
+            // request, the user might not actually be logged in.
+            m_remoteRepository.insertResource(m_completeFile, true);
+            m_fileMapper.map(m_completeFile);
+            }
+        catch (final IOException e)
+            {
+            m_log.error("Could not publish downloaded file to remote " +
+                "repository", e);
+            // TODO: Should we set the state to something else
+            // here?
+            }
+        catch (final ForbiddenException e)
+            {
+            m_log.error("Forbidden to publish to remote repository", e);
+            // TODO: Should we set the state to something else
+            // here?
+            }
+            */
+        }
+
+    private void download(final URI sha1)
+        {
+        final LimeWireResult results = this.m_limeWire.getResults(sha1);
+        if (results == null)
+            {
+            m_log.warn(sha1 + " not found");
+            throw new IllegalArgumentException(sha1 + " not found.");
+            }
+        final HostData data = results.getHostData();
+        
+        final GUID guid = new GUID(data.getMessageGUID());
+        
+        final Set<IpPort> alts = new IpPortSet();
+        final List<RemoteFileDesc> otherRFDs = new LinkedList<RemoteFileDesc>();
+        
+        final RemoteFileDesc[] rfds = results.getAllRemoteFileDescs();
+        alts.addAll(results.getAlts());
+        
+        
+        // Iterate through RFDs and remove matching alts.
+        // Also store the first SHA1 capable RFD for collecting alts.
+        RemoteFileDesc sha1RFD = null;
+        for(int i = 0; i < rfds.length; i++) 
+            {
+            RemoteFileDesc next = rfds[i];
+            // this has been moved down until the download is actually started
+            // next.setDownloading(true);
+            next.setRetryAfter(0);
+            if(next.getSHA1Urn() != null)
+                sha1RFD = next;
+            alts.remove(next);
+            }
+
+        // If no SHA1 rfd, just use the first.
+        if(sha1RFD == null)
+            sha1RFD = rfds[0];
+        
+        // Now iterate through alts & add more rfds.
+        for(final IpPort next : alts) 
+            {
+            otherRFDs.add(new RemoteFileDesc(sha1RFD, next));
+            }
+
+        try
+            {
+            downloadWithOverwritePrompt(rfds, otherRFDs, guid);
+            }
+        catch (final SaveLocationException e)
+            {
+            m_log.error("Issue with the save location...");
+            throw new RuntimeIoException("Save location error: ", e);
+            }
+        }
+
+    /**
+     * Downloads the given files, prompting the user if the file already exists.
+     * @param queryGUID the guid of the query you ar downloading rfds for.
+     * @param searchInfo The query used to find the file being downloaded.
+     * @throws SaveLocationException 
+     */
+    private void downloadWithOverwritePrompt(final RemoteFileDesc[] rfds,
+        final List<? extends RemoteFileDesc> alts, final GUID queryGUID) 
+        throws SaveLocationException 
+        {
+        // Before proceeding...check if there is an rfd with pure metadata
+        // ie no file
+        int actLine = 0;
+        boolean pureFound = false;
+        for (; actLine < rfds.length; actLine++) {
+            if (rfds[actLine].getIndex() ==
+               LimeXMLProperties.DEFAULT_NONFILE_INDEX) {
+                // we have our line
+                pureFound = true;
+                break;
+            }
+        }
+        
+        /*
+        if (pureFound) {
+            LimeXMLDocument doc = rfds[actLine].getXMLDocument();
+            if(doc != null) {
+                String action = doc.getAction();
+                if (action != null && !action.equals("")) { // valid action
+                    if (doc.actionDetailRequested())
+                        action = LimeWireUtils.addLWInfoToUrl(action, GuiCoreMediator.getApplicationServices().getMyGUID());
+                    if (action.length() > 255) // trim to make sure its not too long
+                        action = action.substring(0, 255);
+                    GUIMediator.openURL(action);
+                    return; // goodbye
+                }
+            }
+        }
+        */
+        
+        // No pure metadata lines found...continue as usual...
+        //DownloaderFactory factory = new SearchResultDownloaderFactory
+          //  (rfds, alts, queryGUID, saveDir, fileName); 
+        //Downloader dl = saveAs ? DownloaderUtils.createDownloaderAs(factory) 
+          //      : DownloaderUtils.createDownloader(factory);
+        
+        //if (this.m_core.getDownloadManager().conflicts(sha1, fileSize, saveFile))
+          //  {
+            //}
+        final boolean overwrite = false;
+        m_log.debug("About to initiate download....");
+        final File saveDir = this.m_completeFile.getParentFile();
+        final String fileName = this.m_completeFile.getName();
+        /*
+        this.m_downloader =
+            this.m_limeWire.getCore().getDownloadServices().download(rfds, alts, 
+                queryGUID, overwrite, saveDir, fileName);
+        */
+        
+        final GuiDownloaderFactory factory = 
+            new SearchResultDownloaderFactory(rfds, alts, queryGUID, saveDir, 
+                fileName, this.m_limeWire.getCore()); 
+        this.m_downloader = createDownloader(factory);
+        if (this.m_downloader != null)
+            {
+            setAsDownloading(rfds);
+            this.m_downloader.addDownloadListener(this);
+            }
+        
+        /*
+        if (dl != null) {
+            setAsDownloading(rfds);
+            if (validateInfo(searchInfo) == QUERY_VALID)
+                dl.setAttribute(SEARCH_INFORMATION_KEY, (Serializable)searchInfo.toMap());
+        }
+        */
+        }
+
+    private static void setAsDownloading(final RemoteFileDesc[] rfds) 
+        {
+        for (int i = 0; i < rfds.length; i++) 
+            {
+            rfds[i].setDownloading(true);
+            }
+        }
+        
+    
+    /**
+     * Tries to create a downloader for a factory performing the following
+     * consistency checks beforehand:
+     * <ul>
+     * <li>{@link #isAlreadyDownloading(GuiDownloaderFactory)}</li>
+     * <li>{@link #isSaveLocationTaken(GuiDownloaderFactory)}</li>
+     * <li>if the proposed save location is not taken
+     * {@link #continueWithOrWithoutHashConflict(GuiDownloaderFactory)} is
+     * performed</li>
+     * </ul>
+     * 
+     * @param factory The downloader factory to create the downloader
+     * @return <code>null</code> if there is another download for the same
+     *         hash, or incomplete file, or the user canceled the download at
+     *         some point.
+     */
+    private com.limegroup.gnutella.Downloader createDownloader(
+        final GuiDownloaderFactory factory) {
+
+        // check for already downloading conflicts
+        if (isAlreadyDownloading(factory)) 
+            {
+            m_log.debug("Already downloading...");
+            return null;
+            }
+
+        // check for file name conflicts
+        if (!isSaveLocationTaken(factory)) 
+            {
+            // check for hash conflicts
+            if (!continueWithOrWithoutHashConflict(factory)) 
+                {
+                m_log.debug("Found file with same exact hash!!");
+                return null;
+                }
+            }
+
+        // try to start download
+        return createDownloader(factory, false);
+    }
+
+    /**
+     * Tries to create a downloader from a factory.
+     * <p>
+     * If the {@link GuiDownloaderFactory#createDownloader(boolean)} throws an
+     * exception, {@link DownloaderDialog#handle(GuiDownloaderFactory, 
+     * SaveLocationException)} is called to handle it.
+     * <p>
+     * If the process was successful, the final file is shared individually if
+     * it's not in a shared directory.
+     * 
+     * @param factory creates the downloader
+     * @param overwrite whether or not to overwrite an existing file at the
+     * given location
+     * @return <code>null</code> if the user cancelled at some point
+     */
+    private com.limegroup.gnutella.Downloader createDownloader(
+        final GuiDownloaderFactory factory, final boolean overwrite) {
+        try 
+            {
+            return factory.createDownloader(overwrite);
+            } 
+        catch (final SaveLocationException e) 
+            {
+            //return DownloaderDialog.handle(factory, sle);
+            m_log.warn("Got save location exception", e);
+            return null;
+            }
+        }
+
+    /**
+     * Checks if there is a conflicting download already running with the same
+     * hash or incomplete file name, shows a notification dialog and returns
+     * true.
+     * 
+     * @param factory creates the downloader
+     * @return true if there is a download already taking place
+     */
+    private boolean isAlreadyDownloading(final GuiDownloaderFactory factory) 
+        {
+        if (this.m_limeWire.getCore().getDownloadManager().conflicts(factory.getURN(),
+                (int)factory.getFileSize(), factory.getSaveFile())) 
+            {
+            return true;
+            }
+        return false;
+        }
+
+    /**
+     * Returns a non-incomplete FileDesc for the urn or null.
+     * 
+     * @param urn URN of a file 
+     * @return FileDesc of a file in the file manager
+     */
+    private FileDesc getFromLibrary(URN urn) 
+        {
+        if (urn == null) 
+            {
+            return null;
+            }
+        final FileDesc desc = 
+            this.m_limeWire.getCore().getFileManager().getFileDescForUrn(urn);
+        return (desc instanceof IncompleteFileDesc) ? null : desc;
+        }
+
+    /**
+     * Checks if there is already a file in the library with the same urn and
+     * shows a dialog to user if (s)he wants to continue anyway.
+     * 
+     * @param factory creates the downloader
+     * @return <code>true></code> if there is no conflict or the user wants to
+     *         continue anyway
+     */
+    private boolean continueWithOrWithoutHashConflict(
+        final GuiDownloaderFactory factory) 
+        {
+        final FileDesc desc = getFromLibrary(factory.getURN());
+        if (desc != null) 
+            {
+            return false;
+            }
+        return true;
+        }
+    
+    private boolean isSaveLocationTaken(final GuiDownloaderFactory factory) 
+        {
+        return factory.getSaveFile().exists() || 
+            this.m_limeWire.getCore().getDownloadManager().isSaveLocationTaken(
+                factory.getSaveFile());
+        }
+    }

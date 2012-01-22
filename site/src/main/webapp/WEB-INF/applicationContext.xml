@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="exceptionResolver"
+        class="org.lastbamboo.client.http.server.HttpHandlerExceptionResolver"/>
+
+    <!--
+        Class that configures the app on startup.
+    -->
+    <bean id="configurator"
+        class="org.lastbamboo.client.site.Configurator">
+        </bean>
+        
+
+    <!--
+        The object that resolves URN HTTP request URIs to file resources.
+    
+    <bean lazy-init="true" id="urnSha1ResourceRequestResolver"
+        class="org.lastbamboo.client.http.server.UrnRequestResolver">
+        <constructor-arg ref="fileMapper"/>
+        </bean>
+        -->
+
+    <!--
+        The handler for serving static http resources.
+    
+    <bean lazy-init="true" id="staticResourceHandler"
+        class="org.lastbamboo.client.http.server.StaticResourceHandlerImpl">
+        <constructor-arg ref="urnSha1ResourceRequestResolver"/>
+        </bean>  
+        -->
+       
+    <!--
+        The search result processor singleton.
+    
+    <bean lazy-init="true" id="searchResultManager"
+        class="org.lastbamboo.client.search.SearchResultManager"/>
+        -->
+        
+    <!--
+        The main LimeWire interface class.
+    
+    <bean lazy-init="true" id="limeWire"
+        class="org.lastbamboo.common.searchers.limewire.LimeWireImpl"/>
+        -->
+        
+    <!--
+        Consumes torrent data from the plugin.
+     
+    <bean id="torrentStreamFileConsumer"
+        class="org.lastbamboo.common.npapi.TorrentStreamFileConsumer">
+        <constructor-arg ref="torrentListener"/>
+        </bean>
+        -->
+
+    <!--
+        Starts the NPAPI IPC handler.
+     
+    <bean id="pluginIpcHandler"
+        class="org.lastbamboo.common.npapi.NpapiIpcHandler"
+        init-method="start">
+        <constructor-arg ref="torrentStreamFileConsumer"/>
+        </bean>
+        -->
+        
+    <!--
+        The handler for streaming a download.
+    
+    <bean id="downloadStreamHandler"
+        class="org.lastbamboo.client.services.download.DownloadStreamHandlerImpl">
+        <constructor-arg ref="fileMapper"/>
+        <constructor-arg ref="downloadTracker"/>
+        </bean>
+    -->
+                
+    <!--
+        The handler for starting and streaming a download.
+    
+    <bean id="downloadRequestHandler"
+          class="org.lastbamboo.client.services.download.DownloadRequestHandlerImpl">
+        <constructor-arg ref="downloadTracker"/>
+        <constructor-arg ref="fileMapper"/>
+        <constructor-arg ref="startDownloadService"/>
+        <constructor-arg ref="downloadStreamHandler"/>
+        </bean>
+    -->
+
+    <!--
+        The download tracker.
+    
+    <bean id="downloadTracker"
+        class="org.lastbamboo.client.services.download.DownloadTrackerImpl"/>
+    -->
+
+    <!--
+        The torrent listener. This CANNOT be lazy initialized because it adds
+        itself as a listener for torrent data in its constructor.
+    
+    <bean id="torrentListener"
+          class="org.lastbamboo.client.services.download.LibTorrentStreamListener">
+          <constructor-arg ref="downloadFactory"/>
+          </bean>
+          -->
+          
+    <!--
+        The torrent manager.
+    
+    <bean id="torrentManager"
+        class="org.lastbamboo.client.services.download.LibTorrentManagerImpl">
+        <constructor-arg ref="downloadTracker"/>
+        </bean>
+        -->
+          
+    <!--
+        The download factory.
+    
+    <bean id="downloadFactory"
+          class="org.lastbamboo.client.services.download.DownloadFactoryImpl">
+        <constructor-arg ref="downloadTracker"/>
+        <constructor-arg ref="limeWire"/>
+        <constructor-arg ref="fileMapper"/>
+        <constructor-arg ref="remoteResourceRepository"/>
+        <constructor-arg ref="torrentManager"/>
+        </bean>
+        -->
+
+    <!--
+        The class that tracks a directory for new torrent files.
+    
+    <bean id="torrentDirectoryTracker"
+        class="org.lastbamboo.client.services.TorrentDirectoryTracker">
+        <constructor-arg ref="downloadFactory"/>
+        </bean>
+        -->
+        
+    <!--
+        The class that processes a download request.
+    
+    <bean lazy-init="true" id="startDownloadService"
+          class="org.lastbamboo.client.services.download.StartDownloadServiceImpl">
+           <constructor-arg ref="downloadFactory"/>
+           <constructor-arg ref="remoteResourceRepository"/>
+           <constructor-arg ref="fileMapper"/>
+        </bean>
+        -->
+        
+    <!--
+        The central LittleShoot repository.
+    
+    <bean lazy-init="true" id="remoteResourceRepository"
+          class="org.lastbamboo.client.services.LittleShootResourceRepository">
+        </bean>
+        
+
+    <bean lazy-init="true" id="resourceTypeTranslator"
+        class="org.lastbamboo.common.util.ResourceTypeTranslatorImpl">
+        </bean>
+        -->
+
+    <!--
+        The file publish notification service.
+    
+    <bean lazy-init="true" id="fileMapper"
+        class="org.lastbamboo.client.services.PreferencesFileMapper">
+        </bean>
+    -->
+
+    <!--
+        The file publish notification service. Several of the controllers use
+        this, so it's safe to lazily load.
+    
+    <bean lazy-init="true" id="publishedFilesTracker"
+        class="org.lastbamboo.client.services.PublishedFilesTrackerImpl">
+        </bean>
+    
+        
+    <bean id="heartbeat"
+        class="org.lastbamboo.client.services.HeartbeatImpl">
+        </bean>
+        -->
+      
+    <!--
+        The class that refreshes files in shared directories and purges files.
+    
+    <bean id="fileRefresher"
+          class="org.lastbamboo.client.services.FileRefresherImpl">
+        <constructor-arg ref="fileMapper"/>
+        <constructor-arg ref="remoteResourceRepository"/>
+        <constructor-arg ref="downloadTracker"/>
+        <constructor-arg value="true"/>
+        <constructor-arg ref="heartbeat"/>
+        </bean>
+        -->
+
+    <!--
+        System tray support. 
+    
+    <bean id="systemTray"
+        class="org.lastbamboo.client.services.SystemTrayImpl">
+        <constructor-arg ref="limeWire"/>
+        <constructor-arg ref="torrentManager"/>
+        </bean>
+        -->
+        
+    <!--
+        Monitors the state of the LimeWire module. 
+    
+    <bean lazy-init="true" id="limeWireMonitor"
+        class="org.lastbamboo.client.services.LimeWireMonitor">
+        <constructor-arg ref="limeWire"/>
+        </bean>
+        -->
+        
+
+    <!--
+        The controller for HTTP requests.
+    -->
+    <bean lazy-init="true" id="httpUrnSha1"
+        class="org.lastbamboo.client.controllers.StaticResourceController">
+        <constructor-arg ref="staticResourceHandler"/>
+        </bean>
+        
+    <!--
+        The controller for directory requests.
+    
+    <bean lazy-init="true" id="directoryRedirectController"
+        class="org.lastbamboo.client.controllers.DirectoryRedirectController">
+        </bean>
+        -->
+        
+    <!--
+        The controller for share requests from HII.  
+    
+    <bean lazy-init="true" id="hiiPublishController"
+        class="org.lastbamboo.client.controllers.HiiPublishController">
+        <constructor-arg ref="fileMapper"/>
+        <constructor-arg ref="remoteResourceRepository"/>
+        <constructor-arg ref="publishedFilesTracker"/>
+        
+        <property name="commandName"><value>publishCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.client.services.command.PublishFileCommand</value>
+            </property>
+        </bean>
+    -->
+        
+    <!--
+        The controller for checking to make sure the app is up and running.
+    <bean id="appCheckController"
+        class="org.lastbamboo.client.controllers.AppCheckController">
+        </bean>
+        
+    -->
+        
+    <!--
+        The controller for crossdomain-xxxx.xml calls.
+    
+    <bean id="crossDomainController"
+        class="org.lastbamboo.client.controllers.CrossDomainController">
+        </bean>
+        -->
+
+    <!--
+        The search results controller.
+    
+     <bean lazy-init="true" id="searchResultsController"
+           class="org.lastbamboo.client.controllers.SearchResultsController">
+         <constructor-arg ref="searchResultManager"/>
+         <constructor-arg ref="downloadTracker"/>
+         <property name="commandClass">
+            <value>org.lastbamboo.client.controllers.command.SearchResultsCommand</value>
+            </property>
+         </bean>
+         -->
+
+    <!--
+        The controller for publishing a resource.
+    
+    <bean lazy-init="true" id="publishFileController"
+        class="org.lastbamboo.client.controllers.PublishController">
+
+        <constructor-arg ref="fileMapper"/>
+        <constructor-arg ref="remoteResourceRepository"/>
+        <constructor-arg ref="publishedFilesTracker"/>
+        
+        <property name="commandName"><value>publishCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.client.services.command.PublishFileCommand</value>
+            </property>
+        </bean>
+        -->
+
+    <!--
+        The controller for data about files in the process of being
+        published.
+    
+    <bean lazy-init="true" id="publishedFilesController"
+        class="org.lastbamboo.client.controllers.PublishedFilesController">
+        <constructor-arg ref="publishedFilesTracker"/>
+        </bean>
+        -->
+        
+    <!--
+        The controller for signing a relayed request to the central servers.
+    
+    <bean lazy-init="true" id="signedRelayController"
+          class="org.lastbamboo.client.controllers.SignedRelayController">
+        
+        <property name="commandName"><value>signedRelayCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.client.services.command.SignedRelayCommand</value>
+            </property>
+        </bean>  
+        -->      
+    
+    <!--  
+        The controller for stopping sharing files.
+    
+    <bean lazy-init="true" id="removeFileController"
+        class="org.lastbamboo.client.controllers.RemoveFileController">
+          
+        <constructor-arg ref="fileMapper"/>
+        <constructor-arg ref="remoteResourceRepository"/>
+        
+        <property name="commandName"><value>removeFileCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.client.services.command.RemoveFileCommand</value>
+            </property>
+        </bean>
+        -->
+
+    <!--
+        The controller for starting and streaming a download.
+    <bean lazy-init="true" id="downloadController"
+          class="org.lastbamboo.client.controllers.DownloadController">
+        <constructor-arg ref="downloadRequestHandler"/>
+        <property name="commandName"><value>downloadBean</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.client.services.command.DownloadCommand</value>
+            </property>
+        </bean>
+        -->
+
+    <!--
+        The controller for starting and streaming a download.
+    
+    <bean lazy-init="true" id="downloadTorrentController"
+          class="org.lastbamboo.client.controllers.DownloadTorrentController">
+        <constructor-arg ref="downloadRequestHandler"/>
+        <property name="commandName"><value>downloadBean</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.client.services.command.DownloadCommand</value>
+            </property>
+        </bean>
+        -->
+        
+    <!--
+        The controller for starting a torrent download.
+    
+    <bean lazy-init="true" id="startTorrentDownloadController"
+          class="org.lastbamboo.client.controllers.StartTorrentDownloadController">
+        <constructor-arg ref="downloadRequestHandler"/>
+        <property name="commandName"><value>downloadBean</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.client.services.command.DownloadCommand</value>
+            </property>
+        </bean>
+        -->
+        
+    <!--
+        The controller for starting and streaming a download.
+    
+    <bean lazy-init="true" id="downloadStreamController"
+        class="org.lastbamboo.client.controllers.DownloadStreamController">
+        <constructor-arg ref="downloadStreamHandler"/>
+        <property name="commandName"><value>downloadBean</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.client.services.command.DownloadStreamCommand</value>
+            </property>
+        </bean>
+        -->
+        
+    <!--
+        The controller for opening the folder of a download for downloads with
+        multiple files.
+    
+    <bean lazy-init="true" id="downloadFolderController"
+        class="org.lastbamboo.client.controllers.DownloadFolderController">
+        <constructor-arg ref="fileMapper"/>
+        <constructor-arg ref="downloadTracker"/>
+        <property name="commandName"><value>downloadBean</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.client.services.command.DownloadFolderCommand</value>
+            </property>
+        </bean>
+        -->
+        
+    <!--
+        The controller for accessing download data.
+    
+    <bean lazy-init="true" id="downloadsController"
+        class="org.lastbamboo.client.controllers.DownloadsController">
+        <constructor-arg ref="downloadTracker"/>
+        <constructor-arg ref="fileMapper"/>
+        <constructor-arg ref="torrentManager"/>
+        <property name="commandName"><value>downloadsBean</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.client.services.command.DownloadsCommand</value>
+            </property>
+        </bean>
+        -->
+        
+    <!--
+        The controller for starting and stopping a download.
+    
+    <bean lazy-init="true" id="stopDownloadController"
+          class="org.lastbamboo.client.controllers.StopDownloadController">
+        <constructor-arg ref="downloadTracker"/>
+        <property name="commandName"><value>downloadBean</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.client.controllers.command.StopDownloadCommand</value>
+            </property>
+        </bean>
+        -->
+        
+    <!--
+        The controller for starting and pausing a download.
+    
+    <bean lazy-init="true" id="pauseDownloadController"
+          class="org.lastbamboo.client.controllers.PauseDownloadController">
+        <constructor-arg ref="downloadTracker"/>
+        <property name="commandName"><value>downloadBean</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.client.controllers.command.UriDownloadCommand</value>
+            </property>
+        </bean>
+        -->
+        
+    <!--
+        The controller for starting and resuming a download.
+    <bean lazy-init="true" id="resumeDownloadController"
+          class="org.lastbamboo.client.controllers.ResumeDownloadController">
+        <constructor-arg ref="downloadTracker"/>
+        <property name="commandName"><value>downloadBean</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.client.controllers.command.UriDownloadCommand</value>
+            </property>
+        </bean>
+        -->
+
+    <!--
+        The controller for clearing inactive downloads.
+    
+    <bean lazy-init="true" id="clearInactiveDownloadsController"
+        class="org.lastbamboo.client.controllers.ClearInactiveDownloadsController">
+        <constructor-arg ref="downloadTracker"/>
+        </bean>
+        -->
+        
+    <!--
+        The controller for clearing failed/canceled downloads.
+    
+    <bean lazy-init="true" id="clearFailedDownloadsController"
+        class="org.lastbamboo.client.controllers.ClearFailedDownloadsController">
+        <constructor-arg ref="downloadTracker"/>
+        </bean>
+        -->
+        
+    <!--
+        The controller for starting and streaming a download.
+    
+    <bean lazy-init="true" id="activateDevPayController"
+        class="org.lastbamboo.client.controllers.ActivateDevPayController">
+        <property name="commandName"><value>activateBean</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.client.services.command.ActivateDevPayCommand</value>
+            </property>
+        </bean>
+        -->
+              
+    <!--
+        The controller for initiating a search.
+    
+    <bean lazy-init="true" id="searchController"
+         class="org.lastbamboo.client.controllers.SearchController">
+        <constructor-arg ref="searchResultManager"/>
+        <constructor-arg ref="limeWire"/>
+        <property name="commandName"><value>searchRequestBean</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.client.controllers.command.SearchCommand</value>
+            </property>
+        </bean>
+        -->
+    </beans>
+
+

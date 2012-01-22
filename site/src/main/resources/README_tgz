@@ -1,0 +1,54 @@
+Welcome to LittleShoot!  
+
+To run LittleShoot, simply type ./run.sh from your shell.  You need to 
+have Java installed.  On Ubuntu with multiverse enabled, you can install 
+Java with:
+
+apt-get install sun-java5-jre
+
+There's also some fancy Java 6 install for Feisty Fawn, although I have 
+yet to play around with that.  
+
+We realize this install system is rudimentary. If you'd like to 
+help build  a deb or an rpminstaller, please feel free to contact 
+me at a@lastbamboo.org.  
+
+As you likely know, LittleShoot is open source and is designed for 
+easy developer participation.  In particular, the source tree is carefully
+organized into many different projects, allowing you to dig in to the code
+where you might be particularly productive.
+
+If you're a JavaScript hacker, check out the lastbamboo/trunk/client/site
+or the lastbamboo/trunk/server/site projects.  There's all sorts of 
+JavaScript to play with there.
+
+If databases are your thing, check out the server and the cleint db projects.
+Both use Hibernate.  
+
+If you're familiar with p2p and NAT traversal, or possibly with IETF standards
+like SIP, STUN, TURN, and ICE, feel free to check out those projects on the
+client.
+
+If you're not feeling up to hacking around on the source tree, feel free to 
+look around and to play with any projects that look interesting, or just
+keep using LittleShoot!
+
+Finally, we're not at all precious about our approach or current setup.  
+We've worked hard to design what we think is the optimal system for media
+distribution on the Internet, but part of achieving that goal is staying 
+open to any new developments and ideas.  From a code architecture perspective, 
+we also recognize there are always areas we could improve.  We have our own
+reusable NIO library in LittleShoot right now, for example, but I have to
+believe MINA does a better job.  We'll eventually use MINA.  We're open to
+any better way of doing things along those lines, so please speak up!
+ 
+Finally, LittleShoot is 100% internally funded.  We haven't taken any outside
+investment in large part because as soon as we do, investors' interests compete
+with users' interests.  You, as a user and a participant in the LittleShoot 
+community, are and always will be our top priority.   
+
+Thanks.
+
+Adam Fisk
+a@lastbamboo.org
+4/27/07
