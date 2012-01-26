@@ -35,8 +35,9 @@ function checkout()
   echo "Checking out repository"
   local svnPath="http://svn.littleshoot.org/svn/littleshoot/trunk"
   mkdir $INSTALL_DIR
-  svn co http://svn.littleshoot.org/svn/littleshoot/trunk $INSTALL_DIR/trunk --depth files || die "Could not check out trunk files"
-  
+#  svn co http://svn.littleshoot.org/svn/littleshoot/trunk $INSTALL_DIR/trunk --depth files || die "Could not check out trunk files"
+
+  git clone https://github.com/adamfisk/littleshoot-client.git || die "Could not check out client" 
   pushd $INSTALL_DIR/trunk || die "Could not move to trunk"
   for x in $svnDirs
   do
