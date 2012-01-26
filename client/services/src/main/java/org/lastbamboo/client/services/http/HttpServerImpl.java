@@ -53,7 +53,7 @@ import org.lastbamboo.client.handlers.WriteCallDataController;
 import org.lastbamboo.client.services.Configurator;
 import org.lastbamboo.client.services.FileRefresher;
 import org.lastbamboo.client.services.FileRefresherImpl;
-import org.lastbamboo.client.services.LimeWireMonitor;
+//import org.lastbamboo.client.services.LimeWireMonitor;
 import org.lastbamboo.client.services.SystemTray;
 import org.lastbamboo.client.services.SystemTrayImpl;
 import org.lastbamboo.client.services.TorrentDirectoryTracker;
@@ -268,10 +268,12 @@ public class HttpServerImpl implements HttpServer {
                 final TorrentDirectoryTracker torrentDirectoryTracker =
                     new TorrentDirectoryTracker();
                 
+                /*
                 final LimeWireMonitor limeWire = 
                     new LimeWireMonitor(LittleShootModule.getLimeWire());
                 System.out.println("Starting LimeWire!!");
                 limeWire.start();
+                */
                 final SystemTray tray = new SystemTrayImpl();
                 
                 // This starts automatically.

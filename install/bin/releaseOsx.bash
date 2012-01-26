@@ -20,6 +20,6 @@ sudo rm -rf /Users/Shared/LittleShoot
 
 ./quickCheckout.bash $PRO || die "Could not check out"
 
-./osxInstall.bash $APP_VERSION
+#./osxInstall.bash $APP_VERSION
 
 #svn copy https://svn.littleshoot.org/svn/littleshoot/trunk https://svn.littleshoot.org/svn/littleshoot/tags/littleshoot-$APP_VERSION-release-osx -m "release tag"

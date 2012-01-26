@@ -14,8 +14,8 @@ public interface StartDownloadService
         long size, Map<String, String> paramMap, 
         Map<String, String> cookieMap);
 
-    void limeWireDownload(File completeFile, URI sha1, long size, 
-        Map<String, String> paramMap, Map<String, String> cookieMap);
+    //void limeWireDownload(File completeFile, URI sha1, long size, 
+    //    Map<String, String> paramMap, Map<String, String> cookieMap);
 
     void bitTorrentDownload(String uri, 
         Map<String, String> paramMap, Map<String, String> cookieMap);

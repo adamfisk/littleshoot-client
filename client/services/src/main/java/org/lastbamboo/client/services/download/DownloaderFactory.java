@@ -2,10 +2,6 @@ package org.lastbamboo.client.services.download;
 
 import java.io.File;
 
-import org.limewire.core.api.download.DownloadException;
-
-import com.limegroup.gnutella.URN;
-
 /**
  * Defines the callback requirements for creating a download using 
  * {@link com.limegroup.gnutella.gui.download.DownloaderUtils}.
@@ -29,7 +25,7 @@ public interface DownloaderFactory {
      * Returns the urn associated with the file that should be downloaded or
      * <code>null</code>.
      */
-    URN getURN();
+    //URN getURN();
     
     /**
      * Tries to create a new downloader object for the given parameters, hiding
@@ -42,8 +38,8 @@ public interface DownloaderFactory {
      * @return the created Downloader
      * @throws SaveLocationException when the file could not be saved there
      */
-    com.limegroup.gnutella.Downloader createDownloader(boolean overwrite) 
-        throws DownloadException;
+    //com.limegroup.gnutella.Downloader createDownloader(boolean overwrite) 
+    //    throws DownloadException;
     
 }
 

@@ -15,7 +15,9 @@
     <modules>
         <module>flickr</module>
         <module>isohunt</module>
+<!--
         <module>limewire</module>
+-->
         <module>littleshoot</module>
         <module>yahoo</module>
         <module>youtube</module>

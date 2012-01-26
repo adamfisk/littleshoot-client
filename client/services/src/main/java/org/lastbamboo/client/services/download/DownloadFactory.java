@@ -36,9 +36,11 @@ public interface DownloadFactory
         RemoteResourceRepository remoteRepository, FileMapper mapper, 
         Map<String, String> paramMap, Map<String, String> cookieMap);
     
+    /*
     Downloader<MoverDState<Sha1DState<MsDState>>> createLimeWireDownloader(
         File completeFile, URI expectedSha1, long size, 
         Map<String, String> paramMap, Map<String, String> cookieMap);
+    */
     
     Downloader<MoverDState<Sha1DState<MsDState>>> createBitTorrentDownloader(
         String uri, Map<String, String> paramMap, 

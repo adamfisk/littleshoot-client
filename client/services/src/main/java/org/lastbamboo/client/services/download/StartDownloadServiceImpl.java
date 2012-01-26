@@ -76,6 +76,7 @@ public class StartDownloadServiceImpl implements StartDownloadService
         download(downloader);
     }
 
+    /*
     public void limeWireDownload(final File completeFile, final URI sha1,
         final long size, final Map<String, String> paramMap,
         final Map<String, String> cookieMap) {
@@ -90,6 +91,7 @@ public class StartDownloadServiceImpl implements StartDownloadService
 
         download(downloader);
     }
+    */
 
     private void download(
         final Downloader<MoverDState<Sha1DState<MsDState>>> downloader) {

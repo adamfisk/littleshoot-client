@@ -15,7 +15,7 @@ then
         exit $E_BADARGS
 fi
 
-source packJars.bash
+#source packJars.bash
 
 echo "Making sure we have sudo"
 # We just do this to test right away whether we've already got sudo permissions or not
@@ -69,7 +69,7 @@ rm -rf dmg/LittleShoot.mpkg || die "Could not remove old install package.  Exiti
 BUNDLE_JAVA_DIR=$tempBuildDir/LittleShoot.app/Contents/Resources/Java
 pushd $BUNDLE_JAVA_DIR
 cp ../../../../../org.littleshoot.littleshoot.plist . || die "Could not copy plist file to bundle"
-packJars
+#packJars
 popd
 
 cp ../../lib/libjnltorrent.jnilib $BUNDLE_JAVA_DIR || die "Could not copy jni libs"

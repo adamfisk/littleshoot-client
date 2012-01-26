@@ -119,12 +119,14 @@ public class DownloadRequestHandlerImpl implements DownloadRequestHandler {
     private void startLimeWireDownload(final File completeFile,
         final HttpServletRequest request,
         final DownloadCommand downloadRequest) {
+        /*
         final URI sha1 = downloadRequest.getUrn();
         final long size = downloadRequest.getSize();
 
         LittleShootModule.getStartDownloadService().limeWireDownload(
             completeFile, sha1, size, ControllerUtils.toParamMap(request),
             ControllerUtils.createCookieMap(request));
+            */
     }
 
     private void startLittleShootDownload(final File file,

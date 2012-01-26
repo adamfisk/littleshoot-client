@@ -31,19 +31,19 @@ import org.littleshoot.util.DaemonThread;
 import org.littleshoot.util.Sha1Hasher;
 import org.littleshoot.util.ThreadUtils;
 import org.lastbamboo.jni.JLibTorrent;
-import org.limewire.collection.Range;
+//import org.limewire.collection.Range;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.limegroup.gnutella.Downloader.DownloadState;
-import com.limegroup.gnutella.downloader.DownloadListener;
+//import com.limegroup.gnutella.Downloader.DownloadState;
+//import com.limegroup.gnutella.downloader.DownloadListener;
 
 /**
  * Downloader for downloading torrents using JNI bridge to LibTorrent.
  */
 public class LibTorrentDownloader extends AbstractDownloader<MsDState>
-    implements Downloader<MsDState>, DownloadListener, LibTorrentDownloadListener,
-    FileMover, VisitableDownloader<MsDState>, TorrentDownloader
+    implements Downloader<MsDState>, LibTorrentDownloadListener,
+    FileMover, VisitableDownloader<MsDState>, TorrentDownloader //DownloadListener
     {
 
     private final Logger m_log = LoggerFactory.getLogger(getClass());
@@ -382,6 +382,7 @@ public class LibTorrentDownloader extends AbstractDownloader<MsDState>
         // Ignored since we rely on JNI to LibTorrent for all data.
         }
 
+    /*
     public void onPendingClose(final DownloadState downloadStatus)
         {
         // Ignored since we rely on JNI to LibTorrent for all data.
@@ -391,6 +392,7 @@ public class LibTorrentDownloader extends AbstractDownloader<MsDState>
         {
         // Ignored since we rely on JNI to LibTorrent for all data.
         }
+    */
 
     public void onState(final int state) {
         if (this.m_stopped) {

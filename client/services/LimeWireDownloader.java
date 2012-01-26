@@ -27,9 +27,9 @@ import org.lastbamboo.common.download.MsDState;
 import org.lastbamboo.common.download.VisitableDownloader;
 import org.lastbamboo.common.searchers.limewire.LimeWire;
 import org.lastbamboo.common.searchers.limewire.LimeWireJsonResult;
-import org.limewire.collection.Range;
-import org.limewire.core.api.download.DownloadException;
-import org.limewire.io.Address;
+//import org.limewire.collection.Range;
+//import org.limewire.core.api.download.DownloadException;
+//import org.limewire.io.Address;
 import org.limewire.io.GUID;
 import org.limewire.io.IpPort;
 import org.limewire.io.IpPortSet;
@@ -44,8 +44,8 @@ import com.limegroup.gnutella.downloader.DownloadListener;
  * Downloader for downloading files from LimeWire.
  */
 public class LimeWireDownloader extends AbstractDownloader<MsDState>
-    implements Downloader<MsDState>, DownloadListener, VisitableDownloader<MsDState>,
-    GnutellaDownloader
+    implements Downloader<MsDState>, VisitableDownloader<MsDState>,
+    GnutellaDownloader //DownloadListener
     {
 
     private final Logger m_log = LoggerFactory.getLogger(getClass());

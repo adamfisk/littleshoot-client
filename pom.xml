@@ -649,6 +649,18 @@
                 <version>${snapshot.version}</version>
                 </dependency>
 
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>bittorrent-api</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>libtorrent</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
 <!--
             <dependency>
                 <groupId>org.limewire</groupId>
@@ -657,6 +669,7 @@
                 </dependency>
 -->
 
+<!--
             <dependency>
                 <groupId>org.limewire</groupId>
                 <artifactId>aopalliance</artifactId>
@@ -686,14 +699,6 @@
                 <artifactId>common</artifactId>
                 <version>${lw.version}</version>
                 </dependency>
-
-<!--
-            <dependency>
-                <groupId>org.limewire</groupId>
-                <artifactId>commons-codec-1.3</artifactId>
-                <version>${lw.version}</version>
-                </dependency>
--->
 
             <dependency>
                 <groupId>org.limewire</groupId>
@@ -929,6 +934,7 @@
                 <version>${lw.version.base}</version>
                 <classifier>win</classifier>
                 </dependency>
+-->
 
             <dependency>
                 <groupId>org.littleshoot.mina</groupId>
@@ -1340,7 +1346,7 @@
             </snapshots>
         </repository>
 
-
+<!--
         <repository>
             <id>littleshoot</id>
             <name>LittleShoot Repository</name>
@@ -1348,5 +1354,6 @@
             </repository>
 
         </repositories>
+-->
 
     </project>

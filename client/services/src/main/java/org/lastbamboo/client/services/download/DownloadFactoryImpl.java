@@ -168,6 +168,7 @@ public class DownloadFactoryImpl implements DownloadFactory
             }
         }
 
+    /*
     public Downloader<MoverDState<Sha1DState<MsDState>>> createLimeWireDownloader(
         final File completeFile, final URI expectedSha1, final long size, 
         final Map<String, String> paramMap, 
@@ -205,6 +206,7 @@ public class DownloadFactoryImpl implements DownloadFactory
             return downloader;
             }
         }
+        */
             
     public Downloader<MoverDState<Sha1DState<MsDState>>> createDownloader(
         final File incompleteFile, final URI uri, 

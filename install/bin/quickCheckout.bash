@@ -84,7 +84,8 @@ rm -rvf lib/*.jnilib
 #svn up --ignore-externals
 #svn up
 
-git up
+git pull origin master
+git checkout install
 
 #for x in $cos
 #do 

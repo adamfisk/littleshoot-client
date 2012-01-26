@@ -140,6 +140,7 @@
             <artifactId>jlibtorrent</artifactId>
         </dependency>
 
+<!--
         <dependency>
             <groupId>org.limewire</groupId>
             <artifactId>collection</artifactId>
@@ -154,6 +155,12 @@
             <groupId>org.limewire</groupId>
             <artifactId>gnutella-core</artifactId>
         </dependency>
+-->
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>libtorrent</artifactId>
+            </dependency>
+
 
         <dependency>
             <groupId>org.littleshoot</groupId>

@@ -42,6 +42,8 @@ http://el-tramo.be/guides/fancy-dmg
 http://decaffeinated.org/archives/2004/04/20/dmg
 
 PACKAGEMAKER
+First, the pmdoc that's used is LittleShoot.pmdoc.
+
 To debug the installer as it's running, you can use the installer log at Window->Installer Log to see installer output.
 
 We use a PackageMaker installer because we want to launch the app right away after the installer runs.  It also gives us more flexibility generally, but running right away is the main reason.
