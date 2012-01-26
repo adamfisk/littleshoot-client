@@ -20,7 +20,7 @@ fi
 
 is_pro=$1
 
-pushd ../../../..
+pushd ../../../
 
 INSTALL_DIR=temp_install_dir
 #cos="server bin client common etc install integration-tests mojo shoot src pom.xml site.bash"
@@ -33,18 +33,19 @@ launchctl unload /Library/LaunchAgents/org.littleshoot.littleshoot.plist
 function checkout()
 {
   echo "Checking out repository"
-  local svnPath="http://svn.littleshoot.org/svn/littleshoot/trunk"
+  #local svnPath="http://svn.littleshoot.org/svn/littleshoot/trunk"
   mkdir $INSTALL_DIR
 #  svn co http://svn.littleshoot.org/svn/littleshoot/trunk $INSTALL_DIR/trunk --depth files || die "Could not check out trunk files"
 
+  cd $INSTALL_DIR
   git clone https://github.com/adamfisk/littleshoot-client.git || die "Could not check out client" 
-  pushd $INSTALL_DIR/trunk || die "Could not move to trunk"
-  for x in $svnDirs
-  do
-    echo "Updating $x" 
-    svn up $x || die "Could not check out $x"
-  done  
-  popd
+#  pushd $INSTALL_DIR/trunk || die "Could not move to trunk"
+#  for x in $svnDirs
+#  do
+#    echo "Updating $x" 
+#    svn up $x || die "Could not check out $x"
+#  done  
+#  popd
 
 #  for x in $svnDirs
 #  do
@@ -58,11 +59,12 @@ function checkout()
 }
 
 test -d $INSTALL_DIR || checkout 
-test -d $INSTALL_DIR/trunk || checkout 
+#test -d $INSTALL_DIR/trunk || checkout 
 
 cd $INSTALL_DIR
 #mkdir trunk
-cd trunk
+#cd trunk
+cd littleshoot-client
 
 echo "Running in `pwd`"
 
@@ -80,7 +82,10 @@ echo "Removing old dlls and jnilibs..."
 rm -rvf lib/*.jnilib
 
 #svn up --ignore-externals
-svn up
+#svn up
+
+git up
+
 #for x in $cos
 #do 
   # This is useful if we're testing and aren't doing full checkouts

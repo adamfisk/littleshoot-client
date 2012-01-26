@@ -29,12 +29,13 @@ INSTALL_DIR=temp_install_dir
 # The old files will corrupt the build, and they have root permissions.
 sudo rm -rf /Users/Shared/LittleShoot || die "Could not remove old files"
 
-tempBuildDir=~/$INSTALL_DIR/trunk/install/osx/temp_build_dir
+tempBuildDir=~/$INSTALL_DIR/littleshoot-client/install/osx/temp_build_dir
 rm -rf $tempBuildDir
 mkdir $tempBuildDir || die "Could not create temp build dir for installing"
 
 echo "Moving to client site dir"
-cd ~/$INSTALL_DIR/trunk/client/site/
+#cd ~/$INSTALL_DIR/trunk/client/site/
+cd ~/$INSTALL_DIR/littleshoot-client/client/site/
 
 echo "Deleting old OSX app bundle..."
 rm -rf ./target/LittleShoot.app/
@@ -87,7 +88,7 @@ hdiutil internet-enable -yes LittleShoot.dmg
 echo "Internet enabled in dmg: `hdiutil internet-enable -query LittleShoot.dmg`"
 
 echo "Copying dmg to upload directory"
-cp LittleShoot.dmg ~/$BASE_DIR/trunk/client/site/LittleShootPlugin.dmg
+cp LittleShoot.dmg ~/$BASE_DIR/littleshoot-client/client/site/LittleShootPlugin.dmg
 
 echo "Copying dmg for easy testing"
 cp LittleShoot.dmg ~/Desktop
