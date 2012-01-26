@@ -1,0 +1,623 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B91AE81C0EE727B3008BF43C /* npo_littleshoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B91AE81B0EE727B3008BF43C /* npo_littleshoot.cpp */; };
+		B92462650F170D96004DB8BC /* file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B92462640F170D96004DB8BC /* file.cpp */; };
+		B92462680F172549004DB8BC /* process.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B92462670F172549004DB8BC /* process.cpp */; };
+		B92463300F174F8D004DB8BC /* stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B924632F0F174F8D004DB8BC /* stream.cpp */; };
+		B92463720F180849004DB8BC /* stream_entry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B92463710F180849004DB8BC /* stream_entry.cpp */; };
+		B92466F80F193609004DB8BC /* uri.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B92466F70F193609004DB8BC /* uri.cpp */; };
+		B924686D0F198871004DB8BC /* operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B92468330F198871004DB8BC /* operations.cpp */; };
+		B924686E0F198871004DB8BC /* path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B92468340F198871004DB8BC /* path.cpp */; };
+		B92468700F198871004DB8BC /* utf8_codecvt_facet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B92468360F198871004DB8BC /* utf8_codecvt_facet.cpp */; };
+		B92468B40F19912C004DB8BC /* random_number.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B92468B30F19912C004DB8BC /* random_number.cpp */; };
+		B94F4D5D0E627DC500366821 /* version.plist in Resources */ = {isa = PBXBuildFile; fileRef = B94F4D5A0E627DC500366821 /* version.plist */; };
+		B94F4D600E627DE000366821 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B94F4D5F0E627DE000366821 /* InfoPlist.strings */; };
+		B97C51E20F1DAB040015A5F5 /* mapped_file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97C51E10F1DAB040015A5F5 /* mapped_file.cpp */; };
+		B97C54420F1F2D660015A5F5 /* byte_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97C54410F1F2D660015A5F5 /* byte_buffer.cpp */; };
+		B97C562F0F205A4D0015A5F5 /* portability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B92468350F198871004DB8BC /* portability.cpp */; };
+		B97C5A200F225B3A0015A5F5 /* test_launcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97C5A1F0F225B3A0015A5F5 /* test_launcher.cpp */; };
+		B97C5A210F225B550015A5F5 /* error_code.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9D533A40EE7A53E00353333 /* error_code.cpp */; };
+		B97C5A820F226CED0015A5F5 /* path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2EC88560F154AFB00498A0B /* path.cpp */; };
+		B97C5A990F226D4F0015A5F5 /* path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B92468340F198871004DB8BC /* path.cpp */; };
+		B97C5A9B0F226D5D0015A5F5 /* operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B92468330F198871004DB8BC /* operations.cpp */; };
+		B97C5A9D0F226D660015A5F5 /* portability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B92468350F198871004DB8BC /* portability.cpp */; };
+		B97EF0070EE3C96100996EC1 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B97EF0060EE3C96100996EC1 /* Carbon.framework */; };
+		B97EF04D0EE3D3CB00996EC1 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B97EF04C0EE3D3CB00996EC1 /* CoreFoundation.framework */; };
+		B9862FFF0EE66F30002E9BDC /* np_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9862FFE0EE66F30002E9BDC /* np_impl.cpp */; };
+		B98630030EE66F80002E9BDC /* littleshootplugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B98630010EE66F80002E9BDC /* littleshootplugin.cpp */; };
+		B98630040EE66F80002E9BDC /* littleshootshell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B98630020EE66F80002E9BDC /* littleshootshell.cpp */; };
+		B991931C0F3A315A003A539D /* launcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B991931B0F3A315A003A539D /* launcher.cpp */; };
+		B99A899A0F5B7A660088859D /* exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9D533E20EE7A56A00353333 /* exceptions.cpp */; };
+		B99A899B0F5B7A660088859D /* once.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9D533E30EE7A56A00353333 /* once.cpp */; };
+		B99A899C0F5B7A660088859D /* thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9D533E40EE7A56A00353333 /* thread.cpp */; };
+		B99A899D0F5B7A660088859D /* timeconv.inl in Resources */ = {isa = PBXBuildFile; fileRef = B9D533E50EE7A56A00353333 /* timeconv.inl */; };
+		B99A899E0F5B7A660088859D /* tss_null.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9D533E60EE7A56A00353333 /* tss_null.cpp */; };
+		B9A1CD0B0EE6895A00B9944D /* nporuntime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9A1CD090EE6895A00B9944D /* nporuntime.cpp */; };
+		B9A1CD880EE6943600B9944D /* little_shoot_ipc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9A1CD870EE6943600B9944D /* little_shoot_ipc.cpp */; };
+		B9D533220EE798AD00353333 /* Localized.r in Rez */ = {isa = PBXBuildFile; fileRef = B9D533200EE798AD00353333 /* Localized.r */; };
+		B9D533B50EE7A53E00353333 /* error_code.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9D533A40EE7A53E00353333 /* error_code.cpp */; };
+		F2EC88570F154AFB00498A0B /* path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2EC88560F154AFB00498A0B /* path.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8D576316048677EA00EA77CD /* LittleShootPlugIn.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LittleShootPlugIn.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D576317048677EA00EA77CD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = English.lproj/Info.plist; sourceTree = "<group>"; };
+		B91AE7C20EE7216B008BF43C /* npo_littleshoot.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = npo_littleshoot.hpp; path = ../control/npo_littleshoot.hpp; sourceTree = SOURCE_ROOT; };
+		B91AE7C30EE7216B008BF43C /* nporuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nporuntime.h; path = ../control/nporuntime.h; sourceTree = SOURCE_ROOT; };
+		B91AE81B0EE727B3008BF43C /* npo_littleshoot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = npo_littleshoot.cpp; path = ../control/npo_littleshoot.cpp; sourceTree = SOURCE_ROOT; };
+		B92462630F170D83004DB8BC /* file.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = file.hpp; path = ../file.hpp; sourceTree = SOURCE_ROOT; };
+		B92462640F170D96004DB8BC /* file.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = file.cpp; path = ../file.cpp; sourceTree = SOURCE_ROOT; };
+		B92462660F17241C004DB8BC /* process.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = process.hpp; path = ../process.hpp; sourceTree = SOURCE_ROOT; };
+		B92462670F172549004DB8BC /* process.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = process.cpp; path = ../process.cpp; sourceTree = SOURCE_ROOT; };
+		B924632E0F174F7C004DB8BC /* stream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = stream.hpp; path = ../stream.hpp; sourceTree = SOURCE_ROOT; };
+		B924632F0F174F8D004DB8BC /* stream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = stream.cpp; path = ../stream.cpp; sourceTree = SOURCE_ROOT; };
+		B92463530F17FD7C004DB8BC /* stream_entry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = stream_entry.hpp; path = ../stream_entry.hpp; sourceTree = SOURCE_ROOT; };
+		B92463710F180849004DB8BC /* stream_entry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = stream_entry.cpp; path = ../stream_entry.cpp; sourceTree = SOURCE_ROOT; };
+		B92466F60F193600004DB8BC /* uri.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = uri.hpp; path = ../uri.hpp; sourceTree = "<group>"; };
+		B92466F70F193609004DB8BC /* uri.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = uri.cpp; path = ../uri.cpp; sourceTree = "<group>"; };
+		B92468330F198871004DB8BC /* operations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = operations.cpp; sourceTree = "<group>"; };
+		B92468340F198871004DB8BC /* path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = path.cpp; sourceTree = "<group>"; };
+		B92468350F198871004DB8BC /* portability.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = portability.cpp; sourceTree = "<group>"; };
+		B92468360F198871004DB8BC /* utf8_codecvt_facet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utf8_codecvt_facet.cpp; sourceTree = "<group>"; };
+		B92468370F198871004DB8BC /* utf8_codecvt_facet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utf8_codecvt_facet.hpp; sourceTree = "<group>"; };
+		B92468B20F199123004DB8BC /* random_number.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = random_number.hpp; path = ../random_number.hpp; sourceTree = "<group>"; };
+		B92468B30F19912C004DB8BC /* random_number.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = random_number.cpp; path = ../random_number.cpp; sourceTree = "<group>"; };
+		B94F4D590E627DC500366821 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B94F4D5B0E627DC500366821 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = English; path = English.lproj/version.plist; sourceTree = "<group>"; };
+		B97C51E00F1DAAF80015A5F5 /* mapped_file.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = mapped_file.hpp; path = ../mapped_file.hpp; sourceTree = SOURCE_ROOT; };
+		B97C51E10F1DAB040015A5F5 /* mapped_file.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mapped_file.cpp; path = ../mapped_file.cpp; sourceTree = "<group>"; };
+		B97C51F60F1DCFCB0015A5F5 /* protocol.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = protocol.hpp; path = ../protocol.hpp; sourceTree = "<group>"; };
+		B97C54400F1F2D5B0015A5F5 /* byte_buffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = byte_buffer.hpp; path = ../byte_buffer.hpp; sourceTree = SOURCE_ROOT; };
+		B97C54410F1F2D660015A5F5 /* byte_buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = byte_buffer.cpp; path = ../byte_buffer.cpp; sourceTree = "<group>"; };
+		B97C5A190F225A410015A5F5 /* LittleShootLauncher */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LittleShootLauncher; sourceTree = BUILT_PRODUCTS_DIR; };
+		B97C5A1F0F225B3A0015A5F5 /* test_launcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = test_launcher.cpp; path = ../test/test_launcher.cpp; sourceTree = SOURCE_ROOT; };
+		B97EF0060EE3C96100996EC1 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		B97EF04C0EE3D3CB00996EC1 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		B9862FFE0EE66F30002E9BDC /* np_impl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = np_impl.cpp; sourceTree = "<group>"; };
+		B98630000EE66F70002E9BDC /* little_shoot_plugin.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = little_shoot_plugin.hpp; path = ../little_shoot_plugin.hpp; sourceTree = SOURCE_ROOT; };
+		B98630010EE66F80002E9BDC /* littleshootplugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = littleshootplugin.cpp; path = ../littleshootplugin.cpp; sourceTree = SOURCE_ROOT; };
+		B98630020EE66F80002E9BDC /* littleshootshell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = littleshootshell.cpp; path = ../littleshootshell.cpp; sourceTree = SOURCE_ROOT; };
+		B986307C0EE6812A002E9BDC /* little_shoot_ipc.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = little_shoot_ipc.hpp; path = ../little_shoot_ipc.hpp; sourceTree = SOURCE_ROOT; };
+		B991931A0F3A314A003A539D /* launcher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = launcher.hpp; path = ../launcher.hpp; sourceTree = SOURCE_ROOT; };
+		B991931B0F3A315A003A539D /* launcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = launcher.cpp; sourceTree = "<group>"; };
+		B9A1CD090EE6895A00B9944D /* nporuntime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = nporuntime.cpp; path = ../control/nporuntime.cpp; sourceTree = SOURCE_ROOT; };
+		B9A1CD870EE6943600B9944D /* little_shoot_ipc.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = little_shoot_ipc.cpp; path = ../little_shoot_ipc.cpp; sourceTree = SOURCE_ROOT; };
+		B9AF8C7B0F1C4D3800C1A31A /* constants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = constants.hpp; path = ../constants.hpp; sourceTree = SOURCE_ROOT; };
+		B9D533210EE798AD00353333 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; name = English; path = English.lproj/Localized.r; sourceTree = "<group>"; };
+		B9D533A40EE7A53E00353333 /* error_code.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = error_code.cpp; sourceTree = "<group>"; };
+		B9D533E20EE7A56A00353333 /* exceptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = exceptions.cpp; sourceTree = "<group>"; };
+		B9D533E30EE7A56A00353333 /* once.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = once.cpp; sourceTree = "<group>"; };
+		B9D533E40EE7A56A00353333 /* thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread.cpp; sourceTree = "<group>"; };
+		B9D533E50EE7A56A00353333 /* timeconv.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = timeconv.inl; sourceTree = "<group>"; };
+		B9D533E60EE7A56A00353333 /* tss_null.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tss_null.cpp; sourceTree = "<group>"; };
+		B9E54D280EE871D400CCABC5 /* debug.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = debug.hpp; path = ../debug.hpp; sourceTree = "<group>"; };
+		F2EC88560F154AFB00498A0B /* path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = path.cpp; path = ../path.cpp; sourceTree = SOURCE_ROOT; };
+		F2EC88580F154B0D00498A0B /* path.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = path.hpp; path = ../path.hpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D576313048677EA00EA77CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B97EF0070EE3C96100996EC1 /* Carbon.framework in Frameworks */,
+				B97EF04D0EE3D3CB00996EC1 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B97C5A170F225A410015A5F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* NetscapeMoviePlugIn */ = {
+			isa = PBXGroup;
+			children = (
+				B97C5A1E0F225B0D0015A5F5 /* test */,
+				B9D533990EE7A52200353333 /* boost */,
+				B9862FFD0EE66F27002E9BDC /* include */,
+				B9862FFC0EE66F21002E9BDC /* src */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
+				19C28FB6FE9D52B211CA2CBB /* Products */,
+			);
+			name = NetscapeMoviePlugIn;
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				B97EF04C0EE3D3CB00996EC1 /* CoreFoundation.framework */,
+				B97EF0060EE3C96100996EC1 /* Carbon.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B9D533200EE798AD00353333 /* Localized.r */,
+				B94F4D5F0E627DE000366821 /* InfoPlist.strings */,
+				B94F4D5A0E627DC500366821 /* version.plist */,
+				8D576317048677EA00EA77CD /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		19C28FB6FE9D52B211CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D576316048677EA00EA77CD /* LittleShootPlugIn.plugin */,
+				B97C5A190F225A410015A5F5 /* LittleShootLauncher */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B924681E0F198871004DB8BC /* filesystem */ = {
+			isa = PBXGroup;
+			children = (
+				B92468320F198871004DB8BC /* src */,
+			);
+			name = filesystem;
+			path = ../../../boost/boost/libs/filesystem;
+			sourceTree = SOURCE_ROOT;
+		};
+		B92468320F198871004DB8BC /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B92468330F198871004DB8BC /* operations.cpp */,
+				B92468340F198871004DB8BC /* path.cpp */,
+				B92468350F198871004DB8BC /* portability.cpp */,
+				B92468360F198871004DB8BC /* utf8_codecvt_facet.cpp */,
+				B92468370F198871004DB8BC /* utf8_codecvt_facet.hpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		B97C5A1E0F225B0D0015A5F5 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				B97C5A1F0F225B3A0015A5F5 /* test_launcher.cpp */,
+			);
+			name = test;
+			sourceTree = "<group>";
+		};
+		B9862FFC0EE66F21002E9BDC /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B97C54410F1F2D660015A5F5 /* byte_buffer.cpp */,
+				F2EC88560F154AFB00498A0B /* path.cpp */,
+				B91AE81B0EE727B3008BF43C /* npo_littleshoot.cpp */,
+				B9A1CD090EE6895A00B9944D /* nporuntime.cpp */,
+				B98630010EE66F80002E9BDC /* littleshootplugin.cpp */,
+				B98630020EE66F80002E9BDC /* littleshootshell.cpp */,
+				B9862FFE0EE66F30002E9BDC /* np_impl.cpp */,
+				B92462640F170D96004DB8BC /* file.cpp */,
+				B9A1CD870EE6943600B9944D /* little_shoot_ipc.cpp */,
+				B92462670F172549004DB8BC /* process.cpp */,
+				B924632F0F174F8D004DB8BC /* stream.cpp */,
+				B92463710F180849004DB8BC /* stream_entry.cpp */,
+				B92466F70F193609004DB8BC /* uri.cpp */,
+				B92468B30F19912C004DB8BC /* random_number.cpp */,
+				B97C51E10F1DAB040015A5F5 /* mapped_file.cpp */,
+				B991931B0F3A315A003A539D /* launcher.cpp */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		B9862FFD0EE66F27002E9BDC /* include */ = {
+			isa = PBXGroup;
+			children = (
+				B9AF8C7B0F1C4D3800C1A31A /* constants.hpp */,
+				F2EC88580F154B0D00498A0B /* path.hpp */,
+				B91AE7C20EE7216B008BF43C /* npo_littleshoot.hpp */,
+				B91AE7C30EE7216B008BF43C /* nporuntime.h */,
+				B98630000EE66F70002E9BDC /* little_shoot_plugin.hpp */,
+				B986307C0EE6812A002E9BDC /* little_shoot_ipc.hpp */,
+				B9E54D280EE871D400CCABC5 /* debug.hpp */,
+				B92462630F170D83004DB8BC /* file.hpp */,
+				B92462660F17241C004DB8BC /* process.hpp */,
+				B924632E0F174F7C004DB8BC /* stream.hpp */,
+				B92463530F17FD7C004DB8BC /* stream_entry.hpp */,
+				B92466F60F193600004DB8BC /* uri.hpp */,
+				B92468B20F199123004DB8BC /* random_number.hpp */,
+				B97C51E00F1DAAF80015A5F5 /* mapped_file.hpp */,
+				B97C51F60F1DCFCB0015A5F5 /* protocol.hpp */,
+				B97C54400F1F2D5B0015A5F5 /* byte_buffer.hpp */,
+				B991931A0F3A314A003A539D /* launcher.hpp */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		B9D533990EE7A52200353333 /* boost */ = {
+			isa = PBXGroup;
+			children = (
+				B924681E0F198871004DB8BC /* filesystem */,
+				B9D533BF0EE7A56A00353333 /* thread */,
+				B9D5339C0EE7A53E00353333 /* system */,
+			);
+			name = boost;
+			sourceTree = "<group>";
+		};
+		B9D5339C0EE7A53E00353333 /* system */ = {
+			isa = PBXGroup;
+			children = (
+				B9D533A30EE7A53E00353333 /* src */,
+			);
+			name = system;
+			path = ../../../boost/boost/libs/system;
+			sourceTree = SOURCE_ROOT;
+		};
+		B9D533A30EE7A53E00353333 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B9D533A40EE7A53E00353333 /* error_code.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		B9D533BF0EE7A56A00353333 /* thread */ = {
+			isa = PBXGroup;
+			children = (
+				B9D533E00EE7A56A00353333 /* src */,
+			);
+			name = thread;
+			path = ../../../boost/boost/libs/thread;
+			sourceTree = SOURCE_ROOT;
+		};
+		B9D533E00EE7A56A00353333 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B9D533E10EE7A56A00353333 /* pthread */,
+				B9D533E60EE7A56A00353333 /* tss_null.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		B9D533E10EE7A56A00353333 /* pthread */ = {
+			isa = PBXGroup;
+			children = (
+				B9D533E20EE7A56A00353333 /* exceptions.cpp */,
+				B9D533E30EE7A56A00353333 /* once.cpp */,
+				B9D533E40EE7A56A00353333 /* thread.cpp */,
+				B9D533E50EE7A56A00353333 /* timeconv.inl */,
+			);
+			path = pthread;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D57630D048677EA00EA77CD /* LittleShootPlugIn */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 149C298308902C53008A9EFC /* Build configuration list for PBXNativeTarget "LittleShootPlugIn" */;
+			buildPhases = (
+				8D576311048677EA00EA77CD /* Sources */,
+				8333A742068B76EA00241F49 /* Rez */,
+				8D57630F048677EA00EA77CD /* Resources */,
+				8D576313048677EA00EA77CD /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LittleShootPlugIn;
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = NetscapeMoviePlugIn;
+			productReference = 8D576316048677EA00EA77CD /* LittleShootPlugIn.plugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+		B97C5A180F225A410015A5F5 /* LittleShootLauncher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B97C5A1D0F225A600015A5F5 /* Build configuration list for PBXNativeTarget "LittleShootLauncher" */;
+			buildPhases = (
+				B97C5A160F225A410015A5F5 /* Sources */,
+				B97C5A170F225A410015A5F5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LittleShootLauncher;
+			productName = LittleShootLauncher;
+			productReference = B97C5A190F225A410015A5F5 /* LittleShootLauncher */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 149C298708902C53008A9EFC /* Build configuration list for PBXProject "littleshoot" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 1;
+			mainGroup = 089C166AFE841209C02AAC07 /* NetscapeMoviePlugIn */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D57630D048677EA00EA77CD /* LittleShootPlugIn */,
+				B97C5A180F225A410015A5F5 /* LittleShootLauncher */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D57630F048677EA00EA77CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B94F4D600E627DE000366821 /* InfoPlist.strings in Resources */,
+				B94F4D5D0E627DC500366821 /* version.plist in Resources */,
+				B99A899D0F5B7A660088859D /* timeconv.inl in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		8333A742068B76EA00241F49 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9D533220EE798AD00353333 /* Localized.r in Rez */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D576311048677EA00EA77CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9862FFF0EE66F30002E9BDC /* np_impl.cpp in Sources */,
+				B98630030EE66F80002E9BDC /* littleshootplugin.cpp in Sources */,
+				B98630040EE66F80002E9BDC /* littleshootshell.cpp in Sources */,
+				B9A1CD0B0EE6895A00B9944D /* nporuntime.cpp in Sources */,
+				B9A1CD880EE6943600B9944D /* little_shoot_ipc.cpp in Sources */,
+				B91AE81C0EE727B3008BF43C /* npo_littleshoot.cpp in Sources */,
+				B9D533B50EE7A53E00353333 /* error_code.cpp in Sources */,
+				F2EC88570F154AFB00498A0B /* path.cpp in Sources */,
+				B92462650F170D96004DB8BC /* file.cpp in Sources */,
+				B92462680F172549004DB8BC /* process.cpp in Sources */,
+				B92463300F174F8D004DB8BC /* stream.cpp in Sources */,
+				B92463720F180849004DB8BC /* stream_entry.cpp in Sources */,
+				B92466F80F193609004DB8BC /* uri.cpp in Sources */,
+				B924686D0F198871004DB8BC /* operations.cpp in Sources */,
+				B924686E0F198871004DB8BC /* path.cpp in Sources */,
+				B92468700F198871004DB8BC /* utf8_codecvt_facet.cpp in Sources */,
+				B92468B40F19912C004DB8BC /* random_number.cpp in Sources */,
+				B97C51E20F1DAB040015A5F5 /* mapped_file.cpp in Sources */,
+				B97C54420F1F2D660015A5F5 /* byte_buffer.cpp in Sources */,
+				B97C562F0F205A4D0015A5F5 /* portability.cpp in Sources */,
+				B991931C0F3A315A003A539D /* launcher.cpp in Sources */,
+				B99A899A0F5B7A660088859D /* exceptions.cpp in Sources */,
+				B99A899B0F5B7A660088859D /* once.cpp in Sources */,
+				B99A899C0F5B7A660088859D /* thread.cpp in Sources */,
+				B99A899E0F5B7A660088859D /* tss_null.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B97C5A160F225A410015A5F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B97C5A200F225B3A0015A5F5 /* test_launcher.cpp in Sources */,
+				B97C5A210F225B550015A5F5 /* error_code.cpp in Sources */,
+				B97C5A820F226CED0015A5F5 /* path.cpp in Sources */,
+				B97C5A990F226D4F0015A5F5 /* path.cpp in Sources */,
+				B97C5A9B0F226D5D0015A5F5 /* operations.cpp in Sources */,
+				B97C5A9D0F226D660015A5F5 /* portability.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B94F4D5A0E627DC500366821 /* version.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B94F4D5B0E627DC500366821 /* English */,
+			);
+			name = version.plist;
+			sourceTree = "<group>";
+		};
+		B94F4D5F0E627DE000366821 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B94F4D590E627DC500366821 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B9D533200EE798AD00353333 /* Localized.r */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B9D533210EE798AD00353333 /* English */,
+			);
+			name = Localized.r;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		149C298408902C53008A9EFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = English.lproj/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../littleshoot/trunk/boost/boost/stage/lib \"$(SRCROOT)/../depends/boost/bin.v2/libs/thread/build/darwin-4.0.1/debug/architecture-combined/link-static/threading-multi\"";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = LittleShootPlugIn;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				VALID_ARCHS = "i386 x86_64";
+				WRAPPER_EXTENSION = plugin;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		149C298508902C53008A9EFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				DEAD_CODE_STRIPPING = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = s;
+				INFOPLIST_FILE = English.lproj/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../depends/boost/bin.v2/libs/thread/build/darwin-4.0.1/release/architecture-combined/link-static/threading-multi\"";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = LittleShootPlugIn;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				STRIP_INSTALLED_PRODUCT = YES;
+				STRIP_STYLE = all;
+				VALID_ARCHS = "i386 x86_64";
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Release;
+		};
+		149C298808902C53008A9EFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_PREPROCESSOR_DEFINITIONS = "XP_MACOSX=1";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../../../boost/boost,
+					../plugin/base/public,
+					../nsprpub/pr/include,
+					../nsprpub/pr/include/obsolete,
+					../nsprpub/pr/src/md/mac,
+					"../sun-java/stubs/include",
+				);
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../depends/boost\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_2 = "\"$(SRCROOT)/../plugin/base/public\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_4 = "\"$(SRCROOT)/../nsprpub/pr/src/md/mac\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_7 = "\"$(SRCROOT)/../../boost\"";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../depends/boost/bin.v2/libs/thread/build/darwin-4.0.1/debug/architecture-combined/link-static/threading-multi\"";
+				PREBINDING = NO;
+				REZ_PREPROCESSOR_DEFINITIONS = "";
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Debug;
+		};
+		149C298908902C53008A9EFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_PREPROCESSOR_DEFINITIONS = "XP_MACOSX=1";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../../../boost/boost,
+					../plugin/base/public,
+					../nsprpub/pr/include,
+					../nsprpub/pr/include/obsolete,
+					../nsprpub/pr/src/md/mac,
+					"../sun-java/stubs/include",
+				);
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../depends/boost\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_2 = "\"$(SRCROOT)/../plugin/base/public\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_4 = "\"$(SRCROOT)/../nsprpub/pr/src/md/mac\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_7 = "\"$(SRCROOT)/../../boost\"";
+				LIBRARY_SEARCH_PATHS = "";
+				PREBINDING = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Release;
+		};
+		B97C5A1B0F225A420015A5F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = LittleShootLauncher;
+			};
+			name = Debug;
+		};
+		B97C5A1C0F225A420015A5F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				HEADER_SEARCH_PATHS = (
+					../,
+					../../boost,
+				);
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = LittleShootLauncher;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		149C298308902C53008A9EFC /* Build configuration list for PBXNativeTarget "LittleShootPlugIn" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				149C298408902C53008A9EFC /* Debug */,
+				149C298508902C53008A9EFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		149C298708902C53008A9EFC /* Build configuration list for PBXProject "littleshoot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				149C298808902C53008A9EFC /* Debug */,
+				149C298908902C53008A9EFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B97C5A1D0F225A600015A5F5 /* Build configuration list for PBXNativeTarget "LittleShootLauncher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B97C5A1B0F225A420015A5F5 /* Debug */,
+				B97C5A1C0F225A420015A5F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}

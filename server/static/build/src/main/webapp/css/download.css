@@ -1,0 +1,24 @@
+
+#downloadStatusDiv
+    {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    }
+    
+#downloadStatusSpan
+    {
+    font-family: verdana, sans-serif; 
+	font-size: 10px;
+	font-weight: bold;
+    }
+    
+#downloadFrame 
+    {
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    }
+
+
+

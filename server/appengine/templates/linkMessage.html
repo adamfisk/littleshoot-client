@@ -1,0 +1,78 @@
+{% if showLinkNotInstalled %}
+    <div id="linkNotInstalledMessageDiv" class="normalBoldBig" style="display:none; color: white;">
+        <img style="float: left; padding: 16px;" src="images/littleshoot_logo_small.png"/>
+        
+        <div style="padding: 20px;">
+            <span id="welcomeMessage" style="font-size: 20px;">Welcome to LittleShoot!</span><br>
+        </div>
+        <br>
+        
+        <div class="normalBold" style="color: white; clear:both; font-size: 14px;">
+            <div style="position:relative; text-align: left; padding-left: 10px; padding-top: 10px;">
+                You selected a link to the following file that requires version 0.97 or higher of the LittleShoot P2P Plugin:<br><br>
+                
+                <center>
+                    <span style="font-weight: normal; font-size: 22px; color: #99e426;">{{ title }}</span>
+                </center>
+                
+                <br><br>
+                
+                LittleShoot lets you:
+                <ul>
+                    <li>Download files quickly and easily anywhere you go on the web</li>
+                    <li>Send links to large files to your friends and colleagues</li>
+                    <li>Download BitTorrent Files Directly in Your Browser</li>
+                </ul>
+                
+                Click the "OK" button to start downloading and installing LittleShoot. We'll prompt you to download your file
+                once it's installed, and you won't have to install LittleShoot ever again!
+            </div>
+            
+        </div>
+        <br>
+        <center>
+            <br>
+            <div id="linkCloseButton" style="cursor:pointer; color: #333; font-size: 24px; background-color: white; border: 2px solid #888; width: 120px; text-align: center;">
+                <span>OK</span>
+                <br>
+            </div>
+            <br>
+        </center>
+    </div>
+    
+    <div id="linkWaitingMessageDiv" class="normalBoldBig" style="display:none; color: white;">
+        <img style="float: left; padding: 16px;" src="images/littleshoot_logo_small.png"/>
+        
+        <div style="padding: 20px;">
+            <span id="welcomeMessage" style="font-size: 20px;">Waiting for LittleShoot Install</span><br>
+        </div>
+        <br>
+        
+        <div class="normalBold" style="color: white; clear:both; font-size: 14px;">
+            <div style="position:relative; text-align: left; padding-left: 10px; padding-top: 10px;">
+                OK, we're just waiting for you to complete downloading and installing LittleShoot before using LittleShoot to download your file.
+                <br><br>
+                Why am I doing this, you ask? We thought you'd like to know! LittleShoot is:
+                <ul>
+                    <li>A faster way of downloading large files on the web</li>
+                    <li>A more efficient way to distribute large files, because they're distributed using P2P - the power of you and and your peers </li>
+                    <li>Once LittleShoot's installed, you'll be able to download links like this with one click - you'll never have to go through this process again!</li>
+                </ul>
+                
+                When LittleShoot is installed, we'll automatically redirect you to your file. You can close this window if you like, or just wait. Once LittleShoot's installed, it can still take 
+                as long as 20 seconds to start up depending on your computer. Welcome to LittleShoot!<br><br>
+                
+                Oh, if you need to download LittleShoot again, <a style="color: white;" class="freeLink" href="#">click here</a>.
+            </div>
+        </div>
+        <br>
+        <center>
+            <br>
+            <div id="linkWaitingCloseButton" style="cursor:pointer; color: #333; font-size: 24px; background-color: white; border: 2px solid #888; width: 120px; text-align: center;">
+                <span>OK</span>
+                <br>
+            </div>
+            <br>
+        </center>
+    </div>
+{% endif %}

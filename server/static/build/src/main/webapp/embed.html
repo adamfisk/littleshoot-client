@@ -1,0 +1,101 @@
+<html>
+<head>  
+    <title>P2P 2.0 - Powered by LittleShoot</title>
+    <style type="text/css">
+        @import "css/common.css";
+        @import "http://littleshootjs.appspot.com/dijit/themes/tundra/tundra.css";
+        @import "http://littleshootjs.appspot.com/dojo/resources/dojo.css";
+    </style>
+    
+    <script type="text/javascript" src="littleshoot/flashembed.min.js"></script>
+</head>
+
+<body class="tundra">
+    <div id="loading">
+        <img src="http://littleshootimages.appspot.com/images/loading.gif" alt="loading LittleShoot P2P File Sharing in the Browser" />
+    </div>
+    
+    <div style="position:absolute; right: 10px; bottom: 10px;">
+        <span class="normalMedium">Powered by </span><img src="http://littleshootimages.appspot.com/images/logo_trans_big.gif" width="100" border="0" alt="LittleShoot P2P File Sharing in the Browser"/>
+    </div>
+    <div id="page">
+        <center>
+        <br><br><br>
+        <span class="normalBoldBigger">P2P 2.0</span>
+        
+        <br>
+        <br><br>
+    
+        <div id="movie"></div>
+        <div id="present"></div>
+        
+        <div id="presentMessage" style="display:none; margin-top:10px">
+            <span class="normalMedium">Downloading with p2p -- using LittleShoot!!!</span>
+        </div>
+            
+        
+        <div id="notPresentMessage" style="display:none; margin-top:10px">
+            <span class="normalBig">This site uses the P2P plugin LittleShoot to serve it's content.  You can get LittleShoot <a href="javascript:CommonUtils.downloadInstaller()">here</a>.</span>
+        </div>
+        
+
+        </center>
+    </div>
+    
+    <script type="text/javascript">
+        var embed = function(url, width, height, id)
+            {
+            flashembed(id, 
+                {
+                src:'FlowPlayerDark.swf',
+                width: width, 
+                height: height
+                },
+                {config: {   
+                    autoPlay: false,
+                    autoBuffering: true,
+                    initialScale: 'orig',
+                    videoFile: url,
+                    useNativeFullScreen: true,
+                }} 
+                );
+            };
+
+        littleShootConfig = {
+            littleShootPresent : function (apiVersion) {
+                console.info("LittleShoot present");
+
+                // This call translates the URL to:
+                // http://p2p2o.littleshoot.org:8107/api/client/download/improv.flv?uri=http%3A%2F%2Flittleshoot.s3.amazonaws.com%2Fimprov.flv
+                // http://p2p2o.littleshoot.org:8107 is LittleShoot running on 
+                // your computer -- this tells LittleShoot to download the file 
+                // at that URL using all known sources!
+                var p2pUrl = LittleShoot.p2pUrl("http://littleshoot.s3.amazonaws.com/improv.flv");
+
+                // This just embeds the Flash player.
+                embed(p2pUrl, 500, 415, "present");
+                CommonUtils.showElement(dojo.byId("presentMessage"));
+            },
+            littleShootNotPresent : function () {
+                console.info("LittleShoot not present");
+                LittleShoot.downloadPrompt();
+                CommonUtils.showElement(dojo.byId("notPresentMessage"));
+            },
+
+            littleShootLoading : "loading"
+        };
+    </script>
+     
+<!-- DELETEME 
+    <script type="text/javascript" src="http://littleshootjs.appspot.com/dojo/dojo.xd.js" djConfig="parseOnLoad: true"></script>
+    <script type="text/javascript" src="http://littleshootjs.appspot.com/littleshoot.littleshoot.xd.js"></script>
+    </script>
+DELETEME-->
+
+    <script type="text/javascript" src="dojo/dojo.js" djConfig="parseOnLoad: true">  </script><!-- DELETEME -->
+    <script type="text/javascript"><!-- DELETEME -->
+        dojo.require("littleshoot.LittleShootLoader");//DELETEME
+    </script><!-- DELETEME -->
+    
+</body>
+</html>

@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.lastbamboo</groupId>
+    <artifactId>lastbamboo-common-ice</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <name>ICE</name>
+    <description>LittleShoot Implementation of "Interactive Connectivity Establishment (ICE): A Protocol for Network Address Translator (NAT) Traversal for Offer/Answer Protocols"</description>
+
+    <parent>
+        <groupId>org.lastbamboo</groupId>
+        <artifactId>lastbamboo-common</artifactId>
+        <version>1.0</version>
+        </parent>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.barchart.udt</groupId>
+            <artifactId>barchart-udt4-bundle</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>commons-id</groupId>
+            <artifactId>commons-id</artifactId>
+            </dependency>
+            
+        <dependency>
+            <groupId>commons-discovery</groupId>
+            <artifactId>commons-discovery</artifactId>
+            </dependency>
+      
+        <dependency>
+            <groupId>easymock</groupId>
+            <artifactId>easymock</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>offer-answer</artifactId>
+            </dependency>
+                           
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>portmapping</artifactId>
+            </dependency>
+  
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>sdp</artifactId>
+            </dependency>
+  
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-sip-client</artifactId>
+            </dependency>
+            
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-sip-stack</artifactId>
+            </dependency>
+                      
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-stun-client</artifactId>
+            </dependency>
+ 
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-stun-server</artifactId>
+            </dependency>
+                      
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-turn-client</artifactId>
+            </dependency>
+        
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-turn-http-server</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-udt</artifactId>
+            </dependency>
+      
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>util</artifactId>
+        </dependency>
+ 
+    </dependencies>
+</project>

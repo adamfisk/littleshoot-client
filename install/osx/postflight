@@ -1,0 +1,164 @@
+#!/usr/bin/env bash
+#
+# This script sets up LittleShoot to run as a background process controlled by launchd.
+# 
+# See: http://developer.apple.com/documentation/DeveloperTools/Conceptual/SoftwareDistribution/Install_Operations/Install_Operations.html#//apple_ref/doc/uid/10000145i-CH14-SW1
+
+echo "Starting postflight script"
+
+# This should get swapped during the build.
+postFlightVersion=0.999
+
+function appendToFile()
+{
+  local escaped=`echo $3 | perl -MURI::Escape -lne 'print uri_escape($_)'`
+  echo "Got escaped: "$escaped
+
+  echo $2=$escaped >> $1
+}
+
+function reportErrors()
+{
+  local tmpBase=`basename $0`
+  local tmpDir=`mktemp -d /tmp/${tmpBase}.XXXXXX`
+
+  local errFile="$tmpDir/errFile"
+
+  #appendToFile $errFile "message" "$@"
+  #appendToFile $errFile "host" "`uname -a`"
+  #appendToFile $errFile "disk" "`df -h`"
+  #appendToFile $errFile "lineNumber" "${BASH_LINENO[1]}"
+
+  local message=`echo "$@" | perl -MURI::Escape -lne 'print uri_escape($_)'`
+  local uName=`uname -a`
+  local host=`echo "$uName" | perl -MURI::Escape -lne 'print uri_escape($_)'`
+  local diskInfo="`df -h`"
+  local disk=`echo "$diskInfo" | perl -MURI::Escape -lne 'print uri_escape($_)'`
+  local bashLineNumber=${BASH_LINENO[1]}
+  local lineNumber=`echo "$bashLineNumber" | perl -MURI::Escape -lne 'print uri_escape($_)'`
+  local littleShootVersion=`echo "$postFlightVersion" | perl -MURI::Escape -lne 'print uri_escape($_)'`
+
+  local groupInfo=`id -Gn`
+  local group=`echo "$groupInfo" | perl -MURI::Escape -lne 'print uri_escape($_)'`  
+
+  #curl -d @$errFile  "http://littleshootbugs.appspot.com/submitMacInstallerBug" || echo "Message (probably) not sent successfully." 2>&1
+  curl  -d message=$message \
+        -d host=$host \
+        -d lineNumber=$lineNumber \
+        -d group=$group \
+        -d version=$littleShootVersion \
+        -d user=$USER \
+        "http://littleshootbugs.appspot.com/submitMacInstallerBug" || echo "Message (probably) not sent successfully." 2>&1
+}
+
+function die()
+{
+  echo "Failure: $@ ... Reporting errors"
+  reportErrors "$@"  
+  exit 1
+}
+
+function warn()
+{
+  echo "Something fishy: $@ ... Reporting warning"
+  reportErrors "$@"
+}
+
+function unpackJars()
+{
+  for f in $( ls *.pack ); do
+    echo "Unpacking packed jar: $f"
+    local jarName=`echo "${f%.pack}"`
+    unpack200 $f $jarName || die "Could not unpack $f"
+    rm $f || die "Could not delete pack file $f"
+  done
+}
+
+
+#echo "Checking Java version"
+# This is just a dummy check since the installer doesn't always seem to catch a failure.
+#java -version | grep 1.4 && die "Cannot install LittleShoot when the Java version is 1.4"
+
+echo "Running as `whoami`"
+echo "User is $USER"
+
+OLD_APP_DIR=~/Applications
+APP_DIR=$2
+test -d "$APP_DIR" || die "No app dir at $APP_DIR"
+echo "Created app dir"
+
+PLIST_DIR=/Library/LaunchAgents
+
+LS_HOME=~/.littleshoot
+
+sharedDir=~/Shared
+su $USER -c "mkdir $LS_HOME"
+su $USER -c "mkdir $LS_HOME/stream"
+su $USER -c "mkdir $sharedDir"
+
+test -d /Library/Application\ Support/LittleShoot || su $USER -c "mkdir /Library/Application\ Support/LittleShoot" || mkdir /Library/Application\ Support/LittleShoot || warn "Could not create application suppor dir!!"
+
+function removeLittleShoot()
+{
+  echo "Listing loaded apps"
+  launchctl list | grep littleshoot && warn "Warning: LittleShoot still running as `whoami`"
+  su $USER -c "launchctl list | grep littleshoot" && warn "Warning: LittleShoot still running as $USER"
+
+  echo "Removing old LittleShoot app.."
+  rm -rf $OLD_APP_DIR/LittleShoot.app
+  rm -rf $OLD_APP_DIR/LittleShootUninstaller.app
+}
+
+removeLittleShoot
+
+## TODO: This will likely not work once we sign the bundle, as we cannot modify it.
+srcJavaDir="$APP_DIR"/LittleShoot.app/Contents/Resources/Java
+test -d $srcJavaDir || die "Java dir does not exist at: $srcJavaDir"
+pushd $srcJavaDir || die "Could not switch to jars dir at $srcJavaDir"
+unpackJars || die "Could not unpack jars!!"
+popd
+
+function switchToJava6()
+{
+pushd "$APP_DIR"/LittleShoot.app/Contents
+perl -pi -e "s/1.5\+/1.6+/g" Info.plist || die "Could not change plist file"
+popd
+}
+
+# Use Java 1.6 if it's there.
+#test -d /System/Library/Frameworks/JavaVM.framework/Versions/1.6 && system_profiler SPHardwareDataType | grep Processor\ Name | grep Intel && switchToJava6 
+
+# We need to check for Java 1.6 and make sure it's running on a 64 CPU.
+#test -d /System/Library/Frameworks/JavaVM.framework/Versions/1.6 && system_profiler SPHardwareDataType | grep Processor\ Name | grep Intel | grep -v "Intel Core Duo" | grep -v Solo && switchToJava6 
+#/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home/bin/java -version && sysctl hw.cpu64bit_capable && switchToJava6
+/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home/bin/java -version && switchToJava6
+
+
+cp -f "$APP_DIR"/LittleShoot.app/Contents/Resources/Java/org.littleshoot.littleshoot.plist $PLIST_DIR || die "Could not copy plist file"
+chmod 644 "$PLIST_DIR"/org.littleshoot.littleshoot.plist || die "Could not change permissions on plist"
+#chgrp $USER "$PLIST_DIR"/org.littleshoot.littleshoot.plist || die "Could not change group on plist"
+#chown $USER "$PLIST_DIR"/org.littleshoot.littleshoot.plist || die "Could not change owner on plist"
+
+JAVA_FILE="$APP_DIR"/LittleShoot.app/Contents/MacOS/LittleShoot
+test -f "${JAVA_FILE}" || die "Java file does not exist at $JAVA_FILE"
+
+echo "Starting LittleShoot..." 
+LAUNCHD_PLIST=$PLIST_DIR/org.littleshoot.littleshoot.plist
+
+# We need to run as non-root here because otherwise it completely screws up the LittleShoot instance locking scheme 
+# that's based on lock files in the user's home directory
+su $USER -c "launchctl load -F $LAUNCHD_PLIST" || die "Could not load plist -- got `su $USER -c launchctl load -F $LAUNCHD_PLIST`"
+
+echo "Sleeping to give launchd a head start"
+sleep 4
+su $USER -c "launchctl list | grep littleshoot" || die "LittleShoot still not listed via launchctl" 
+
+# We do this to make sure to update the modification time to tell Launch Services to reload the app.
+touch /Applications/LittleShoot.app
+
+echo "Opening www.littleshoot.org"
+# We need to open the default browser for the user, not the super user.
+su $USER -c "open 'http://www.littleshoot.org/welcome?fromOsxInstaller=true'"
+
+echo "End postflight script"
+exit 0

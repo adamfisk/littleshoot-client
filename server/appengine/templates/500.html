@@ -1,0 +1,38 @@
+{% extends "indexBase.html" %}
+
+{% block extraCss %}
+#fileNotFound
+    {
+    position: relative;
+    top: 140px;
+    height: 300px;
+    width: 620px;
+    left: 160px;
+    margin-left: auto; margin-right: auto;
+    }
+    
+#fileNotFoundText
+    {
+    position: absolute;
+    top: 60px;
+    }
+    
+{% endblock extraCss %}
+
+
+{% block indexContent %}
+<div id="fileNotFound" class="normalMedium">
+    <div id="indexLogoDiv" class="sprite-logo_trans_big"></div>
+    <div id="fileNotFoundText">
+        <strong>Whoops!</strong>
+        <br><br>
+        We're sorry, but LittleShoot seems to have experienced a problem processing your request.
+        We should have this fixed shortly, but in the meantime perhaps you'd like go to the 
+        <a href="http://www.littleshoot.org/home">main home page</a> or to the
+        <a href="http://www.littleshoot.org/search">search page</a>.
+        
+        <br><br>
+        As always, thanks for using LittleShoot.
+    </div>
+</div>
+{% endblock indexContent %}

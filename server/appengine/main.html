@@ -1,0 +1,14 @@
+{% for file in files %}
+<p>{{ file.title }} <br>
+{{ file.size }} <br>
+{{ file.mtime|timesince }}<hr> </p>
+{% endfor %}
+
+<form method="post" action="/post/">
+<table>
+{{ form }}
+<tr><td><input type="text" name="title" id="title"></td></tr>
+<tr><td><input type="text" name="size" id="size"></td></tr>
+<tr><td><input type="submit" value="Shout!"></td></tr>
+</table>
+</form>

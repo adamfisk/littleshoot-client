@@ -1,0 +1,233 @@
+{% extends 'smartfilesbase.html' %}
+{% block title %}Smart Files Demo{% endblock %}
+{% block css %}
+<link type="text/css" href="css/jquery-smartfiles-ui-1.8.15.custom.css" rel="Stylesheet" />  
+<style type="text/css">
+    
+    .file{width:400px;padding:2px; font-size:.8em;}
+    .feature{margin-right: 12px; font-size: .8em}
+</style>
+{% endblock %}
+
+{% block content %}
+<center>
+<div id="littleShootEmbed"></div>
+<br>
+<br>
+<br>
+<div class="ui-widget" style="width: 600px;">
+	<div class="ui-widget-header" style="padding:8px;">
+	  SmartFiles from LittleShoot
+	<br>
+
+	<span class="feature"><b>Fast Uploads</b></span>
+	<span class="feature"><b>Fast Downloads</b></span>
+	<span class="feature"><b>No Size Limits</b></span>
+	<br>
+	</div>
+	<!-- 
+	<a href="javascript:FileUploadApplet.showFileDialog()">Upload File</a>
+	 -->
+	
+
+	<div class="ui-widget-content">
+	    <div id="fileList" style="padding: 10px;">
+	    </div>
+	</div>
+	<br>
+	<button>Upload A File</button>
+	   <br>
+    <div id="fileStatus"></div>
+    <br>
+    <br>
+	</center>
+</div>
+{% endblock %}
+
+{% block js %}
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+<script type="text/javascript" src="/js/jquery-smartfiles-ui-1.8.15.custom.min.js"></script>
+<script type="text/javascript" src="/_ah/channel/jsapi"></script>
+
+<script>
+$(function() {
+    $("button").button();
+    $("button").click(function() { 
+        FileUploadApplet.showFileDialog();
+    });
+});
+function filePublished() {
+}
+
+/**
+ * Java applet callback.
+ * 
+ * @param file The path to the file -- this is a java.lang.String converted to
+ * a JavaScript object, not a JavaScript string.
+ */
+function onFileDialogFile(file, sha1) {
+    //console.info("Got file: "+file);
+
+    // We need to convert the java String to a JavaScript string.  See:
+    // http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Guide:LiveConnect_Overview:Data_Type_Conversions:Java_to_JavaScript_Conversions
+    var javaScriptFile = file + "";
+    //$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+    $.getJSON("http://p2p2o.littleshoot.org:8107/api/client/publishSmartFile?callback=?",
+        {file: javaScriptFile},
+        function(data) {
+            //console.dir(data);
+            $("#fileStatus").hide();
+            $("#fileStatus").html("Uploaded <br>"+javaScriptFile).show(2000);
+        });
+}
+
+function onFileDialogCancel() {
+    //console.info("File dialog canceled");
+    alert("Canceled!!");
+}
+
+
+FileUploadApplet = {
+
+    fileDialogApplet : null,
+
+    APPLET_NAME : "LittleShootApplet",
+
+    appletLoadCalled : false,
+
+    showFileDialog : function () {
+        if (FileUploadApplet.fileDialogApplet === null) {
+            FileUploadApplet.loadApplet();
+
+            // Give it a second to load.
+            setTimeout(function () {
+                try {
+                    FileUploadApplet.fileDialogApplet = $("#"+FileUploadApplet.APPLET_NAME+"Id")[0];
+                    FileUploadApplet.fileDialogApplet.newFileDialog();
+                } catch (error) {
+                    // This will make it load again next time.
+                    FileUploadApplet.fileDialogApplet = null;
+                }
+            }, 2000);
+        }
+        else {
+            FileUploadApplet.fileDialogApplet.newFileDialog();
+        }
+    },
+
+    loadApplet : function () {
+        if (!FileUploadApplet.appletLoadCalled) {
+            console.info("Loading applet: "+FileUploadApplet.APPLET_NAME);
+            FileUploadApplet.appletLoadCalled = true;
+            FileUploadApplet.loadAppletInternal(FileUploadApplet.APPLET_NAME);
+        }
+        else {
+            console.info("Not loading applet");
+        }
+    },
+
+    loadAppletInternal : function (appletName) {
+        //console.info("Creating applet in JavaScript!!!");
+        var applet = FileUploadApplet.newAppletElement(appletName);
+        console.info("Appending applet!!");
+        document.getElementsByTagName("body")[0].appendChild(applet);
+        console.info("Appended applet to body");
+    },
+
+    newAppletElement : function (appletName) {
+        var applet = document.createElement("applet");
+        applet.setAttribute("name", appletName);
+        applet.id = appletName + "Id";
+        applet.setAttribute("code", appletName + ".class");
+        applet.setAttribute("mayscript", true);
+        applet.setAttribute("width", 1);
+        applet.setAttribute("height", 1);
+
+        // Offscreen.
+        var style = {
+            position : "absolute",
+            top: "-300px"
+        };
+        $(applet).css(style);
+        //dojo.style(applet, style);
+
+        var appletDiv = document.createElement("div");
+        appletDiv.appendChild(applet);
+        return appletDiv;
+    }
+}
+</script>
+
+<script>
+    FileUploadApplet.loadApplet();
+    function newLink(result) {
+    	var urlBase = "http://p2p2o.littleshoot.org:8107/api/client/download/";
+    	var params = {};
+        params.uri = result.uri;
+        
+        if (result.mimeType !== undefined) {
+            params.mimeType = result.mimeType;
+        }
+        if (result.sha1 !== undefined) {
+            params.urn = result.sha1;
+        }
+        
+        var fullUrl = urlBase +
+            encodeURIComponent(result.title) +
+            "?"+
+            $.param(params);
+
+        var params = {
+            //sender:
+            uri: fullUrl,
+            title: result.title
+        };
+        
+        // We don't use https here because https doesn't have all the
+        // cookies we need for LittleShoot detection.
+        //var fullUrl = "https://littleshootapi.appspot.com/link?"+
+        var link = "http://www.littleshoot.org/link?"+
+            $.param(params);
+        //var link = "http://client.littleshoot.org:8080/link?"+
+        //    $.param(params);
+        return link;
+    }
+    function populateRecentFiles(files) {
+        var fl = "<div>";
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            //console.info("Got file: "+file.title);
+            //console.dir(file);
+            var link = newLink(file);
+            fl += "<div class='file'><a href='"+link+"'>" + file.title +"</a></div>";
+        }
+        fl += "</div>";
+        
+        //console.info("Setting file list to: "+fl);
+        //console.info("Existing is: "+$("#fileList").html());
+        $("#fileList").hide(2000);
+        $("#fileList").html(fl);
+        $("#fileList").show(2000);
+    }
+    channel = new goog.appengine.Channel('{{ token }}');
+    console.info("Channel token is {{ token }}");
+    socket = channel.open();
+    socket.onopen = function() {console.info("Channel opened")};
+    socket.onmessage = function(msg) {
+        console.info("Got a channel message");
+        var files = JSON.parse(msg.data).results;
+        populateRecentFiles(files);
+    };
+    socket.onerror = function(err) {console.info("Channel error!!"+err)};
+    socket.onclose = function() {console.info("Channel closed!!")};
+    
+    $.get("/api/recentFiles?callback=?",
+	    {pageIndex: 0, resultsPerPage: 10},
+	    function(data) {
+	    	console.info("Got result from recent files call")
+	    	populateRecentFiles(data.results);
+	    });
+</script>
+
+{% endblock %}

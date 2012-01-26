@@ -1,0 +1,225 @@
+
+<div class="contentBodySection helpSection normal" id="help" title="FAQ">
+    <a href="#run">How do I run LittleShoot once I've installed it?</a><br>
+    <a href="#forum">Are there other places I can get help with LittleShoot?</a><br>
+    <a href="#background">Does LittleShoot always run in the background on my computer?</a><br>
+    <a href="#legal">Is LittleShoot legal?</a><br>
+    <a href="#filesLocation">Where does LittleShoot store files it downloads?</a><br>
+    <a href="#limeWireResults">I'm not getting any results from LimeWire. Why?</a><br>
+    <a href="#secure">Is LittleShoot secure?</a><br>
+    <a href="#opera">Does LittleShoot work on Opera?</a><br>
+    <a href="#linux">Does LittleShoot work on Linux?</a><br>
+    <a href="#osxUninstall">How do I remove LittleShoot on OSX?</a><br>
+    <a href="#windowsUninstall">How do I remove LittleShoot on Windows?</a><br>
+    <a href="#systray">Can I control LittleShoot from the system tray on Windows?</a><br>
+    <a href="#osxStop">How do I stop LittleShoot once it's running on OSX?</a><br>
+    <a href="#saveFolder">How do I change my download folder/directory?</a><br>
+    <a href="#closing">Does LittleShoot stop downloading when I close my browser window?</a><br>
+    <a href="#helping">I love LittleShoot. How can I help?</a><br>
+    
+    <br><br>
+    
+    <a name="run" class="normalBold">Q) How do I run LittleShoot once I've installed it?</a><br>
+    <br>LittleShoot is a browser plugin, so it works entirely in conjunction with the browser. So, to use LittleShoot, you just go to http://www.littleshoot.org!
+        You can use it to search, publish, and download here on LittleShoot site itself,
+        and LittleShoot will also automatically handle BitTorrent links from most BitTorrent sites for you. Ultimately any site will be able to include the LittleShoot plugin
+        to take advantage of p2p services, so LittleShoot will run from many sites around the Internet.
+    <br>
+    <br>
+    
+    <a name="forum" class="normalBold">Q) Are there other places I can get help with LittleShoot?</a><br>
+    <br>The LittleShoot <a href="http://groups.google.com/group/littleshooters/">forum</a>
+        is a great place to ask questions and interact with other LittleShooters.
+    <br>
+    <br>
+    
+    <a name="background" class="normalBold">Q) Does LittleShoot always run in the background on my computer?</a><br>
+    <br>No. As of the 0.90 beta releases and above, LittleShoot only runs when a web page loads the LittleShoot browser plugin, exactly like web pages load other plugins like Flash
+        or QuickTime. That way, LittleShoot doesn't take up resources on your computer when you don't need it. The only difference with LittleShoot is that it keeps downloading 
+        your files even after you close the web page. You can always close LittleShoot using the LittleShoot status menu item in the top right on OSX and the system tray on Windows,
+        however. That way you can make sure LittleShoot stops using any system resources at your discretion.
+    <br>
+    <br>
+    
+    <a name="legal" class="normalBold">Q) Is LittleShoot legal?</a><br>
+    <br>The short answer is yes. The long answer is more involved. First and foremost, LittleShoot is not a tool for distributing 
+        copyrighted content. If you don't own the copyright to a file or are unsure of the copyright restrictions on a file, you shouldn't publish it,
+        and you shouldn't download it. LittleShoot adheres to copyright law and something you may have heard of called the "Digital Millennium Copyright Act," 
+        or the "DMCA." Under the DMCA, a copyright holder can ask us to take down links to files they own the copyright to. 
+        When we receive valid takedown notices, we will remove the content in question. Also, if we see a file on the network 
+        we know our users don't own the copyright to, we'll remove it from the system as soon as we're aware of it. Finally, 
+        we just don't think that's a particularly interesting use for the technology. 
+        We see LittleShoot as a tool to give you better access to the knowledge of the world.
+    <br>
+    <br>
+    
+    <a name="filesLocation" class="normalBold">Q) Where does LittleShoot store files it downloads?</a><br>
+    <br>Here are the download locations for the various operating systems.<br>
+    <ul>
+        <li>OS X: /Users/your_user_name/shared/downloads</li>
+        <li>Windows: c:/Users/your_user_name/shared/downloads</li>
+        <li>Linux: ~/shared/downloads</li>
+    </ul>
+    LittleShoot also displays the location of the file in the search results window when the download completes, and you can always change the download location using the system tray and status bar menus.
+    <br><br>
+    
+    <a name="limeWireResults" class="normalBold">Q) I'm not getting any results from LimeWire. Why?</a><br>
+    <br>First, there's a known issue where LimeWire can become disconnected from the network. We're working to fix this. Unfortunately, the only solution to this problem right now is to restart your computer. 
+    If you're not getting any results from LimeWire at all, this is likely the cause. If you're getting some results, but just not as many as you'd like, you may be connected poorly or to a part of the
+    Gnutella network that does not have many files matching your search terms.
+    <br><br>
+    
+    <a name="secure" class="normalBold">Q) Is LittleShoot secure?</a><br><br>
+    We care a great deal about you're security at LittleShoot and have a robust framework for ensuring you can use LittleShoot safely. We discuss the details in the technology section under "security," but 
+    at a high level LittleShoot's servers issue temporary keys each time you want to make a request to LittleShoot from your browser, and LittleShoot only allows your computer to make calls to your LittleShoot plugin. 
+    This combination ensures that no one on your wireless network can access your LittleShoot, for example, and no other web site can try to do anything sneaky (well, they can try, but it won't work!). 
+    <br><br>Please read the technology section for details, and feel free to have a look at our open source code if you're feeling really motivated! It's a combination of calls to our Python code running on 
+    Google App Engine and the local LittleShoot client (see 
+    <a href="http://svn.littleshoot.org/svn/littleshoot/trunk/client/controllers/src/main/java/org/lastbamboo/client/controllers/LocalHostFilter.java">LocalHostFilter.java</a>, for example, and 
+    <a href="http://svn.littleshoot.org/svn/littleshoot/trunk/client/controllers/src/main/java/org/lastbamboo/client/controllers/SignedRelayController.java">SignedRelayController.java</a>).
+    <br><br>
+    
+    <a name="opera" class="normalBold">Q) Does LittleShoot work on Opera?</a><br><br>
+    There's a bug with Opera running the LittleShoot Flash detector at this time. We love Opera and should have this fixed soon, though, and we apologize for the inconvenience.
+    <br><br>
+    
+    <a name="linux" class="normalBold">Q) Does LittleShoot work on Linux?</a><br><br>
+    The latest betas have unfortunately become so complex to build that we're sad to say we've temporarily dropped Linux support. We love Linux and are determined to bring it back, however, so stay tuned.
+    <br><br>
+    
+    <a name="osxUninstall" class="normalBold">Q) How do I remove LittleShoot on OSX?</a><br><br>
+    Removing LittleShoot on OSX is relatively simple. While we've removed our uninstaller for now, you can simply do the following to uninstall LittleShoot:
+    <ol>
+        <li>Delete /Applications/LittleShoot</li>
+        <li>Delete /Library/Internet Plug-Ins/LittleShootPlugIn.plugin</li>
+        <li>Delete /Library/Application Support/LittleShoot</li>
+    </ol>
+    We'll add an uninstaller soon too. We're a tiny (well, little hahaha) operation, so we appreciate your patience.
+    <br><br>
+    
+    <a name="windowsUninstall" class="normalBold">Q) How do I remove LittleShoot on Windows?</a><br><br>
+    You can uninstall LittleShoot on Windows in the usual "Add/Remove Programs" window on XP and "Programs and Features" window on Vista. Both reside in your control panel, and you simply double click on 
+    the LittleShoot entry. 
+    <br><br>
+    
+    <a name="systray" class="normalBold">Q) Can I control LittleShoot from the system tray on Windows?</a><br><br>
+    Yes. We've added system tray support to allow you to stop LittleShoot at any time or to open your downloads.
+    <br><br>
+    
+    <a name="osxStop" class="normalBold">Q) How do I stop LittleShoot once it's running on OSX?</a><br><br>
+    You can control LittleShoot using the LittleShoot icon in your status bar in the top right corner of your screen. This allows you to stop LittleShoot or open your downloads. It only works on
+    Leopard with Intel Core 2 Duo Macs or above, however. LittleShoot will still run with older Macs, but you won't be able to control it from the status bar. You can always stop it in Activity Monitor if you 
+    really need to, however.
+    <br><br>
+
+    <a name="saveFolder" class="normalBold">Q) How do I change my download folder/directory?</a><br><br>
+    You can change your download folder from the system tray on Windows and the status menu on OSX (the top-right corner of your screen). This unfortunately only works for computers with Java 6 on OSX, so computers
+    that have run software update and are Intel Core 2 Duos or above (64-bit processors).
+    <br><br>
+    
+    <a name="closing" class="normalBold">Q) Does LittleShoot stop downloading when I close my browser window?</a><br><br>
+    No. LittleShoot continues downloading in the background until you explicitly tell it not to from the system tray on Windows or the status menu on OSX. You can also always bring up your downloads tab using the same 
+    menu to check the progress of your downloads.
+    <br><br>
+    
+    <a name="helping" class="normalBold">Q) I love LittleShoot. How can I help?</a><br><br>
+    Glad you asked! We're working hard with minimal resources over here, and we need all the help we can get. Any of the following help tremendously:
+
+    <ul> 
+        <li>Telling us as soon as you notice a bug or think of an improvement we could make on the <a href="http://groups.google.com/group/littleshooters/">forum</a> or directly using the feedback e-mail (at littleshoot.org).</li>
+        <li>Use the links in the download page to send links to friends, Twitter followers, etc.</li>
+        <li>Use the "Add This" links within LittleShoot to post about it on social networks, Digg, Reddit, StumbleUpon, etc.</li>
+        <li>Blog About Us</li>
+        <li>Twitter About Us</li>
+        <li>If you're a programmer, fix bugs in the open source code.</li>
+    </ul>
+    
+    
+    We'll be adding many more tools for you to lend a hand in the future, so keep an eye out!
+    <br><br>
+
+</div>
+
+<div class="contentBodySection helpSection" id="helpSearching" style="display:none;" title="Searching">
+    <span class="normalBold">
+        How do I search?<br><br>
+    </span>
+    <span class="normal">
+        To search for a file, you simply enter a search term in the search field and either press "Enter" or click the "Search" button. If you 
+        want to limit the search to specific media types, you can select the specific media types you want in the check boxes.
+        <br><br><br>
+    </span>
+
+    <span class="normalBold">
+        I'm not finding what I want. Why?<br><br>
+    </span>
+    <span class="normal">
+        LittleShoot is, well, little. While we hope someday we'll grow up to be big, there's not that much content out there 
+        while the network is still small. We're a LittleShoot with big dreams. 
+        <br><br><br>
+    </span>
+    
+    <span class="normalBold">
+        My friend published a file, but I don't see it. Why?<br><br>
+    </span>
+    <span class="normal">
+        LittleShoot only shows the files available from users currently on the network. If your friend turned off 
+        his or her computer and they were the only source for that file, it will not be available until he or she comes back online. 
+        <br><br><br>
+    </span>
+</div>
+
+<div class="contentBodySection helpSection" id="helpDownloading" style="display:none;" title="Downloading">
+    <span class="normalBold">
+        How do I download?<br><br>
+    </span>
+    <span class="normal">
+        To download a file, you simply click on its link in search results. This is <span class="highlightText">just like clicking on any other link</span> on any other web page, 
+        although behind the scenes the LittleShoot plugin is working its magic and downloading different parts of the file 
+        from every available user on the network.
+        <br><br><br>
+        <img src="http://littleshootimages.appspot.com/images/helpDownloading.jpg" width="456"/>
+        <br><br><br>
+    </span>
+
+    <span class="normalBold">
+        Can I save the files I download?<br><br>
+    </span>
+    <span class="normal">
+        LittleShoot by default saves files to your Shared folder in your home directory on your computer, so you can always get it from there. 
+        With file types the browser doesn't display directly, you can also choose where to download to from the browser window.
+        <br><br><br>
+    </span>
+</div>
+
+<div class="contentBodySection helpSection" id="helpPublishing" style="display:none;" title="Publishing">
+    <span class="normalBold">
+        How do I publish a file?<br><br>
+    </span>
+    <span class="normal">
+        To publish, select the "Browse..." button from either the home page or the "Publish" page. Then select a file to publish from the dialog that appears.<br><br>
+        
+        Once you've selected a file, you will then be prompted to <span class="highlightText">add "tags" to the file</span>.  Tags are descriptive words describing your file. When other 
+        users search, your file will come up if their search term matches one of your tags. 
+        Once you publish the file, other users on the network can immediately search for it and download it.
+        <br><br><br>
+    </span>
+
+    <span class="normalBold">
+        What are tags?<br><br>
+    </span>
+    <span class="normal">
+        Tags are other words people can use to find your file. If you're publishing a photo of yourself kayaking in Guatemala, for example, you might add the tags 
+        "kayak" and "Guatemala". Even if your photo is called "Me and Billy.jpg", people searching for "kayak" will still see it in their search results. 
+        <br><br><br>
+    </span>
+    
+    <span class="normalBold">
+        Do I have to upload the file?<br><br>
+    </span>
+    <span class="normal">
+        No, your files always stay on your computer. When other users download them, they get them from your computer and themselves become another source for the file. 
+        <br><br><br>
+    </span>
+</div>
+<div class="contentBodyFiller"></div>

@@ -1,0 +1,198 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.lastbamboo</groupId>
+    <artifactId>lastbamboo-integration-tests</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <name>Integration Tests</name>
+    <description>
+        Last Bamboo Integration tests.
+        </description>
+    <url></url>
+
+    <parent>
+        <groupId>org.lastbamboo</groupId>
+        <artifactId>lastbamboo</artifactId>
+        <version>1.0</version>
+        </parent>
+        
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            </dependency>
+
+<!--
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-client-controllers</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-client-http-server</artifactId>
+            </dependency>
+-->
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-client-launcher-all</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-client-native</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-client-resource</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-client-services</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-bencode</artifactId>
+            </dependency>
+            
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>ice</artifactId>
+            </dependency>
+    
+<!-- 
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-ice-rudp</artifactId>
+            </dependency>
+-->
+              
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-npapi</artifactId>
+            </dependency>
+            
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-online</artifactId>
+            </dependency>
+           
+<!-- 
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-rudp</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-services</artifactId>
+            </dependency>
+-->
+
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>sip-client</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>sip-server</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>sip-stack</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-sip-turn</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>stun-client</artifactId>
+            </dependency>
+                        
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>stun-server</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>stun-stack</artifactId>
+            </dependency>
+            
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>turn-client</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>turn-http-server</artifactId>
+            </dependency>
+            
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>turn-server</artifactId>
+            </dependency>
+           
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>util</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>mina-util</artifactId>
+        </dependency>
+ 
+<!--
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-util-common</artifactId>
+            </dependency>
+            
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-util-mina</artifactId>
+            </dependency>
+-->
+
+<!--
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-shoot-netmap</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            </dependency>
+-->
+
+        <dependency>
+            <groupId>tomcat</groupId>
+            <artifactId>jasper-compiler</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>tomcat</groupId>
+            <artifactId>jasper-runtime</artifactId>
+            </dependency>
+        
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            </dependency>
+        </dependencies>
+
+    </project>

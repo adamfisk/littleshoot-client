@@ -1,0 +1,61 @@
+{% include "header.html" %}
+
+    <style type="text/css">
+        @import "dijit/themes/tundra/tundra.css";
+        @import "dojo/resources/dojo.css";
+    </style>
+    
+    <style type="text/css">
+        {% include "index.css" %}
+        {% include "common.css" %}
+        {% include "link.css" %}
+    </style>
+    
+</head>
+
+<body id="body" class="tundra commonBody">
+    <div id="loading" style="display:none;">
+        <img src="http://littleshootimages.appspot.com/images/loading.gif" alt="Loading LittleShoot P2P 2.0 File Sharing in the Browser" />
+    </div>
+    <div id="customLogoDiv" style="opacity:0;"></div>
+    <div id="leftDiv"></div>
+    <div id="contentDiv">
+        {% block content %}{% endblock %}
+    </div>
+    <div id="bottomDiv"></div>
+    
+    
+    <!-- These give crawlers some inkling of what to do. -->
+    <div class="displayNone"> 
+        <a href="download">Download</a>
+        <a href="publish">Publish</a>
+        <a href="search">Search</a>
+        <a href="whatis">What is LittleShoot?</a>
+        <a href="help">Help Using LittleShoot</a>
+        <a href="technology">LittleShoot Technology</a>
+        <a href="contact">Contact LittleShoot</a>
+        <a href="aboutUs">About LittleShoot</a>
+    </div>
+    
+{% include "flashDetection.html" %}
+
+    <script type="text/javascript">
+        {% block bodyJavaScript %}{% endblock bodyJavaScript %}
+       
+        littleShootConfig = 
+           {
+           disableAutoLoad : true,
+           };
+    </script>
+    
+    <script type="text/javascript" src="dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+    <script type="text/javascript" src="swfobject.js"></script>
+    
+    <!-- We don't use dojo.require here because it caused issues for us on IE7 -->
+    <script type="text/javascript" src="littleshoot/littleshootlib.js"></script>
+    <script type="text/javascript">
+        //dojo.addOnLoad(Index.onOnLoad);
+        {% block javascript %}{% endblock %}
+    </script>
+</body>
+</html>

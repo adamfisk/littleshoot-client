@@ -1,0 +1,1 @@
+makensis /V4 /X"SetCompressor /FINAL lzma" /DCLASSPATH="${classpath}" /DJVM_OPTIONS="${javaSystemProps}" /DMAIN_CLASS=${mainClass} /DVERSION=${appVersion} ${installerName}

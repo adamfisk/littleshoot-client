@@ -1,0 +1,45 @@
+dependencies =
+    {
+    layers:  
+    [
+        {
+        name: "../littleshoot/littleshootlib.js",
+        dependencies: 
+    [
+        //"littleshoot.Button",
+        //"littleshoot.ClientApi",
+        //"littleshoot.Downloader",
+        //"littleshoot.FileResource",
+        //"littleshoot.FileRemover",
+        //"littleshoot.HmacSha1",
+        //"littleshoot.PageNav",
+        //"littleshoot.ResourceLoader",
+        //"littleshoot.SiteBase",
+        //"littleshoot.ClientApi",
+        //"littleshoot.HmacSha1",
+        //"littleshoot.PendingFiles",
+        //"littleshoot.PendingFile",
+        "dojo.cookie",
+        "dojo.back",
+        "dojo.number",
+        "dojo.io.script",
+        //"dojo.fx",
+        "dijit.Dialog",
+        "dijit.ProgressBar",
+        "dijit.form.CheckBox",
+        "dijit.form.TextBox",
+        "dijit.form.Textarea",
+        "dijit.form.Form",
+        "dijit.form.Button",
+        //"dijit.form.ValidationTextBox",
+        "dijit.TitlePane",
+        //"dojox.validate.web",
+        //"dojox.validate.regexp",
+        ]
+        }
+    ],
+    prefixes: 
+    [
+        [ "littleshoot", "../../littleshoot" ],
+    ]
+};

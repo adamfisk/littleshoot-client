@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    
+        
+    <bean id="mailSender"
+          class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <!-- The properties below have to be set to real values for this to
+             work.  However, I do not want to check in server, user name, and
+             password information. -->
+        <property name="host"><value>host</value></property>
+        <property name="username"><value>username</value></property>
+        <property name="password"><value>password</value></property>
+        
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                </props>
+            </property>
+        </bean>
+
+    <bean id="bugProcessor"
+        class="org.lastbamboo.common.bug.server.processors.MailBugProcessor">
+        <constructor-arg><ref local="mailSender"/></constructor-arg>
+        </bean>
+
+    <bean id="fileBugProcessor"
+        class="org.lastbamboo.common.bug.server.processors.FileAppendingBugProcessor">
+        </bean>
+
+    <bean id="bugDao"
+        class="org.lastbamboo.common.bug.server.BugDaoImpl">
+        <constructor-arg ref="sessionFactory"/>
+        </bean>
+        
+    <bean id="bugRepository"
+        class="org.lastbamboo.common.bug.server.BugRepositoryImpl">
+        <constructor-arg><ref local="bugDao"/></constructor-arg>
+        <constructor-arg ref="sessionFactory"/>
+        </bean>
+                
+    <bean id="databaseProcessor"
+        class="org.lastbamboo.common.bug.server.processors.DatabaseBugProcessor">
+        <constructor-arg><ref local="bugRepository"/></constructor-arg>
+        </bean>
+   
+   <!--  
+    <bean id="bugService" 
+        class="org.lastbamboo.common.bug.server.BugServiceImpl">
+         <constructor-arg><ref local="bugRepository"/></constructor-arg>
+        </bean>
+    -->
+ 
+    <bean id="restBugController" 
+        class="org.lastbamboo.common.bug.server.BugController">
+         <constructor-arg><ref local="databaseProcessor"/></constructor-arg>
+        </bean>
+
+    <bean id="topBugsService" 
+        class="org.lastbamboo.common.bug.server.services.TopBugsService">
+         <constructor-arg ref="bugRepository"/>
+        </bean>
+        
+        <!--
+    <bean id="topBugsController" 
+        class="org.lastbamboo.common.bug.server.TopBugsController">
+         <constructor-arg ref="bugService"/>
+        </bean>
+    -->
+
+    <bean id="topBugsController"
+          class="org.lastbamboo.common.controllers.JsonController">
+        <constructor-arg ref="topBugsService"/>
+        </bean>
+        
+    </beans>

@@ -1,0 +1,3 @@
+{{ callbackMethod }}({success: true, 
+message: "Thanks for logging in to LittleShoot {{ user.username }}!"
+});

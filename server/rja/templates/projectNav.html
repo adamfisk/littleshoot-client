@@ -1,0 +1,41 @@
+{% extends "rjaBase.html" %}
+
+    
+{% block mainDiv %} 
+    <div class="mainDiv">
+        <div id="tollDiv" class="mainContent selectedContent">
+            <span class="titleText titleSpan">Rachel Johnson Animation</span>
+            <img class="bgImage" src="images/toll_background_small.jpg" alt="Rachel Johnson Film and Animation"/>
+        </div>
+    </div>
+   
+{% endblock mainDiv %} 
+
+{% block navLinks %}   
+        
+        <div class="navLinks">
+            <center>
+            <div class="projectNav commonTextNav">
+                <a href="/" id="home" class="courseLink" style="padding-left: 0px;">Home</a>
+                {% block contentLinks %}
+                {% endblock contentLinks %}
+                <!-- 
+                <a href="toll" id="toll" class="courseLink">Toll Collector</a>
+                <a href="gorilla" id="gorilla" class="courseLink">The Gorilla House</a>
+                 -->
+                 
+                 <div id="puppets" class="courseOverlayLink"  style="position:relative; padding-left: 0px; padding-top: 16px; font-size: 11px;">All Puppets and Sets Made by Rachel Johnson</div>
+            </div>
+            <!-- 
+                <table class="navTable">
+                 -->
+                    <!-- <tr><td><a class="courseLink"></a></td></tr>-->
+                    
+                            
+                            <!-- 
+                </table>
+                 -->
+            </center>
+        </div>
+    
+{% endblock navLinks %}

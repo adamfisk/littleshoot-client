@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context 
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+    
+    <context:annotation-config/>
+    
+	<!--
+        The publish request validator.
+    -->
+    <bean id="publishUrlCommandValidator"
+          class="org.lastbamboo.server.services.command.validators.PublishUrlCommandValidator"/>
+
+    <!--
+        The controller for publishing a URL resource.
+
+    <bean id="publishUrlController"
+          class="org.lastbamboo.server.controllers.PublishUrlController">
+        <constructor-arg><ref bean="gBaseRepository"/></constructor-arg>
+
+        <property name="commandName"><value>publishCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.PublishUrlCommand</value>
+            </property>
+        <property name="validator">
+            <ref local="publishUrlCommandValidator"/>
+            </property>
+        </bean>
+        -->
+   
+    <!--
+        The controller for downloading files.
+    -->
+    <bean id="downloadController"
+          class="org.lastbamboo.server.controllers.DownloadController">
+
+        <property name="commandName"><value>downloadCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.DownloadCommand</value>
+            </property>
+        </bean>
+        
+    <!--
+        The controller for keys for publishing
+    -->
+    <bean id="keyController"
+        class="org.lastbamboo.server.controllers.KeyController">
+
+        <property name="commandName"><value>keyCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.KeyCommand</value>
+            </property>
+        </bean>
+                     
+    <!--
+        The controller for publishing a resource.
+    -->
+    <bean id="publishFileController"
+          class="org.lastbamboo.server.controllers.PublishFileController">
+        <property name="supportedMethods"><value>POST</value></property>
+        <constructor-arg ref="resourceRepository"/>
+        <constructor-arg ref="resourceTypeTranslator"/>
+
+        <property name="commandName"><value>publishCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.PublishFileCommand</value>
+            </property>
+        </bean>
+
+    <!--
+        The controller for publishing a resource.
+    -->
+    <bean id="publishRawFileController"
+          class="org.lastbamboo.server.controllers.PublishRawFileController">
+        <property name="supportedMethods"><value>POST</value></property>
+        <constructor-arg ref="resourceRepository"/>
+        <constructor-arg ref="resourceTypeTranslator"/>
+
+        <property name="commandName"><value>publishCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.PublishFileCommand</value>
+            </property>
+        </bean>
+        
+    <!--
+        The controller for searching for resources.
+    -->
+    <bean id="searchController"
+          class="org.lastbamboo.server.controllers.SearchController">
+        <constructor-arg ref="resourceRepository"/>
+        <constructor-arg ref="openSearchFactory"/>
+        <property name="commandName"><value>searchCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.SearchCommand</value>
+            </property>
+        </bean>
+
+    <!--
+        The controller for accessing all download sources for a particular
+        resource
+    -->
+    <bean id="downloadSourcesController"
+          class="org.lastbamboo.server.controllers.DownloadSourcesController">
+        <constructor-arg ref="resourceRepository"/>
+        <constructor-arg ref="openSearchFactory"/>
+        <property name="commandName"><value>downloadSourcesCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.DownloadSourcesCommand</value>
+            </property>
+        </bean>
+
+    <!--
+        The controller for viewing a download.
+    -->
+    <bean id="downloadViewController"
+          class="org.lastbamboo.server.controllers.DownloadViewController">
+        <property name="commandName"><value>downloadBean</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.DownloadViewCommand</value>
+            </property>
+        </bean>
+
+    <!--
+        The controller for setting user online status.
+    -->
+    <bean id="userOnlineController"
+          class="org.lastbamboo.server.controllers.UserOnlineController">
+        <property name="commandName"><value>userOnlineBean</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.UserOnlineCommand</value>
+            </property>
+
+        <constructor-arg ref="resourceRepository"/>
+        </bean>
+        
+    <!--
+        The controller for setting server online status.
+    
+    <bean id="serverOnlineController"
+          class="org.lastbamboo.server.controllers.ServerOnlineController">
+        <property name="commandName"><value>userOnlineBean</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.ServerOnlineCommand</value>
+            </property>
+
+        <constructor-arg ref="resourceRepository"/>
+        </bean>
+-->
+
+    <!--
+        The controller for accessing available SIP servers.
+    -->
+    <bean id="sipServerController"
+          class="org.lastbamboo.common.controllers.JsonController">
+        <constructor-arg ref="sipServerService"/>
+        </bean>
+
+    <!--
+        The controller for accessing available TURN servers.
+    -->
+    <bean id="turnServerController"
+          class="org.lastbamboo.common.controllers.JsonController">
+        <constructor-arg ref="turnServerService"/>
+        </bean>
+
+    <!--
+        The controller for accessing data about our servers.
+    -->
+    <bean id="serverMonitorController"
+          class="org.lastbamboo.common.controllers.JsonController">
+        <constructor-arg ref="serverMonitorJsonService"/>
+        </bean>
+
+    <!--
+        The controller for accessing file listings.
+    -->
+    <bean id="fileListingController"
+          class="org.lastbamboo.common.controllers.JsonCommandController">
+        <property name="commandName"><value>fileListingCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.FileListingCommand</value>
+            </property>
+        <constructor-arg ref="fileListingService"/>
+        </bean>
+
+    <!--
+        The controller for removing a file.
+    -->
+    <bean id="deleteFileController"
+          class="org.lastbamboo.server.controllers.DeleteFileController">
+        <property name="commandName"><value>deleteFileCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.DeleteFileCommand</value>
+            </property>
+        <constructor-arg ref="resourceRepository"/>
+        </bean>
+
+    <!--
+        The controller for editing a file.
+    -->
+    <bean id="editFileController"
+          class="org.lastbamboo.server.controllers.EditFileController">
+        <property name="commandName"><value>editFileCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.EditFileCommand</value>
+            </property>
+        <constructor-arg ref="resourceRepository"/>
+        </bean>
+        
+    <!--
+        The controller for verifying an email address for new users.
+    -->
+    <bean id="confirmNewUserController"
+          class="org.lastbamboo.server.controllers.ConfirmNewUserController">
+        <property name="commandName"><value>confirmNewUserCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.ConfirmNewUserCommand</value>
+            </property>
+        <constructor-arg ref="confirmNewUserService"/>
+        </bean>
+
+    <!--
+        The controller for creating a new user.
+    -->
+    <bean id="newUserController"
+          class="org.lastbamboo.common.controllers.JsonCommandController">
+        <property name="commandName"><value>newUserCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.UserCommand</value>
+            </property>
+        <constructor-arg ref="newUserService"/>
+        </bean>
+
+    <!--
+        The controller for creating a new group.
+    -->
+    <bean id="newGroupController"
+          class="org.lastbamboo.common.controllers.JsonCommandController">
+        <property name="commandName"><value>newGroupCommand</value></property>
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.GroupCommand</value>
+            </property>
+        <constructor-arg ref="newGroupService"/>
+        </bean>
+        
+    <!--
+        The controller for logging in.
+    -->
+    <bean id="loginController"
+          class="org.lastbamboo.server.controllers.LoginController">
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.UserCommand</value>
+            </property>
+        <constructor-arg ref="resourceRepository"/>
+        </bean>
+
+    <!--
+        The controller for handling forgotten passwords.
+    -->
+    <bean id="forgotPasswordController"
+          class="org.lastbamboo.common.controllers.JsonCommandController">
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.ForgotPasswordCommand</value>
+            </property>
+        <constructor-arg ref="forgotPasswordService"/>
+        </bean>
+  
+    <!--
+        The controller for resetting passwords.
+    -->
+    <bean id="resetPasswordController"
+          class="org.lastbamboo.common.controllers.JsonCommandController">
+        <property name="commandClass">
+            <value>org.lastbamboo.server.services.command.ResetPasswordCommand</value>
+            </property>
+        <constructor-arg ref="resetPasswordService"/>
+        </bean>      
+
+    </beans>

@@ -1,0 +1,399 @@
+a.ymp-btn-page-play em.ymp-skin, a.ymp-btn-page-pause em.ymp-skin {
+    display:none;
+ }
+
+
+#searchCheckBoxDiv
+    {
+    float: left;
+    }
+    
+#searchBoxDiv
+    {
+    float: left;
+    margin-left: 4px;
+    }
+
+#searchBox
+    {
+    width: 200px; 
+    color:#4F4F4F;
+    font-family:'Lucida Sans Unicode','Lucida Grande';
+    font-size:14px;
+    padding:0px 2px 0px 4px;
+    }
+    
+#searchButton
+    {
+    float: left;
+    margin-left: 4px;
+    }
+
+#safeSearchDiv
+    {
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid;
+    border-color: #7F8585;
+    }
+        
+#searchSources
+    {
+    position: relative; 
+    width: 115px; 
+    z-index: 10000000; 
+    padding-left: 4px;    
+    font-size: 100%;
+    }
+
+.tundra .dijitTitlePane .dijitTitlePaneTitle
+    {
+    background: transparent;
+    background-color: #DBDFDF;
+    padding:4px 4px 4px 4px;
+    }
+    
+.tundra .dijitTitlePane .dijitTitlePaneTextNode 
+    {
+    text-decoration: none;
+    font-family: verdana, sans-serif;
+    font-size: 11px;
+    color: #545454;
+    }
+    
+/** End of the gray nav area */    
+
+/** Start of the search results body */
+
+#searchHeaderDiv
+    {
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    }
+    
+#searchBackDiv
+    {
+    margin-top: 10px;
+    margin-left: 10px;
+    float: left;
+    }
+    
+#searchForwardDiv
+    {
+    margin-top: 10px;
+    float: left;
+    }
+    
+#searchNavDiv
+    {
+    /*border-bottom: 1px solid #d5d5d5;*/
+    /*margin-bottom: 8px;*/
+    min-height: 16px;
+    margin-bottom: 4px;
+    }
+
+#searchTermDiv
+    {
+    position: relative;
+    }
+
+#totalSearchResultsDiv
+    {
+    position: relative;
+    margin-top: 4px;
+    }
+    
+#searchStatusDiv
+    {
+    position: relative;
+    margin-left: 4px;
+    }
+
+#totalSearchResultsSpan
+    {
+    font-family: verdana, sans-serif; 
+    font-size: 11px;
+    color: #7F8585;
+    }
+    
+.searchResult, .searchResultDownloading
+    {
+    position: relative;
+    clear: both;
+    width: 90%;
+    margin-bottom: 12px;
+    border: 1px solid;
+    border-color: #FFFFFF;
+    padding: 6px;
+    }
+    
+.searchResult:hover, .searchResultDownloading:hover
+    {
+    background-color: #f5f9f5;
+    border: 1px solid;
+    border-color: #8F9595;
+    }
+    
+.searchResultThumbnail
+    {
+    float: left;
+    margin-right: 8px;
+    }
+    
+.searchResultThumbnailDownloading
+    {
+    float: left;
+    margin-right: 8px;
+    margin-top: 10px;
+    }
+    
+/**
+ * This is vertically centered within the containing block.
+ */
+.searchResultLinkDiv
+    {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin-bottom: 6px;
+    }
+    
+.searchResultLink
+    {
+    position: relative;
+    text-align: left;
+    font-family: verdana; 
+    font-size: 12px;
+    color: #545454;
+    text-decoration: none;
+    }
+    
+.searchResultLink:visited:hover
+    {
+    color: #7F8585;
+    }
+
+a.searchResultLink:hover
+    {
+    color: #000000;
+    }
+
+a.searchResultLink:visited
+    {
+    color: #7F8585;
+    }
+
+.searchResultLinkText
+    {
+    font-size: 12px;
+    vertical-align: 3px;
+    text-decoration: underline;
+    }
+
+.downloadDetails
+    {
+    clear: left;
+    }
+    
+.searchResultDetails
+    {
+    position: relative;
+    margin-top: 6px;
+    overflow: hidden;
+    font-family: verdana; 
+    font-size: 11px;
+    color: #545454;
+    text-decoration: none;
+    }
+    
+.searchResultDetail, .searchResultDetailLink
+    {
+    float: left;
+    margin-right: 10px;
+    text-decoration: none;
+    }
+    
+.searchResultDetailLink
+    {
+    text-decoration: underline;
+    }
+
+#searchBottomDiv
+    {
+    clear: both;
+    font-size: 1px;
+    }
+    
+.downloadProgress
+    {
+    position: relative;
+    clear: left;
+    width: 240px;
+    }
+    
+.pendingProgress
+    {
+    position: relative;
+    width: 240px;
+    }
+    
+.pendingFileStatusDiv
+    {
+    /*padding-top: 6px;*/
+    margin-top: 6px;
+    }
+    
+#pendingFilesContainerDiv
+    {
+    border-bottom: 2px dashed #DBDFDF;
+    margin-bottom: 4px;
+    }
+    
+/** End of the search results body */
+
+    
+#resultPageSpan
+    {
+    float: left;
+    font-family: verdana, sans-serif; 
+    font-size: 85%;
+    color: #7F8585;
+    }
+    
+.pageLink
+    {
+    font-family: verdana, sans-serif; 
+    font-size: 85%;
+    text-decoration: none;
+    color: #7F8585;
+    border-right: 1px solid;
+    padding: 0 0.66em;
+    font-weight: bold;
+    cursor: pointer;
+    } 
+
+.pageLinkSelected
+    {
+    font-family: verdana, sans-serif; 
+    font-size: 85%;
+    text-decoration: none;
+    color: #000000;
+    border-right: 1px solid;
+    border-color: #7F8585;
+    padding: 0 0.66em;
+    font-weight: bold;
+    cursor: pointer;
+    } 
+
+.pageLinksDiv a {display: inline; border-right: 1px solid; padding: 0 0.66em; border-color: #B5BDBD; font-weight: bold;}
+.pageLinksDiv a:first-child {border-left: 1px solid; border-color: #B5BDBD;}
+  
+.previousLinkDiv
+    {
+    float: left;
+    margin-right: 4px;
+    }
+      
+.previousLink
+    {
+    padding: 0 0.66em;
+    font-family: verdana, sans-serif; 
+    font-size: 85%;
+    color: #7F8585;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    } 
+    
+.pageLinksDiv
+    {
+    float: left;
+    }
+
+.nextLinkDiv
+    {
+    float: left;
+    padding-left: 0.66em;
+    }
+    
+.nextLink
+    {
+    font-family: verdana, sans-serif; 
+    font-size: 85%;
+    color: #7F8585;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    }
+
+.publishResult
+    {
+    position: relative;
+    height: 80px;
+    width: 90%;
+    margin-bottom: 20px;
+    }
+
+.publishResultThumbnail
+    {
+    float: left;
+    margin-right: 8px;
+    }
+    
+.publishResultData
+    {
+    margin-left: 83px;
+    }
+    
+.publishResultTitle
+    {
+    margin-top: 4px;
+    }
+
+.publishResultTags
+    {
+    margin-top: 8px;
+    }
+    
+.publishResultControlDiv
+    {
+    margin-top: 4px;
+    }
+        
+.publishResultRemove
+    {
+    float: left;
+    }
+    
+.publishResultEdit
+    {
+    float: left;
+    margin-left: 8px;
+    }
+    
+.publishResultOpen
+    {
+    float: left;
+    margin-left: 8px;
+    }
+    
+.stopDownloadImage
+    {
+    position: absolute;
+    right: 8px;
+    bottom: 20px;
+    z-index: 100000;
+    cursor: pointer;
+    }
+    
+.downloadStatusSpan
+    {
+    clear: both;
+    }
+    
+#ymwp-player-overlay .ymwp-player-class-maximized .ymwp-upsellcont-class {   display:none!important; }
+#ymwp-player-overlay .ymwp-player-class-maximized .ymwp-minimize-class {  left:524px!important;  background-image:url(http://l.yimg.com/us.yimg.com/i/us/mus/ymwp/webplayer-1.5.21.png);
+ -background-image:url(http://l.yimg.com/us.yimg.com/i/us/mus/ymwp/webplayer-1.5.21.gif);
+ background-repeat:no-repeat;
+background-position: -353px 0; }

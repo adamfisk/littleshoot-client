@@ -1,0 +1,65 @@
+
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+	
+
+	[
+		object,
+		uuid(A37A5B60-071D-4885-AD8A-CC6B57F691CF),
+		dual,
+		helpstring("IMozPluginHostCtrl Interface"),
+		pointer_default(unique)
+	]
+	interface IMozPluginHostCtrl : IDispatch
+	{
+		[propget, id(DISPID_HWND)]
+		HRESULT Window([out, retval]long* phwnd);
+		[propput, id(DISPID_TEXT)]
+		HRESULT Text([in]BSTR strText);
+		[propget, id(DISPID_TEXT)]
+		HRESULT Text([out, retval]BSTR* pstrText);
+		[propget, id(1), helpstring("property PluginContentType")] HRESULT PluginContentType([out, retval] BSTR *pVal);
+		[propput, id(1), helpstring("property PluginContentType")] HRESULT PluginContentType([in] BSTR newVal);
+		[propget, id(2), helpstring("property PluginSource")] HRESULT PluginSource([out, retval] BSTR *pVal);
+		[propput, id(2), helpstring("property PluginSource")] HRESULT PluginSource([in] BSTR newVal);
+		[propget, id(3), helpstring("property PluginsPage")] HRESULT PluginsPage([out, retval] BSTR *pVal);
+		[propput, id(3), helpstring("property PluginsPage")] HRESULT PluginsPage([in] BSTR newVal);
+		
+		// Ok, these are stubs for the called Javascript functions.
+		[helpstring("Start LittleShoot.")]
+        HRESULT start();
+        [helpstring("Stop LittleShoot.")]
+        HRESULT stop();
+	};
+
+[
+	uuid(5C670C1C-33E2-4B67-8D1E-CC2CF8091A0A),
+	version(1.0),
+	helpstring("pluginhostctrl 1.0 Type Library")
+]
+library PLUGINHOSTCTRLLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(A059405B-2AFC-4C24-9140-F9AD6FE2B11B),
+		helpstring("_IMozPluginHostCtrlEvents Interface")
+	]
+	dispinterface _IMozPluginHostCtrlEvents
+	{
+		properties:
+		methods:
+	};
+
+	[
+		uuid(0CC00AEB-7E95-4a80-8C29-ED90939FC99F),
+		helpstring("AxLittleShootCtrl Class")
+	]
+	coclass MozPluginHostCtrl
+	{
+		[default] interface IMozPluginHostCtrl;
+		[default, source] dispinterface _IMozPluginHostCtrlEvents;
+	};
+};

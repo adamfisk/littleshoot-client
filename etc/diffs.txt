@@ -1,0 +1,692 @@
+? diffs.txt
+? core/com/limegroup/gnutella/downloader/DownloadListener.java
+Index: pom.xml
+===================================================================
+RCS file: /cvs/limewire/pom.xml,v
+retrieving revision 1.4
+diff -r1.4 pom.xml
+13c13
+<   <version>4.13.1-SNAPSHOT</version>
+---
+>   <version>4.18.8</version>
+Index: components/pom.xml
+===================================================================
+RCS file: /cvs/limewire/components/pom.xml,v
+retrieving revision 1.14
+diff -r1.14 pom.xml
+13c13
+<     <limewire.version>4.13.1-SNAPSHOT</limewire.version>
+---
+>     <limewire.version>4.18.8</limewire.version>
+Index: components/http/pom.xml
+===================================================================
+RCS file: /cvs/limewire/components/http/pom.xml,v
+retrieving revision 1.25
+diff -r1.25 pom.xml
+58c58
+<       <version>4.0-beta2-20080510.140437-10</version>
+---
+>       <version>4.0-beta2</version>
+63c63
+<       <version>4.0-beta2-20080510.140437-10</version>
+---
+>       <version>4.0-beta2</version>
+68c68
+<       <version>4.0-alpha5-20080522.192134-5</version>
+---
+>       <version>4.0-beta1</version>
+Index: components/mojito/pom.xml
+===================================================================
+RCS file: /cvs/limewire/components/mojito/pom.xml,v
+retrieving revision 1.6
+diff -r1.6 pom.xml
+12c12
+<     <lw-components.version>4.13.1-SNAPSHOT</lw-components.version>
+---
+>     <lw-components.version>4.18.8</lw-components.version>
+Index: components/mojito-ui/pom.xml
+===================================================================
+RCS file: /cvs/limewire/components/mojito-ui/pom.xml,v
+retrieving revision 1.3
+diff -r1.3 pom.xml
+12c12
+<     <lw-components.version>4.13.1-SNAPSHOT</lw-components.version>
+---
+>     <lw-components.version>4.18.8</lw-components.version>
+Index: components/net/pom.xml
+===================================================================
+RCS file: /cvs/limewire/components/net/pom.xml,v
+retrieving revision 1.3
+diff -r1.3 pom.xml
+39c39
+<       <groupId>org.limewire</groupId>
+---
+>       <groupId>commons-httpclient</groupId>
+41c41
+<       <version>2.0-rc2-lw-1</version>
+---
+>       <version>3.1</version>
+Index: components/promotion/src/main/java/org/limewire/promotion/AbstractPromotionBinderRequestor.java
+===================================================================
+RCS file: /cvs/limewire/components/promotion/src/main/java/org/limewire/promotion/AbstractPromotionBinderRequestor.java,v
+retrieving revision 1.3.4.1
+diff -r1.3.4.1 AbstractPromotionBinderRequestor.java
+65,71c65,66
+<         try {
+<             String alteredUrl = alterUrl(url);
+<             tmp = new HttpPost(alteredUrl);
+<         } catch (URISyntaxException e) {
+<             error(e);
+<             return null;
+<         }
+---
+>         String alteredUrl = alterUrl(url);
+>         tmp = new HttpPost(alteredUrl);
+78a74
+> 
+Index: components/security/src/main/java/org/limewire/security/certificate/KeyStoreProviderImpl.java
+===================================================================
+RCS file: /cvs/limewire/components/security/src/main/java/org/limewire/security/certificate/KeyStoreProviderImpl.java,v
+retrieving revision 1.3
+diff -r1.3 KeyStoreProviderImpl.java
+2a3
+> 
+103,107c104
+<             try {
+<                 response = client.execute(get);
+<             } catch(HttpException httpX) {
+<                 throw (IOException)new IOException().initCause(httpX);
+<             }
+---
+>             response = client.execute(get);
+125c122,128
+<             client.releaseConnection(response);
+---
+>             if(response != null && response.getEntity() != null) {
+>                 try {
+>                     response.getEntity().consumeContent();
+>                 } catch (IOException e) {
+>                     LOG.error(e);
+>                 }
+>             }
+Index: components/test-util/pom.xml
+===================================================================
+RCS file: /cvs/limewire/components/test-util/pom.xml,v
+retrieving revision 1.2
+diff -r1.2 pom.xml
+17a18,23
+>       <groupId>com.google.code.guice</groupId>
+>       <artifactId>guice</artifactId>
+>       <version>1.0</version>
+>     </dependency>
+> 
+>     <dependency>
+Index: core/com/limegroup/bittorrent/tracking/TrackerImpl.java
+===================================================================
+RCS file: /cvs/limewire/core/com/limegroup/bittorrent/tracking/TrackerImpl.java,v
+retrieving revision 1.4
+diff -r1.4 TrackerImpl.java
+204,205d203
+<         } catch (HttpException e) {
+<             return null;
+Index: core/com/limegroup/gnutella/Downloader.java
+===================================================================
+RCS file: /cvs/limewire/core/com/limegroup/gnutella/Downloader.java,v
+retrieving revision 1.65
+diff -r1.65 Downloader.java
+4a5,6
+> import com.limegroup.gnutella.downloader.DownloadListener;
+> 
+323a326,327
+> 
+>     void addDownloadListener(DownloadListener dl);
+Index: core/com/limegroup/gnutella/bootstrap/TcpBootstrap.java
+===================================================================
+RCS file: /cvs/limewire/core/com/limegroup/gnutella/bootstrap/TcpBootstrap.java,v
+retrieving revision 1.1.2.1
+diff -r1.1.2.1 TcpBootstrap.java
+7a8
+> import java.net.URISyntaxException;
+254a256,263
+>         //http://secondary.udp-host-cache.com:8080/gwc/
+>         //http://tertiary.udp-host-cache.com:8080/gwc/
+>         try {
+>             this.add(new URI("http://secondary.udp-host-cache.com:8080/gwc/"));
+>             this.add(new URI("http://tertiary.udp-host-cache.com:8080/gwc/"));
+>         } catch (URISyntaxException e) {
+>             LOG.error("Error loading caches!", e);
+>         }
+260a270
+>     
+Index: core/com/limegroup/gnutella/bootstrap/UDPHostCache.java
+===================================================================
+RCS file: /cvs/limewire/core/com/limegroup/gnutella/bootstrap/UDPHostCache.java,v
+retrieving revision 1.25.30.1
+diff -r1.25.30.1 UDPHostCache.java
+298a299,300
+>         createAndAdd("gnutelladev1.udp-host-cache.com", 1234);
+>         createAndAdd("gnutelladev2.udp-host-cache.com", 5678);
+Index: core/com/limegroup/gnutella/downloader/AbstractCoreDownloader.java
+===================================================================
+RCS file: /cvs/limewire/core/com/limegroup/gnutella/downloader/AbstractCoreDownloader.java,v
+retrieving revision 1.2
+diff -r1.2 AbstractCoreDownloader.java
+242a243,249
+>     
+>     public void addDownloadListener(final DownloadListener dl)
+>         {
+>         // TODO This should ideally interface with RAFDiskController or 
+>         // whatever to stream BT downloads. -- afisk
+>         }
+> 
+Index: core/com/limegroup/gnutella/downloader/ManagedDownloaderImpl.java
+===================================================================
+RCS file: /cvs/limewire/core/com/limegroup/gnutella/downloader/ManagedDownloaderImpl.java,v
+retrieving revision 1.19
+diff -r1.19 ManagedDownloaderImpl.java
+1808c1808
+<                     commonOutFile.close();
+---
+>                     commonOutFile.close(status);
+1812c1812
+<                 if (status == DownloadStatus.COMPLETE) 
+---
+>                 if (status == DownloadStatus.COMPLETE) {
+1813a1814,1818
+>                     if (status == DownloadStatus.COMPLETE)
+>                         {
+>                         commonOutFile.onComplete();
+>                         }
+>                 }
+3159a3165,3170
+>     
+>     public void addDownloadListener(final DownloadListener dl)
+>         {
+>         this.commonOutFile.addDownloadListener(dl);
+>         }
+> 
+Index: core/com/limegroup/gnutella/downloader/PushDownloadManager.java
+===================================================================
+RCS file: /cvs/limewire/core/com/limegroup/gnutella/downloader/PushDownloadManager.java,v
+retrieving revision 1.28.12.1
+diff -r1.28.12.1 PushDownloadManager.java
+427,435c427,430
+<             try {
+<                 head = new HttpHead(connectTo);
+<                 head.addHeader(nodeString, nodeValue);
+<                 head.addHeader("Cache-Control", "no-cache");
+<                 methods.add(head);
+<             } catch (URISyntaxException e) {
+<                 LOG.error("invlaid URI", e);
+<                 removePushProxy(data.file.getClientGUID(), ppi);
+<             }            
+---
+>             head = new HttpHead(connectTo);
+>             head.addHeader(nodeString, nodeValue);
+>             head.addHeader("Cache-Control", "no-cache");
+>             methods.add(head);
+Index: core/com/limegroup/gnutella/downloader/VerifyingFile.java
+===================================================================
+RCS file: /cvs/limewire/core/com/limegroup/gnutella/downloader/VerifyingFile.java,v
+retrieving revision 1.93
+diff -r1.93 VerifyingFile.java
+7a8,9
+> import java.util.Collection;
+> import java.util.LinkedList;
+19a22
+> import com.limegroup.gnutella.Downloader.DownloadStatus;
+76,80c79,83
+< 	
+< 	/**
+< 	 * How much data did we lose due to corruption
+< 	 */
+< 	private long lostSize;
+---
+>     
+>     /**
+>      * How much data did we lose due to corruption
+>      */
+>     private long lostSize;
+162a166,167
+>     
+>     private File file;
+196a202
+>         this.file = file;
+207a214
+>         notifyListeners();
+209a217,230
+>     private void notifyListeners()
+>         {
+>         final int numChunks =
+>             (int) (this.completedSize/DEFAULT_CHUNK_SIZE);
+>         synchronized (listeners)
+>             {
+>             for (final DownloadListener listener : listeners)
+>                 {
+>                 listener.onData(this.file, this.fos, numChunks);
+>                 }
+>             }
+>         }
+> 
+> 
+220,221c241,242
+<     	request.startScheduling();
+<     	
+---
+>         request.startScheduling();
+>         
+241c262
+<         	return true;
+---
+>             return true;
+248c269
+<         	return writeBlockImpl(request);
+---
+>             return writeBlockImpl(request);
+267c288
+<         	return true;
+---
+>             return true;
+288c309
+< 		/// some stuff to help debugging ///
+---
+>         /// some stuff to help debugging ///
+291c312
+< 		
+---
+>         
+317,318c338,339
+<     	if(request.length == 0) //nothing to write? return
+<     		return false;
+---
+>         if(request.length == 0) //nothing to write? return
+>             return false;
+320,321c341,342
+<     	if(fos == null)
+<     		throw new IllegalStateException("no fos!");
+---
+>         if(fos == null)
+>             throw new IllegalStateException("no fos!");
+323,324c344,345
+<     	if (!isOpen())
+<     		return false;
+---
+>         if (!isOpen())
+>             return false;
+326c347
+<     	return true;
+---
+>         return true;
+341,342c362,363
+<         	if (length > completedSize)
+<         		throw new IOException("invalid completed size or length");
+---
+>             if (length > completedSize)
+>                 throw new IOException("invalid completed size or length");
+352c373
+<         	"\npending:"+pendingBlocks+"\nleased:"+leasedBlocks;
+---
+>             "\npending:"+pendingBlocks+"\nleased:"+leasedBlocks;
+430c451
+<     	return verifiedBlocks.toBytes();
+---
+>         return verifiedBlocks.toBytes();
+455c476
+<         	allBlocksIterable = new MultiIterable<Range>(verifiedBlocks, partialBlocks, savedCorruptBlocks, pendingBlocks); 
+---
+>             allBlocksIterable = new MultiIterable<Range>(verifiedBlocks, partialBlocks, savedCorruptBlocks, pendingBlocks); 
+505,507c526,528
+<         	partialBlocks.getSize() +
+<         	savedCorruptBlocks.getSize() +
+<         	pendingBlocks.getSize();
+---
+>             partialBlocks.getSize() +
+>             savedCorruptBlocks.getSize() +
+>             pendingBlocks.getSize();
+521,527c542,548
+< 	/**
+< 	 * @return how much data was lost due to corruption
+< 	 */
+< 	public synchronized long getAmountLost() {
+< 		return lostSize;
+< 	}
+< 	
+---
+>     /**
+>      * @return how much data was lost due to corruption
+>      */
+>     public synchronized long getAmountLost() {
+>         return lostSize;
+>     }
+>     
+607c628
+<     public void close() {
+---
+>     public void close(final DownloadStatus status) {
+611c632
+<         try { 
+---
+>         try {
+618a640,646
+>             synchronized (listeners)
+>                 {
+>                 for (final DownloadListener dl : listeners)
+>                     {
+>                     dl.onPendingClose(status);
+>                     }
+>                 }
+763,767c791,795
+< 	/**
+< 	 * Schedules those chunks that can be verified against the hash tree
+< 	 * for verification.
+< 	 */
+< 	private void verifyChunks(long existingFileSize) {
+---
+>     /**
+>      * Schedules those chunks that can be verified against the hash tree
+>      * for verification.
+>      */
+>     private void verifyChunks(long existingFileSize) {
+865,867c893,908
+<     		try {
+<     		    if(LOG.isTraceEnabled())
+<     		        LOG.trace("Writing intvl: " + intvl);
+---
+>             try {
+>                 if(LOG.isTraceEnabled())
+>                     LOG.trace("Writing intvl: " + intvl);
+>                 
+>                 synchronized(fos) {
+>                     fos.seek(intvl.getLow());
+>                     fos.write(buf, 0, (int)(intvl.getHigh() - intvl.getLow() + 1));
+>                 }
+>                 synchronized (listeners)
+>                     {
+>                     for (final DownloadListener dl : listeners)
+>                         {
+>                         dl.onRangeRead(intvl);
+>                         }
+>                     }
+> 
+869,876c910,912
+<     			synchronized(fos) {
+<     				fos.seek(intvl.getLow());
+<     				fos.write(buf, 0, (int)(intvl.getHigh() - intvl.getLow() + 1));
+<     			}
+<     			
+<     			synchronized(VerifyingFile.this) {
+<     			    pendingBlocks.delete(intvl);
+<     			    partialBlocks.add(intvl);
+---
+>                 synchronized(VerifyingFile.this) {
+>                     pendingBlocks.delete(intvl);
+>                     partialBlocks.add(intvl);
+878,880c914,916
+<     			}
+<     			
+<     			verifyChunks();
+---
+>                 }
+>                 
+>                 verifyChunks();
+902c938
+< 	}
+---
+>     }
+906,910c942,946
+<     	private final long existingFileSize;
+<     	
+<     	EmptyVerifier(long existingFileSize) {
+<     	    this.existingFileSize = existingFileSize;
+<     	}
+---
+>         private final long existingFileSize;
+>         
+>         EmptyVerifier(long existingFileSize) {
+>             this.existingFileSize = existingFileSize;
+>         }
+927c963
+<     	private final WriteRequest request;
+---
+>         private final WriteRequest request;
+947,986c983,1022
+<     	public final long currPos;
+<     	public final int start;
+<     	public final int length;
+<     	public final byte[] buf;
+<     	public final Range in;
+<     	private boolean processed, done, scheduled;
+<     	WriteRequest(long currPos, int start, int length, byte [] buf) {
+<     		this.currPos = currPos;
+<     		this.start = start;
+<     		this.length = length;
+<     		this.buf = buf;
+<     		in = Range.createRange(currPos, currPos + length - 1);
+<     	}
+<     	
+<     	private synchronized void startProcessing() {
+<     		if (isInvalidForWriting())
+<     			throw new IllegalStateException("invalid request state");
+<     		processed = true;
+<     	}
+<     	
+<     	private synchronized void startScheduling() {
+<     		if (isInvalidForCallback())
+<     			throw new IllegalStateException("invalid request state");
+<     		scheduled = true;
+<     	}
+<     	
+<     	private synchronized void setDone() {
+<     		if (done)
+<     			throw new IllegalStateException("invalid request state");
+<     		done = true;
+<     	}
+<     	
+<     	public synchronized boolean isInvalidForCallback(){
+<     		return !processed || done || scheduled;
+<     	}
+<     	
+<     	public synchronized boolean isInvalidForWriting() {
+<     		return done || processed;
+<     	}
+<     	
+---
+>         public final long currPos;
+>         public final int start;
+>         public final int length;
+>         public final byte[] buf;
+>         public final Range in;
+>         private boolean processed, done, scheduled;
+>         WriteRequest(long currPos, int start, int length, byte [] buf) {
+>             this.currPos = currPos;
+>             this.start = start;
+>             this.length = length;
+>             this.buf = buf;
+>             in = Range.createRange(currPos, currPos + length - 1);
+>         }
+>         
+>         private synchronized void startProcessing() {
+>             if (isInvalidForWriting())
+>                 throw new IllegalStateException("invalid request state");
+>             processed = true;
+>         }
+>         
+>         private synchronized void startScheduling() {
+>             if (isInvalidForCallback())
+>                 throw new IllegalStateException("invalid request state");
+>             scheduled = true;
+>         }
+>         
+>         private synchronized void setDone() {
+>             if (done)
+>                 throw new IllegalStateException("invalid request state");
+>             done = true;
+>         }
+>         
+>         public synchronized boolean isInvalidForCallback(){
+>             return !processed || done || scheduled;
+>         }
+>         
+>         public synchronized boolean isInvalidForWriting() {
+>             return done || processed;
+>         }
+>         
+987a1024,1042
+>     
+>     private final Collection<DownloadListener> listeners =
+>         new LinkedList<DownloadListener>();
+>     public void addDownloadListener(final DownloadListener dl)
+>         {
+>         listeners.add(dl);
+>         }
+> 
+>     public void onComplete()
+>         {
+>         synchronized (listeners)
+>             {
+>             for (final DownloadListener dl : listeners)
+>                 {
+>                 dl.onComplete();
+>                 }
+>             }
+>         }
+> 
+Index: core/com/limegroup/gnutella/geocode/GeocoderImpl.java
+===================================================================
+RCS file: /cvs/limewire/core/com/limegroup/gnutella/geocode/GeocoderImpl.java,v
+retrieving revision 1.4
+diff -r1.4 GeocoderImpl.java
+34,40c34
+<         HttpGet get;
+<         try {
+<             get = new HttpGet(url);
+<         } catch(URISyntaxException muri) {
+<             setInvalid(muri);
+<             return;
+<         }
+---
+>         HttpGet get = new HttpGet(url);
+54,55d47
+<         } catch (HttpException e) {
+<             setInvalid(e);
+Index: core/com/limegroup/gnutella/http/DefaultHttpExecutor.java
+===================================================================
+RCS file: /cvs/limewire/core/com/limegroup/gnutella/http/DefaultHttpExecutor.java,v
+retrieving revision 1.20.18.2
+diff -r1.20.18.2 DefaultHttpExecutor.java
+28c28
+< 	private static final ExecutorService POOL = 
+---
+>     private static final ExecutorService POOL = 
+102,116c102,107
+< 			response = client.execute(method);
+< 		} catch (IOException failed) {
+< 			return !listener.requestFailed(method, null, failed);
+< 		} catch (HttpException e) {
+<             IOException ioe = new IOException();
+<             ioe.initCause(e);
+<             return !listener.requestFailed(method, null, ioe);
+<         }
+< 		catch (IllegalStateException ise) {
+< 		    // bug in httpclient lib, LWC-1637, do not forward port
+< 		    IOException ioe = new IOException();
+<             ioe.initCause(ise);
+<             return !listener.requestFailed(method, null, ioe);
+< 		}
+< 
+---
+>                         response = client.execute(method);
+>                 } catch (IOException failed) {
+>                         return !listener.requestFailed(method, null, failed);
+>                 } catch (Throwable t) {
+>                     return !listener.requestFailed(method, null, new IOException(t.getMessage()));
+>                 }
+117a109
+> 
+Index: core/com/limegroup/gnutella/licenses/AbstractLicense.java
+===================================================================
+RCS file: /cvs/limewire/core/com/limegroup/gnutella/licenses/AbstractLicense.java,v
+retrieving revision 1.18
+diff -r1.18 AbstractLicense.java
+116,119d115
+<         } catch (HttpException e) {
+<             LOG.warn("Can't contact license server: " + url, e);
+<         } catch (URISyntaxException e) {
+<             LOG.warn("Can't contact license server: " + url, e);
+178c174
+< }
+\ No newline at end of file
+---
+> }
+Index: core/com/limegroup/gnutella/lws/server/LWSManagerImpl.java
+===================================================================
+RCS file: /cvs/limewire/core/com/limegroup/gnutella/lws/server/LWSManagerImpl.java,v
+retrieving revision 1.12.20.1
+diff -r1.12.20.1 LWSManagerImpl.java
+174,182c174
+<         final HttpGet get;
+<         try {
+<             get = new HttpGet(url);
+<         } catch (URISyntaxException e) {
+<             LOG.error("Making HTTP Get", e);
+<             IOException ioe = new IOException();
+<             ioe.initCause(e);
+<             throw ioe;
+<         }
+---
+>         final HttpGet get = new HttpGet(url);
+Index: core/com/limegroup/gnutella/util/LimeWireUtils.java
+===================================================================
+RCS file: /cvs/limewire/core/com/limegroup/gnutella/util/LimeWireUtils.java,v
+retrieving revision 1.23
+diff -r1.23 LimeWireUtils.java
+30c30
+< 	private static final String LIMEWIRE_VERSION = "@version@";
+---
+> 	private static final String LIMEWIRE_VERSION = "4.18.8";
+108c108
+<     private static boolean _isPro = false;
+---
+>     private static boolean _isPro = true;
+Index: gui/com/limegroup/bittorrent/gui/TorrentFileFetcher.java
+===================================================================
+RCS file: /cvs/limewire/gui/com/limegroup/bittorrent/gui/TorrentFileFetcher.java,v
+retrieving revision 1.34.8.1
+diff -r1.34.8.1 TorrentFileFetcher.java
+33a34
+> import com.limegroup.gnutella.downloader.DownloadListener;
+496a498,502
+>     public void addDownloadListener(DownloadListener dl) {
+>         // TODO Auto-generated method stub
+>         
+>     }
+> 
+Index: gui/com/limegroup/gnutella/bugs/ServletAccessor.java
+===================================================================
+RCS file: /cvs/limewire/gui/com/limegroup/gnutella/bugs/ServletAccessor.java,v
+retrieving revision 1.23
+diff -r1.23 ServletAccessor.java
+119,122d118
+<         } catch (HttpException e) {
+<             fail(remoteInfo, e);
+<         } catch (URISyntaxException e) {
+<             fail(remoteInfo, e);
+Index: tests/com/limegroup/gnutella/downloader/VerifyingFileTest.java
+===================================================================
+RCS file: /cvs/limewire/tests/com/limegroup/gnutella/downloader/VerifyingFileTest.java,v
+retrieving revision 1.26
+diff -r1.26 VerifyingFileTest.java
+18a19
+> import com.limegroup.gnutella.Downloader.DownloadStatus;
+80c81
+<             vf.close();
+---
+>             vf.close(DownloadStatus.COMPLETE);
+526c527
+<         vf.close();
+---
+>         vf.close(DownloadStatus.COMPLETE);
+590c591
+<         vf.close();
+---
+>         vf.close(DownloadStatus.COMPLETE);

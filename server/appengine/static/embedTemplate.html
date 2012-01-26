@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <script type="text/javascript">
+            littleShootConfig = {
+                littleShootPresent : function (apiVersion) {
+                    var url = "http://www.p2p2o.org/flowplayer/examples/sharks1.mov";
+                    var p2pUrl = LittleShoot.p2pUrl(url);
+
+                    // Change link in page to use p2p URL.
+                },
+                littleShootNotPresent : function () {
+                },
+            };
+        </script>
+        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.1.1/dojo/dojo.xd.js" djConfig="baseUrl: 'http://littleshootjs.appspot.com/', modulePaths: {'littleshoot': 'js/littleshoot'}"></script>
+        <script type="text/javascript" src="http://littleshootjs.appspot.com/js/littleshoot/littleshoot.xd.js"></script>
+    </body>
+</html>>

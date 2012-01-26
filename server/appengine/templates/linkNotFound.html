@@ -1,0 +1,47 @@
+{% extends "linkBase.html" %}
+
+{% block content %}
+<div id="main">
+    <center>
+        <div id="messagingDiv">
+            <div id="littleShootLogoDiv">
+                <img src="http://littleshootimages.appspot.com/images/logo_trans_big.gif" width="163" border="0" alt="LittleShoot P2P 2.0 File Sharing in the Browser"/>
+            </div>
+            <div id="downloadingContainerDiv">
+                <div id="downloadingDiv">
+                    
+                    <div id="downloadingTextDiv" class="downloadingText">
+                        We're sorry, but LittleShoot could not find a matching link for the file 
+                        '<strong>{{ title }}</strong>' sent to you from '<strong>{{ sender }}</strong>.'
+                        <br><br>
+                        Click <strong><span class="downloadLittleShoot">here</span></strong> to start installing LittleShoot.
+                    </div>
+                </div>
+            </div>
+         </div>
+    </center>
+</div>
+{% endblock content %}
+
+{% block bodyJavaScript %}
+
+{% endblock bodyJavaScript %}
+
+{% block javascript %}
+
+{% include "appDetectionBase.js" %}
+{% include "appDetectionFlash.js" %}
+
+var notFoundDownloadInstaller = function(evt)
+    {
+    evt.stopPropagation();
+    CommonUtils.downloadInstaller();
+    };
+    
+var loadNotFound = function()
+    {
+    dojo.connect(dojo.byId("downloadLink"), "onclick", notFoundDownloadInstaller);
+    }
+dojo.addOnLoad(loadNotFound);
+{% endblock javascript %}
+

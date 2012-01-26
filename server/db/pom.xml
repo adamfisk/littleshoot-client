@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.lastbamboo</groupId>
+    <artifactId>lastbamboo-server-db</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <name>Server Database</name>
+    <description>Last Bamboo Server File Database</description>
+
+    <parent>
+        <groupId>org.lastbamboo</groupId>
+        <artifactId>lastbamboo-server</artifactId>
+        <version>1.0</version>
+        </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            </dependency>
+        
+        <!--
+          This is only used for unit tests.
+        -->    
+        <dependency>
+            <groupId>hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <scope>test</scope>
+            </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-amazon-sdb</artifactId>
+            </dependency>
+            
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-util-common</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-jmx-client</artifactId>
+            </dependency>
+            
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-server-resource</artifactId>
+            </dependency>
+            
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-db-config</artifactId>
+            </dependency>
+
+        </dependencies>
+    </project>

@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns='http://www.w3.org/2005/Atom'
+         xmlns:openSearch='http://a9.com/-/spec/opensearchrss/1.0/'
+         xmlns:gml='http://www.opengis.net/gml'
+         xmlns:georss='http://www.georss.org/georss'
+         xmlns:media='http://search.yahoo.com/mrss/'
+         xmlns:yt='http://gdata.youtube.com/schemas/2007'
+         xmlns:gd='http://schemas.google.com/g/2005'>
+  <id>http://gdata.youtube.com/feeds/api/standardfeeds/top_rated</id>
+  <updated>2008-02-21T18:57:10.801Z</updated>
+  <category scheme='http://schemas.google.com/g/2005#kind'
+    term='http://gdata.youtube.com/schemas/2007#video'/>
+  <title type='text'>Top Rated</title>
+  <logo>http://www.youtube.com/img/pic_youtubelogo_123x63.gif</logo>
+  <link rel='alternate' type='text/html'
+    href='http://www.youtube.com/browser?s=tr'/>
+  <link rel='http://schemas.google.com/g/2005#feed' type='application/atom+xml'
+    href='http://gdata.youtube.com/feeds/api/standardfeeds/top_rated'/>
+  <link rel='self' type='application/atom+xml'
+    href='http://gdata.youtube.com/feeds/api/standardfeeds/top_rated?start_index=1&amp;max-results=25'/>
+  <link rel='self' type='application/atom+xml'
+    href='http://gdata.youtube.com/feeds/api/standardfeeds/top_rated?start_index=26&amp;max-results=25'/>
+  <author>
+    <name>YouTube</name>
+    <uri>http://www.youtube.com/</uri>
+  </author>
+  <generator version='beta'
+    uri='http://gdata.youtube.com/'>YouTube data API</generator>
+  <openSearch:totalResults>2</openSearch:totalResults>
+  <openSearch:startIndex>1</openSearch:startIndex>
+  <openSearch:itemsPerPage>25</openSearch:itemsPerPage>
+  <entry>
+    <id>http://gdata.youtube.com/feeds/api/videos/ZTUVgYoeN_b</id>
+    <published>2007-02-16T20:22:57.000Z</published>
+    <updated>2007-02-16T20:22:57.000Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind"
+      term="http://gdata.youtube.com/schemas/2007#video"/>
+    <category scheme="http://gdata.youtube.com/schemas/2007/keywords.cat"
+      term="Steventon"/>
+    <category scheme="http://gdata.youtube.com/schemas/2007/keywords.cat"
+      term="walk"/>
+    <category scheme="http://gdata.youtube.com/schemas/2007/keywords.cat"
+      term="Darcy"/>
+    <category scheme="http://gdata.youtube.com/schemas/2007/categories.cat"
+      term="Entertainment" label="Entertainment"/>
+    <title type="text">My walk with Mr. Darcy</title>
+    <content type="html"><div>html content trimmed</div></content>
+    <link rel="self" type="application/atom+xml"
+      href="http://gdata.youtube.com/feeds/api/videos/ZTUVgYoeN_b"/>
+    <link rel="alternate" type="text/html"
+      href="http://www.youtube.com/watch?v=ZTUVgYoeN_b"/>
+    <link rel="http://gdata.youtube.com/schemas/2007#video.responses"
+      type="application/atom+xml"
+      href="http://gdata.youtube.com/feeds/api/videos/ZTUVgYoeN_b/responses"/>
+    <link rel="http://gdata.youtube.com/schemas/2007#video.ratings"
+      type="application/atom+xml"
+      href="http://gdata.youtube.com/feeds/api/videos/ZTUVgYoeN_b/ratings"/>
+    <link rel="http://gdata.youtube.com/schemas/2007#video.complaints"
+      type="application/atom+xml"
+      href="http://gdata.youtube.com/feeds/api/videos/ZTUVgYoeN_b/complaints"/>
+    <link rel="http://gdata.youtube.com/schemas/2007#video.related"
+      type="application/atom+xml"
+      href="http://gdata.youtube.com/feeds/api/videos/ZTUVgYoeN_b/related"/>
+
+    <author>
+      <name>Andy Samplo</name>
+      <uri>http://gdata.youtube.com/feeds/api/users/andyland74</uri>
+    </author>
+
+  <media:group>
+
+    <media:title type="plain">Shopping for Coats</media:title>
+    <media:description type="plain">
+      What could make for more exciting video?
+    </media:description>
+    <media:keywords>Shopping, parkas</media:keywords>
+    <yt:duration seconds="79"/>
+    <media:category label="People"
+      scheme="http://gdata.youtube.com/schemas/2007/categories.cat">People
+    </media:category>
+    <media:content
+      url='http://www.youtube.com/v/ZTUVgYoeN_b'
+      type='application/x-shockwave-flash' medium='video' 
+      isDefault='true' expression="full" duration='215' yt:format="5"/>
+    <media:content
+      url='rtsp://rtsp2.youtube.com/ChoLENy73bIAEQ1k30OPEgGDA==/0/0/0/video.3gp'
+      type='video/3gpp' medium='video' 
+      expression="full" duration='215' yt:format="1"/>
+    <media:content
+      url='rtsp://rtsp2.youtube.com/ChoLENy73bIAEQ1k30OPEgGDA==/0/0/0/video.3gp'
+      type='video/3gpp' medium='video' 
+      expression="full" duration='215' yt:format="6"/>
+    <media:player url="http://www.youtube.com/watch?v=ZTUVgYoeN_b"/>
+    <media:thumbnail url="http://img.youtube.com/vi/ZTUVgYoeN_b/2.jpg"
+      height="97" width="130" time="00:00:03.500"/>
+    <media:thumbnail url="http://img.youtube.com/vi/ZTUVgYoeN_b/1.jpg"
+      height="97" width="130" time="00:00:01.750"/>
+    <media:thumbnail url="http://img.youtube.com/vi/ZTUVgYoeN_b/3.jpg"
+      height="97" width="130" time="00:00:05.250"/>
+    <media:thumbnail url="http://img.youtube.com/vi/ZTUVgYoeN_b/0.jpg"
+      height="240" width="320" time="00:00:03.500"/>
+  </media:group>
+
+  <yt:statistics viewCount="93"/>
+  <gd:rating min='1' max='5' numRaters='435' average='4.94'/>
+
+  <gd:comments>
+    <gd:feedLink
+      href="http://gdata.youtube.com/feeds/api/videos/ZTUVgYoeN_b/comments"
+      countHint='2197'/>
+  </gd:comments>
+
+</entry>
+  <entry>
+    <id>http://gdata.youtube.com/feeds/api/videos/ZTUVgYoeN_CCCCC</id>
+    <published>2007-02-16T20:22:57.000Z</published>
+    <updated>2007-02-16T20:22:57.000Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind"
+      term="http://gdata.youtube.com/schemas/2007#video"/>
+    <category scheme="http://gdata.youtube.com/schemas/2007/keywords.cat"
+      term="Steventon"/>
+    <category scheme="http://gdata.youtube.com/schemas/2007/keywords.cat"
+      term="walk"/>
+    <category scheme="http://gdata.youtube.com/schemas/2007/keywords.cat"
+      term="Darcy"/>
+    <category scheme="http://gdata.youtube.com/schemas/2007/categories.cat"
+      term="Entertainment" label="Entertainment"/>
+    <title type="text">Another walk with Mrs. Darcy</title>
+    <content type="html"><div>html content trimmed</div></content>
+    <link rel="self" type="application/atom+xml"
+      href="http://gdata.youtube.com/feeds/api/videos/ZTUVgYoeN_b"/>
+    <link rel="alternate" type="text/html"
+      href="http://www.youtube.com/watch?v=ZTUVgYoeN_b"/>
+    <link rel="http://gdata.youtube.com/schemas/2007#video.responses"
+      type="application/atom+xml"
+      href="http://gdata.youtube.com/feeds/api/videos/ZTUVgYoeN_b/responses"/>
+    <link rel="http://gdata.youtube.com/schemas/2007#video.ratings"
+      type="application/atom+xml"
+      href="http://gdata.youtube.com/feeds/api/videos/ZTUVgYoeN_b/ratings"/>
+    <link rel="http://gdata.youtube.com/schemas/2007#video.complaints"
+      type="application/atom+xml"
+      href="http://gdata.youtube.com/feeds/api/videos/ZTUVgYoeN_b/complaints"/>
+    <link rel="http://gdata.youtube.com/schemas/2007#video.related"
+      type="application/atom+xml"
+      href="http://gdata.youtube.com/feeds/api/videos/ZTUVgYoeN_b/related"/>
+
+    <author>
+      <name>Andy Samplo</name>
+      <uri>http://gdata.youtube.com/feeds/api/users/andyland74</uri>
+    </author>
+
+  <media:group>
+
+    <media:title type="plain">Shopping for Coats</media:title>
+    <media:description type="plain">
+      What could make for more exciting video?
+    </media:description>
+    <media:keywords>Shopping, parkas</media:keywords>
+    <yt:duration seconds="79"/>
+    <media:category label="People"
+      scheme="http://gdata.youtube.com/schemas/2007/categories.cat">People
+    </media:category>
+    <media:content
+      url='http://www.youtube.com/v/ZTUVgYoeN_b'
+      type='application/x-shockwave-flash' medium='video' 
+      isDefault='true' expression="full" duration='215' yt:format="5"/>
+    <media:content
+      url='rtsp://rtsp2.youtube.com/ChoLENy73bIAEQ1k30OPEgGDA==/0/0/0/video.3gp'
+      type='video/3gpp' medium='video' 
+      expression="full" duration='215' yt:format="1"/>
+    <media:content
+      url='rtsp://rtsp2.youtube.com/ChoLENy73bIAEQ1k30OPEgGDA==/0/0/0/video.3gp'
+      type='video/3gpp' medium='video' 
+      expression="full" duration='215' yt:format="6"/>
+    <media:player url="http://www.youtube.com/watch?v=ZTUVgYoeN_b"/>
+    <media:thumbnail url="http://img.youtube.com/vi/ZTUVgYoeN_b/2.jpg"
+      height="97" width="130" time="00:00:03.500"/>
+    <media:thumbnail url="http://img.youtube.com/vi/ZTUVgYoeN_b/1.jpg"
+      height="97" width="130" time="00:00:01.750"/>
+    <media:thumbnail url="http://img.youtube.com/vi/ZTUVgYoeN_b/3.jpg"
+      height="97" width="130" time="00:00:05.250"/>
+    <media:thumbnail url="http://img.youtube.com/vi/ZTUVgYoeN_b/0.jpg"
+      height="240" width="320" time="00:00:03.500"/>
+  </media:group>
+
+  <yt:statistics viewCount="93"/>
+  <gd:rating min='1' max='5' numRaters='435' average='4.94'/>
+
+  <gd:comments>
+    <gd:feedLink
+      href="http://gdata.youtube.com/feeds/api/videos/ZTUVgYoeN_b/comments"
+      countHint='2197'/>
+  </gd:comments>
+
+</entry>
+</feed>

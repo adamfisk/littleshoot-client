@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.lastbamboo.server.db">
+    <class name="MetaFileResourceImpl" table="meta_file_resources">
+        <cache usage="read-write" />
+        <id name="m_id" column="id" type="long" access="field">
+            <generator class="native"/>
+            </id>
+            
+        <set name="m_onlineInstances" table="file_online_instance" cascade="save-update" access="field">
+            <key column="id_file"/>
+            <many-to-many class="OnlineInstanceImpl" column="id_instance"/>
+            </set>
+            
+        <property name="m_title" column="title" access="field" type="string" not-null="true"/>
+        
+        <!-- 
+            The length properties below are based on Hibernates translation to 
+            MySQL types, as specified in "Java Persistence with Hibernate" page 215.
+            The tags length translates to "medium text".
+        -->
+        <property name="m_titles" column="titles" access="field" type="string" not-null="true" length="65534"/>
+        <property name="m_tags" column="tags" access="field" type="string" not-null="true" length="16777214"/>
+        <property name="m_uri" column="uri" access="field" type="string" unique="true"/>
+        <property name="m_sha1" column="sha1" access="field" type="string" unique="true"/>
+        <property name="m_size" column="size" access="field" type="long" not-null="true"/>
+        <property name="m_numOnlineInstances" column="num_online_instances" access="field" type="int" not-null="true"/>
+        <property name="m_numDownloads" column="num_downloads" access="field" type="int" not-null="true"/>
+        <property name="m_mimeType" column="mime" access="field" type="string" not-null="true"/>
+        <property name="m_mediaType" column="media" access="field" type="string" not-null="true"/>
+        <property name="m_takenDown" column="taken_down" access="field" type="boolean" not-null="true"/> 
+        <property name="m_publishTime" column="publish_time" access="field" type="timestamp" not-null="true"/>
+        <property name="m_permission" column="permission" access="field" type="int" not-null="true"/>
+        <property name="m_groupName" column="group_name" access="field" type="string" not-null="true"/>
+        
+        <property name="m_numRatings" column="numRatings" access="field" type="int" not-null="true"/>
+        <property name="m_averageRating" column="averageRating" access="field" type="double" not-null="true"/>
+        </class>
+    </hibernate-mapping>
+

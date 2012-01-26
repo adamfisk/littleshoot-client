@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+    <style type="text/css">
+        #links {
+           position: absolute;
+           top: 200px;
+           left: 200px;
+        }
+        #links a {
+            display: block;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+    </style>
+{% endblock head%}
+
+{% block content %}
+
+<div id="links">
+<a href="bugs">See All Bugs for the LittleShoot Client</a>
+<a href="sipTurnBugs">See All Bugs for the LittleShoot SIP and TURN Servers</a>
+<a href="macInstallerBugs">See All Bugs for LittleShoot Mac Installers</a>
+<a href="winInstallerBugs">See All Bugs for LittleShoot Windows Installers</a>
+</div>
+
+{% endblock content %}
+

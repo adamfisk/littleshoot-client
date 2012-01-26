@@ -1,0 +1,34 @@
+
+<html>
+    <head>
+        <title>Progress Bar Test</title>
+        <link rel="stylesheet" href="http://ui.jquery.com/applications/themes/base/ui.all.css" type="text/css" media="screen" title="Flora (Default)">
+    </head>
+    <body>
+        <div id="progressBar"></div>
+        <div class="progressBar"></div>
+        <div class="progressBar"></div>
+        <div class="progressBar"></div>
+        <div class="progressBar"></div>
+    
+        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+        
+        <!--
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.3rc2.js"></script>
+        -->
+        
+        <script type="text/javascript" src="js/jquery-ui-personalized-1.6rc4.packed.js"></script>
+        
+        <script type="text/javascript">
+            $(document).ready(function() {
+               $("#progressBar").progressbar({value: 90.0});
+               $(".progressBar").progressbar({value: 60.0});
+               //alert(numBars);
+               //$(".").each(function(index, domElement) {
+               //    console.info("index/domElement: "+index+"/"+domElement);
+               //});
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,148 @@
+{% extends "iFrameBase.html" %}
+{% block iFrameContent %}
+{% if user.is_authenticated %}
+    <div class="loggedIn">Logged in as: {{ user.username }}.  <a href="#" rel="{% url django.contrib.auth.views.logout %}" id="logoutLink">Logout</a></div>
+    <!-- 
+    <div class="loggedOut" style="visibility:none;"><a href="#" rel="{% url django.contrib.auth.views.login %}" id="loginLink">Login</a></div>
+     -->
+{% else %}
+    <div class="loggedIn" style="visibility:none;"></div>
+    <div class="loggedOut"><a href="#" rel="{% url django.contrib.auth.views.login %}" id="loginLink">Login</a></div>
+{% endif %}
+{% endblock iFrameContent %}
+
+{% block iFrameJavaScript %}
+function handleLogins() {
+    $("#logoutLink").click(function (evt) {
+        evt.stopPropagation();
+        evt.preventDefault();
+        
+        var logoutUrl = $(this).attr("rel");
+        
+        var logoutCallback = function() {
+            $.get(logoutUrl, function(data){
+                //CommonUtils.showMessage("Logout Status", data);
+                $(".loggedIn").hide("slow");
+                //$(".loggedOut").show();
+            });
+        };
+        
+        var agree=confirm("Are you sure you wish to log out of LittleShoot?");
+        if (agree)
+            logoutCallback();
+    
+        //CommonUtils.showConfirmDialog("Confirm Logout", "Are you sure you want to logout?", logoutCallback);
+    });
+    /*
+    $("#loginLink").click(function (evt) {
+        CommonUtils.showSpinner();
+        evt.stopPropagation();
+        evt.preventDefault();
+        
+        var loginUrl = $(this).attr("rel");
+        
+        var loginCallback = function() {
+            $.get(loginUrl, function(data){
+                CommonUtils.showMessage("Login Status", data);
+                $(".loggedOut").hide();
+                $(".loggedIn").show();
+            });
+        };
+            
+        var loginDiv = document.createElement("div");
+        loginDiv.className = "normal";
+        
+        var form = document.createElement("form");
+        form.id = "loginForm";
+        form.className = "loginForm";
+        
+        var centered = document.createElement("center");
+        centered.appendChild(loginDiv);
+        
+        var msg = CommonUtils.createRawMessage("Login", centered);
+        
+        $.ajax({
+            type: "GET",
+            url: "/accounts/login/", 
+            dataType: "jsonp",
+            data: {noCache: (new Date()).getTime()}, 
+            success: function(data){
+                var tableDiv = document.createElement("div");
+                tableDiv.id = "loginFormTableDiv";
+                $(tableDiv).html(data.message);
+                form.appendChild(tableDiv);
+                
+                var messageButtonDiv = document.createElement("div");
+                form.appendChild(messageButtonDiv);
+                
+                // The containing element of dijit elements using this format must 
+                // already have a parent the dijit wiring code can access, as it actually
+                // replaces the element instead of adding to it.
+                var loginButtonDiv = document.createElement("div");
+                var cancelButtonDiv = document.createElement("div");
+                messageButtonDiv.appendChild(loginButtonDiv);
+                messageButtonDiv.appendChild(cancelButtonDiv);
+                
+                var loginButton = new dijit.form.Button({ 
+                    type : "submit", label : "Login"
+                }, loginButtonDiv);
+                
+                var cancelButton = new dijit.form.Button({
+                    label : "Cancel",
+                    onClick: function (evt) {msg.hide();}
+                }, cancelButtonDiv);
+                
+                loginDiv.appendChild(form);
+                CommonUtils.hideSpinner();
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                console.error("Error: "+textStatus+" Thrown: "+errorThrown);
+                console.dir(XMLHttpRequest);
+            }
+        });
+        
+        msg.show();
+        
+        $(form).submit(function() {
+            CommonUtils.showSpinner();
+            var args = dojo.formToObject($(this).get(0));
+            console.info("Posting form data...");
+            
+            var postSuccess = function(data) {
+                console.info("Got form submit via GET response");
+                CommonUtils.hideSpinner();
+                if (data.success) {
+                    msg.hide();
+                    CommonUtils.showMessage("Login Succeeded", data.message);
+                } else {
+                    $("#loginFormTableDiv").hide("fast", function() {
+                        $(this).html(data.message).show("fast");
+                    });
+                }
+            };
+            console.info("Logging in...");
+            var appspotUrl = "http://littleshootapi.appspot.com";
+            $.ajax({
+                type: "GET",
+                url: appspotUrl + "/accounts/loginSubmit/", 
+                dataType: "jsonp",
+                data: args, 
+                success: postSuccess,
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.error("Error: "+textStatus+" Thrown: "+errorThrown);
+                    console.dir(XMLHttpRequest);
+                }
+            });
+            
+            return false;
+        });
+    });
+    */
+}
+
+jQuery().ready(function() {
+    dojo.addOnLoad(function() {
+        handleLogins();
+    });
+});
+{% endblock iFrameJavaScript %}

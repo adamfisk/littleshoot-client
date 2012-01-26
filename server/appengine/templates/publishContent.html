@@ -1,0 +1,114 @@
+{% extends "contentBox.html" %}
+
+{% block grayNavControlDiv %}
+    <div id="grayNavControlDivPublish">
+        <div id="publishButtonDiv">
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div id="contentDataDivPublish" class="publishToggle">
+    <div class="contentDataDivHeading">
+        <!-- 
+        <span class="normalBoldBlack">My Publications</span>
+         -->
+    </div>
+    <div id="publishResultsDataDiv">
+        <span id="publishResultsDataSpan"> </span>    
+    </div>
+    <div id="resultPageDivPublishTop" class="resultPageDivTopPublish" style="display:none;">
+        <span id="resultPageSpan">Pages:</span>
+        <div id="previousLinkDiv" class="previousLinkDiv">
+            <a class="previousLink">Previous</a>
+        </div>
+        <div id="pageLinksDiv" class="pageLinksDiv"></div>
+        <div id="nextLinkDiv" class="nextLinkDiv">
+            <a class="nextLink">Next</a>
+        </div>
+    </div>
+    <div class="contentColumnsDiv normalBoldBig">
+        We're sorry, but this feature is currently disabled as we revamp our publishing 
+        architecture. We're working on some really neat changes in this area now, so thanks for 
+        your patience, and watch this space!
+    </div>
+
+    <!-- 
+    <div class="contentColumnsDiv normalBoldBig">
+        <div id="publishLoginDiv" style="width: 100%; height: 850px;">
+            <div id="fbLogoutDiv" style="display:none;">
+                <a href="#" onclick='FB.Connect.logout()'>Logout</a>
+            </div>
+            
+            -->
+            <!-- 
+              See: http://wiki.developers.facebook.com/index.php/Fb:comments_(XFBML)
+            
+            <fb:comments xid="littleshoot-comment-test"></fb:comments>
+            -->
+            
+            <!-- 
+            <div id="uploadFormDiv"></div>
+            
+            <div id="fbLoginDiv">
+                <fb:login-button autologoutlink='true'></fb:login-button>
+            </div>
+            
+            <div id="fbDiv">
+                <div id="profileDiv"></div>
+                <div id="friendsDiv"></div>
+                <div id="filesDiv"></div>
+            </div>
+             -->
+            
+            <!-- 
+            <iframe id="loginIframe" src ="https://36.latest.littleshootapi.appspot.com/devPayUploadForm" width="100%" height="100%" frameborder="0">
+                <p>Your browser does not support iframes.</p>
+            </iframe>
+            
+            -->
+            
+            <!--
+                TODO: Make this not an iframe.  
+            
+            <iframe id="loginIframe" src ="http://www.littleshoot.org/devPayUploadForm" width="100%" height="100%" frameborder="0">
+                <p>Your browser does not support iframes.</p>
+            </iframe>
+            -->
+<!-- 
+        </div>
+        
+    </div>
+ -->
+ 
+    <!-- 
+    <div class="contentColumnsDiv">
+        <div id="pendingFilesContainerDiv" style="display:none;"></div>
+        <div id="contentColumnDiv1Publish" class="contentColumnDiv1">
+            <div id="filesColumn1" class="filesToggle"></div>
+            <div id="foldersColumn1" style="display:none;" class="foldersToggle"></div>
+        </div>
+        <div id="contentColumnDiv2Publish" class="contentColumnDiv2">
+            <div id="filesColumn2" class="filesToggle"></div>
+            <div id="foldersColumn2" style="display:none;" class="foldersToggle"></div>
+        </div>
+        <div class="clearBoth"></div>
+    </div>
+     -->
+</div>
+{% endblock content %}
+{% block contentBottom %}
+<div id="contentDataDivBottomPublish">
+    <div id="resultPageDivPublishBottom" class="resultPageDivBottom" style="display:none;">
+        <span id="resultPageSpan">Pages:</span>
+        <div id="previousLinkDiv" class="previousLinkDiv">
+            <a class="previousLink">Previous</a>
+        </div>
+        <div id="pageLinksDiv" class="pageLinksDiv"></div>
+        <div id="nextLinkDiv" class="nextLinkDiv">
+            <a class="nextLink">Next</a>
+        </div>
+    </div>
+</div>
+{% endblock contentBottom %}
+

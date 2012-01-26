@@ -1,0 +1,314 @@
+// !$*UTF8*$!
+{
+	00E6828EFEC88D1A11DB9C8B /* Project object */ = {
+		activeBuildConfigurationName = Release;
+		activeExecutable = 6A9FA6570246BA6C0CC91562 /* jnltorrent */;
+		activeTarget = EB9FD8610AEECCF5008E157E /* jlibtorrent */;
+		addToTargets = (
+			4CEBA78E08679EF10015D03E /* JNILib */,
+		);
+		codeSenseManager = 0AB364DB0B2F66FD00788B6C /* Code sense */;
+		executables = (
+			6A9FA6570246BA6C0CC91562 /* jnltorrent */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					131,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					993,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					953,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 250823489;
+			PBXWorkspaceStateSaveDate = 250823489;
+		};
+		perUserProjectItems = {
+			B9AB90E50EEBC3B400923FA9 /* PBXTextBookmark */ = B9AB90E50EEBC3B400923FA9 /* PBXTextBookmark */;
+			B9AB90E60EEBC3B400923FA9 /* PBXTextBookmark */ = B9AB90E60EEBC3B400923FA9 /* PBXTextBookmark */;
+			B9E524BB0EEBCF4C00203BAF /* PBXTextBookmark */ = B9E524BB0EEBCF4C00203BAF /* PBXTextBookmark */;
+			B9E524CC0EEBD08600203BAF /* PBXTextBookmark */ = B9E524CC0EEBD08600203BAF /* PBXTextBookmark */;
+			B9E524CF0EEBD08600203BAF /* PBXTextBookmark */ = B9E524CF0EEBD08600203BAF /* PBXTextBookmark */;
+			B9E525300EEBD67200203BAF /* PBXTextBookmark */ = B9E525300EEBD67200203BAF /* PBXTextBookmark */;
+			B9E5277F0EEBDA2A00203BAF /* PBXTextBookmark */ = B9E5277F0EEBDA2A00203BAF /* PBXTextBookmark */;
+			B9E527810EEBDA2A00203BAF /* PBXTextBookmark */ = B9E527810EEBDA2A00203BAF /* PBXTextBookmark */;
+			B9E527830EEBDA2A00203BAF /* PBXTextBookmark */ = B9E527830EEBDA2A00203BAF /* PBXTextBookmark */;
+			B9E527850EEBDA2A00203BAF /* PBXTextBookmark */ = B9E527850EEBDA2A00203BAF /* PBXTextBookmark */;
+			B9E527900EEBDB9700203BAF /* PBXTextBookmark */ = B9E527900EEBDB9700203BAF /* PBXTextBookmark */;
+			B9E527910EEBDB9700203BAF /* PBXTextBookmark */ = B9E527910EEBDB9700203BAF /* PBXTextBookmark */;
+			B9E527920EEBDB9700203BAF /* PBXTextBookmark */ = B9E527920EEBDB9700203BAF /* PBXTextBookmark */;
+		};
+		sourceControlManager = 0AB364DA0B2F66FD00788B6C /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	0A3CC35E0B94BB8800F6BA26 /* java */ = {
+		isa = PBXFileReference;
+		explicitFileType = "compiled.mach-o.executable";
+		name = java;
+		path = /usr/bin/java;
+		sourceTree = "<absolute>";
+	};
+	0AB364DA0B2F66FD00788B6C /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+		scmType = "";
+	};
+	0AB364DB0B2F66FD00788B6C /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	4CEBA78E08679EF10015D03E /* JNILib */ = {
+		activeExec = 0;
+	};
+	6A9FA6570246BA6C0CC91562 /* jnltorrent */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+			YES,
+		);
+		argumentStrings = (
+			"-cp jnltorrent.jar jnltorrent",
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+			"PBXLSLaunchAction-0" = {
+				PBXLSLaunchAction = 0;
+				PBXLSLaunchStartAction = 1;
+				PBXLSLaunchStdioStyle = 2;
+				PBXLSLaunchStyle = 0;
+				class = PBXLSRunLaunchConfig;
+				displayName = "Executable Runner";
+				identifier = com.apple.Xcode.launch.runConfig;
+				remoteHostInfo = "";
+				startActionInfo = "";
+			};
+			"PBXLSLaunchAction-1" = {
+				PBXLSLaunchAction = 1;
+				PBXLSLaunchStartAction = 1;
+				PBXLSLaunchStdioStyle = 2;
+				PBXLSLaunchStyle = 0;
+				class = PBXJavaDebuggingNativeLaunchConfig;
+				displayName = "Java Debugger";
+				identifier = com.apple.Xcode.launch.JavaDebugNativeConfig;
+				remoteHostInfo = "";
+				startActionInfo = "";
+			};
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		launchableReference = 0A3CC35E0B94BB8800F6BA26 /* java */;
+		libgmallocEnabled = 0;
+		name = jnltorrent;
+		sourceDirectories = (
+		);
+		startupPath = dist;
+	};
+	B9AB90E50EEBC3B400923FA9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		name = "jnltorrentjnilib.cpp: 19";
+		rLen = 0;
+		rLoc = 3416;
+		rType = 0;
+		vrLen = 661;
+		vrLoc = 0;
+	};
+	B9AB90E60EEBC3B400923FA9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B9AB90E70EEBC3B400923FA9 /* jnltorrent.java */;
+		name = "jnltorrent.java: 22";
+		rLen = 0;
+		rLoc = 542;
+		rType = 0;
+		vrLen = 858;
+		vrLoc = 0;
+	};
+	B9AB90E70EEBC3B400923FA9 /* jnltorrent.java */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.java;
+		name = jnltorrent.java;
+		path = /Users/julian/Documents/libtorrent/mac/jnltorrent/src/jnltorrent.java;
+		sourceTree = "<absolute>";
+	};
+	B9AB91060EEBC3B400923FA9 /* jnltorrent.java */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.java;
+		name = jnltorrent.java;
+		path = /Users/julian/Documents/libtorrent/mac/jnltorrent/src/jnltorrent.java;
+		sourceTree = "<absolute>";
+	};
+	B9E524BB0EEBCF4C00203BAF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		name = "jnltorrentjnilib.cpp: 11";
+		rLen = 0;
+		rLoc = 206;
+		rType = 0;
+		vrLen = 532;
+		vrLoc = 41;
+	};
+	B9E524CC0EEBD08600203BAF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EB9FD8720AEECD83008E157E /* build.xml */;
+		name = "build.xml: 60";
+		rLen = 0;
+		rLoc = 2501;
+		rType = 0;
+		vrLen = 1317;
+		vrLoc = 2394;
+	};
+	B9E524CF0EEBD08600203BAF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EB9FD8720AEECD83008E157E /* build.xml */;
+		name = "build.xml: 60";
+		rLen = 0;
+		rLoc = 2501;
+		rType = 0;
+		vrLen = 1317;
+		vrLoc = 2394;
+	};
+	B9E525300EEBD67200203BAF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		name = "jnltorrentjnilib.cpp: 96";
+		rLen = 0;
+		rLoc = 2660;
+		rType = 0;
+		vrLen = 630;
+		vrLoc = 2201;
+	};
+	B9E5277F0EEBDA2A00203BAF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		name = "jnltorrentjnilib.cpp: 78";
+		rLen = 0;
+		rLoc = 2279;
+		rType = 0;
+		vrLen = 1041;
+		vrLoc = 1372;
+	};
+	B9E527810EEBDA2A00203BAF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		name = "jnltorrentjnilib.cpp: 63";
+		rLen = 0;
+		rLoc = 1814;
+		rType = 0;
+		vrLen = 1041;
+		vrLoc = 1372;
+	};
+	B9E527830EEBDA2A00203BAF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		name = "jnltorrentjnilib.cpp: 63";
+		rLen = 0;
+		rLoc = 1814;
+		rType = 0;
+		vrLen = 1041;
+		vrLoc = 1372;
+	};
+	B9E527850EEBDA2A00203BAF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		name = "jnltorrentjnilib.cpp: 126";
+		rLen = 0;
+		rLoc = 3088;
+		rType = 0;
+		vrLen = 665;
+		vrLoc = 2651;
+	};
+	B9E527900EEBDB9700203BAF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B9AB91060EEBC3B400923FA9 /* jnltorrent.java */;
+		name = "jnltorrent.java: 50";
+		rLen = 0;
+		rLoc = 959;
+		rType = 0;
+		vrLen = 795;
+		vrLoc = 245;
+	};
+	B9E527910EEBDB9700203BAF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		name = "jnltorrentjnilib.cpp: 129";
+		rLen = 0;
+		rLoc = 3127;
+		rType = 0;
+		vrLen = 705;
+		vrLoc = 2570;
+	};
+	B9E527920EEBDB9700203BAF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		name = "jnltorrentjnilib.cpp: 129";
+		rLen = 0;
+		rLoc = 3127;
+		rType = 0;
+		vrLen = 755;
+		vrLoc = 2520;
+	};
+	EB9FD8610AEECCF5008E157E /* jlibtorrent */ = {
+		activeExec = 0;
+	};
+	EB9FD8720AEECD83008E157E /* build.xml */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 1302}}";
+			sepNavSelRange = "{2501, 0}";
+			sepNavVisRange = "{2394, 1317}";
+			sepNavVisRect = "{{0, 8}, {847, 783}}";
+			sepNavWindowFrame = "{{752, 55}, {886, 823}}";
+		};
+	};
+}

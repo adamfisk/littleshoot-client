@@ -1,0 +1,50 @@
+{% extends "iFrameBase.html" %}
+{% block iFrameContent %}
+    <div style="float: left; width:280px;margin-left:10px;">Register
+        <div style="padding:10px;border:solid rgb(200,200,200) 1px;">
+            <form action="/accounts/loginOrRegisterRegister/" method="post">
+                <div style="float:left; width: 100%;">
+                    <div style="float:right">
+                        <table>{{ registrationForm }}</table>
+                    </div>
+                    <button type="submit" style="float:right;clear:right" dojoType="dijit.form.Button">Register</button>
+                </div>
+                <div style="clear:both;"></div>
+            </form>
+        </div>
+    </div>
+    
+    <div style="float: left; margin-left: 10px; margin-top: 40px;">
+        - OR -
+    </div>
+    
+    <div style="float:left; width:280px; margin-left: 10px;">Login
+        <div style="padding:10px;border:solid rgb(200,200,200) 1px;">
+        {% if loginForm.errors %}<p class="error">Apologies, but your user name or password is incorrect.</p>{% endif %}
+        
+            <form id="login_form" method="post" action="/accounts/loginOrRegisterLogin/">
+                <div style="float:left; width: 100%;">
+                    <div style="float:right">
+                        <!-- 
+                        <div name="login_id" style="margin-bottom:3px" dojoType="dijit.form.TextBox"></div>
+                        <div name="login_password" type="password" dojoType="dijit.form.TextBox"></div>
+                         -->
+                        <table style="text-align: left">
+                            <tr>
+                                <td>Username: </td>
+                                <td>{{ loginForm.username }}</td>
+                            </tr>
+                            <tr>
+                                <td>Password: </td>
+                                <td>{{ loginForm.password }}</td>
+                            </tr>
+                        </table>
+                    </div>
+            
+                    <button type="submit" style="float:right;clear:right" dojoType="dijit.form.Button">Login</button>
+                </div>
+                <div style="clear:both;"></div>
+            </form>
+        </div>
+    </div>
+{% endblock iFrameContent %}

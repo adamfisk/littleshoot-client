@@ -1,0 +1,15 @@
+{% extends "downloadBase.html" %}
+
+{% block downloadSelected %}color:black{% endblock %}
+{% block content %}
+<div id="download">
+    <span class="contentTitle normalBoldBig">
+        Installing the LittleShoot Plugin is Easy
+    </span>
+    <div class="datum sprite-datumBackground"></div>
+
+    <div id="downloadContentBody" class="contentBody">
+    {% include "downloadWindowsContentBody.html" %}
+    </div>
+</div>
+{% endblock %}

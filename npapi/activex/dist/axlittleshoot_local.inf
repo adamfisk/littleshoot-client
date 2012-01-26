@@ -1,0 +1,44 @@
+; INF file for axlittleshoot.dll
+[version] 
+; version signature (same for both NT and Win95) do not remove
+signature="$CHICAGO$"
+AdvancedINF=2.5  
+
+[Add.Code]
+axlittleshoot.dll=axlittleshoot.dll
+axlittleshoot_local.inf=axlittleshoot_local.inf
+lsloader.exe=lsloader.exe
+
+[lsloader.exe]
+file-win32-x86=thiscab
+DestDir=11
+
+[Setup Hooks]
+preInstall=preInstall
+
+[preInstall]
+; run=%EXTRACT_DIR%\lsloader.exe
+; run="%EXTRACT_DIR%\lsloader.exe" c:/windows
+; Security fix for Vista and Windows 7
+; http://social.msdn.microsoft.com/Forums/en-US/windowsgeneraldevelopmentissues/thread/149ea69c-3a28-4ff9-a5d4-e7b6f4e89058/
+; run="""%EXTRACT_DIR%\lsloader.exe""" %OBJECT_DIR%
+run="""%EXTRACT_DIR%\lsloader.exe""" %EXTRACT_DIR%
+
+[axlittleshoot.dll]
+file-win32-x86=thiscab
+clsid={0CC00AEB-7E95-4a80-8C29-ED90939FC99F} 
+FileVersion=0,8,9,3
+DestDir=11
+RegisterServer=yes
+
+[axlittleshoot_local.inf]
+DestDir=11
+file-win32-x86=thiscab
+file=thiscab
+
+
+
+
+
+
+; end of INF file

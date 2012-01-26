@@ -1,0 +1,708 @@
+package org.lastbamboo.integration.tests;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.URI;
+import java.net.UnknownHostException;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.util.Arrays;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+import org.apache.commons.httpclient.ConnectTimeoutException;
+import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
+import org.apache.commons.httpclient.Header;
+import org.apache.commons.httpclient.HttpMethod;
+import org.apache.commons.httpclient.HttpMethodRetryHandler;
+import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
+import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.methods.HeadMethod;
+import org.apache.commons.httpclient.params.HttpConnectionManagerParams;
+import org.apache.commons.httpclient.params.HttpConnectionParams;
+import org.apache.commons.httpclient.params.HttpMethodParams;
+import org.apache.commons.httpclient.protocol.Protocol;
+import org.apache.commons.httpclient.protocol.ProtocolSocketFactory;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.output.NullOutputStream;
+import org.apache.commons.lang.StringUtils;
+import org.littleshoot.mina.common.ConnectFuture;
+import org.littleshoot.mina.common.ExecutorThreadModel;
+import org.littleshoot.mina.common.IoConnector;
+import org.littleshoot.mina.common.IoConnectorConfig;
+import org.littleshoot.mina.common.IoHandler;
+import org.littleshoot.mina.common.IoSession;
+import org.littleshoot.mina.common.ThreadModel;
+import org.littleshoot.mina.common.support.ByteBufferHexDumper;
+import org.littleshoot.mina.filter.codec.ProtocolCodecFactory;
+import org.littleshoot.mina.filter.codec.ProtocolCodecFilter;
+import org.littleshoot.mina.filter.codec.ProtocolDecoder;
+import org.littleshoot.mina.filter.codec.ProtocolEncoder;
+import org.littleshoot.mina.transport.socket.nio.DatagramConnector;
+import org.littleshoot.mina.transport.socket.nio.DatagramConnectorConfig;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.lastbamboo.client.http.server.HttpServerImpl;
+import org.lastbamboo.common.http.client.CommonsHttpClient;
+import org.lastbamboo.common.http.client.CommonsHttpClientImpl;
+import org.lastbamboo.common.rudp.RudpClientIoHandler;
+import org.lastbamboo.common.rudp.RudpConnectionId;
+import org.lastbamboo.common.rudp.RudpListener;
+import org.lastbamboo.common.rudp.RudpListeningConnectionId;
+import org.lastbamboo.common.rudp.RudpService;
+import org.lastbamboo.common.rudp.RudpServiceImpl;
+import org.lastbamboo.common.rudp.RudpSocket;
+import org.lastbamboo.common.rudp.segment.RudpDecoder;
+import org.lastbamboo.common.rudp.segment.RudpEncoder;
+import org.lastbamboo.common.util.Future;
+import org.lastbamboo.common.util.IoUtils;
+import org.lastbamboo.common.util.NetworkUtils;
+import org.lastbamboo.common.util.RelayingSocketHandler;
+import org.lastbamboo.common.util.RuntimeIoException;
+import org.lastbamboo.common.util.Sha1Hasher;
+import org.lastbamboo.common.util.ShootConstants;
+import org.lastbamboo.common.util.SocketListener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Test for the integration of RUDP sockets, HTTP client, and Jetty. 
+ */
+public class RudpHttpClientJettyTest
+    {
+
+    private static final int RUDP_PORT = 9853;
+    private static final int RUDP_HTTP_PORT = 3695;
+    private final static Logger LOG = 
+        LoggerFactory.getLogger(RudpHttpClientJettyTest.class);
+    private final static AtomicBoolean s_rudpServerStarted = 
+        new AtomicBoolean(false);
+    private static HttpServerImpl s_httpServer;
+    private static File s_testFile;
+    private static CommonsHttpClient s_httpClient;
+    
+    private static int s_newSocketCalls = 0;
+    private static Protocol s_baseHttpProtocol;
+    
+    @Before public void reset() throws Exception
+        {
+        s_newSocketCalls = 0;
+        }
+    
+    @BeforeClass public static void establishTest() throws Exception
+        {
+        LOG.debug("Starting test...");
+        s_baseHttpProtocol = Protocol.getProtocol("http");
+        
+        assertTrue("No base protocol!!", s_baseHttpProtocol != null);
+        
+        s_testFile = newTestFile();
+        
+        final String resourceBase = 
+            s_testFile.getParentFile().getCanonicalPath();
+        
+        startJetty(resourceBase);
+        // We don't use the following for now, but it's very useful for 
+        // debugging if things go wrong -- this allows us to bypass Jetty
+        // but to do the same thing Jetty essentially does.
+        // To use this, swap the handler sent to "startProxy" below.
+        /*
+        final SocketHandler socketHandler = new SocketHandler()
+            {
+            public void handleSocket(final Socket socket) throws IOException
+                {
+                LOG.debug("Got socket...");
+                final InputStream is = socket.getInputStream();
+                final BufferedReader reader = 
+                    new BufferedReader(new InputStreamReader(is, "US-ASCII"));
+                
+                final String firstLine = reader.readLine();
+                LOG.debug("READ LINE: "+firstLine);
+                }
+            public void handleSocket() throws IOException
+                {
+                }
+            };
+            */
+        startProxy();
+        //startProxy(socketHandler);
+        synchronized (s_rudpServerStarted)
+            {
+            if (!s_rudpServerStarted.get())
+                {
+                s_rudpServerStarted.wait(4000);
+                }
+            }
+    
+        assertTrue("Did not successfully start RUDP server", s_rudpServerStarted.get());
+        
+        
+        s_httpClient = newHttpClient();
+        }
+    
+    @AfterClass public static void closeAll()
+        {
+        if (s_httpServer != null)
+            {
+            s_httpServer.stopServer();
+            }
+        if (s_testFile != null)
+            {
+            s_testFile.delete();
+            }
+        
+        // We can't keep our custom protocol registered -- reset it.
+        Protocol.registerProtocol("http", s_baseHttpProtocol);
+        LOG.debug("Test complete!!");
+        }
+    
+    /**
+     * Run the test without going through Jetty -- using our own HTTP server
+     * to test flushing, closing, etc.
+     * 
+     * @throws Exception If any unexpected error occurs.
+     */
+    @Test public void testOurHttpServer() throws Exception
+        {
+        startOurHttpInstance();
+        Thread.sleep(1000);
+        final String host = NetworkUtils.getLocalHost().getHostAddress();
+        final String url = 
+            "http://"+host+":"+RUDP_HTTP_PORT+"/"+s_testFile.getName();
+        final GetMethod method1 = new GetMethod(url);
+        method1.getParams().setBooleanParameter(
+            HttpMethodParams.WARN_EXTRA_INPUT, true);
+        final int responseCode1 = s_httpClient.executeMethod(method1);
+        assertEquals(200, responseCode1);
+        long contentLength = getContentLength(method1);
+        assertEquals(s_testFile.length(), contentLength);
+        final InputStream is1 = method1.getResponseBodyAsStream();
+        IoUtils.copy(is1, new NullOutputStream(), contentLength);
+        assertEquals(0, is1.available());
+        method1.releaseConnection();
+        
+        LOG.debug("Sending second HTTP request...");
+        final GetMethod method2 = new GetMethod(url);
+        method2.getParams().setBooleanParameter(
+            HttpMethodParams.WARN_EXTRA_INPUT, true);
+        //method2.addRequestHeader("Range", "bytes=0-99998");
+        final int responseCode2 = s_httpClient.executeMethod(method2);
+        assertEquals(200, responseCode2);
+        contentLength = getContentLength(method2);
+        assertEquals(s_testFile.length(), contentLength);
+        final InputStream is2 = method2.getResponseBodyAsStream();
+        IoUtils.copy(is2, new NullOutputStream(), contentLength);
+        assertEquals(0, is2.available());
+        method2.releaseConnection();
+        
+        final GetMethod method3 = new GetMethod(url);
+        method3.getParams().setBooleanParameter(
+            HttpMethodParams.WARN_EXTRA_INPUT, true);
+        final int responseCode3 = s_httpClient.executeMethod(method3);
+        assertEquals(200, responseCode3);
+        final InputStream is3 = method3.getResponseBodyAsStream();
+        IoUtils.copy(is3, new NullOutputStream(), getContentLength(method3));
+        assertEquals(0, is3.available());
+        method3.releaseConnection();
+        }
+
+    @Test public void testReuseConnections() throws Exception
+        {   
+        final String host = NetworkUtils.getLocalHost().getHostAddress();
+        final String url = 
+            "http://"+host+":"+RUDP_PORT+"/"+s_testFile.getName();
+        final HeadMethod head = new HeadMethod(url);
+        head.getParams().setBooleanParameter(
+            HttpMethodParams.WARN_EXTRA_INPUT, true);
+        LOG.debug("Executing HEAD method....");
+        final int headCode = s_httpClient.executeMethod(head);
+        LOG.debug("Finished executing HEAD method...");
+        assertEquals(200, headCode);
+        long contentLength = getContentLength(head);
+        assertEquals(s_testFile.length(), contentLength);
+        head.releaseConnection();
+        LOG.debug("Finished reading HEAD response...");
+
+        final GetMethod method1 = new GetMethod(url);
+        method1.getParams().setBooleanParameter(
+            HttpMethodParams.WARN_EXTRA_INPUT, true);
+        final int responseCode1 = s_httpClient.executeMethod(method1);
+        assertEquals(200, responseCode1);
+        contentLength = getContentLength(method1);
+        assertEquals(s_testFile.length(), contentLength);
+        final InputStream is1 = method1.getResponseBodyAsStream();
+        IoUtils.copy(is1, new NullOutputStream(), contentLength);
+        assertEquals(0, is1.available());
+        method1.releaseConnection();
+        
+        LOG.debug("Got first stream...");
+        
+        final GetMethod method2 = new GetMethod(url);
+        method2.getParams().setBooleanParameter(
+            HttpMethodParams.WARN_EXTRA_INPUT, true);
+        method2.addRequestHeader("Range", "bytes=0-"+(s_testFile.length()-2));
+        final int responseCode2 = s_httpClient.executeMethod(method2);
+        assertEquals(206, responseCode2);
+        contentLength = getContentLength(method2);
+        assertEquals((s_testFile.length()-1), contentLength);
+        final InputStream is2 = method2.getResponseBodyAsStream();
+        IoUtils.copy(is2, new NullOutputStream(), contentLength);
+        assertEquals(0, is2.available());
+        method2.releaseConnection();
+        
+        final GetMethod method3 = new GetMethod(url);
+        method3.getParams().setBooleanParameter(
+            HttpMethodParams.WARN_EXTRA_INPUT, true);
+        final int responseCode3 = s_httpClient.executeMethod(method3);
+        assertEquals(200, responseCode3);
+        final InputStream is3 = method3.getResponseBodyAsStream();
+        IoUtils.copy(is3, new NullOutputStream(), getContentLength(method3));
+        assertEquals(0, is3.available());
+        method3.releaseConnection();
+        
+        // Make sure we only tried to create a new socket once, i.e. that
+        // we reused the original socket.
+        assertEquals(1, s_newSocketCalls);
+        }
+    
+    private static long getContentLength(final HttpMethod method)
+        {
+        final Header contentLengthHeader = 
+            method.getResponseHeader("Content-Length");
+        return Long.parseLong(contentLengthHeader.getValue());
+        }
+
+    /**
+     * Test for RUDP sockets, Jetty and HTTP client.
+     * 
+     * @throws Exception If any unexpected error occurs.
+     */
+    @Test public void testRudpWithHttpClientAndJetty() throws Exception
+        {
+        final URI testSha1 = Sha1Hasher.createSha1Urn(s_testFile);
+        LOG.debug("Testing: "+s_testFile);
+
+        final String host = NetworkUtils.getLocalHost().getHostAddress();
+        final String url = 
+            "http://"+host+":"+RUDP_PORT+"/"+s_testFile.getName();
+        //final CommonsHttpClient client = newHttpClient();
+        final GetMethod method = new GetMethod(url);
+        
+        // You can swap the below in as a dummy check for normal sockets --
+        // just make sure not to register the protocol for HTTP client above!!
+            //new GetMethod("http://127.0.0.1:"+ShootConstants.HTTP_PORT+"/"+m_testFile.getName());
+            
+        final int responseCode = s_httpClient.executeMethod(method);
+        
+        // Check for 200 response code to indicate we got the file.
+        assertEquals(200, responseCode);
+        final Header[] headers = method.getResponseHeaders();
+        int headersLength = 0;
+        for (final Header header : headers)
+            {
+            headersLength += (header.toExternalForm().length()+2);
+            }
+        
+        final Header contentLengthHeader = 
+            method.getResponseHeader("Content-Length");
+        final long contentLength = 
+            Long.parseLong(contentLengthHeader.getValue());
+        final InputStream is = method.getResponseBodyAsStream();
+        final File outFile = new File("testOut");
+        outFile.delete();
+        assertFalse(outFile.exists());
+        outFile.deleteOnExit();
+        final OutputStream os = new FileOutputStream(outFile);
+        final long count = IoUtils.copy(is, os, contentLength);
+        
+        assertEquals(contentLength, count);
+        os.flush();
+        os.close();
+        is.close();
+        //method.releaseConnection();
+        
+        LOG.debug("Got correct file length of: {}", s_testFile.length());
+        
+        final FileChannel f1Channel = new FileInputStream(s_testFile).getChannel();
+        final FileChannel f2Channel = new FileInputStream(outFile).getChannel();
+        
+        final ByteBuffer[] f1Bufs = createBufs(s_testFile);
+        final ByteBuffer[] f2Bufs = createBufs(s_testFile);
+        
+        // Now fill the bufs with data from our local file and with data from
+        // the file we just read.
+        int f1ReadCount = 0;
+        int f2ReadCount = 0;
+        while (f1ReadCount < s_testFile.length())
+            {
+            f1ReadCount += f1Channel.read(f1Bufs);
+            }
+        while (f2ReadCount < s_testFile.length())
+            {
+            f2ReadCount += f2Channel.read(f2Bufs);
+            }
+        f2Channel.read(f2Bufs);
+        
+        for (int i = 0; i < f1Bufs.length ; i++)
+            {
+            final byte[] f1Bytes = f1Bufs[i].array();
+            final byte[] f2Bytes = f2Bufs[i].array();
+            //System.out.println(ByteBufferHexDumper.getHexdump(org.apache.mina.common.ByteBuffer.wrap(f1Bytes)));
+            assertTrue(i + " bufs equal, but not:\n" +
+                ByteBufferHexDumper.getHexdump(org.littleshoot.mina.common.ByteBuffer.wrap(f1Bytes))
+                +"\nand\n"+
+                ByteBufferHexDumper.getHexdump(org.littleshoot.mina.common.ByteBuffer.wrap(f2Bytes)), 
+                Arrays.equals(f1Bytes, f2Bytes));
+            }
+        
+        assertEquals("File lengths not equal", s_testFile.length(), 
+            outFile.length());
+        
+        final URI sha12 = Sha1Hasher.createSha1Urn(outFile);
+        assertEquals("File SHA-1s not equal", testSha1, sha12);
+        }
+
+    private static File newTestFile() throws IOException
+        {
+        final File sharedDir = 
+            new File(System.getProperty("user.dir"), "src/test/resources");
+        final File testFile = new File(sharedDir, "TEST-FILE");
+        testFile.delete();
+        testFile.deleteOnExit();
+        final OutputStream testOs = new FileOutputStream(testFile);
+        final Random rand = new Random();
+        for (int i = 0; i < 100000; i++)
+            {
+            final int randomInt = Math.abs(rand.nextInt()) % 256;
+            testOs.write(randomInt);
+            }
+        testOs.close();
+        return testFile;
+        }
+
+    private static CommonsHttpClient newHttpClient()
+        {
+        final RudpService service = new RudpServiceImpl();
+        final ProtocolSocketFactory socketFactory = new ProtocolSocketFactory()
+            {
+            public Socket createSocket(final String host, final int port) 
+                throws IOException, UnknownHostException
+                {
+                LOG.debug("Creating socket...");
+                final InetSocketAddress socketAddress =
+                    new InetSocketAddress(host, port);
+                return sock(socketAddress);
+                }
+    
+            public Socket createSocket(final String host, final int port, 
+                final InetAddress arg2, final int arg3) throws IOException, 
+                UnknownHostException
+                {
+                LOG.debug("Creating socket...");
+                final InetSocketAddress socketAddress =
+                    new InetSocketAddress(host, port);
+                return sock(socketAddress);
+                }
+    
+            public Socket createSocket(final String host, final int port, 
+                final InetAddress arg2, final int arg3, 
+                final HttpConnectionParams arg4) 
+                throws IOException, UnknownHostException, 
+                ConnectTimeoutException
+                {
+                LOG.debug("Creating socket...");
+                final InetSocketAddress socketAddress =
+                    new InetSocketAddress(host, port);
+                return sock(socketAddress);
+                }
+            
+            private Socket sock(final InetSocketAddress socketAddress)
+                {
+                final IoConnector connector = new DatagramConnector();
+                final IoConnectorConfig connectorConfig =
+                    new DatagramConnectorConfig ();
+                final ThreadModel threadModel = 
+                    ExecutorThreadModel.getInstance("RUDP-Client");
+                connectorConfig.setThreadModel(threadModel);
+                final IoHandler ioHandler = new RudpClientIoHandler(service);
+                final ProtocolCodecFactory codecFactory = 
+                    new ProtocolCodecFactory()
+                    {
+                    public ProtocolDecoder getDecoder() throws Exception
+                        {
+                        return new RudpDecoder();
+                        }
+                    public ProtocolEncoder getEncoder() throws Exception
+                        {
+                        return new RudpEncoder();
+                        }
+                    };
+                final ProtocolCodecFilter rudpFilter = 
+                    new ProtocolCodecFilter(codecFactory);
+                
+                connector.getFilterChain().addLast("rudp", rudpFilter);
+                final ConnectFuture cw = 
+                    connector.connect(socketAddress, ioHandler, connectorConfig);
+                cw.join();
+                final IoSession session = cw.getSession();
+
+                final Future<RudpConnectionId> future = service.open(session);
+                LOG.debug("About to join...");
+                future.join (4000);
+                LOG.debug("Finished join...");
+                final Socket sock = new RudpSocket(service, future.get(), null);
+                s_newSocketCalls++;
+                return sock;
+                }
+            };
+            
+            
+        
+        final Protocol protocol = new Protocol("http", socketFactory, 7777);
+        Protocol.registerProtocol("http", protocol);
+            
+        final CommonsHttpClient client = 
+            new CommonsHttpClientImpl(new MultiThreadedHttpConnectionManager());
+        client.getParams().setSoTimeout(8000);
+        client.getParams().setConnectionManagerTimeout(8000);
+        final HttpMethodRetryHandler retryHandler = 
+            new DefaultHttpMethodRetryHandler(0, false);
+        client.getParams().setParameter(
+            HttpMethodParams.RETRY_HANDLER, retryHandler);
+        client.getHttpConnectionManager().getParams().
+            setConnectionTimeout(12*1000);
+        client.getHttpConnectionManager().getParams().
+            setBooleanParameter(
+                HttpConnectionManagerParams.STALE_CONNECTION_CHECK, false);
+        return client;
+        }
+
+    /**
+     * This method just breaks the file into a bunch of smaller buffers to
+     * diagnose where an error is if we encounter one.
+     * 
+     * @param testFile The file to break up.
+     * @return The array of empty bufs ready to be filled with file data.
+     */
+    private ByteBuffer[] createBufs(final File testFile)
+        {
+        final long length = testFile.length();
+        final int bufSize = 100;
+        final int numBufs = (int) Math.ceil((double)length/bufSize);
+        final ByteBuffer[] bufs = new ByteBuffer[numBufs];
+        for (int i = 0; i < bufs.length ; i++)
+            {
+            bufs[i] = ByteBuffer.wrap(new byte[bufSize]);
+            }
+        return bufs;
+        }
+    
+    private static void startOurHttpInstance() 
+        {
+        final Runnable runner = new Runnable()
+            {
+            public void run()
+                {
+                ourHttpInstance();
+                }
+            };
+        final Thread proxyThread = new Thread(runner, "proxy");
+        proxyThread.setDaemon(true);
+        proxyThread.start();
+        }
+    
+    private static void ourHttpInstance() 
+        {
+        final RudpService rudpService = new RudpServiceImpl();
+        
+        LOG.debug("About to listen...");
+        final RudpListeningConnectionId listeningId =
+            rudpService.listen (RUDP_HTTP_PORT, 5);
+        final RudpListener listener = new RudpListener ()
+            {
+            };
+        
+        LOG.debug("About to accept...");
+        synchronized (s_rudpServerStarted)
+            {
+            s_rudpServerStarted.set(true);
+            s_rudpServerStarted.notifyAll();
+            }
+        final Future<RudpConnectionId> acceptFuture =
+            rudpService.accept (listeningId, listener);
+        
+        LOG.debug("About to join...");
+        acceptFuture.join ();
+        
+        serveSocketThreaded(rudpService, acceptFuture);
+        }
+
+    private static void serveSocketThreaded(
+        final RudpService rudpService, 
+        final Future<RudpConnectionId> acceptFuture)
+        {
+        final Runnable runner = new Runnable()
+            {
+            public void run()
+                {
+                try
+                    {
+                    serveSocket(rudpService, acceptFuture);
+                    }
+                catch (IOException e)
+                    {
+                    throw new RuntimeIoException(e);
+                    }
+                }
+            };
+        final Thread proxyThread = 
+            new Thread(runner, "RUDP-Server-Socket-Thread");
+        proxyThread.setDaemon(true);
+        proxyThread.start();
+        }
+    
+
+    private static void serveSocket(final RudpService rudpService, 
+        final Future<RudpConnectionId> acceptFuture) throws IOException
+        {
+        final RudpConnectionId id = acceptFuture.get ();
+        LOG.debug("Got connection ID...");
+        final RudpSocket sock = new RudpSocket(rudpService, id, null);
+        final InputStream is = sock.getInputStream();
+        final OutputStream os = sock.getOutputStream();
+        while (true)
+            {
+            serveRequest(is, os);
+            }
+        }
+
+    private static void serveRequest(final InputStream is, 
+        final OutputStream os) throws IOException
+        {
+
+        final BufferedReader reader = 
+            new BufferedReader(new InputStreamReader(is));
+        String curLine = reader.readLine();
+        while (!StringUtils.isBlank(curLine))
+            {
+            curLine = reader.readLine();
+            }
+        final String responseHeaders = 
+            "HTTP/1.1 200 OK\r\n"+
+            "Date: Mon, 22 Oct 2007 00:01:21 GMT\r\n"+
+            "Content-Length: " + s_testFile.length() + "\r\n"+
+            "Last-Modified: Mon, 22 Oct 2007 00:01:19 GMT\r\n"+
+            "\r\n";
+        
+        final InputStream bais =
+            new ByteArrayInputStream(responseHeaders.getBytes("US-ASCII"));
+        IOUtils.copy(bais, os);
+        final InputStream fis = new FileInputStream(s_testFile);
+        IOUtils.copy(fis, os);
+        os.flush();
+        //os.close();
+
+        }
+
+    private static void startProxy() 
+        {
+        final Runnable runner = new Runnable()
+            {
+            public void run()
+                {
+                try 
+                    {
+                    proxyInstance();
+                    } 
+                catch (UnknownHostException e) 
+                    {
+                    throw new RuntimeException("Error relaying proxy?", e);
+                    }
+                }
+            };
+        final Thread proxyThread = new Thread(runner, "proxy");
+        proxyThread.setDaemon(true);
+        proxyThread.start();
+        }
+
+    private static void proxyInstance() throws UnknownHostException 
+        {
+        final RudpService rudpService = new RudpServiceImpl();
+        LOG.debug("About to listen...");
+        final RudpListeningConnectionId listeningId =
+            rudpService.listen (RUDP_PORT, 5);
+        final RudpListener listener = new RudpListener ()
+            {
+            };
+        
+        LOG.debug("About to accept...");
+        synchronized (s_rudpServerStarted)
+            {
+            s_rudpServerStarted.set(true);
+            s_rudpServerStarted.notifyAll();
+            }
+        final Future<RudpConnectionId> acceptFuture =
+            rudpService.accept (listeningId, listener);
+        
+        LOG.debug("About to join...");
+        acceptFuture.join ();
+        
+        final RudpConnectionId id = acceptFuture.get ();
+        LOG.debug("Got connection ID...");
+        final RudpSocket sock = new RudpSocket(rudpService, id, null);
+        final SocketListener sh = 
+            new RelayingSocketHandler(NetworkUtils.getLocalHost(), 
+                ShootConstants.HTTP_PORT);
+        LOG.debug("Sending socket to handler...");
+        try
+            {
+            sh.onSocket(sock);
+            }
+        catch (final IOException e)
+            {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            }
+        }
+    
+    private final static void startJetty(final String resourceBase) 
+        {
+        s_httpServer = new HttpServerImpl(resourceBase);
+        s_httpServer.startServerNoJoin();
+
+        int count = 0;
+        while (!s_httpServer.isRunning())
+            {
+            if (count > 100) 
+                {
+                LOG.error("Could not start server!!!");
+                break;
+                }
+            try
+                {
+                Thread.sleep(100);
+                }
+            catch (InterruptedException e)
+                {
+                e.printStackTrace();
+                }
+            count++;
+            }
+        }
+    }

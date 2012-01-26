@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.lastbamboo.server.db">
+    <class name="InstanceImpl" table="instances">
+        <cache usage="read-write" />
+        <id name="m_id" column="id" type="long" access="field">
+            <generator class="native"/>
+            </id>
+
+        <property name="m_instanceId" column="instance_id" access="field" type="long" not-null="true" unique="true"/>
+        <property name="m_baseUri" column="base_uri" access="field" type="string" not-null="true"/>
+        <property name="m_online" column="online" access="field" type="boolean" not-null="true"/>
+        <property name="m_repeatInfringer" column="repeat_infringer" access="field" type="boolean" not-null="true"/>
+        
+        </class>
+    </hibernate-mapping>
+

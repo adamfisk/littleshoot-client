@@ -1,0 +1,113 @@
+application: littleshootapi 
+version: 58
+runtime: python
+api_version: 1
+
+default_expiration: '3650d'
+
+inbound_services:
+- channel_presence
+
+handlers:
+
+- url: /media
+  static_dir: _generated_media
+  
+- url: /dojo12/.*
+  script: $PYTHON_LIB/google/appengine/ext/zipserve
+
+- url: /dijit12/.*
+  script: $PYTHON_LIB/google/appengine/ext/zipserve
+
+- url: /dojox12/.*
+  script: $PYTHON_LIB/google/appengine/ext/zipserve
+
+- url: /littleshoot/.*
+  script: $PYTHON_LIB/google/appengine/ext/zipserve
+  
+- url: /timestamped/.*
+  script: common/appenginepatch/main.py
+  
+- url: /metaRefresh*
+  script: common/appenginepatch/main.py
+  secure: optional
+  
+- url: /site\.html.*
+  script: common/appenginepatch/main.py
+
+- url: /index\.html.*
+  script: common/appenginepatch/main.py
+
+# This following static file handling is complex to accommodate both
+# our legacy setup as well as relative paths within combined css files
+# produced by app engine patch.
+- url: /(.*\.(html|htm|swf|class|flv|cab|ico))
+  expiration: "3650d"
+  static_files: static/\1
+  upload: static/(.*\.(html|htm|swf|class|flv|cab|ico))
+  
+- url: /images/(.*\.(gif|png|jpg|ico))
+  expiration: "3650d"
+  static_files: static/images/\1
+  upload: static/images/(.*\.(gif|png|jpg|ico))
+
+- url: /css/images/(.*\.(gif|png|jpg|ico))
+  expiration: "3650d"
+  static_files: static/css/images/\1
+  upload: static/css/images/(.*\.(gif|png|jpg|ico))
+
+# This allows the inclusion of single js files for testing or whatever
+- url: /js/(.*\.(js))
+  expiration: "3650d"
+  static_files: static/js/\1
+  upload: static/js/(.*\.(js))
+
+# This allows the inclusion of single css files for testing or whatever
+- url: /css/(.*\.(css))
+  expiration: "3650d"
+  static_files: static/css/\1
+  upload: static/css/(.*\.(css))
+  
+# This allows the inclusion of single swf files.
+- url: /swf/(.*\.(swf))
+  expiration: "3650d"
+  static_files: static/swf/\1
+  upload: static/swf/(.*\.(swf))
+
+# This is just for testing any static files as we need to
+- url: /test/(.*\.(gif|png|jpg|ico|css|js|html|swf|class|flv|cab))
+  expiration: "3650d"
+  static_files: static/test/\1
+  upload: static/test/(.*\.(gif|png|jpg|ico|css|js|html|swf|class|flv|cab))
+  
+# This is just for dojo's blank.gif
+- url: /resources/(.*\.(gif|png|jpg|ico))
+  expiration: "3650d"
+  static_files: static/resources/\1
+  upload: static/resources/(.*\.(gif|png|jpg|ico))
+
+- url: /littleproxy/
+  expiration: "3650d"
+  static_files: static/littleproxy/index.html
+  upload: static/littleproxy/index.html
+
+- url: /littleproxy/(.+)
+  expiration: "3650d"
+  static_files: static/littleproxy/\1
+  upload: static/littleproxy/(.+)
+  
+- url: /maven-docs/
+  expiration: "3650d"
+  static_files: static/maven-docs/index.html
+  upload: static/maven-docs/index.html
+
+- url: /maven-docs/(.+)
+  expiration: "3650d"
+  static_files: static/maven-docs/\1
+  upload: static/maven-docs/(.+)
+  
+- url: /.*
+  script: common/appenginepatch/main.py
+
+builtins:
+- datastore_admin: on

@@ -1,0 +1,135 @@
+
+<!-- 
+	A minimal setup to get you started. This configuration is the same
+	as in our Quick Start documentation:
+	
+	http://flowplayer.org/player/quick-start.html
+-->
+<html>
+<head>  
+
+	<title>BetterTube</title>
+	
+     <style type="text/css">
+        @import "css/common.css";
+    </style>
+    
+	<!-- 
+		include flashembed - which is a general purpose tool for 
+		inserting Flash on your page. Following line is required.
+	-->
+	<script type="text/javascript" src="flowplayer/examples/js/flashembed.min.js"></script>
+	
+	<!-- some minimal styling, can be removed -->
+	<link rel="stylesheet" type="text/css" href="flowplayer/examples/css/common.css"/>
+	
+</head>
+
+<body>
+    <div id="loading">
+        <img src="http://littleshootimages.appspot.com/images/loading.gif" alt="loading LittleShoot P2P File Sharing in the Browser" />
+    </div>
+    
+<div id="page">
+	
+	<h1>BetterTube <em>example</em></h1>
+
+	<div>
+ <!--
+    <object width="425" height="350"> <param name="movie" value="http://www.youtube.com/v/MZZ5bXeFHRY"> </param> <embed src="http://www.youtube.com/v/MZZ5bXeFHRY" type="application/x-shockwave-flash" width="425" height="350"> </embed> </object>
+    
+     
+    <object width="425" height="350"> <param name="movie" value="http://www.youtube.com/v/zJZ0cl-45Go"> </param> <embed src="http://www.youtube.com/v/zJZ0cl-45Go" type="application/x-shockwave-flash" width="425" height="350"> </embed> </object>
+    <object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/UXZdd2mB6SY&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.youtube.com/v/UXZdd2mB6SY&hl=en&fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed></object>
+     -->
+    </div>
+	<!-- this DIV is where your Flowplayer will be placed. it can be anywhere -->
+ 
+    <div id="notPresent" style="display:none;">
+        <object width="540" height="360"> <param name="movie" value="http://www.youtube.com/v/MZZ5bXeFHRY"> </param> <embed src="http://www.youtube.com/v/MZZ5bXeFHRY" type="application/x-shockwave-flash" width="540" height="360"> </embed> </object>
+    </div>
+	<div id="present"></div>
+
+</div>
+
+    <script type="text/javascript" src="js/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+    <script type="text/javascript" src="js/dojo/shootDojo.js"></script>
+
+    
+    
+    <script type="text/javascript">
+
+        var embedP2P = function (url, width, height)
+            {
+            var p2pUrl = "http://adamfisk.p2p2o.org:8107/api/client/?";
+            var uri = encodeURIComponent(url);
+            p2pUrl += "uri=";
+            p2pUrl += uri;
+            embed(p2pUrl, 540, 360, "present");
+            }
+        
+        var goHighRes = function ()
+            {
+            var onAppPresent = function()
+                {
+                embedP2P("http://www.bettertube.com/flowplayer/examples/fallujah4_h264.mov", 720, 480, "present");
+                };
+            var onAppNotPresent = function()
+                {
+                CommonUtils.showElement(dojo.byId("notPresent"));
+                };
+              
+            var onOldVersion = function()
+                {
+                };
+
+
+
+
+
+            var monitor = 
+                new littleshoot.AppMonitor(onAppPresent2, onAppNotPresent, onOldVersion, 3000);
+            var deferred = monitor.checkApp();
+            var loading = dojo.byId("loading");
+            
+            deferred.addBoth(function()
+                {
+                var fo = dojo.fadeOut(
+                    {
+                    node: loading
+                    });
+                fo.play();
+                loading.parentNode.removeChild(loading);
+                });
+            }
+        
+        var embed = function(url, width, height, id)
+            {
+            flashembed(id, 
+                {
+                    src:'flowplayer/FlowPlayerDark.swf',
+                    width: width, 
+                    height: height
+                },
+                {config: {   
+                    autoPlay: false,
+                    autoBuffering: true,
+                    initialScale: 'scale',
+                    videoFile: url
+                }} 
+            );
+            }
+        dojo.addOnLoad(goHighRes);
+
+
+
+
+        var onAppPresent2 = function()
+            {
+            CommonUtils.showElement(dojo.byId("notPresent"));
+            embed("http://www.bettertube.com/flowplayer/examples/fallujah4_h264.mov", 540, 360, "present");
+            
+            };
+    </script>
+</body>
+</html>

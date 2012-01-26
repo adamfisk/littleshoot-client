@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jnltorrent" default="install" basedir=".">
+    <property name="src" location="src/main/java"/> <!-- java source folder -->
+    <property name="bin" location="bin"/> <!-- intermediate build products -->
+    <property name="jars" location="jars"/> <!-- jar files -->
+    <property name="lib" location="lib"/> <!-- local libraries linked against -->
+    <property name="dist" location="dist"/> <!-- build product location -->
+    <property name="resources" location="src/main/resources"/> <!-- location of general java resources -->
+    <property name="compile.debug" value="true"/>
+    <property name="native.target" value="JNILib"/>
+    <property name="native.project" value="jlibtorrent.xcodeproj"/>
+    <property name="native.library" value="libjnltorrent.jnilib"/>
+    <property name="env.CONFIGURATION" value="Release"/>
+    <property name="littleshoot.libs" value="../../lib"/>
+
+    <fileset id="lib.jars" dir="${lib}">
+        <include name="**/*.jar"/>
+    </fileset>
+    
+    <path id="lib.path">
+        <fileset refid="lib.jars"/>
+    </path>
+
+    <target name="init" description="Initialize environment">
+        <!-- Get properties from environment -->
+        <property environment="env"/>    
+        <property name="curr_build_dir" location="build/${env.CONFIGURATION}"/>
+        <property name="curr_header_dir" location="build/${env.CONFIGURATION}/Headers"/>
+        
+        <!-- if you tweak these names, you'll have to change the JNILib target and the Xcode launcher arguments -->
+        <property name="jarfilename" value="jnltorrent"/>
+        <property name="jarfile" location="${jars}/${jarfilename}.jar"/>
+
+        <mkdir dir="${curr_build_dir}"/>
+        <mkdir dir="${curr_header_dir}"/>
+        <mkdir dir="${lib}"/>
+        <mkdir dir="${bin}"/>
+        <mkdir dir="${jars}"/>
+        <mkdir dir="${dist}"/>   
+    
+        <condition property="isMac">
+            <os family="mac"/>
+        </condition>
+        <condition property="isWin">
+            <os family="windows"/>
+        </condition>
+    </target>
+
+    <target name="compile" depends="init" description="Compile JNI Wrapper code">
+        <javac srcdir="${src}" destdir="${bin}"
+               source="1.5" target="1.5"
+               includeAntRuntime="no"
+               classpathref="lib.path" debug="${compile.debug}">
+        </javac>            
+    </target>
+
+    <target name="javah" depends="init" description="Create headers.">
+        
+        <!-- generate the header files -->
+        <exec executable="javah">
+            <arg line="-classpath ./target/classes -force -d '${curr_header_dir}' org.lastbamboo.jni.JLibTorrent"/>
+        </exec>
+    </target>
+	
+    <target name="jar" depends="compile" description="Build jar">
+        <jar jarfile="${jarfile}" basedir="${bin}" manifest="${resources}/Manifest">
+            <!-- Merge library jars into final jar file -->
+            <zipgroupfileset refid="lib.jars"/>
+        </jar>
+        
+        <!-- generate the header files -->
+        <exec executable="/usr/bin/javah">
+            <arg line="-classpath '${jarfile}' -force -d '${curr_header_dir}' org.lastbamboo.jni.JLibTorrent"/>
+        </exec>
+    </target>
+	
+    <!-- Note: this target requires that Xcode Tools be installed -->
+    <target name="libtorrent">
+	<!-- 
+		<exec executable="sh" dir="../../libtorrent">
+            <arg line="build.sh"/>
+        </exec> 
+	
+        <exec executable="/usr/bin/xcodebuild">
+            <arg line="-project ../../libtorrent/mac/libtorrent.xcodeproj"/>
+            <arg line="-target libtorrent"/>
+        </exec>   
+		-->
+    </target>
+	
+    <!-- Note: this target requires that Xcode Tools be installed -->
+    <target name="compileMac" if="isMac">
+    	<exec executable="/usr/bin/xcodebuild">
+            <arg line="-project ${native.project}"/>
+            <arg line="-target ${native.target}"/>
+        </exec>     
+    	<!--
+        <copy file="${curr_build_dir}/${native.library}" toDir="${resources}" failonerror="true" verbose="true"/>
+        -->
+    </target>
+	
+    <target name="compileWin" if="isWin">
+    	<echo>"Compiling on windows"</echo>
+        <exec dir="." executable="cmd" os="Windows NT">
+            <arg line="/c compile.bat"/>
+        </exec>
+    </target>
+
+    <target name="copyMac" if="isMac"> 
+        <echo>"Copying prop file on mac"</echo>
+        <copy file="${curr_build_dir}/libjnltorrent.jnilib" toDir="${littleshoot.libs}" failonerror="true" verbose="true"/>
+    </target>
+
+    <target name="copyWin" if="isWin">
+    	<echo>"Copying prop file on windows"</echo>
+        <copy file="${curr_build_dir}/jnltorrent.dll" toDir="${littleshoot.libs}" failonerror="true" verbose="true"/>
+    </target>
+
+    <!-- Note: this target requires that Xcode Tools be installed 
+    <target name="nativelib" depends="javah, xcodecompile, copyMac, copyWin"></target>
+    -->
+    <target name="nativelib" depends="javah, compileMac, compileWin, copyMac, copyWin"></target>    	
+    
+     <!-- Note: this target requires that Xcode Tools be installed -->
+    <target name="xcodebuild" depends="jar, compileMac, copyMac, copyWin"></target>
+    
+    <!-- install target. Copy the built objects to the 'dist' directory. -->
+    <target name="install" description="Install jar" depends="xcodebuild">
+        <copy file="${jarfile}" toDir="${dist}" failonerror="true" verbose="true"/>
+        <copy toDir="${dist}" failonerror="true" verbose="true">
+            <fileset dir="${resources}">
+                <include name="**/*.jnilib"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="run" depends="install">
+        <java classpath="${jarfile}" classname="${ant.project.name}" fork="true">
+            <sysproperty key="java.library.path" value="${dist}"/>
+        </java>
+    </target>
+    
+    <target name="clean" depends="init" description="Remove build and dist directories">
+        <delete dir="${bin}"/>
+        <delete dir="${dist}"/>
+        <delete dir="${jars}"/>
+        <delete dir="${curr_build_dir}"/>
+    </target>
+</project>

@@ -1,0 +1,639 @@
+.commonBody
+    {
+    font-size: 13px;
+    }
+    
+.displayNone
+    {
+    display: none;
+    }
+    
+.clearBoth
+    {
+    clear : both;
+    margin : 0px;
+    padding : 0px;
+    }
+
+.forwardEnabled
+    {
+    background: transparent url('http://littleshootimages.appspot.com/images/spriteRoundedIconsSmall.png') no-repeat -30px 50%;
+    cursor: pointer;
+    }
+
+.forwardDisabled
+    {
+    background: transparent url('http://littleshootimages.appspot.com/images/spriteRoundedIconsSmall.png') no-repeat -30px 100%;
+    }
+    
+.backEnabled
+    {
+    background: transparent url('http://littleshootimages.appspot.com/images/spriteRoundedIconsSmall.png') no-repeat 0px 50%;
+    cursor: pointer;
+    }
+
+.backDisabled
+    {
+    background: transparent url('http://littleshootimages.appspot.com/images/spriteRoundedIconsSmall.png') no-repeat 0px 100%;
+    }
+   
+.stopEnabled
+    {
+    background: transparent url('http://littleshootimages.appspot.com/images/spriteRoundedIconsSmall.png') no-repeat -60px 50%;
+    cursor: pointer;
+    }
+
+.stopDisabled
+    {
+    background: transparent url('http://littleshootimages.appspot.com/images/spriteRoundedIconsSmall.png') no-repeat -60px 100%;
+    }
+     
+.smallIcon
+    {
+    width:16px;
+    height:16px;
+    /*top: 0; this makes the cancel download icon appear at the top*/
+    }
+    
+#loading
+    {
+    position: fixed; top: 50%; bottom: 50%; left: 50%; right: 50%; 
+    z-index: 1000;
+    }
+    
+.loading
+    {
+    position: absolute; top: 50%; bottom: 50%; left: 50%; right: 50%; 
+    z-index: 1000;
+    }
+    
+.loadingOffsetHigh
+    {
+    position: absolute; top: 20%; bottom: 80%; left: 50%; right: 50%; 
+    z-index: 1000;
+    }
+
+.commonDialogDiv
+    {
+    width: 340px;
+    text-align: center;
+    overflow:hidden;
+    }
+    
+.bottomMargin
+    {
+    margin-bottom: 10px;
+    }
+    
+.topMargin
+    {
+    margin-top: 10px;
+    }
+    
+.commonDialogText
+    {
+    width: 300px;
+    margin-bottom: 10px;
+    text-align: center;
+    overflow: hidden;
+    }
+    
+.publishDialogDesc
+    {
+    position: relative;
+    width: 340px;
+    margin-bottom: 10px;
+    }
+
+#publishTagsTextBox
+    {
+    position: relative;
+    margin-bottom: 10px;
+    }
+      
+#publishTagsTextBoxInput
+    {
+    position: relative;
+    width: 240px;
+    }
+
+#emailDialogDiv
+    {
+    position: relative;
+    width: 340px; 
+    overflow:hidden;  
+    }
+    
+.navLink a:link
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 90%;
+    font-weight: bold;
+    color: #545454;
+    }
+
+.navLinkSelected
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 90%;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    }
+    
+.navLink
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 90%;
+    font-weight: bold;
+    color: #545454;
+    cursor: pointer;
+    }
+
+.subNavLinkSelected
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 100%;
+    font-weight: bold;
+    color: #7F8585;
+    cursor: pointer;
+    }
+    
+.subNavLink
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 95%;
+    font-weight: bold;
+    color: #7F8585;
+    cursor: pointer;
+    }
+    
+.contentBody a:link
+    {
+    color:#545454;
+    }
+    
+a:link
+    {
+    color:#545454;
+    }
+
+a:visited
+    {
+    color: #7F8585;
+    }
+
+a:hover
+    {
+    color: #000000;
+    }
+
+/*
+ "Active" means you're currently clicking on it.
+ */    
+a:active
+    {
+    color: #000000;
+    }
+    
+a:visited:hover
+    {
+    color: #7F8585;
+    }
+
+.normalSmall
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 10px;
+    color: #545454;
+    }
+    
+.normalBold
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    color: #545454;
+    }
+    
+.normal
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 12px;
+    color: #545454;
+    }
+
+.normalMedium
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 110%;
+    color: #545454;
+    }
+
+.normalBoldMedium
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 110%;
+    font-weight: bold;
+    color: #545454;
+    } 
+    
+.highlightText
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 110%;
+    font-weight: bold;
+    color: #545454;
+    }      
+    
+.normalLightBoldMedium
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 110%;
+    font-weight: bold;
+    color: #7F8585;
+    }
+
+.normalBig
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 120%;
+    color: #545454;
+    }
+        
+.normalBoldBig
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 120%;
+    font-weight: bold;
+    color: #545454;
+    }
+    
+.wizardHeader
+    {
+    position:relative;
+    margin-left: auto; margin-right: auto;
+    margin-bottom:20px;
+    text-align:center;
+    }
+    
+.wizardBody
+    {
+    position:relative;
+    margin-left: auto; margin-right: auto;
+    text-align:center;
+    }
+    
+.normalBigger
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 135%;
+    color: #545454;
+    }
+
+.normalBoldBigger
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 135%;
+    font-weight: bold;
+    color: #545454;
+    }
+
+.normalLight
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 12px;
+    color: #7F8585;
+    }
+
+.normalLightBold
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    color: #7F8585;
+    }
+    
+.normalBoldLink
+    {
+    cursor: pointer;
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    color: #545454;
+    }
+    
+.normalBoldLink:link
+    {
+    color:#545454;
+    }
+
+.normalBoldLink:visited
+    {
+    color: #7F8585;
+    }
+
+.normalBoldLink:hover
+    {
+    color: #000000;
+    }
+
+/*
+ "Active" means you're currently clicking on it.
+ */    
+.normalBoldLink:active
+    {
+    color: #000000;
+    }
+    
+.normalBoldLink:visited:hover
+    {
+    color: #7F8585;
+    }
+    
+.normalBoldBlack
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    }
+
+.selectedBold
+    {
+    cursor: pointer;
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000000;
+    }
+    
+.unselectedBold
+    {
+    cursor: pointer;
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    color: #7F8585;
+    }
+    
+.darkGreenBold
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    color: #264F1C;
+    }
+
+.inputLabel
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 11px;;
+    color: #7F8585;
+    }
+
+.optionsLabel
+    {
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 11px;;
+    color: #7F8585;
+    }
+    
+.selectedTab
+    {
+    cursor: pointer;
+    background-image: url('http://littleshootimages.appspot.com/images/selectedTab.gif');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    width: 105px;
+    height: 27px;
+    text-align: center;
+    
+    font-family: verdana, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 260%;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #545454;
+    border-style: none;
+    }
+
+.unselectedTab
+    {
+    cursor: pointer;
+    background-image: url('http://littleshootimages.appspot.com/images/unselectedTab.gif');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    width: 105px;
+    height: 27px;
+    
+    text-align: center;
+    font-family: verdana, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 260%;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #949B9B;
+    border-style: none;
+    }
+    
+.button
+    {
+    cursor: pointer;
+    background-image: url('http://littleshootimages.appspot.com/images/button100x22.gif');
+    background-repeat: no-repeat;
+    width: 100px;
+    min-width: 100px;
+    height: 22px;
+    min-height: 22px;
+    text-align: center;
+    
+    font-family: verdana, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 180%;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #545454;
+    border-style: none;
+    }
+    
+.buttonFileInput
+    {
+    position: absolute;
+    cursor: pointer;
+    background-image: url('http://littleshootimages.appspot.com/images/button100x22.gif');
+    background-repeat: no-repeat;
+    height: 22px;
+    text-align: center;
+    right: 0px;
+    left: 0px;
+    
+    font-family: verdana, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 180%;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #545454;
+    border-style: none;
+    }
+    
+.bigButton
+    {
+    cursor: pointer;
+    background-image: url('http://littleshootimages.appspot.com/images/button160x22.gif');
+    background-position:right;
+    background-repeat: no-repeat;
+    width: 160px;
+    height: 22px;
+    text-align: center;
+    
+    font-family: verdana, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 180%;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #545454;
+    border-style: none;
+    }
+    
+div.fakeFile 
+    {
+    position: absolute;
+    width: 100px;
+    z-index: 1;
+    }
+
+input.invisibleFileInput 
+    {
+    text-align: right;
+    position: absolute;
+    filter: alpha(opacity: 0);
+    opacity: 0;
+    z-index: 2;
+    right: 8px;
+    vertical-align: middle;
+    cursor: pointer;
+    }
+
+.indented
+    {
+    padding-left: 40px;
+    }
+    
+.tundra .simple .dijitTitlePane .dijitTitlePaneTitle 
+    { 
+    background: white;
+    border: none; 
+    }
+    
+.tundra .simple .publishInput
+    {
+    position: absolute;
+    left: 100px;
+    }
+    
+.tundra .bigTextInput .dijitTextBox
+    {
+    font-size: 14px;
+    height: 16px;
+    }
+    
+.tundra .bigTextInput .textAreaBigTextInput
+    {
+    font-size: 14px;
+    font-family: verdana, sans-serif;
+    }
+
+
+
+#twitterMessageDiv
+    {
+    position: relative;
+    margin-top: 6px;
+    min-height: 142px;
+    left: 0px;
+    }
+    
+#twitterMessageLabel
+    {
+    position: absolute;
+    left: 0px;
+    top: 18px;
+    }
+
+#twitterMessageTextArea
+    {
+    position: absolute;
+    left: 50px;
+    top: 18px;
+    width: 250px;
+    height: 6em;
+    
+    /* Note this is taken directly from Tundra.*/
+    border: 1px solid #B3B3B3;
+    }
+    
+#twitterMessageCharCount
+    {
+    position: absolute;
+    top: 0px;
+    right: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    }
+
+.grayCount
+    {
+    color: #545454;
+    }
+    
+.redCount
+    {
+    color: #bb5555;
+    }
+    
+#countDesc
+    {
+    font-size: 12px;
+    color: #545454;
+    }
+
+#countDescDiv
+    {
+    position: absolute;
+    left: 50px;
+    width: 250px;
+    bottom: 8px;
+    }
+
+    

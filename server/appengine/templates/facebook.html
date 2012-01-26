@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head></head>
+<body>
+
+<!--
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+
+
+    <fb:serverfbml>
+        <script type='text/fbml'>           
+            <fb:fbml>
+                <fb:request-form action='http://www.amazing.com'>
+                    <fb:multi-friend-selector>   
+                </fb:request-form>           
+            </fb:fbml>                       
+        </script>                           
+    </fb:serverfbml>
+    -->
+    
+<form id="publishFileForm" name="publishFileForm" dojoType="dijit.form.Form" onSubmit="">
+    
+    <div id="searchBoxDiv">
+        <textarea name="comments" rows="4" cols="20"></textarea>
+    </div>
+    <div id="searchButton" class="button searchButton">PUBLISH</div>
+</form>
+<a href="https://aws-portal.amazon.com/gp/aws/user/subscription/index.html?ie=UTF8&offeringCode=D97E650F">Buy Pro</a>
+
+<fb:login-button onlogin="facebook_onlogin();"></fb:login-button>
+<div id="profileDiv"></div>
+<div id="friendsDiv"></div>
+
+{% include "javaScriptIncludes.html" %}
+{% include "combinedMediaJs.html" %}
+
+<script type="text/javascript">
+
+    function facebook_onlogin() {
+        alert("Got login");
+    }
+    
+    jQuery().ready(function() {
+        //dojo.require("dojo.cookie");
+        //dojo.require("dojo.data.ItemFileReadStore");
+        dojo.addOnLoad(function() {
+            console.info("Dojo loaded, loading Facebook");
+            //LittleShootFacebook.init();
+        });
+    });
+
+</script>
+</body>
+</html>

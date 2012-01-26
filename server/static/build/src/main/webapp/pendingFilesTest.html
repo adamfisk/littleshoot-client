@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test</title>
+
+    <style type="text/css">
+    <!--  DELETEME
+        @import "js/dijit/themes/tundra/tundra.css";
+        @import "js/dojo/resources/dojo.css";
+        DELETEME -->
+    </style>
+
+
+    <style type="text/css">
+        @import "http://o.aolcdn.com/dojo/1.1.1/dojo/resources/dojo.css";
+        @import "http://o.aolcdn.com/dojo/1.1.1/dijit/themes/tundra/tundra.css";
+    </style>
+    
+    <style type="text/css">
+        @import "css/searchResults.css";
+        @import "css/common.css";
+        @import "css/tabLayoutSite.css";
+        @import "css/site.css";
+    </style>
+    
+</head>
+<body class="tundra" id="body">
+    
+    <div id="pendingFilesContainer">
+
+    </div>
+
+    <script type="text/javascript" src="js/dojo/dojo.js" djConfig="parseOnLoad: true"></script><!--  //DELETEME -->
+
+    <script type="text/javascript" src="js/littleshoot/Constants.js"></script><!--  //DELETEME -->    
+    <script type="text/javascript" src="js/littleshoot/CommonUtils.js"></script><!--  //DELETEME -->
+    <script type="text/javascript" src="js/littleshoot/PendingFiles.js"></script><!--  //DELETEME -->
+    <script type="text/javascript" src="js/littleshoot/PendingFile.js"></script><!--  //DELETEME -->
+    
+    
+    <script type="text/javascript">
+        dojo.require("dijit.Tooltip"); //DELETEME
+        dojo.require("dijit.Dialog"); //DELETEME
+        dojo.require("dijit.form.CheckBox"); //DELETEME
+        dojo.require("dijit.form.TextBox"); //DELETEME
+        dojo.require("dijit.form.ValidationTextBox"); //DELETEME
+        dojo.require("dijit.form.Button"); //DELETEME
+        dojo.require("dijit.form.Form"); //DELETEME
+        dojo.require("dijit.ProgressBar"); //DELETEME
+
+        
+        
+        function load()
+            {
+            var file1 = {
+                    "path": "/Users/adamfisk/test1.png",
+                    "title": "test1.png", 
+                    "status": "Hashing...", 
+                    "mimeType": "image\/png", 
+                    "mediaType": "image", 
+                    "size": 6485, 
+                    "publishTime": "2008-08-26 05:11:00.369345",
+                    "bytesHashed": 2000, 
+                    "tags": "billy, test, noah"
+                    };
+            var file2 = {
+                    "path": "/Users/adamfisk/test2.png",
+                    "title": "test2.png", 
+                    "status": "Hashing...", 
+                    "mimeType": "image\/png", 
+                    "mediaType": "image", 
+                    "size": 6485, 
+                    "publishTime": "2008-08-26 05:11:00.369345",
+                    "bytesHashed": 500, 
+                    "tags": "billy, test, noah"
+                    };
+            var file3 = {
+                    "path": "/Users/adamfisk/test3.png",
+                    "title": "test3.png", 
+                    "status": "Hashing...", 
+                    "mimeType": "image\/png", 
+                    "mediaType": "image", 
+                    "size": 6485, 
+                    "publishTime": "2008-08-26 05:11:00.369345",
+                    "bytesHashed": 1, 
+                    "tags": "billy, test, noah"
+                    };
+            var fileData = [file1];
+            var pendingObjects = {
+                    "size": 1,
+                    "files": fileData 
+                    };
+           // var raw = '{"size": 1, "files": [{"status": "Hashing...", "mimeType": "image\/png", "title": "testFile.png", "mediaType": "image", "size": 6485, "publishTime": "2008-08-26 05:11:00.369345", "bytesHashed": 2000, "tags": "billy, test, noah"}]}';
+
+            var pendingFiles = new littleshoot.PendingFiles();
+            pendingFiles.processPendingFiles(pendingObjects, "pendingFilesContainer");
+
+            var count = 0;
+            var updateBytes = function()
+                {
+                file1.bytesHashed = file1.bytesHashed + 40;
+                file2.bytesHashed = file2.bytesHashed + 40;
+                file3.bytesHashed = file3.bytesHashed + 40;
+                pendingFiles.processPendingFiles(pendingObjects, "pendingFilesContainer");
+                if (count < 100)
+                    {
+                    if (count == 33)
+                        {
+                        fileData.push(file2);
+                        }
+                    else if (count == 66)
+                        {
+                        fileData.push(file3);
+                        }
+                    setTimeout(updateBytes, 50);
+                    count++;
+                    }
+                }
+            
+            //div.id = "pendingFilesTest";
+
+            dojo.byId("pendingFilesContainer").setAttribute("style", "height: 200px; border: 2px solid #545454; margin: 100px;");
+            updateBytes();
+            //dojo.byId("pendingFilesContainer").appendChild(div);
+            
+            //console.info(dojo.fromJson(raw));
+            };
+
+        dojo.addOnLoad(load);
+        
+    </script>
+</body>
+</html>

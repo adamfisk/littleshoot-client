@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TabContainer Demo</title>
+    <style type="text/css">
+        @import "http://ajax.googleapis.com/ajax/libs/dojo/1.2.0/dijit/themes/tundra/tundra.css";
+        @import "http://ajax.googleapis.com/ajax/libs/dojo/1.2.0/dojo/resources/dojo.css"
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.2.0/dojo/dojo.xd.js" djConfig="parseOnLoad: true"></script>
+    <script type="text/javascript">
+       dojo.require("dojo.parser");
+           dojo.require("dijit.layout.ContentPane");
+           dojo.require("dijit.layout.TabContainer");
+           dojo.require("dijit.form.Button");
+
+           function refreshTest(){
+           alert("got event!!");
+           }
+           
+           function openNewTab(){
+           // create new tab
+           var div = dojo.doc.createElement('div');
+           div.appendChild(dojo.doc.createTextNode("testingaigna"));
+           var nt = new dijit.layout.ContentPane(
+               {title:'New Tab', closable:true,
+               onDownloadStart: refreshTest},
+               div);
+           var tabContainer = dijit.byId('mainTabContainer');
+           // add tab to tab container
+           
+           var children = tabContainer.getChildren();
+
+           if (children.length > 4)
+               {
+               tabContainer.removeChild(children[0]);
+               }
+           tabContainer.addChild(nt);
+
+           nt.startup();
+
+           // select the newly created tab
+           tabContainer.selectChild(nt);
+           var handle = dojo.connect(nt, "onShow", function(evt){
+            console.info("Tab selected!!");
+            nt.handle = handle;
+           //alert("selected!!!");
+            //dojo.stopEvent(evt);
+
+            });
+         }
+     </script>
+</head>
+<body class="tundra">
+   <div id="mainTabContainer" dojoType="dijit.layout.TabContainer" 
+        style="width:100%;height:100px">
+      <div id="LittleRed" dojoType="dijit.layout.ContentPane" title="Little Red Cap" closable="true" >
+      Once upon a time there was a dear little girl who was loved by
+      every one who looked at her, but most of all by her grandmother,
+      and there was nothing that she would not have given to the child.
+      </div>
+      <div id="HanselGretel" dojoType="dijit.layout.ContentPane"
+           title="Hansel and Gretel" closable="true" selected="true">
+      Hard by a great forest dwelt a poor wood-cutter with his wife
+      and his two children. The boy was called Hansel and the girl Gretel.
+      He had little to bite and to break, and once when great dearth fell
+      on the land, he could no longer procure even daily bread.
+      </div>
+      <div id="GreenTwigs" dojoType="dijit.layout.ContentPane"
+             title="The Three Green Twigs" closable="true" >
+      There was once upon a time a hermit who lived in a forest at the foot
+      of a mountain, and passed his time in prayer and good works,
+      and every evening he carried, to the glory of God, two pails of water
+      up the mountain.
+      </div>
+    </div>
+    
+    <input type="button" onclick="openNewTab()" value="Open New Tab">
+</body>
+</html>

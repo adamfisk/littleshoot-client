@@ -1,0 +1,96 @@
+                
+<div id="contentDataDiv">
+    <div class="menuSeparator"></div>
+
+    <div id="homeContentBody" class="contentBody {% if homeSelected %}selectedAboutBody {% else %} unSelectedAboutBody {% endif %}">
+        {% include "homeContentBody.html" %}
+    </div>
+    <div id="whatIsContentBody" class="contentBody {% if whatIsSelected %}selectedAboutBody {% else %} unSelectedAboutBody {% endif %}">
+        {% if whatIsSelected %}
+        {% include "whatIsContentBodyWrapper.html" %}
+        {% endif %}
+    </div>
+    <div id="helpContentBody" class="contentBody {% if helpSelected %}selectedAboutBody {% else %} unSelectedAboutBody {% endif %}">
+        {% if helpSelected %}
+        {% include "helpContentBodyWrapper.html" %}
+        {% endif %}
+    </div>
+    <div id="technologyContentBody" class="contentBody {% if technologySelected %}selectedAboutBody {% else %} unSelectedAboutBody {% endif %}">
+        {% if technologySelected %}
+        {% include "technologyContentBodyWrapper.html" %}
+        {% endif %}
+    </div>
+    <div id="teamContentBody" class="contentBody {% if teamSelected %}selectedAboutBody {% else %} unSelectedAboutBody {% endif %}">
+        {% if teamSelected %}
+        {% include "teamContentBodyWrapper.html" %}
+        {% endif %}
+    </div>
+    
+    <div id="contactContentBody" class="contentBody {% if contactSelected %}selectedAboutBody {% else %} unSelectedAboutBody {% endif %}">
+        {% if contactSelected %}
+        {% include "contactContentBodyWrapper.html" %}
+        {% endif %}
+    </div>
+    
+    <div id="developersContentBody" class="contentBody {% if developersSelected %}selectedAboutBody {% else %} unSelectedAboutBody {% endif %}">
+        {% if developersSelected %}
+        {% include "developersContentBodyWrapper.html" %}
+        {% endif %}
+    </div>
+    
+    <div id="codeContentBody" class="contentBody {% if codeSelected %}selectedAboutBody {% else %} unSelectedAboutBody {% endif %}">
+        {% if codeSelected %}
+        {% include "codeContentBodyWrapper.html" %}
+        {% endif %}
+    </div>
+    
+    <div id="betaContentBody" class="contentBody {% if betaSelected %}selectedAboutBody {% else %} unSelectedAboutBody {% endif %}">
+        {% if betaSelected %}
+        {% include "betaContentBodyWrapper.html" %}
+        {% endif %}
+    </div>
+    
+    
+    <div id="downloadContentBody" class="contentBody {% if downloadSelected %}selectedAboutBody {% else %} unSelectedAboutBody {% endif %}">
+        {% if isWindows %}
+            {% include "downloadContentBodyWrapper.html" %}
+        {% else %}{% if isMac %}
+            {% include "downloadContentBodyWrapper.html" %}
+        {% else %}{% if isOther %}
+            {% include "downloadContentBodyWrapper.html" %}
+        {% endif %}{% endif %}{% endif %}
+    </div>
+    
+    <div id="emailThanks" class="contentBody {% if emailThanksSelected %}selectedAboutBody {% else %} unSelectedAboutBody {% endif %}">
+        {% if emailThanksSelected %}
+        {% include "emailThanksContentBodyWrapper.html" %}
+        {% endif %}
+    </div>
+    
+    <div id="amazonFpsSuccess" class="contentBody {% if amazonFpsSuccessSelected %}selectedAboutBody {% else %} unSelectedAboutBody {% endif %}">
+        {% if amazonFpsSuccessSelected %}
+        {% include "amazonFpsSuccessContentBodyWrapper.html" %}
+        {% endif %}
+    </div>
+    
+    <div id="amazonFpsPending" class="contentBody {% if amazonFpsPendingSelected %}selectedAboutBody {% else %} unSelectedAboutBody {% endif %}">
+        {% if amazonFpsPendingSelected %}
+        {% include "amazonFpsPendingContentBodyWrapper.html" %}
+        {% endif %}
+    </div>
+    
+    <div id="amazonFpsFailed" class="contentBody {% if amazonFpsFailedSelected %}selectedAboutBody {% else %} unSelectedAboutBody {% endif %}">
+        {% if amazonFpsFailedSelected %}
+        {% include "amazonFpsFailedContentBodyWrapper.html" %}
+        {% endif %}
+    </div>
+    
+    <div id="buyProContentBody" class="contentBody {% if buyProSelected %}selectedAboutBody {% else %} unSelectedAboutBody {% endif %}">
+        {% if buyProSelected %}
+        {% include "buyProContentBodyWrapper.html" %}
+        {% endif %}
+    </div>
+    
+</div>
+
+{% include "accordionNav.html" %}

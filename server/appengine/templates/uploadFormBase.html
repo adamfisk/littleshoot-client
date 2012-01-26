@@ -1,0 +1,53 @@
+<!--
+<script type="text/javascript" src="/js/swfupload.js"></script> 
+
+ 
+<script type="text/javascript">
+var swfu = new SWFUpload({ upload_url : "http://www.swfupload.org/upload.php", flash_url : "http://www.swfupload.org/swfupload.swf", button_placeholder_id : "spanSWFUploadButton" }); 
+
+//The uploadStart event handler. This function variable is assigned to upload_start_handler in the settings object 
+var myCustomUploadStartEventHandler = function (file) { 
+    var continue_with_upload; 
+    if (file.name === "the sky is blue") { 
+        continue_with_upload = true; } 
+    else { 
+        continue_with_upload = false; 
+    } 
+    return continue_with_upload; 
+}; 
+
+// The uploadSuccess event handler. This function variable is assigned to upload_success_handler in the settings object 
+var myCustomUploadSuccessEventHandler = function (file, server_data, receivedResponse) { 
+    alert("The file " + file.name + " has been delivered to the server. The server responded with " + server_data); 
+}; 
+
+// Create the SWFUpload Object 
+var swfu = new SWFUpload({ upload_url : "http://www.swfupload.org/upload.php", 
+    flash_url : "http://www.swfupload.org/swfupload.swf", 
+    file_size_limit : "200 MB", 
+    upload_start_handler : myCustomUploadStartEventHandler, 
+    upload_success_handler : myCustomUploadSuccessEventHandler });
+</script>
+
+<div id="spanSWFUploadButton">
+</div>
+
+ -->
+
+
+<!-- 
+<form action="https://littleshoot.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+-->
+<form action="http://files.littleshoot.org/" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="key" value="user/{{ fbId }}/files/${filename}">
+    <input type="hidden" name="AWSAccessKeyId" value="{{ aws_access_key_id }}"> 
+    <input type="hidden" name="acl" value="public-read">
+    <input type="hidden" name="success_action_redirect" value="{{ baseUrl }}/uploadSuccess?title=${filename}&fbId={{ fbId }}"/>
+    {% block extraFields %}
+    {% endblock extraFields %}
+
+    <input name="file" type="file"> 
+    <br> 
+    <input type="submit" value="Publish"> 
+</form>
+

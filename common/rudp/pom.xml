@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.lastbamboo</groupId>
+    <artifactId>lastbamboo-common-rudp</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <name>Reliable UDP</name>
+    <description>Last Bamboo Reliable UDP</description>
+
+    <parent>
+        <groupId>org.lastbamboo</groupId>
+        <artifactId>lastbamboo-common</artifactId>
+        <version>1.0</version>
+        </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.littleshoot.mina</groupId>
+            <artifactId>mina-core</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-util-common</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-util-mina</artifactId>
+            </dependency>
+        </dependencies>
+
+    </project>

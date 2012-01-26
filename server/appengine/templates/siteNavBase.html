@@ -1,0 +1,32 @@
+{% extends "siteBase.html" %}
+
+{% block head %}
+<script type="text/javascript" src="http://w.sharethis.com/widget/?tabs=web%2Cpost%2Cemail&amp;charset=utf-8&amp;style=rotate&amp;publisher=f86356a5-fb2b-41e1-a702-f26cc9674b35&amp;embeds=true"></script>
+{% endblock head %}
+
+{% block grayNavControlDiv %}
+<div id="grayNavControlDivLinks">
+    <a style="{% block whatIsSelected %}{% endblock %}" href="whatIs" class="navLink">What is LittleShoot?</a> | 
+    <a style="{% block helpSelected %}{% endblock %}" href="help" class="navLink">Help</a> | 
+    <a style="{% block technologySelected %}{% endblock %}" href="technology" class="navLink">Technology</a> | 
+    <a style="{% block contactSelected %}{% endblock %}" href="contact" class="navLink">Contact</a> |
+    <a style="{% block aboutUsSelected %}{% endblock %}" href="aboutUs" class="navLink">About Us</a> |
+    <a style="{% block downloadSelected %}{% endblock %}" href="download" class="navLink">Download</a> 
+</div>                     
+{% endblock grayNavControlDiv %}
+
+{% block grayNavExtraDiv %}
+    <span id="shareThisContainer" style="margin-left: 100px;">
+        <script type="text/javascript">
+            var title = document.title;
+            var url = window.location.href;
+            SHARETHIS.addEntry({ title: title, url: url });
+        </script>
+    </span>
+{% endblock grayNavExtraDiv %}
+
+
+{% block javascript %}
+    dojo.addOnLoad(SiteNavBase.onOnLoad);
+{% endblock javascript %}
+                        

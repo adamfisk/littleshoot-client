@@ -1,0 +1,7 @@
+Welcome to LittleShoot.
+
+To build LittleShoot on OSX, you simply type ./build.bash. You need maven on your path, and you need to have xcode installed with the 10.4 SDK and later.
+
+Building is more complicated on Windows. You need maven, OpenSSL, PowerShell, and Visual Studio 2010 or above. You can then run .\build.ps1 in PowerShell. Most of the build process is automated from there, with the PowerShell scripts downloading the required dependencies. Whenever it encounters something that's not there, the script should notify you.
+
+The LittleShoot license is specified in LICENSE.txt and as of this writing all copyrights are the sole property of Last Bamboo LLC and it's work for hire programmers.

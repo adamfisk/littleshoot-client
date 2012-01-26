@@ -1,0 +1,60 @@
+            
+            .downloadsStatusDiv { 
+                position: relative;
+                margin: 40px;
+                width: 600px;
+            }
+            
+            .downloadsDiv {
+                position: relative;
+            }
+            
+            
+            #downloadStatsDiv {
+                position: absolute;
+                margin-top: 6px;
+                right: 60px;
+            }
+            
+                        
+            #torrentSeparator, #commentsDiv, #returnToTorrentSite, #logoDiv, #downloadsDiv {
+                margin-right: 4%;
+            }
+            
+            #torrentSeparator { 
+                min-height: 3px;
+                min-width: 300px;
+                margin-top: 20px;
+                margin-bottom: 18px;
+                background-color: #545454;
+            }
+            
+            #clearButtonsDiv {
+                margin-left: 10px;
+            }
+            
+            #clearFailedButtonDiv {
+                float: left;
+            }
+            
+            #clearInactiveButtonDiv {
+                margin-left: 6px;
+                float: left;
+            }
+            
+            #commentsDiv {
+               position: relative;
+               padding-top: 8px;
+               text-align: center;
+            }
+            
+            #returnToTorrentSite {
+                position: relative;
+                margin-top: 18px;
+            }
+            
+            #returnToTorrentLink {
+                cursor: pointer;
+                text-decoration: underline;
+                text-align: center;
+            }

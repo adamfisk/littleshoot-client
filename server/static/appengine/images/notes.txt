@@ -1,0 +1,10 @@
+static/bulletHome.png
+static/button100x22.gif
+static/button100x22Over.gif
+static/button160x22.gif
+static/button160x22Over.gif
+static/loading.gif
+
+I beleive are all actually in the sprites, and we should retrieve them from there.
+
+As of this writing, this app is configured with the ancient rietveld stuff.  Need updating.

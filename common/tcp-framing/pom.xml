@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.lastbamboo</groupId>
+    <artifactId>lastbamboo-common-tcp-framing</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <name>TCP Framing</name>
+    <description>LittleShoot Implementation of RFC 4571 "Framing Real-time Transport Protocol (RTP) and RTP Control Protocol (RTCP) Packets over Connection-Oriented Transport"</description>
+
+    <parent>
+        <groupId>org.lastbamboo</groupId>
+        <artifactId>lastbamboo-common</artifactId>
+        <version>1.0</version>
+        </parent>
+
+    <dependencies>
+           
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>util</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>mina-util</artifactId>
+        </dependency>
+ 
+        </dependencies>
+    </project>

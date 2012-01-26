@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.lastbamboo.server.db">
+    <class name="UserImpl" table="users">
+        <cache usage="read-write" />
+        <id name="m_id" column="id" type="long" access="field">
+            <generator class="native"/>
+            </id>
+
+        <property name="m_email" column="email" access="field" type="string" not-null="true" unique="true"/>
+        <property name="m_password" column="password" access="field" type="string" not-null="true"/>
+        <property name="m_userId" column="user_id" access="field" type="long" not-null="true"/>
+        <property name="m_verified" column="verified" access="field" type="boolean" not-null="true"/>
+        <property name="m_passwordResetId" column="pwd_reset_id" access="field" type="long" not-null="true"/>
+        </class>
+    </hibernate-mapping>
+

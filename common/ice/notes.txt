@@ -1,0 +1,4 @@
+The current ICE ***TCP*** process uses server sockets on both sides. The client side server socket is dynamically created, and the server side one is currently static and long lived. 
+
+The reason the server side one is static is so that we only have to create UPnP and NAT PMP mappings once. The downside of it is that there's no way of mapping the incoming socket to the appropriate ICE resolution process 100% accurately all the time, so the server side just keeps chugging along with ICE. That's not super problematic, but it's an interesting sequence to consider.
+

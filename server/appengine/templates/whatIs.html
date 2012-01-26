@@ -1,0 +1,21 @@
+{% extends "siteNavBase.html" %}
+
+{% block whatIsSelected %}color:black{% endblock %}
+{% block content %}
+<div id="whatIs" class="toggleable innerContent siteToggle"  default="BigIdea">
+    <div class="subNavMenu normalLightBold">
+        <a href="javascript:SubContentNav.subContentNavBase('whatIs', 'BigIdea')" id="whatIsBigIdeaSubNav"  class="subNavLink subNavLinkSelected">The Big Idea</a><br>
+        <a href="javascript:SubContentNav.subContentNavBase('whatIs', 'Search')"  id="whatIsSearchSubNav"   class="subNavLink">Search</a><br>
+        <a href="javascript:SubContentNav.subContentNavBase('whatIs', 'Download')" id="whatIsDownloadSubNav" class="subNavLink">Download</a><br>
+        <a href="javascript:SubContentNav.subContentNavBase('whatIs',  'Publish')" id="whatIsPublishSubNav"  class="subNavLink">Publish</a><br>
+        <a href="javascript:SubContentNav.subContentNavBase('whatIs', 'Privacy')"  id="whatIsPrivacySubNav"  class="subNavLink">Privacy</a><br>
+        <a href="javascript:SubContentNav.subContentNavBase('whatIs', 'Security')" id="whatIsSecuritySubNav" class="subNavLink">Security</a><br>
+    </div>
+    <div class="menuSeparator"></div>
+    <span class="contentTitle normalBoldBig">What is LittleShoot? - <span class="contentTitleSub"></span></span>
+    <div class="datum sprite-datumBackground"></div>
+    <div id="whatIsContentBody" class="contentBody">
+
+    </div>
+</div>
+{% endblock %}

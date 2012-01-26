@@ -1,0 +1,191 @@
+
+#body
+    {
+    background-image: url('http://littleshootimages.appspot.com/images/index_bottom_grad.gif');
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-attachment: fixed;
+    }
+         
+#leftDiv 
+    {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 540px;
+    width: 300px;
+    background-image: url('http://littleshootimages.appspot.com/images/bamboo.gif');
+    background-position: left bottom;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    }
+  
+#logoDiv
+    {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    }
+    
+#customLogoDiv
+    {
+    position: absolute;
+    top: 30px;
+    right: 60px;
+    }
+      
+#contentDiv
+    {
+    position: relative;
+    top: 6px;
+    width: 680px;
+    left: 10px;
+    margin-left: auto; margin-right: auto;
+    }
+    
+#groupLink
+    {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    }
+
+#searchDiv
+    {
+    position: absolute;
+    top: 80px;
+    left: 0px;
+    width: 500px;
+    height: 160px;
+    }
+    
+#safeSearchDiv
+    {
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid;
+    border-color: #7F8585;
+    }
+    
+#publishDiv
+    {
+    position: absolute;
+    top: 240px;
+    left: 0px;
+    width: 380px;
+    height: 80px;
+    }
+
+.labelText1
+    {
+    font-family: verdana, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #264F1C;
+    }
+    
+.labelText2
+    {
+    font-family: verdana, sans-serif;
+    font-size: 11px;
+    color: #B5BDBD;
+    }
+    
+.indexRow1
+    {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    }
+    
+.indexRow2
+    {
+    position: absolute;
+    top: 24px;
+    left: 0px;
+    height: 40px;
+    width: 100%;
+    }
+
+.indexFormRow1
+    {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 30px;
+    width: 100%;
+    }
+    
+.indexFormRow2
+    {
+    position: absolute;
+    top: 28px;
+    left: 0px;
+    height: 30px;
+    width: 100%;
+    }
+    
+/* Search div start */    
+#searchCheckBoxes
+    {
+    float: left;
+    background: transparent;
+    border: 0px;
+    }
+    
+#searchSources
+    {
+    position: relative;
+    width: 115px; 
+    z-index: 998; 
+    padding-left: 10px;   
+    margin-bottom: 14px; 
+    font-size: 100%;
+    }
+    
+.tundra .dijitTitlePane .dijitTitlePaneTitle
+    {
+    background:#FFFFFF;
+    padding:4px 4px 4px 4px;
+    }
+    
+.tundra .dijitTitlePane .dijitTitlePaneTextNode 
+    {
+    text-decoration: none;
+    font-family: verdana, sans-serif;
+    font-size: 11px;
+    color: #7F8585;
+    }
+    
+#searchBox
+    {
+    width: 100%;
+    border-style: solid; border-width: 1px; border-color: #AAAAAA; 
+    height: 18px;
+    font-size: 16px;
+    }
+    
+#searchButton 
+    {
+    position: absolute;
+    top: 60px;
+    left: 0px;
+    }
+    
+/* Search div end */   
+
+/* Publish div start */        
+#publishRadioButtons
+    {
+    float: left;
+    background: transparent;
+    border: 0px;
+    }
+    
+#publishButton 
+    {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    }
+/* Publish div end */  

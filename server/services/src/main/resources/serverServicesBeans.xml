@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <!--
+        Class for translating resource types.
+    -->
+    <bean id="resourceTypeTranslator"
+          class="org.lastbamboo.common.util.ResourceTypeTranslatorImpl">
+        </bean>
+        
+    <!--
+        Service for e-mail.
+    -->
+    <bean id="emailService"
+          class="org.lastbamboo.server.services.EmailServiceImpl">
+        <constructor-arg value="${mail.user}"/>
+        <constructor-arg value="${mail.pwd}"/>
+        <constructor-arg ref="velocityService"/>
+        </bean> 
+
+    <!--
+        The controller for accessing data about our servers.
+    -->
+    <bean id="jmxMonitorConfig"
+          class="org.lastbamboo.server.services.JmxMonitorConfig">
+        <constructor-arg ref="jmxMonitor"/>
+        </bean>
+
+    <!--
+        The controller for accessing data about our servers.
+    -->
+    <bean id="serverMonitorJsonService"
+          class="org.lastbamboo.server.services.ServerMonitorService">
+        <constructor-arg ref="jmxMonitor"/>
+        </bean>
+
+    <!--
+        The bean for providing TURN servers.
+    -->
+    <bean id="turnServerService"
+          class="org.lastbamboo.server.services.TurnServerService">
+        <constructor-arg ref="amazonEc2CandidateProvider"/>
+        </bean>	
+
+    <!--
+        The bean for providing SIP servers.
+    -->
+    <bean id="sipServerService"
+          class="org.lastbamboo.server.services.SipServerService">
+        <constructor-arg ref="amazonEc2CandidateProvider"/>
+        </bean>
+
+    <!--
+        The bean for providing file listings for specific users.
+    -->
+    <bean id="fileListingService"
+          class="org.lastbamboo.server.services.FileListingService">
+        <constructor-arg ref="resourceRepository"/>
+        </bean> 
+<!--  
+    <bean id="mailSender"
+          class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com"/>
+        <property name="username" value="${mail.user}"/>
+        <property name="password" value="${mail.pwd}"/>
+        <property name="port" value="465"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
+        </bean>
+-->
+
+    <!--
+        Service for creating a new user.
+    -->
+    <bean id="newUserService"
+          class="org.lastbamboo.server.services.NewUserService">
+        <constructor-arg ref="resourceRepository"/>
+        <constructor-arg ref="emailService"/>
+        </bean> 
+
+    <!--
+        Service for creating a new group.
+    -->
+    <bean id="newGroupService"
+          class="org.lastbamboo.server.services.NewGroupService">
+        <constructor-arg ref="resourceRepository"/>
+        </bean> 
+        
+    <!--
+        Service for verifying a new user's e-mail address.
+    -->
+    <bean id="confirmNewUserService"
+          class="org.lastbamboo.server.services.ConfirmNewUserService">
+        <constructor-arg ref="resourceRepository"/>
+        </bean> 
+
+    <!--
+        Service for when the user has forgotten their password.
+    -->
+    <bean id="forgotPasswordService"
+          class="org.lastbamboo.server.services.ForgotPasswordService">
+        <constructor-arg ref="resourceRepository"/>
+        <constructor-arg ref="emailService"/>
+        </bean> 
+
+    <!--
+        Service for users resetting their passwords.
+    -->
+    <bean id="resetPasswordService"
+          class="org.lastbamboo.server.services.ResetPasswordService">
+        <constructor-arg ref="resourceRepository"/>
+        </bean> 
+	</beans>

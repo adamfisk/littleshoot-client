@@ -1,0 +1,165 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.lastbamboo</groupId>
+    <artifactId>lastbamboo-client-services</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <name>Client Web Application Services</name>
+    <description>Business Logic Services for the Local Web Application Client</description>
+
+    <parent>
+        <groupId>org.lastbamboo</groupId>
+        <artifactId>lastbamboo-client</artifactId>
+        <version>1.0</version>
+        </parent>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+        </dependency>
+
+<!--
+        <dependency>
+            <groupId>org.mortbay.jetty</groupId>
+            <artifactId>jetty-embedded</artifactId>
+        </dependency>
+-->
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-client-prefs</artifactId>
+        </dependency>
+            
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-client-resource</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-bencode</artifactId>
+        </dependency>
+           
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>littleshoot-downloader</artifactId>
+        </dependency>
+ 
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>http-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-jlibtorrent</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-npapi</artifactId>
+        </dependency>
+                     
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-rest</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-json</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-rest</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-searchers-flickr</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-searchers-isohunt</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-searchers-limewire</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-searchers-littleshoot</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-searchers-yahoo</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-searchers-youtube</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>p2p</artifactId>
+        </dependency>
+           
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>sip-stack</artifactId>
+        </dependency>
+           
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>util</artifactId>
+        </dependency>
+ 
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>jlibtorrent</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>collection</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>core-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>gnutella-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>p2p</artifactId>
+        </dependency>
+        
+    </dependencies>
+
+</project>

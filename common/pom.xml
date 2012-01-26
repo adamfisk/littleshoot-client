@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.lastbamboo</groupId>
+    <artifactId>lastbamboo-common</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <name>Common Projects</name>
+    <description>
+        This is the project that builds all of the shared common subprojects.
+        </description>
+    <url></url>
+
+    <modules>
+<!--
+        <module>amazon</module>
+-->
+        <module>bencode</module>
+        <module>download</module>
+
+<!--        
+        <module>http-client</module>
+<module>ice</module>-->
+        <module>jlibtorrent</module>
+        <module>jmx</module>
+        <module>json</module>
+        <module>log4j-appender</module>
+        <module>npapi</module>
+
+<!--        <module>offer-answer</module>-->
+        <module>online</module>
+
+<!--        <module>p2p</module>
+        <module>portmapping</module>
+-->     
+   <module>rest</module>
+<!--
+        <module>sdp</module>
+-->
+        <module>searchers</module>
+<!--
+        <module>sip</module>
+-->
+        <module>sip-turn</module>
+<!--
+        <module>stun</module>
+        
+        <module>tcp-framing</module>
+        
+        <module>turn</module>
+        <module>udt</module>
+        <module>util</module>
+        <module>xmpp</module>
+-->
+        </modules>
+
+    <parent>
+        <groupId>org.lastbamboo</groupId>
+        <artifactId>lastbamboo</artifactId>
+        <version>1.0</version>
+        </parent>
+    </project>

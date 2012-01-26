@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>LittleShoot</title>
+	
+<script LANGUAGE="JavaScript">
+
+function startLittleShoot() 
+{
+	var littleshoot = document.getElementById("littleShootPlugin");
+	littleshoot.ipc.start();
+}
+
+function stopLittleShoot() 
+{
+	var littleshoot = document.getElementById("littleShootPlugin");
+	littleshoot.ipc.stop();
+} 
+
+function setState() 
+{
+	var littleshoot = document.getElementById("littleShootPlugin");
+	littleshoot.ipc.state = 1;
+	//littleshoot.src = "http://movies.apple.com/movies/sony/2012/2012-tlr1_h480p.mov";
+} 
+
+</script>
+
+</head>
+<body>
+
+<center>
+
+<embed id="littleShootPlugin" width="100" height="20" src="#" type="application/x-littleshoot">
+
+<BR>
+
+<form action="" method="post">
+<input type=button value="Start" onClick="startLittleShoot()">
+<input type=button value="Stop" onClick="stopLittleShoot()">
+<input type=button value="Set State" onClick="setState()">
+
+</form>
+
+<a href="#" onClick="setState()">Redirect stream.</a>
+
+</center>
+
+</body>
+</html>

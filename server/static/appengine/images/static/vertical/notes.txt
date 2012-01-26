@@ -1,0 +1,7 @@
+I couldn't figure out how to get the online sprite generator to generate sprites laid out horizontally for vertical (repeat-x) background tiling.  I'm just using montage directly intead, for example:
+
+montage *.gif -background none -geometry +0+10 -tile x1 montage.png
+
+then optimizing with optipng as in:
+
+optipng montage.png

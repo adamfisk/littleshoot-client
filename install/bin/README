@@ -1,0 +1,10 @@
+OSX
+The postflight script in install/osx/LittleShoot is the one that's used!!!
+
+Not sure if we can just get rid of the other though
+
+The jsmooth stuff can be confusing as hell.  The littleshoot.jsmooth
+file *is generated* during the build -- in temp_install_dir/trunk/install/win
+
+To build the Windows installer, you need makensis from the NSIS
+installer on your path.

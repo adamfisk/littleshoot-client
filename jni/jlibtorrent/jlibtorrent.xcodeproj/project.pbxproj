@@ -1,0 +1,339 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B9B2B1550F6CDCC600459FB9 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B2B1530F6CDCC600459FB9 /* libcrypto.a */; };
+		B9B2B1560F6CDCC600459FB9 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B2B1540F6CDCC600459FB9 /* libssl.a */; };
+		F2418CEA0EF2F4D80028E7A0 /* jnltorrentjnilib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2418CE90EF2F4D80028E7A0 /* jnltorrentjnilib.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0A603A8F0B8FCE76009D4747 /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resources; sourceTree = "<group>"; };
+		0A603BA90B913D5E009D4747 /* bin */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bin; sourceTree = "<group>"; };
+		0A603BB00B9158B9009D4747 /* jars */ = {isa = PBXFileReference; lastKnownFileType = folder; path = jars; sourceTree = "<group>"; };
+		0AB364E40B2F671600788B6C /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = src; sourceTree = "<group>"; };
+		0AB3653A0B2F688E00788B6C /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lib; sourceTree = "<group>"; };
+		0AB3653C0B2F68A200788B6C /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dist; sourceTree = "<group>"; };
+		B950091D0F23B47100F0509D /* session.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = session.cpp; path = src/main/cpp/session.cpp; sourceTree = "<group>"; };
+		B9B2B1530F6CDCC600459FB9 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../openssl/openssl-0.9.8j/build/libcrypto.a"; sourceTree = SOURCE_ROOT; };
+		B9B2B1540F6CDCC600459FB9 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../../openssl/openssl-0.9.8j/build/libssl.a"; sourceTree = SOURCE_ROOT; };
+		EB9FD8720AEECD83008E157E /* build.xml */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = build.xml; sourceTree = "<group>"; };
+		F2418CE90EF2F4D80028E7A0 /* jnltorrentjnilib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jnltorrentjnilib.cpp; path = src/main/cpp/jnltorrentjnilib.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4CEBA78D08679EF10015D03E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9B2B1550F6CDCC600459FB9 /* libcrypto.a in Frameworks */,
+				B9B2B1560F6CDCC600459FB9 /* libssl.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00E6828FFEC88D1A11DB9C8B = {
+			isa = PBXGroup;
+			children = (
+				B9B2B1530F6CDCC600459FB9 /* libcrypto.a */,
+				B9B2B1540F6CDCC600459FB9 /* libssl.a */,
+				B950091D0F23B47100F0509D /* session.cpp */,
+				F2418CE90EF2F4D80028E7A0 /* jnltorrentjnilib.cpp */,
+				EB9FD8720AEECD83008E157E /* build.xml */,
+				0AB364E40B2F671600788B6C /* src */,
+				0A603A8F0B8FCE76009D4747 /* resources */,
+				0AB3653A0B2F688E00788B6C /* lib */,
+				0A603BA90B913D5E009D4747 /* bin */,
+				0A603BB00B9158B9009D4747 /* jars */,
+				0AB3653C0B2F68A200788B6C /* dist */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		4CEBA78B08679EF10015D03E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXLegacyTarget section */
+		EB9FD8610AEECCF5008E157E /* jlibtorrent */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "-emacs $(ACTION)";
+			buildConfigurationList = EB9FD8690AEECD13008E157E /* Build configuration list for PBXLegacyTarget "jlibtorrent" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/ant;
+			dependencies = (
+			);
+			name = jlibtorrent;
+			passBuildSettingsInEnvironment = 1;
+			productName = AntJNIWrapper;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		4CEBA78E08679EF10015D03E /* JNILib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CEBA79108679F100015D03E /* Build configuration list for PBXNativeTarget "JNILib" */;
+			buildPhases = (
+				4CEBA78B08679EF10015D03E /* Headers */,
+				4CEBA78C08679EF10015D03E /* Sources */,
+				4CEBA78D08679EF10015D03E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JNILib;
+			productName = JNILibN;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		00E6828EFEC88D1A11DB9C8B /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 4CEBA75C08679E4D0015D03E /* Build configuration list for PBXProject "jlibtorrent" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 00E6828FFEC88D1A11DB9C8B;
+			productRefGroup = 00E6828FFEC88D1A11DB9C8B;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4CEBA78E08679EF10015D03E /* JNILib */,
+				EB9FD8610AEECCF5008E157E /* jlibtorrent */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4CEBA78C08679EF10015D03E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2418CEA0EF2F4D80028E7A0 /* jnltorrentjnilib.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		4CEBA75D08679E4D0015D03E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = "";
+				SDKROOT = macosx10.4;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		4CEBA75E08679E4D0015D03E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_MODEL_TUNING = G5;
+				GCC_VERSION = 4.0;
+				HEADER_SEARCH_PATHS = "";
+				SDKROOT = macosx10.4;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		4CEBA79208679F100015D03E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_EXTENSION = jnilib;
+				EXECUTABLE_PREFIX = lib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = "";
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/System/Library/Frameworks/JavaVM.framework/Headers/**",
+					"${TARGET_BUILD_DIR}/Headers/**",
+					"\"$(SRCROOT)/../../boost\"",
+				);
+				HEADER_SEARCH_PATHS_QUOTED_1 = "\"${OBJROOT}/Headers\"";
+				HEADER_SEARCH_PATHS_QUOTED_2 = "\"$(SYSTEM_LIBRARY_DIR)/Frameworks/JavaVM.framework/Headers\"";
+				HEADER_SEARCH_PATHS_QUOTED_3 = "\"$(CONFIGURATION_BUILD_DIR)/Headers\"";
+				INSTALL_PATH = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../libtorrent/mac/build/debug\"",
+					"\"$(SRCROOT)/../../boost/boost/bin.v2/libs/system/build/darwin-4.2.1/debug/address-model-32_64/architecture-x86/link-static/macosx-version-min-10.5/threading-multi\"",
+					"\"$(SRCROOT)/../../boost/boost/bin.v2/libs/filesystem/build/darwin-4.2.1/debug/address-model-32_64/architecture-x86/link-static/macosx-version-min-10.5/threading-multi\"",
+					"\"$(SRCROOT)/../../boost/boost/bin.v2/libs/date_time/build/darwin-4.2.1/debug/address-model-32_64/architecture-x86/link-static/macosx-version-min-10.5/threading-multi\"",
+					"\"$(SRCROOT)/../../boost/boost/bin.v2/libs/regex/build/darwin-4.2.1/debug/address-model-32_64/architecture-x86/link-static/macosx-version-min-10.5/threading-multi\"",
+					"\"$(SRCROOT)/../../boost/boost/bin.v2/libs/thread/build/darwin-4.2.1/debug/address-model-32_64/architecture-x86/link-static/macosx-version-min-10.5/threading-multi\"",
+					"\"$(SRCROOT)/../../openssl/openssl-0.9.8j/build\"",
+				);
+				LIBRARY_STYLE = DYNAMIC;
+				MACH_O_TYPE = mh_dylib;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-lssl",
+					"-lcrypto",
+					"-ltorrent",
+					"-lboost_system-mt-d",
+					"-lboost_filesystem-mt-d",
+					"-lboost_thread-mt-d",
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = antbasedjni;
+				SDKROOT = macosx10.5;
+				SECTORDER_FLAGS = "";
+				VALID_ARCHS = "i386 x86_64";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		4CEBA79308679F100015D03E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_EXTENSION = jnilib;
+				EXECUTABLE_PREFIX = lib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					TORRENT_DISABLE_GEO_IP,
+					NDEBUG,
+					TORRENT_DISABLE_RESOLVE_COUNTRIES,
+				);
+				GCC_VERSION = "";
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(JAVA_5_JNI_PATH)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_4)",
+					"\"$(SRCROOT)/../../boost/boost\"",
+					"\"$(SRCROOT)/../../libtorrent/libtorrent/include\"",
+					"\"$(SRCROOT)/../../openssl/openssl-0.9.8j\"",
+				);
+				HEADER_SEARCH_PATHS_QUOTED_1 = "\"${OBJROOT}/Headers\"";
+				HEADER_SEARCH_PATHS_QUOTED_2 = "\"$(SYSTEM_LIBRARY_DIR)/Frameworks/JavaVM.framework/Headers\"";
+				HEADER_SEARCH_PATHS_QUOTED_3 = "\"/System/Library/Frameworks/JavaVM.framework/Headers\"/**";
+				HEADER_SEARCH_PATHS_QUOTED_4 = "\"src/main/cpp\"/**";
+				INSTALL_PATH = /usr/local/lib;
+				JAVA_5_JNI_PATH = /Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Headers;
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../openssl/openssl-0.9.8j/build\"",
+					"$(inherited)",
+					"\"$(SRCROOT)/../../libtorrent/mac/build/Release\"",
+					"\"$(SRCROOT)/../../boost/boost/bin.v2/libs/system/build/darwin-4.2.1/release/address-model-32_64/architecture-x86/link-static/macosx-version-min-10.5/threading-multi\"",
+					"\"$(SRCROOT)/../../boost/boost/bin.v2/libs/filesystem/build/darwin-4.2.1/release/address-model-32_64/architecture-x86/link-static/macosx-version-min-10.5/threading-multi\"",
+					"\"$(SRCROOT)/../../boost/boost/bin.v2/libs/date_time/build/darwin-4.2.1/release/address-model-32_64/architecture-x86/link-static/macosx-version-min-10.5/threading-multi\"",
+					"\"$(SRCROOT)/../../boost/boost/bin.v2/libs/regex/build/darwin-4.2.1/release/address-model-32_64/architecture-x86/link-static/macosx-version-min-10.5/threading-multi\"",
+					"\"$(SRCROOT)/../../boost/boost/bin.v2/libs/thread/build/darwin-4.2.1/release/address-model-32_64/architecture-x86/link-static/macosx-version-min-10.5/threading-multi\"",
+				);
+				LIBRARY_STYLE = DYNAMIC;
+				MACH_O_TYPE = mh_dylib;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-lcrypto",
+					"-lssl",
+					"-ltorrent",
+					"-lboost_system",
+					"-lboost_filesystem",
+					"-lboost_thread",
+					"-lboost_date_time",
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = jnltorrent;
+				SDKROOT = macosx10.5;
+				SECTORDER_FLAGS = "";
+				VALID_ARCHS = "i386 x86_64";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		EB9FD86A0AEECD13008E157E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = AntJNIWrapper;
+			};
+			name = Debug;
+		};
+		EB9FD86B0AEECD13008E157E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				PRODUCT_NAME = jlibtorrent;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4CEBA75C08679E4D0015D03E /* Build configuration list for PBXProject "jlibtorrent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CEBA75D08679E4D0015D03E /* Debug */,
+				4CEBA75E08679E4D0015D03E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CEBA79108679F100015D03E /* Build configuration list for PBXNativeTarget "JNILib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CEBA79208679F100015D03E /* Debug */,
+				4CEBA79308679F100015D03E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB9FD8690AEECD13008E157E /* Build configuration list for PBXLegacyTarget "jlibtorrent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB9FD86A0AEECD13008E157E /* Debug */,
+				EB9FD86B0AEECD13008E157E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 00E6828EFEC88D1A11DB9C8B /* Project object */;
+}

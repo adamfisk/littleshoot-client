@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>LittleShoot File Sharing Plugin</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+    <style type="text/css">
+    <!--  DELETEME
+        @import "js/dijit/themes/tundra/tundra.css";
+        @import "js/dojo/resources/dojo.css";
+        DELETEME --> 
+    </style>
+
+
+    <style type="text/css">
+        @import "dojo-release-1.1.0-src/dijit/themes/tundra/tundra.css";
+        @import "dojo-release-1.1.0-src/dojo/resources/dojo.css";
+    </style>
+    
+    <style type="text/css">
+        @import "css/download.css";
+    </style>
+    
+</head>
+<body class="tundra" id="body">
+    
+    <script type="text/javascript" src="firebug/firebug.js"></script>
+
+<!-- DELETEME
+    <script type="text/javascript" src="js/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+    <script type="text/javascript" src="js/dojo/shootDojo.js"></script>
+    <script type="text/javascript" src="js/littleshoot/AC_QuickTime.js"></script>
+DELETEME-->
+
+    <script type="text/javascript" src="dojo-release-1.1.0-src/dojo/dojo.js" djConfig="parseOnLoad: true"></script><!--  //DELETEME -->
+    
+    <div id="fileDiv">
+        <script language="JavaScript" type="text/javascript">
+            function loadFile()
+                {
+                var params = CommonUtils.queryToObject();
+                console.log("QTViewer::params: "+dojo.toJson(params));
+                if (!params.url)
+                    {
+                    throw new Error("No URL in params: "+dojo.toJson(params));
+                    }
+                QT_WriteOBJECT(params.url,'780','400','','controller','TRUE','target','myself','type','video/quicktime');
+                };
+            dojo.addOnLoad(loadFile);
+        </script>
+    </div>
+    
+    <script type="text/javascript" src="littleshoot/CommonUtils.js"></script><!--  //DELETEME -->
+    <script type="text/javascript" src="littleshoot/AC_QuickTime.js"></script><!--  //DELETEME -->
+    
+    <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        _uacct = "UA-3025934-2";
+        urchinTracker();
+    </script>
+</body>
+</html>

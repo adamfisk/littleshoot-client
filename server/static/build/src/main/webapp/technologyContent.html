@@ -1,0 +1,485 @@
+<div class="contentBodySection technologySection" id="technologyIntro" style="display:none;" title="Introduction">
+    <span class="normalMedium">  
+        While we strive to make LittleShoot as simple as possible for the user, the technology working behind the scenes is anything but.  
+        Technology lies at the heart of what we do. 
+        
+        <br><br>
+        LittleShoot is not just a new p2p program.  Rather, LittleShoot is built on a new p2p platform based on open standards.  
+        There are several core pieces of functionality every p2p file sharing system needs:
+        
+        <br>
+        <ol>
+            <li> A signaling protocol - a way to send a message from any computer to any computer</li>
+            <li> An offer/answer protocol - a way for two computers to communicate about what their capabilities 
+                    are once they've successfully signaled each other</li>
+            <li> NAT and firewall traversal - A way to seamlessly negotiate connections between hosts in 
+                    heterogeneous network environments</li>
+            <li> Publishing - A way to publish content to other peers</li>
+            <li> Searching - A way to search the network</li>
+            <li> Downloading - A way to download content from other peers</li>
+        </ol>
+        
+        In most p2p networks, all of the above functionality - 
+        and that's a lot of functionality - is lumped together into one big heap, one giant "protocol."  
+        From a protocol design perspective, this spells disaster.  
+        As anyone with experience in technology knows, modularity is a cornerstone of writing robust systems.  
+        
+        <br><br>
+        At LittleShoot, we address each component of p2p individually.  While we're not wed to any single protocol for any 
+        single piece of functionality, we do believe strongly that open protocols are crucial to furthering the liberating 
+        potential of the Internet, that interoperability is a vital part of what makes the Internet so powerful.  
+        LittleShoot uses the following:
+        
+        <br>
+        <ol>
+            <li> Signaling protocol: Session Initiation Protocol (<span class="highlightText">SIP</span>) </li>
+            <li> Offer/Answer Protocol: Session Description Protocol (<span class="highlightText">SDP</span>)</li>
+            <li> NAT and Firewall Traversal Protocol: Interactive Connectivity Establishment (<span class="highlightText">ICE</span>), which uses 
+            Simple Traversal Utilities for NAT (<span class="highlightText">STUN</span>) and Traversal Using Relay NAT (<span class="highlightText">TURN</span>)</li>
+            <li> Publishing: We use a simple <span class="highlightText">REST</span> protocol to publish everything to our central servers.</li>
+            <li> Searching: Again a simple REST protocol for initiating searches on our central servers, and <span class="highlightText">Amazon's OpenSearch</span> for responses.</li>
+            <li> Downloading:  Hypertext Transfer Protocol (<span class="highlightText">HTTP</span>) with a segment-scheduling layer on top that does multi-source downloading.</li>
+        </ol>
+        
+        Layering protocols in this way yields many benefits.  Each component has the bare minimal dependencies on other 
+        components, allowing each to evolve independently.  A new version of SIP would not break the other protocols, for example, nor
+        would a new version of HTTP.
+        
+        <br><br>
+        Let's take a closer look at downloading as an example of this modularity.  Anyone could take just our downloader and easily 
+        use it in his or her program without using any of the other code - multi-source downloading for free.  The downloader will use whatever URL resolution 
+        scheme you give it.  It's built on HTTP, but it could easily be adapted for other protocols.  
+        <span class="highlightText">The algorithm for downloading is also easily replaced</span>.  You could switch it to use a BitTorrent-style 
+        rarest-segment-first algorithm, for example, or a windowed-rarest-segment-first system for BitTorrent-esque streaming.  Perhaps more 
+        interestingly, you could also <span class="highlightText">swap in the latest research on efficient swarming</span> coming out of the university community.  
+        If the downloader happens to be running with our stack, you get all of the added 
+        benefits of seamless NAT traversal and efficient signaling, but the downloader never knows the difference.  The signaling layer and the NAT traversal layer
+        could switch to completely different protocols without affecting the downloader at all.
+
+        <br><br>
+        You'll find examples like this throughout our code.  Wherever possible, functionality is parceled out into discrete projects, each designed to be an 
+        independent open source project in its own right.  The reliable UDP layer is another example.  Our downloader often uses it without knowing, but the
+        reliable UDP layer itself is completely independent and has its own jar and simple API for easy inclusion in any other project.
+        
+        <br><br><br>
+        
+        <span class="normalBoldMedium">Why Are Open Protocols So Important?</span>
+        
+        <br><br>
+        We believe open protocols are a crucial part of making the Internet a democratizing force.  
+        Open protocols level the playing field, inviting all comers to participate and to build 
+        upon them however they wish.  This was one of the fundamental reasons for the success of the web.  
+        All of a sudden HTTP and HTML became the de facto standards.  They were relatively easy to implement, 
+        lowering the barrier to entry enough to spark the flurry of innovation we see today as the Internet.  
+        At LittleShoot, we think the same thing can happen for a new generation of protocols that bring a 
+        new layer of rich functionality to everyday applications.
+        <br><br>
+        Open protocols also work spectacularly well when combined with open source, allowing open source projects
+        to focus on implementing one discrete problem well rather than tackling something more complex.  Again, small pieces and modularity are 
+        cornerstones of robust systems.
+        <br><br>
+        Using a standards-based approach also lowers barriers for people wanting to interoperate.  Anyone 
+        wishing to join our network could throw together his or her choice of open source implementations and start right up.  
+        If that newcomer wants more information, the documentation is meticulously recorded in RFCs and drafts 
+        describing exactly how everything is done -- the protocols are already open.
+        
+        <br><br><br>
+        
+        <span class="normalBoldMedium">Accessing the Code</span> 
+        <br><br>
+        You might be wondering how you get your hands on the code.  We're working on a site with more details on participating 
+        and on accessing each module, but for now you can check everything out from our SVN repository and run the code with maven.  
+        Here are the steps you need to follow to run the program:
+        
+        <br>
+        
+        <ol>
+            <li> $ svn co http://svn.littleshoot.org/svn/littleshoot/trunk littleshoot/trunk</li>
+            <li> $ cd littleshoot/trunk</in>
+            <li> $ mvn install (will take a little while -- to skip tests run 'mvn install -Dmaven.test.skip=true')</in>
+            <li> $ cd client/site</in>
+            <li> $ mvn lastbamboo:runscript</in>
+            <li> $ ./run.sh</in>
+        </ol>
+        
+        This will start the LittleShoot process running in the background.  You can then simply point your browser to the 
+        <a href="http://www.littleshoot.org">LittleShoot start page</a>, and the site
+        will automatically recognize you've got LittleShoot installed.<br><br>
+        
+        For help setting up maven or subversion, please refer to their respective sites.  
+        We'll soon put much more documentation up allowing you to participate as you desire.  If you'd like to contribute to the documentation of LittleShoot and 
+        have a knack for maven site building, feel free to pipe up on our <a href="http://groups.google.com/group/littleshooters/">forums</a> or to 
+        start playing around with a checked-out version of the code.  
+
+    </span>
+</div> 
+
+<div class="contentBodySection technologySection" id="technologyOpenPlatform" style="display:none;" title="Open Platform">
+    <span class="normalMedium">
+        The Internet has fragmented as it has matured.  Firewalls and Network Address Translators (NATs) have segmented the Internet into many heterogeneous shards.  
+        LittleShoot helps to cross these boundaries wherever possible using open standards, from HTTP to newer standards like ICE, STUN, TURN, SIP, and XML.  On the 
+        web side, we use JSON and Amazon's OpenSearch, and we implement everything in straight JavaScript, HTML, and CSS.
+        <br><br>
+        Together, these standards expand the web platform using open protocols.  In many ways, the web platform has already expanded by virtue of these protocols existing 
+        -- these protocols are all in broad use on the Internet already.  This architecture is used almost exclusively in VoIP, however, and LittleShoot is the first company to 
+        use it in a more general context for file distribution.
+        <br><br>
+        The use of open standards for every facet of the platform makes it as easy as possible for third-party applications to interoperate with LittleShoot.  If there's ever 
+        an interoperability problem, the LittleShoot code is all open source and quite well documented.  You can either make changes yourself or let us know on the 
+        <a href="http://groups.google.com/group/littleshooters/">forums</a>.  
+        We will always strive to interoperate seamlessly with any third party indiscriminately.  
+    </span>
+</div>
+
+<div class="contentBodySection technologySection" id="technologyOpenSource" style="display:none;" title="Open Source">
+    <span class="normalMedium">
+        The LittleShoot code is licensed under the General Public License version 2.0.  In a nut shell, this allows anyone to access the code and to contribute to it.  
+        If you want to distribute changes to the code, however, you have to license your changes under the GPL as well.
+        <br><br>
+        You might wonder why we've chosen the GPL over a more liberal license such as Apache.  We struggled mightily with this decision, and we ultimately chose 
+        the GPL in part because we foresee the possibility of adding code from other GPLed projects.  We understand the GPL limits the 
+        likelihood of larger companies contributing to the code.  If you're interested in getting an alternative license, please <a href="javascript:SiteNav.contentNav('contact');">contact us</a>.
+        
+        <br><br><br>
+        <span class="normalBoldMedium">Accessing the Code</span> 
+        <br><br>
+        You can check everything out from our SVN repository and run the code with maven.  
+        Here are the steps you need to follow to run the program:
+        
+        <br>
+        
+        <ol>
+            <li> $ svn co http://svn.littleshoot.org/svn/littleshoot/trunk littleshoot/trunk</li>
+            <li> $ cd littleshoot/trunk</in>
+            <li> $ mvn install (will take a little while -- to skip tests run 'mvn install -Dmaven.test.skip=true')</in>
+            <li> $ cd client/site</in>
+            <li> $ mvn lastbamboo:runscript</in>
+            <li> $ ./run.sh</in>
+        </ol>
+        
+        For help setting up maven or subversion, please refer to their respective sites.  
+    </span>
+</div>
+
+<div class="contentBodySection technologySection" id="technologyOpenData" style="display:none;" title="Open Data">
+    <span class="normalMedium">
+        At LittleShoot, you control any data you provide.  If you publish a file, for example, you can always unpublish it.  We strive never to store anything we don't need.  
+        You don't have a user name or a login, for example.  Not having to sign up for anything is both simpler for you and simpler for us.  We don't need to worry about 
+        storing any personal information about you on our servers and neither do you.  You also don't need to waste your time entering yet the same information into yet another web site.  
+    </span>
+</div>
+
+<div class="contentBodySection technologySection" id="technologySecurity" style="display:none;" title="Security">
+    <span class="normalMedium">
+        <span class="normalBoldMedium">Introduction</span> 
+        <br><br>
+        LittleShoot takes security very seriously and includes a number of precautions to ensure you can use LittleShoot safely.  We recognize that P2P opens up the
+        potential for new security holes, and we continually monitor any theoretical and actual attacks on LittleShoot to protect our users.  Our security framework 
+        is described in more detail below.
+        
+        <br><br><br>
+        <span class="normalBoldMedium">Localhost Only</span> 
+        <br><br>
+        LittleShoot's first line of defense is to only accept requests from the local computer.  This means that whatever requests are made to LittleShoot, they have to be made 
+        from another program running on the same computer that LittleShoot is running on.  LittleShoot is an HTTP server (among other things), and it uses a simple Java servlet filter on all calls
+        to ensure they come from the local computer.  File uploads are the one exception, a case described below.
+        
+        <br><br><br>
+        <span class="normalBoldMedium">File Uploads</span> 
+        <br><br>
+        One of LittleShoot's functions is to allow you to share files with other users.  For this to work, you have to allow file requests from other machines to go through.
+        LittleShoot keeps you protected even in this case.  First, LittleShoot only shares files through their unique SHA-1 hash.  Each file has a unique hash, and only the 
+        files you've explicitly tell LittleShoot to share are available on the network by that hash.  Any other file on your computer cannot be shared because LittleShoot doesn't know anything 
+        about them.  Because LittleShoot uses hashes instead of file paths for serving files, attackers cannot attempt to download sensitive files using obscure file paths.  Attackers also 
+        cannot use a brute-force attack to guess random hashes to access sensitive data because LittleShoot doesn't access any files except the ones you explicitly tell it to share.
+        
+        <br><br><br>
+        <span class="normalBoldMedium">Publishing</span> 
+        <br><br>
+        Because the LittleShoot site allows you to publish files, some extra precautions are necessary.  LittleShoot protects you
+        to ensure only the files you specify can ever be published.  First, LittleShoot takes advantage of the browser's "single origin policy" using HTTP POST requests
+        to obtain temporary Advanced Encryption Standard (AES) keys for publishing.  LittleShoot uses these keys to sign requests from the browser to the LittleShoot client.  Because browsers only 
+        allow POST requests to the site your browser is currently on, you can only publish files when
+        you're on the LittleShoot site.  
+        <br><br>
+        So that prevents other sites from trying to publish your files without your knowledge.  Then, however, LittleShoot needs to protect you from other
+        theoretical attacks on publishing.  You might be on an open wireless network, for example, where other people on the network could be spying on your traffic.  They can easily steal 
+        the temporary key the LittleShoot servers issue to allow you to publish your files.  This fortunately doesn't get them very far, however, because of the first line
+        of defense described above: LittleShoot only accepts requests from the machine it's running on.  Other machines on the local wireless network cannot make calls to
+        tell LittleShoot to publish something, even if they have the temporary key, because LittleShoot just ignores any calls from other computers.  The keys issued
+        for publishing are also only valid for a matter of seconds -- they expire and are useless almost immediately.
+        
+        <br><br><br>
+        <span class="normalBoldMedium">One Final Word on Publishing</span> 
+        <br><br>
+        There's one last little publishing quirk.  When you download files, those files are also published.  Files published via download don't have a key, however, because they're not 
+        published through the browser where the single origin protections matter (i.e., LittleShoot the application is publishing the file, just like any other application could from any domain).
+        On the face of, you might think an attacker could snoop on your WiFi connection, for example, and obtain your unique LittleShoot instance ID.  If an attacker did this, they would
+        be able to make calls the same publishing API LittleShoot uses to publish files, and they would, in fact, enter files in the centralized LittleShoot database.  Because they cannot do this
+        through LittleShoot (the program running locally on your computer) itself, whoever, LittleShoot will never have mappings for the files the attacker is attempting to publish.  
+        So, LittleShoot might get at HTTP request for that file, but LittleShoot will never upload arbitrary file paths you haven't specified.  
+        <br><br>
+        A thousand praises if you followed even half of that.  The upshot is LittleShoot goes to great lengths to protect your security and your privacy.
+        <br><br><br>
+        <span class="normalBoldMedium">Conclusion</span> 
+        <br><br>
+        At LittleShoot we recognize that building a secure application can be a moving target.  There's always the possibility of an attack we haven't thought of, but we diligently 
+        will continue to analyze our architecture for any possibly vulnerabilities.  If you can't use LittleShoot securely, you might as well not use it at all.  Your security is our highest priority.
+    </span>
+</div>
+
+<div class="contentBodySection technologySection" id="technologyArchOverview" style="display:none;" title="Architecture: Overview">
+    <span class="normalMedium">
+        LittleShoot adheres to Martin Fowler's first law of distributed computing -- don't distribute your objects.  Distributed computing is almost invariably harder than its centralized counterpart, 
+        making it often cost more in terms of developer time.  It also gives you less control over updates, as you have to update potentially millions of machines individually.  
+        Still, distributed computing makes sense in many cases.  In particular, it has proven far more efficient at distributing large files, and that's precisely where LittleShoot deploys it the most.  
+        Distributed computing is also advantageous for publishing.  With LittleShoot, we put a full HTTP server on your machine, so there's no need to upload your file to our HTTP servers.  For search, however, distributed 
+        solutions cannot compete with the performance and flexibility of centralized clusters.  While the work on distributed search algorithms is fascinating and
+        often brilliant, distributed solutions suffer from higher latency and inherent restrictions on message size that reduce flexibility.
+        <br><br>
+        In every case, we strive to use the best tool for the task at hand.
+        <br><br>
+        The following gives a breakdown of the technologies we use on the client and server sides.  The client side is where any distributed tasks take place, particularly downloading and publishing, whereas the centralized 
+        HTTP, SIP, STUN, and TURN servers handle everything else.  
+        
+        <br><br>
+        <span class="highlightText">Client:</span>
+        <br><br>
+        The LittleShoot "plugin" is really an application running in the background on your machine that uses the following technologies:
+
+        <ol>
+            <li>HTTP Client and Server</li>
+            <li>SIP Client</li>
+            <li>STUN Client and Server</li>
+            <li>TURN Client</li>
+            <li>ICE </li>
+            <li>Database</li>
+            <li>Spring</li>
+            <li>REST</li>
+            <li>Amazon's OpenSearch</li>
+            <li>JSON</li>
+            
+        </ol>
+        <br>
+        The browser uses the locally running application as a helper to accomplish various tasks from downloading to publishing.  For downloading, for example, the browser prompts the LittleShoot client to initiate
+        downloads for specific SHA-1s.  The client also constantly serves files and cooperates in publishing.
+        <br><br>
+        <span class="highlightText">Server:</span>
+        <br><br>
+        The server side consists of load balanced Apache servers for static content and Tomcat instances for the APIs.  We use a lot of Spring, feed a lot of static JavaScript, HTML, and CSS to the browser, and return a lot of JSON.  
+        We try to keep the server as simple as possible and therefore have no JSPs, JSF, server side includes,etc.  Just straight Apache and simple servlets responding to API calls and returning JSON and occasionally XML.  Each server in the
+        HTTP cluster runs Hibernate over a MySQL instance that replicates data between all the other instances.
+        <br><br>
+        For our SIP, TURN, and STUN servers, we run Amazon EC2 nodes to easily scale up and down as users come on and offline.  We'll be continually optimizing the servers, but our goal is for each SIP server to ultimately handle
+        250,000 simultaneous clients or more with the TURN servers ideally each handling about 100,000 each.  We continually monitor all server instances using JMX.
+    </span>
+</div>
+
+<div class="contentBodySection technologySection" id="technologyArchSearch" style="display:none;" title="Architecture: Search">
+    <span class="normalMedium">
+        As we've alluded to in other places, LittleShoot uses centralized search.  This allows us to provide the lowest latency and most scalable search possible.  
+        It also allows us to add collaborative filtering features such as tagging and user rating of content, ultimately providing you with the most relevant results for 
+        the searches you perform.  When you perform a search with LittleShoot, we only give you results for files owned by users who are online at that very moment.
+        <br><br>
+        Finally, centralizing search allows us to rightfully remove copyrighted content when copyright holders issue takedown notices, as specified under the DMCA.  Because we have the unique hash for every file, 
+        we can also permanently remove files.  Not only can we take a file down, 
+        but we can ensure that exact file can never be published again, providing further protection to the copyright holder. This can be either an advantage or a disadvantage 
+        depending on your perspective, but we think it's overwhelmingly a good thing.  While we believe copyright law can overstep its bounds, we also believe it clearly has its place.
+        <br><br>
+        We chose not to implement distributed search because it's weak in every one of the above areas despite deploying some of the most brilliant algorithms out there.
+    </span>
+</div>
+
+<div class="contentBodySection technologySection" id="technologyArchPublishing" style="display:none;" title="Architecture: Publishing">
+    <span class="normalMedium">
+        Publishing is the second area where distributed computing shines, with multi-source downloading being the first.  Because we have an application installed on your machine that 
+        incorporates an HTTP server and the means of traversing NATs and firewalls, all we have to do to publish a file is notify the server of the file's path.  We do this with a relatively complicated 
+        dance with the browser that allows us to take advantage of the browser's same origin policy, but ultimately publishing your file to the world literally takes milliseconds.
+        <br><br>
+        At a protocol level, we use REST to perform the actual publishing.  In the future we may add Atom publishing.
+    </span>
+</div>
+
+<div class="contentBodySection technologySection" id="technologyArchDownloading" style="display:none;" title="Architecture: Downloading">
+    <span class="normalMedium">
+        The LittleShoot architecture for multi-source downloading encompasses a carefully constructed family of protocols.  Here are the steps that take place when you initiate a downlaod:
+        <br><br>
+        <ol>
+            <li>The browser sends a request to the locally running LittleShoot client to download a file for a particular URI.</li><br>
+        
+            <li>
+                LittleShoot makes a REST request to our servers to get every source for that file currently online on the network.  The sources are URIs.  These could be SIP URIs, HTTP URIs, and eventually BitTorrent URIs,
+                allowing a single file download to take place over SIP-negotiated sockets, straight HTTP, and eventually BitTorrent.
+            </li><br>
+        
+            <li>LittleShoot issues HTTP HEAD requests to each source.  That's where things get interesting.  There's a lot that happens below the downloading layer to make this possible, 
+                particularly the complicated series of messages involved in establishing the optimal network connection between the two hosts.  This is described in more detail in the 
+                <a href="javascript:SiteNav.subContentNav('technology', 'ArchNatFirewall')">section on NAT and firewall traversal</a>.  
+                Once the connection is established, it will stay open as long as LittleShoot is using that source for the download.  The HEAD request passes over this connection.
+                <br><br>
+                The HEAD request itself accomplishes several goals.  First, it establishes the connection to the remote host, as described above.  Second, it verifies the file exists on that machine.  
+                Third, it gives some idea of the latency we can expect from that host, allowing us to make optimizations based on that information.  Finally, if the host only has part of the file, the HTTP 
+                response will indicate which parts the host has.</li><br>
+            <li>LittleShoot begins downloading chunks of the file based on the active downloading algorithm at the time.  This could be a BitTorrent-style rarest-chunk-first strategy or something better for streaming.</li><br>
+            <li>As it's downloading, LittleShoot streams the file to the browser that ultimately requested it.  This means the user doesn't have to wait for the whole file.  Instead, you start getting it as soon as LittleShoot has the first chunk.</li><br>
+        </ol>
+        <br>
+        So, a lot happens during the LittleShoot downloading dance.  The downloading layer itself doesn't rely on any of the fancy NAT traversal code, though.  It could easily 
+        be deployed separately within a corporate network, for example, where all computers are behind the same NAT or on the same LAN.  That scenario simplifies LittleShoot's task immensely.
+        <br><br>
+        This architecture separates the downloading process into discrete problems and corresponding protocols to solve them.  For the file transfer itself, we use HTTP, although even that is easily swappable.  
+        If you're using NAT traversal, the protocols involved with that (SIP, SDP, STUN, TURN, ICE) can each evolve independently and are also largely swappable.  If the IETF releases a new version of SDP, for example, 
+        LittleShoot can begin using it without changing any other code.  The same goes for the other protocols.  This allows each protocol to solve its particular problem optimally without worrying about what the others are doing.  
+        This also makes for great open source projects as a project can focus on implementing one small piece really well rather than tackling a much more complicated task.  
+        <br><br>
+        Finally, this modularity allows other networks to pick and choose how to interoperate with LittleShoot.  For example, a BitTorrent client might decide to adopt ICE for NAT and firewall traversal.  
+        That client could simply take the LittleShoot code and add it, both solving an important problem for them and making it more likely that LittleShoot and that client will be able to download from each other in the future.
+
+    </span>
+</div>
+
+<div class="contentBodySection technologySection" id="technologyArchNatFirewall" style="display:none;" title="Architecture: NAT and Firewall Traversal">
+    <span class="normalMedium">
+        LittleShoot uses SIP, SDP, STUN, TURN, and ICE for NAT and firewall traversal.  ICE really does the heavy lifting, and its use dictates the use of STUN, TURN, and SDP.  SIP handles the 
+        signaling, transporting the SDP offer and answer in INVITE requests and responses, respectively.  The signaling protocol could be something else, such as XMPP, although a switch to XMPP in particular 
+        would require moderate changes to ICE.  
+        <br><br>
+        LittleShoot introduces a couple of small wrinkles to the ICE negotiation.  Because we're more interested in transporting files than multimedia, LittleShoot requires a reliable connection.  We thus implement both ICE 
+        over UDP and the evolving specification for ICE over TCP.  ICE uses STUN requests and responses to establish connectivity in both the UDP and the TCP cases, with each LittleShoot instance acting as both a STUN 
+        client and server.  LittleShoot preferences connections in the following order:
+        <br><br>
+        <ol>
+        <li>TCP connection to the local network address</li>
+        <li>TCP connection to the public address.</li>
+        <li>UDP connection to the public address.</li>
+        <li>TCP connection to the relay address (TURN).</li>
+        </ol>
+        <br>
+        Delving into more detail, if two computers are on the same subnet, they'll connect over TCP every time using the local network address.  For the public TCP address to work, either one of the two computers has to be 
+        on the public Internet or one of them has to be behind a NAT device that supports UPnP.  While the ICE TCP drafts don't use UPnP, we've found the addition of UPnP to be crucial in providing a TCP connection wherever possible.  
+        LittleShoot does not currently attempt to establish a TCP connection through the NAT using TCP hole punching, but that could certainly be a future addition.
+        <br><br>
+        If we're unable to create either a local TCP connection or a TCP connection over the WAN, LittleShoot will then begin the series of STUN requests and responses required to traverse the NATs on either side to establish 
+        a reliable UDP connection.  The reliable UDP (RUDP) layer is a completely separate layer LittleShoot then deploys, demultiplexing between STUN and RUDP messages on that port. If LittleShoot cannot traverse the NATs, which can 
+        happen in cases where both sides are behind NATs deploying address and port dependent mapping and filtering, for example, LittleShoot will resort to using a TCP connection over a TURN relay server.  We avoid this wherever 
+        possible because it increases our cost and typically has higher latency than the alternatives, but it's unavoidable in some cases.
+    </span>
+</div>
+
+
+<div class="contentBodySection technologySection" id="technologyArchRudp" style="display:none;" title="Architecture: Reliable UDP">
+    <span class="normalMedium">
+        LittleShoot uses a reliable UDP layer when it cannot establish a TCP connection between two hosts.  We implement an interoperable, if rarely deployed, standard for reliable UDP, 
+        implementing the latest draft.  RUDP roughly mimics TCP messages wrapped in UDP packets and can easily be used as a separate module for any application needing reliable UDP.  
+        <br><br>
+        The RUDP layer works on top of MINA and provides a java socket API for easy use in other projects.
+    </span>
+</div>
+
+<div class="contentBodySection technologySection" id="technologyFaq" style="display:none;" title="FAQ">
+    <span class="normalMedium">
+        <a href="#background">Why does LittleShoot always run in the background?</a><br>
+        <a href="#bitTorrent">Why don't you just use BitTorrent?</a><br>
+        <a href="#bitTorrentLike">Wow, that's a long list of problems with BitTorrent.  Is there anything you like about it?</a><br>
+        <a href="#bitTorrentSupport">Will you ever support BitTorrent downloads?</a><br>
+        <a href="#java">Why do you use Java?</a><br>
+        <a href="#gnutella">Why don't you use Gnutella?</a><br>
+        <a href="#newProtocol">Why create an entirely new protocol?</a><br>
+        <a href="#http">Why do you use HTTP?  Isn't it inefficient?</a><br>
+        <a href="#cool">Sounds cool.  How can I help?</a><br>
+        
+        <br><br>
+        <span class="normalBoldMedium"><a name="background">Q) Why does LittleShoot always run in the background?</a></span>
+        <br>LittleShoot runs in the background because the efficiency of distributed file sharing network relies on having multiple sources for files.  With everyone running the application all the time, 
+        each computer takes a small part of the burden for file distribution.  Together, every computers small contribution adds up to a incredibly powerful overall network.  If everyone didn't contribute this 
+        little bit, though, the system just wouldn't work well at all.  It also makes it possible for LittleShoot to always cooperate seamlessly with your browser without you having to manually start LittleShoot each 
+        time you're on a LittleShoot-enabled site.
+        <br><br>
+        If you don't want to run LittleShoot in the background all the time, we completely understand and support you.  Because everyone else relies on the cumulative contributions of the rest of the network, 
+        however, there's no option to disable running in the background.  If you really, really want to do this, you'll need to manually configure the code to run in that capacity.
+        <br><br>
+        
+        <span class="normalBoldMedium"><a name="bitTorrent">Q) Why don't you just use BitTorrent?</a></span>
+        <br>While we love how BitTorrent has demonstrated the power of a simple tool for multi-source downloading both technologically and ideologically, we think it's a bit of a mess from a protocol perspective.  
+        Here are our main issues with it:
+        <br><br>
+        <ol>
+            <li>No NAT/firewall traversal.  While many BitTorrent programs do this in some way, they each have their own ad-hoc solutions that frequently don't interoperate.  It's not built in to the protocol.  Most 
+            BitTorrent clients deploy UPnP, but UPnP's unsupported on many routers and is also not a standard part of "BitTorrent".</li>
+            
+            <li>Does not interoperate with HTTP.  All of the most powerful computers on the Internet -- the millions of web servers out there -- are invalid sources for BitTorrent files.  This makes the protocol far less 
+            efficient and powerful than it could be.</li>
+            
+            <li>The protocol is now closed.  BitTorrent's protocol development is fragmented and the company "BitTorrent" has recently closed future development of the protocol.</li>
+            
+            <li>Murky separation of concerns.  BitTorrent lumps together many things that should ideally be separate protocols, particularly publishing and downloading.</li>
+            
+            <li>Publishing is hard.  Setting up trackers can be a real pain, and you have to have a public web server to do so.</li>
+            
+            <li>Search isn't built in.  This makes it difficult to find what you want.  Some companies have built search on top of the many BitTorrent sites, but that is much harder to do than it would be if search were a built-in component.</li>
+            
+            <li>Devoted almost exclusively to infringing content.  While this isn't entirely the fault of the protocol, in large part it is.  Because there's no centralized search repository where users can contribute content, 
+            there's also no way for BitTorrent to respond to takedown notices under the DMCA.  This means that infringement runs rampant on BitTorrent sites and that BitTorrent is not integrated more fully into the rest of the 
+            web because it's rejected for legal rather than for technological reasons.</li>
+        </ol>
+        
+        <br><br>
+        <span class="normalBoldMedium"><a name="bitTorrentLike">Q) Wow, that's a long list of problems with BitTorrent.  Is there anything you like about it?</a></span>
+        <br>Oh, definitely, and we have a great deal of respect for the BitTorrent community. First, we love its simplicity.  BitTorrent is devoted wholeheartedly to solving the problem p2p solves best: 
+        distributing large files.  It basically doesn't do anything else, and that focus means it does its job very well.  That leads directly to the other aspect of it we like:  the efficiency of its chunk selection algorithm.  
+        In fact, we like it so much that LittleShoot implements something very similar.
+        
+        <br><br>
+        <span class="normalBoldMedium"><a name="bitTorrentSupport">Q) Will you ever support BitTorrent downloads?</a></span>
+        <br>Definitely.  We're devoted to interoperability wherever possible, and BitTorrent has become a de facto standard.  To ignore BitTorrent sources for files would be wasteful.  We also support the BitTorrent community 
+        coming together to interoperate more fully itself, and we hope to become an active contributor to that community.
+        
+        <br><br>
+        <span class="normalBoldMedium"><a name="java">Q) Why do you use Java?</a></span>
+        <br>While Java can be an overly verbose and even a clumsy language at times, its tool and library support make it tough to beat.  While we'd prefer to code everything in, say, 
+        Haskel, the efficiency gains from such a language versus Java aren't great enough to outweigh the efficiency losses from all the custom code we'd have to write.  We certainly could be wrong about this!
+        
+        <br><br>
+        <span class="normalBoldMedium"><a name="gnutella">Q) Why don't you use Gnutella?</a></span>
+        <br>While we've personally contributed significantly to the Gnutella community and love its spirit of open protocol development, no single piece of the Gnutella architecture improves upon our implementations 
+        in LittleShoot.  In particular, much of Gnutella is devoted to distributed search, and distributed search just doesn't work as well as its centralized counterpart.  Sure, there are interesting use cases for distributed search in things like ad-hoc networks set up after natural disasters, 
+        but those are significantly outside the scope of what Gnutella implements.  
+        <br><br>
+        From a protocol design perspective, the Gnutella messages are also a hodgepodge of many tacked on pieces of functionality, making them unwieldy and inefficient.  Because everything is once again lumped into 
+        one big "protocol", much like BitTorrent, it's also very difficult for Gnutella to evolve in a way that remains interoperable.  Finally, in practice Gnutella today encompasses many barely documented additions, stifling the 
+        development of the protocol. 
+        
+        <br><br>
+        <span class="normalBoldMedium"><a name="newProtocol">Q) Why create an entirely new protocol?</a></span>
+        
+        <br>Well, in many ways we're simply piecing together existing protocols in a demonstration of how they can be used in a peer-to-peer network.  Beyond this, though, we feel that a standards based approach has the best 
+        chance of truly integrating peer-to-peer with the rest of the Internet, particularly browsers and web servers.  Peer-to-peer has clearly demonstrated itself as the most efficient means of distributing large files, but it's still 
+        not used on web sites.  We think a standards-based approach that's compliant with the DMCA has the best chance of changing that, with the ultimate goal of seeing the fundamental concepts behind peer-to-peer thrive into the future.
+        
+        <br><br>
+        <span class="normalBoldMedium"><a name="http"> Q) Why do you use HTTP?  Isn't it inefficient?</a></span>
+        <br>We use HTTP because it includes all the functionality we need and is the most widely deployed protocol on the Internet.  While its headers take more bytes than a binary protocol likely would, when we're dealing with large files 
+        the data from headers is negligible.  Typical HTTP headers for requests and responses are about 400 bytes, so almost 1K for a request/response pair.  Let's call it 1K.  With a typical download chunk size of 100K, the headers 
+        take up 1% of the total.  While that's certainly not nothing, other optimizations, such as downloading from the closest network sources and using the fastest sources available, are far more important factors in getting your file 
+        fast.  Also, not using HTTP means all those powerful web servers out there with lots of bandwidth can't be used for getting the file you want, potentially having a huge negative impact on your download speeds.
+        <br><br>
+        <span class="normalBoldMedium"><a name="cool">Q) Sounds cool.  How can I help?</a></span>
+        <br>First off, we're honored to have captured your interest.  We welcome all contributors regardless of experience.  That said, we do strive for efficiency in using your time and ours.  To figure out the best place for you to 
+        contribute, it's worth it to consider a couple of questions:
+        
+        <ol>
+            <li>Is there an itch you want scratched?  Don't worry, we're not going to come physically scratch it.  If there's something you've noticed in LittleShoot that bothers you that you think you can fix, that's the very best place to start.</li>
+            <li>What are you good at?  Do you know databases really well?  Are you a JavaScript mastermind?  Maybe you'd like to help make the ICE implementation more closely match the latest revision to the spec?  Are you a networking </li>
+        genius who would like to help speed up our reliable UDP layer?  Maybe documentation is more up your alley?  Matching up your skills and desires with what's implemented in the program will ensure we both make the very best 
+        use of your time.
+            <li>What are LittleShoot's needs?  Take a look at Trac and see what the highest priority needs are.  If anything seems like something you'd both be excited about and able to accomplish, that could be the winner.</li>
+            <li>Is this going to be fun?  Make sure you'll implement something you'd enjoy.  This is maybe unnecessary to say, but we always find we write the best code when we're having fun writing it.</li>
+        </ol>
+        
+        <br>
+        Oh, and of course feel free to just jump in and play around.  We've written some things we think are pretty cool, and we'd love to hear whether you think so too or if you think we're crazy!
+        
+        <br><br>
+    </span>
+</div>
+

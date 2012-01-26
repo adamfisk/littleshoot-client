@@ -1,0 +1,24 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.lastbamboo</groupId>
+    <artifactId>lastbamboo-common-turn</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <name>TURN Projects</name>
+    <description>LittleShoot Implementation of "Traversal Using Relays around NAT (TURN): Relay Extensions to Session Traversal Utilities for NAT (STUN)"</description>
+    <url></url>
+
+    <modules>
+        <module>client</module>
+        <module>http-server</module>
+        <module>server</module>
+        </modules>
+
+    <parent>
+        <groupId>org.lastbamboo</groupId>
+        <artifactId>lastbamboo-common</artifactId>
+        <version>1.0</version>
+        </parent>
+    </project>

@@ -1,0 +1,13 @@
+
+/*
+    Note we had to do this manually because we couldnt' get the online sprite
+    generator to make sprites for repeat-y backgrounds (1 pixel high).  We
+    used montage and optipng.
+*/
+.sprite-buttonLeftBorder { background-position: -10px 0; } 
+.sprite-buttonLeftBorderOver { background-position: -34px 0; } 
+.sprite-buttonRightBorder { background-position: -58px 0; }
+.sprite-buttonRightBorderOver { background-position: -82px 0; } 
+
+.sprite-leftShadow { background-position: -107px 0; } 
+.sprite-rightShadow { background-position: -131px 0; }

@@ -1,0 +1,49 @@
+<div dojoType="dijit.Tree" store="navStore" openOnClick="true" persist="false">
+ <script type="dojo/method" event="onClick" args="item, treeNode">
+    if (item) {
+        CommonUtils.hideAll(".contentBodySection");
+        var elem = dojo.byId(navStore.getValue(item, "content"));
+        CommonUtils.showElement(elem);
+
+        var category = navStore.getValue(item, "category") + " - ";
+        dojo.query("#aboutContainer .contentTitleCategory").forEach(function(each)
+            {
+            each.innerHTML = category;
+            });
+
+        // We use the subTitle property if it's there, otherwise just the name.
+        var title = navStore.getValue(item, "subTitle");
+        if (!title)
+            {
+            title = navStore.getValue(item, "name");
+            }
+        dojo.query("#aboutContainer .contentTitleSub").forEach(function(each)
+            {
+            each.innerHTML = title;
+            });
+    } else {
+        console.info("no item specified.");
+    }
+    return true;
+ </script>
+ 
+<script type="dojo/method" event="getIconClass" args="item">
+    return "";
+</script>
+
+<script type="dojo/method" event="getLabelClass" args="item">
+    if (!item) 
+        {
+        console.error("No item for tree nav!!");
+        return;
+        }
+    var isCategory = navStore.getValue(item, "type");
+    if (isCategory)
+        {
+        return "treeNavRoot";
+        }
+    else
+        {
+        return "treeNavLeaf";
+        }
+</script>

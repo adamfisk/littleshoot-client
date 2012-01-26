@@ -1,0 +1,5 @@
+{% extends "aboutContentBodyWithHeader.html" %}
+{% block contentTitleCategory %}Download{% endblock %}
+{% block aboutContentBody %}{% include "downloadOtherContentBody.html" %}{% endblock aboutContentBody %}
+
+{% block wrapperDivAttributues %} id="downloadOther" {% if not isOther %}style="display:none;"{% endif %}{% endblock %}

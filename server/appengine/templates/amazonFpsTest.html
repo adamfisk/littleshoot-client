@@ -1,0 +1,46 @@
+{% include "header.html" %}
+
+    {% include "dojoCss.html" %}
+        
+        <style type="text/css">
+            {% include "button.css" %}
+            {% include "common.css" %}
+            {% include "searchResults.css" %}
+            {% include "sprite.css" %}
+            
+            
+            #mainDiv { 
+                margin-left: 30px;
+            }
+            
+            #buyProButton {
+                margin-top: 200px;
+            }
+        </style>
+        <link rel="stylesheet" href="http://ui.jquery.com/applications/themes/base/ui.core.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="http://ui.jquery.com/applications/themes/base/ui.theme.css" type="text/css" media="screen">
+        <!-- 
+        <link rel="stylesheet" href="http://ui.jquery.com/applications/themes/base/ui.all.css" type="text/css" media="screen" title="Flora (Default)">
+        -->
+    </head>
+    <body class="tundra">
+        <div id="mainDiv">
+            <form>
+            </form>
+            
+            <center>
+                <input id="buyProButton" class="simpleButton" type="submit" alt="Buy Pro" name="submit" value="Buy Pro"/>
+                <input id="devPayBuyProButton" class="simpleButton" type="submit" alt="Buy Pro" name="submit" value="Buy Pro"/>
+            </center>
+            
+            
+        </div>
+        
+    {% include "javaScriptIncludes.html" %}
+        
+        <script type="text/javascript">
+            {% include "amazonFps.uncompressed.js" %}
+            {% include "setup.js" %}
+        </script>
+    </body>
+</html>

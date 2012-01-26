@@ -1,0 +1,7 @@
+{% extends "uploadFormBase.html" %}
+    {% block extraFields %}
+    <input type="hidden" name="policy" value="{{ base64_policy_file }}">
+    <input type="hidden" name="signature" value="{{ policy_file_signature }}">
+    {% endblock extraFields %}
+    
+

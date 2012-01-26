@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="LittleShoot Open Source, Open Protocols Project">
+
+   <bannerLeft>
+     <name>LittleShoot Open Source, Open Protocols Project</name>
+     <src>http://www.littleshoot.org/developer/resources/images/littleshoot.gif</src>
+     <href>http://www.littleshoot.org/</href>
+   </bannerLeft>
+    <body>
+
+<menu name="Projects">
+    <item name="SIP Client" href="lastbamboo-common-sip/lastbamboo-common-sip-client/index.html"/>
+    <item name="SIP Proxy" href="lastbamboo-common-sip/lastbamboo-common-sip-proxy/index.html"/>
+    <item name="SIP Stack" href="lastbamboo-common-sip/lastbamboo-common-sip-stack/index.html"/>
+    </menu>
+<menu ref="reports" />
+</body>
+</project>

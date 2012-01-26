@@ -1,0 +1,18 @@
+<projectDescription>
+  <name>lastbamboo-common-sip-turn</name>
+  <comment>Last Bamboo SIP/TURN Launcher. NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
+  <projects>
+    <project>lastbamboo-common-jmx-client</project>
+    <project>lastbamboo-common-json</project>
+    <project>lastbamboo-common-log4j-bug-appender</project>
+    <project>lastbamboo-common-online</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>

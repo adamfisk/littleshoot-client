@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    <!--
+        The object used for creating java.net.Socket instances using SIP to
+        signal the connection.
+    
+    <bean id="sipSocketFactory"
+          class="org.lastbamboo.common.sip.httpclient.SipSocketFactoryImpl">
+        <constructor-arg><ref bean="iceOfferAnswerFactory"/></constructor-arg>
+        <constructor-arg><ref bean="sipClientTracker"/></constructor-arg>
+    </bean>
+
+    <bean id="sipProtocolSocketFactory"
+          class="org.lastbamboo.common.sip.httpclient.SipProtocolSocketFactory">
+        <constructor-arg><ref local="sipSocketFactory"/></constructor-arg>
+        <constructor-arg><ref bean="sipUriFactory"/></constructor-arg>
+        </bean>
+
+    <bean id="sipProtocol"
+        class="org.apache.commons.httpclient.protocol.Protocol">
+        <constructor-arg type="java.lang.String"><value>sip</value></constructor-arg>
+        <constructor-arg><ref local="sipProtocolSocketFactory"/></constructor-arg>
+        <constructor-arg type="int"><value>80</value></constructor-arg>
+        </bean>
+
+    <bean id="registerProtocol"
+        class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod">
+            <value>org.apache.commons.httpclient.protocol.Protocol.registerProtocol</value>
+            </property>
+        <property name="arguments">
+            <list>
+                <value>sip</value>
+                <ref local="sipProtocol"/>
+                </list>
+            </property>
+        </bean>
+        -->
+    </beans>

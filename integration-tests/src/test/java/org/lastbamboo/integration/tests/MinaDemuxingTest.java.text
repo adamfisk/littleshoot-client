@@ -1,0 +1,109 @@
+package org.lastbamboo.integration.tests;
+
+import java.util.Collection;
+import java.util.LinkedList;
+
+import org.littleshoot.mina.common.ByteBuffer;
+import org.littleshoot.mina.common.SimpleByteBufferAllocator;
+import org.littleshoot.mina.filter.codec.ProtocolDecoder;
+import org.littleshoot.mina.filter.codec.ProtocolDecoderOutput;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.lastbamboo.common.rudp.RudpDemuxableProtocolCodecFactory;
+import org.lastbamboo.common.rudp.segment.RudpSegmentEncoder;
+import org.lastbamboo.common.rudp.segment.SynSegment;
+import org.lastbamboo.common.rudp.segment.SynSegmentImpl;
+import org.lastbamboo.common.stun.stack.StunDemuxableProtocolCodecFactory;
+import org.lastbamboo.common.stun.stack.encoder.StunMessageEncoder;
+import org.lastbamboo.common.stun.stack.message.BindingRequest;
+import org.lastbamboo.common.util.UIntImpl;
+import org.lastbamboo.common.util.UShortImpl;
+import org.lastbamboo.common.util.mina.DemuxableProtocolCodecFactory;
+import org.lastbamboo.common.util.mina.DemuxingProtocolCodecFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Tests MINA demuxing behavior. 
+ */
+public class MinaDemuxingTest
+    {
+    
+    private final static Logger LOG = 
+        LoggerFactory.getLogger(MinaDemuxingTest.class);
+
+    @BeforeClass public static void establishTest() throws Exception
+        {
+        LOG.debug("Starting test...");
+        }
+    
+    @AfterClass public static void afterTest() throws Exception
+        {
+        LOG.debug("Test complete!");
+        }
+        
+    @Test
+    public void testDemuxing() throws Exception
+        {
+        ByteBuffer.setUseDirectBuffers(false);
+        ByteBuffer.setAllocator(new SimpleByteBufferAllocator());
+        
+        final DemuxableProtocolCodecFactory stunFactory = 
+            new StunDemuxableProtocolCodecFactory();
+        final DemuxableProtocolCodecFactory rudpFactory =
+            new RudpDemuxableProtocolCodecFactory();
+        final DemuxingProtocolCodecFactory demuxingCodecFactory =
+            new DemuxingProtocolCodecFactory(stunFactory, rudpFactory);
+        
+        
+        final ProtocolDecoder decoder = demuxingCodecFactory.getDecoder();
+        final BindingRequest request = new BindingRequest();
+        final StunMessageEncoder encoder = new StunMessageEncoder();
+        final ByteBuffer stunBuf = encoder.encode(request);
+        
+        final SynSegment syn = new SynSegmentImpl (new UIntImpl (567),
+                new UIntImpl (234),
+                new UShortImpl (17),
+                new UShortImpl (40000));
+        final RudpSegmentEncoder rudpEncoder = new RudpSegmentEncoder();
+        final ByteBuffer rudpBuf = rudpEncoder.encode(syn);
+
+        final ByteBuffer in = 
+            ByteBuffer.allocate(stunBuf.capacity()*2 + rudpBuf.capacity()*2);
+        
+        in.put(stunBuf);
+        
+        // Just make sure we're writing to the buffer as expected.
+        Assert.assertEquals(request.getTotalLength(), stunBuf.capacity());
+        Assert.assertEquals(stunBuf.capacity(), in.position());
+        in.put(rudpBuf);
+        
+        in.flip();
+        
+        final Collection<Object> messages = new LinkedList<Object>();
+        final ProtocolDecoderOutput out = new ProtocolDecoderOutput()
+            {
+
+            public void flush()
+                {
+                }
+
+            public void write(final Object message)
+                {
+                messages.add(message);
+                }
+            
+            };
+        Assert.assertTrue(messages.isEmpty());
+        decoder.decode(null, in, out);
+        Assert.assertEquals(2, messages.size());
+        
+        decoder.decode(null, rudpBuf.flip(), out);
+        Assert.assertEquals(3, messages.size());
+        
+        decoder.decode(null, stunBuf.flip(), out);
+        Assert.assertEquals(4, messages.size());
+        }
+    }

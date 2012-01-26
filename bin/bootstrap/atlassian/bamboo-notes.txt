@@ -1,0 +1,13 @@
+The nightmare about the bamboo install is configuring mail.  The last working mail config used simply "mail/gmail" for the JNDI settings.  Then the settings in jetty.xml and web.xml have to be correct to use the JNDI settings.  Remember we do all this because we need to use gmail SMTP that's authenticated and uses https.  Both jetty.xml and web.xml are in the littleshoot_config bucket on S3.  The main thing to potentially watch out for there is changes to those files between Bamboo upgrades.
+
+Also, the bamboo.bash script actually works really well.  It's also in littleshoot_config on s3.  The main thing to remember there if you're loading Bamboo from on old exported Bamboo xml file is that the mysql bamboo user is 'bamboouser'.
+
+The other quirk is the name of the database.  It should be 'atlassian_bamboo', so you have to tweak that in the database config, so it should be: "jdbc:mysql://localhost/atlassian_bamboo?autoReconnect=true&useUnicode=true&characterEncoding=utf8"
+
+Oh, in addition to the jetty.xml and web.xml changes, you also have to change bamboo.sh to actually use jetty.xml directly.  You need to change RUN_CMD to read:
+
+RUN_CMD="java -Xms256m -Xmx512m -XX:MaxPermSize=256m -Djava.awt.headless=true -classpath $CLASSPATH -Dorg.mortbay.xml.XmlParser.NotValidating=true com.atlassian.bamboo.server.Server webapp/WEB-INF/classes/jetty.xml"
+
+Also, the e-mail settings require one more tweak.  For whatever reason, sending to littleshoot.org does not work.  While that can be the e-mail for the user, the notifications should use the gmail address.
+
+The first build will likely fail without our custom mojo plugin -- manually go onto the server build dir and run /usr/local/apache-maven-2.0.9/bin/mvn install

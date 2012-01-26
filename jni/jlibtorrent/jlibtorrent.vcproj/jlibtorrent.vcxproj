@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>jnltorrent</ProjectName>
+    <ProjectGuid>{D1B6E499-92A3-4EF0-8D4A-4958DC218C21}</ProjectGuid>
+    <RootNamespace>jnltorrent</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.21006.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/D BOOST_ALL_NO_LIB %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../../npapi\mozilla\nsprpub\pr\include\obsolete;../../../npapi\mozilla\nsprpub\pr\src\md\mac;../../../npapi\mozilla\nsprpub\pr\include;..\..\..\npapi\mozilla\sun-java\stubs\include;..\..\..\libtorrent\libtorrent\zlib;..\..\..\libtorrent\libtorrent\include;c:\boost;..\..\..\jni\jlibtorrent\build\headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>TORRENT_DISABLE_GEO_IP;TORRENT_DISABLE_RESOLVE_COUNTRIES;WIN32;_DEBUG;_WINDOWS;_USRDLL;JLIBTORRENT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/NODEFAULTLIB:MSVCRTD %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>libtorrent.lib;libboost_system-mt-sgd.lib;libboost_thread-mt-sgd.lib;libboost_filesystem-mt-sgd.lib;libboost_date_time-mt-sgd.lib;libeay32MTd.lib;ssleay32MTd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\..\..\..\..\boost\bin.v2\libs\thread\build\msvc-10.0\debug\link-static\runtime-link-static\threading-multi;..\..\..\libtorrent\libtorrent\bin\msvc-10.0\debug\boost-source\dht-support-off\invariant-checks-off\link-static\runtime-link-static\threading-multi\upnp-logging-on;..\..\..\..\..\..\..\..\boost\bin.v2\libs\date_time\build\msvc-10.0\debug\link-static\runtime-link-static\threading-multi;..\..\..\..\..\..\..\..\boost\bin.v2\libs\system\build\msvc-10.0\debug\link-static\runtime-link-static\threading-multi;..\..\..\..\..\..\..\..\OpenSSL\lib\VC\static;..\..\..\..\..\..\..\..\boost\bin.v2\libs\filesystem\build\msvc-10.0\debug\link-static\runtime-link-static\threading-multi;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateManifest>true</GenerateManifest>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/D BOOST_ALL_NO_LIB %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../../../npapi\mozilla\nsprpub\pr\include\obsolete;../../../npapi\mozilla\nsprpub\pr\src\md\mac;../../../npapi\mozilla\nsprpub\pr\include;../../../libtorrent\libtorrent\include;c:\boost;../../../libtorrent\libtorrent\zlib;../../../npapi\mozilla\sun-java\stubs\include;..\..\..\jni\jlibtorrent\build\headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;TORRENT_DISABLE_DHT;TORRENT_DISABLE_GEO_IP;TORRENT_DISABLE_RESOLVE_COUNTRIES;WIN32;NDEBUG;_WINDOWS;_USRDLL;JLIBTORRENT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libtorrent.lib;libboost_system-mt-s.lib;libboost_thread-mt-s.lib;libboost_filesystem-mt-s.lib;libboost_date_time-mt-s.lib;libeay32MT.lib;ssleay32MT.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\..\..\..\..\OpenSSL\lib\VC\static;..\..\..\libtorrent\libtorrent\bin\msvc-10.0\release\boost-source\dht-support-off\link-static\runtime-link-static\threading-multi;..\..\..\..\..\..\..\..\boost\bin.v2\libs\thread\build\msvc-10.0\release\link-static\runtime-link-static\threading-multi;..\..\..\..\..\..\..\..\boost\bin.v2\libs\system\build\msvc-10.0\release\link-static\runtime-link-static\threading-multi;..\..\..\..\..\..\..\..\boost\bin.v2\libs\date_time\build\msvc-10.0\release\link-static\runtime-link-static\threading-multi;..\..\..\..\..\..\..\..\boost\bin.v2\libs\filesystem\build\msvc-10.0\release\link-static\runtime-link-static\threading-multi;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\main\cpp\jnltorrentjnilib.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

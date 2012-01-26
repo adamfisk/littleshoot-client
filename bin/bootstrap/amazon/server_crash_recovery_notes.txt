@@ -1,0 +1,12 @@
+Note that in theory everything should run from the EBS store, particularly things like MySQL, and everything should just reside there.  We don't currently have MySQL, Jira, or Bamboo actually on there, although the Bamboo and JIRA data are both on EBS, and JIRA is constantly backed up to EBS.  We'll save all this for the next iteration -- too much to get into now!!
+
+First off, make sure SVN backups are really working properly.  This is somewhat tough because we overwrite the file every ten minutes.  But, for example, are they different each day?  Check the logs in /tmp/backups.log.  Also make sure the cron for continually taking snapshots to S3 is working correctly.  To some extent, do we really need all this now that we're using the block store?  Maybe not, at least with the SVN dumps.
+
+** Quick note on SVN backups.  We're running on the Elastic Block Store, so that will be fine even if the instance goes down.  We just need to make sure the cron is working that syncs with S3 from EBS in the unlikely case the EBS goes down.
+
+So the crontab should just be:
+* */24 * * *   /usr/local/bin/ec2Snapshot.bash >> /tmp/snapshots.log 2>&1
+
+On the server dying thing, it happened after the server had crashed a few weeks earlier.  Be sure to check the console output if this ever happens to see if something fishy is happening -- it probably is.  In this case, it appeared to be a disk failure, but the Amazon guys were luckily able to bring it back up.
+
+Also, on the dev server, it doesn't make sense for any of the dev server scripts to reference svn since, if the dev server's down, there is no svn.  The bootstrap scripts generally work fairly well, although we've got to go in and manually do some stuff for JIRA and Bamboo.  That should get better with our better backups though.

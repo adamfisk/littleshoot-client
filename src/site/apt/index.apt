@@ -1,0 +1,12 @@
+ ------
+ Introduction to $project.name
+ ------
+ Adam Fisk
+ ------
+ 30 August 2007
+ ------
+
+LittleShoot Open Source, Open Protocols Project
+
+ Welcome to LittleShoot.  LittleShoot is dedicated to providing quality open source implementations of the next generation of Internet protocols.  LittleShoot includes implementations of ICE for traversing NATs and firewalls, STUN for discovering public IP addresses, TURN for relaying traffic as a last resort, etc.  
+

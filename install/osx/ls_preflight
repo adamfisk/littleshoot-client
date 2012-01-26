@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+echo "Running pre-flight script"
+test -e ~/Applications/LittleShoot.app && su $USER -c "touch ~/.littleshoot/oldVersionRunningFlag"
+test -e ~/Applications/LittleShoot.app && "Echo LittleShoot.app exists in /Applications!!" 
+
+rm -rf /Applications/LittleShoot*
+
+AGENTS_DIR=/Library/LaunchAgents
+LAUNCHD_PLIST=$AGENTS_DIR/org.littleshoot.littleshoot.plist
+
+OLD_AGENTS_DIR=~/Library/LaunchAgents
+OLD_LAUNCHD_PLIST=$OLD_AGENTS_DIR/org.lastbamboo.littleshoot.plist
+
+function stopLittleShoot()
+{
+  echo "Unloading littleshoot plist"
+  launchctl unload $OLD_LAUNCHD_PLIST
+  su $USER -c "launchctl unload $OLD_LAUNCHD_PLIST"
+  rm -f $OLD_LAUNCHD_PLIST
+  
+  launchctl unload $LAUNCHD_PLIST
+  su $USER -c "launchctl unload $LAUNCHD_PLIST"
+  rm -f $LAUNCHD_PLIST
+  
+
+  # Just make extra sure we kill any existing running LittleShoot
+  #echo "Killing any existing LittleShoot process"
+  #kill `ps aux | grep "Applications/LittleShoot.app/Contents/MacOS/" | grep -v grep | awk '{ print $2 }'`
+  #su $USER -c "kill `ps aux | grep 'Applications/LittleShoot.app/Contents/MacOS/' | grep -v grep | awk '{ print $2 }'`"
+}
+
+stopLittleShoot
+
+# Return success in any case, as it's likely there was nothing running.
+exit 0

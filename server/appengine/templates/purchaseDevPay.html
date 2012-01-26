@@ -1,0 +1,78 @@
+{% extends "iFrameBase.html" %}
+
+{% block iFrameContent %}
+<div style="float: left; width: 300px;">
+<div class="loggedIn">
+Welcome, {{ user.username }}. You can upload up to 25 MB and post it to Twitter or Facebook for free.
+</div>
+<div class="loggedOut" style="visibility: none;">
+To publish files, please login.
+</div>
+<br><br>
+
+{% include "freeUploadForm.html" %}
+</div>
+
+<div style="float: left; margin-left: 10px; width: 300px;"">
+To publish unlimited size files, access user analytics, and more, get LittleShoot Pro for just $1.95/month.
+<br></br>
+<a target="_blank" href="https://aws-portal.amazon.com/gp/aws/user/subscription/index.html?ie=UTF8&offeringCode=D97E650F">Buy Pro</a>
+</div>
+
+<div class="loggedIn" style="clear:both;">
+<!-- 
+    <a href="#" rel="{% url django.contrib.auth.views.logout %}?redirect_field_name=/devPayUploadForm" id="logoutLink">Logout</a>
+ -->
+    <a href="#" rel="/accounts/logout/?redirect_field_name=/devPayUploadForm" id="logoutLink">Logout</a>
+</div>
+
+<div id="filesDiv">
+</div>
+
+{% endblock iFrameContent %}
+{% block iFrameJavaScript %}
+function handleLogins() {
+    $("#logoutLink").click(function (evt) {
+        evt.stopPropagation();
+        evt.preventDefault();
+        
+        var logoutUrl = $(this).attr("rel");
+        
+        var logoutCallback = function() {
+            console.info("Making logout call to logoutUrl at: " + logoutUrl);
+            window.location.href = logoutUrl;
+            /*
+            $.get(logoutUrl, function(data){
+                //CommonUtils.showMessage("Logout Status", data);
+                $(".loggedIn").hide("slow");
+                $(".loggedOut").show("slow");
+            });
+            */
+        };
+        
+        var agree = confirm("Are you sure you wish to log out of LittleShoot?");
+        if (agree) {
+            logoutCallback();
+        }
+        //CommonUtils.showConfirmDialog("Confirm Logout", "Are you sure you want to logout?", logoutCallback);
+    });
+}
+
+jQuery().ready(function() {
+    dojo.addOnLoad(function() {
+        
+        //handleLogins();
+        //ResourceLoader.listResources();
+        /*
+        var loginData = {
+            "eventName" : "loggedIn",
+            "user" : "{{ user.username }}"
+        };
+        window.parent.dojo.addOnLoad( function () {
+            window.parent.dojo.publish("globalChannel", [loginData]);
+        });
+        */
+    });
+});
+
+{% endblock iFrameJavaScript %}

@@ -1,0 +1,18 @@
+#!/usr/bin/expect -f
+
+set path [lindex $argv 0]
+set pwd [lindex $argv 1]
+spawn sftp afisk@lastbamboo.org
+expect "afisk@lastbamboo.org's password: "
+send "$pwd\r"
+expect "sftp> "
+send "cd /home/afisk/public_html\r"
+expect "sftp> "
+
+# Upload whatever file was passed in as an argument.
+send "put $path\r"
+
+# Give the upload 30 minutes.
+set timeout 1800
+expect "sftp> "
+send "quit\r"

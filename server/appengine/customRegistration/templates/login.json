@@ -1,0 +1,15 @@
+{{ callbackMethod }}({success: {% if form.errors %}false{% else %}true{% endif %},
+message:'{% if form.errors %}<p class="error">Apologies, but your user name or password is incorrect.</p>{% endif %}'+
+    '<table style="text-align: left">'+
+        '<tr>'+
+            '<td>Username: </td>'+
+            '<td>{{ form.username }}</td>'+
+        '</tr>'+
+        '<tr>'+
+            '<td>Password: </td>'+
+            '<td>{{ form.password }}</td>'+
+        '</tr>'+
+    '</table>'+
+    '<br>'+
+    '<input type="hidden" name="next" value="/accounts/loginSuccess/" />'
+});

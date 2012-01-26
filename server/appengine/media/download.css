@@ -1,0 +1,115 @@
+
+            #downloadsTemplate {
+                display:none;
+            }
+
+            .singleDownload, .singleDownloadHover, .downloadSeparator {
+                width: 600px;
+            }
+            
+            .singleDownload, .singleDownloadHover {
+                margin-left: 20px;
+                border: 1px solid;
+            }
+            
+                        
+            .downloadSeparator { 
+                
+                position:absolute;
+                min-height: 1px;
+                max-height: 1px;
+                /*background-color: #545454;*/
+                border-bottom: 1px dashed #545454;
+                bottom: -8px;
+            }
+            
+            .singleDownload {
+                position: relative;
+                clear: both;
+                margin-bottom: 12px;
+                
+                border-color: #FFFFFF;
+                /*border-top: 1px dashed #545454;*/
+                padding: 6px;
+            }
+            
+           .singleDownloadHover {
+               background-color: #f5f9f5;
+               border-color: #8F9595;
+               cursor:pointer;
+            }
+            
+/*
+            .downloadPauseResumeIcon {
+                position: absolute;
+                bottom: 0px;
+                left: 310px;
+                backgroundcolor: red;
+            }
+*/
+
+            
+            .progressBarDiv {
+            }
+            
+            .downloadStopOuter {
+                position: relative;
+            }
+            
+            div .ui-progressbar {
+                height:1em;
+                text-align:left;
+                width: 300px;
+            }
+
+                        
+            .downloadStopIcon {
+                /*
+                position: absolute;
+                bottom: 0px;
+                left: 310px;
+                */
+            }
+            
+            .downloadDetail {
+                margin-right: 8px;
+            }
+            
+            .downloadLine {
+                margin-bottom: 2px;
+            }
+            
+            .mainDownloadDiv {
+                position: relative;
+                display: inline-block;
+                
+            }
+            .downloadOptionsDiv {
+                position: absolute;
+                bottom: 30px;
+                right: 170px;
+                width: 72px;
+                text-align: center;
+            }
+
+            .viralDiv {
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+                width: 140px;
+                text-align: center;
+                z-index: 12;
+            }
+                   
+            .viralLink {
+                font-weight: bold;
+                /*cursor: pointer;*/
+            }
+            
+            .viralLinkDiv {
+                margin-bottom: 8px;
+            }
+            
+            .downloadStatus {
+                width: 300px;
+            }

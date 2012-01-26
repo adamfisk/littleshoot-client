@@ -1,0 +1,13 @@
+{% extends "siteNavBase.html" %}
+
+{% block aboutUsSelected %}color:black{% endblock %}
+{% block content %}
+    <div id="aboutUs" class="toggleable innerContent siteToggle">
+        <span class="contentTitle normalBoldBig">About Us</span>
+        <div class="datum sprite-datumBackground"></div>
+        <div id="aboutUsContentBody"class="contentBody">
+
+{% include "aboutUsContentBody.html" %}
+        </div>
+    </div>
+{% endblock %}

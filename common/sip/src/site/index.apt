@@ -1,0 +1,19 @@
+ ------
+ Introduction to $project.name
+ ------
+ Adam Fisk
+ ------
+ 30 August 2007
+ ------
+
+LittleShoot SIP Projects 
+
+  Welcome to the LittleShoot "Session Initiation Protocol (SIP)" project.  The LittleShoot SIP implementation uses a SIP stack that implements SIP messages, message encoding and decoding, etc.  The SIP client and proxy both use the SIP stack for basic message functions and also implement the client and proxy sides of SIP, respectively.
+
+  The current state of LittleShoot SIP is not a complete SIP implementation and is specialized for the very basic SIP requirements of LittleShoot.  In paricular, SIP acts as the signalling protocol between peers.  In general a peer-to-peer system needs the following layers:
+
+  * A signalling protocol to pass messages between any two peers.
+  * An offer/answer protocol that specifies what the peers hope to exchange.  The signalling protocol passes the offer/answer protocol.
+  * A protocol capable of negotiating heterogeneous network configurations to establish connectivity between arbitrary peers.
+
+  Beyond these, there should also be some sort of global lookup mechanism, such as a centralized index or a distributed hash table.  LittleShoot uses SIP for its signalling protocol, but our SIP implementation is not intended for use in other projects at this point.  We may switch to a different open source SIP server at some point, or possibly even to XMPP. 

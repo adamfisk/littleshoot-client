@@ -1,0 +1,847 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>L.A. KIDS MAKE MOVIES</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Film School for Los Angeles Children from award winning director and animator, Rachel Johnson." />
+    <meta name="keywords" content="Film School, LA, Los Angeles, Children, Kids, Rachel Johnson, California, Hollywood" />
+    <meta name="author" content="Rachel Johnson" />
+    <meta name="copyright" content="L.A. KIDS MAKE MOVIES" />
+    <meta name="company" content="L.A. KIDS MAKE MOVIES" />    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+
+    <style type="text/css">
+    
+        div.overlay {
+            display:none;
+        }    
+        
+        div.overlay div.close {
+            z-index:100000;
+            background:url(images/close.png) no-repeat;
+            position:absolute;
+            top:2px;
+            right:5px; 
+            width:35px;
+            height:35px;
+            cursor:pointer;
+        }
+        
+        #mainDiv 
+            {
+            position: absolute;
+            left:0px;
+            top:0px;
+            background-color: #302419;
+            min-height: 100%;
+            min-width: 100%;
+            
+            }
+        
+        #kidImage
+            {
+            position: fixed;
+            left:0px;
+            bottom: 10px;
+            z-index: 10;
+            }
+
+        #frame
+            {
+            position:relative;
+            margin-left: auto; margin-right: auto;
+            text-align:center;
+            width: 700px;
+            z-index: 9;
+            }
+            
+        #frameText
+            {
+            position:relative;
+            margin-left: auto; margin-right: auto;
+            text-align:center;
+            width: 700px;
+            padding-top: 40px;
+            z-index: 12000;
+            }
+            
+        #frameImage
+            {
+            position:absolute;
+            top:0px;
+            left:0px;
+            margin-top: 30px;
+            z-index: 9;
+            }
+                    
+        #bottomDiv 
+            {
+            position: fixed;
+            left:0px;
+            bottom: 0px;
+            width: 100%;
+            height:267px;
+            background-image: url('images/background_base_267h1.png');
+            background-repeat: repeat-x;
+            overflow: hidden;
+            }
+        
+        .titleText {
+            font-weight: bold;
+            font-size: 22px;
+            /*color: #d1d1d1;*/
+            color: #edd8c0;
+            margin-bottom: 10px;
+        }
+        
+        .commonText, .commonTextBig, .commonTextBigBold, .commonTextSmall, .commonTextNavBig , .commonTextNav {
+            font-family: courier;
+            font-size: 18px;
+            font-weight: normal;
+            color: #edd8c0;
+        }
+        
+        .commonTextBigBold {
+            font-weight: bold;
+        }
+        
+        .commonTextSmall {
+            font-size: 16px;
+        }
+        
+        .commonTextSmaller {
+            font-size: 14px;
+        }
+        
+        .commonTextBig, .commonTextNavBig{
+            font-size: 24px;
+        }
+        
+        .commonTextNav, .commonTextNavBig {
+            color: #381a04;
+        }
+        
+        #textDiv {
+            position: relative;
+            padding-top: 36px;
+            padding-left: 60px;
+            padding-right: 80px;
+            padding-bottom: 36px;
+        }
+        
+        .navLinks {
+            position: absolute;
+            bottom: 0px;
+            height: 110px;
+            width: 100%;
+        }
+        
+        table tr td {
+            text-align:center;
+        }
+        .courseLink {
+            z-index: 600;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .bigLink {
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        .navLinks a:hover {
+            color: #785e44;
+            cursor: pointer;
+        }
+        
+        #bottomNav {
+            position: absolute;
+            bottom: 20px;
+            left: 0px;
+            overflow: hidden;
+            width:100%;
+            height:200px;
+            z-index: 12;
+        }
+        
+        .link {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        .link a:hover {
+            color: #785e44;
+        }
+        
+        td {
+            padding-bottom: 10px;
+        }
+        
+        #littleshoot {
+            position: fixed;
+            bottom: 4px;
+            right: 8px;
+            color: #785e44;
+            font-size: 11px;
+        }
+        
+        #littleshoot a:link {
+            color: #785e44;
+        }
+
+    </style>
+    
+</head>
+<body class="tundra" >
+    
+    <div id="frame">
+        <center>
+            <img id="frameImage" src="images/frame.png" width="700px"/>
+        </center>
+        <div id="frameText" style="display:none;">
+            <div id="textDiv">
+                <div id="startDiv" class="frameContent commonText defaultFrameContent">
+                    <br>
+                    <div class="titleText" style="padding-top: 2px; font-size: 26px;">L.A. KIDS MAKE MOVIES</div>
+                    <div style="padding-top: 0px; padding-left: 40px; padding-right: 40px; line-height: 1.5em;">is offering courses in
+                    </div>
+                    <div style="font-size: 20px;">
+                        <br>
+                        <a rel="animation" class="courseLink">Animation</a><br>
+                        <!-- <a rel="springSession" class="courseLink" style="text-decoration: underline;">Filmmaking</a><br>-->
+                        <br>
+                    </div>
+                    <div>
+                        for children 8-17<br><br>Please click the links at the bottom of the page to learn more.<br><br>
+                    </div>
+                    <!-- 
+                    <div class="titleText">Call Rachel at (917) 549-1979</div>
+                    -->
+                    <br>
+                    
+                </div>
+                
+                <div id="animationDiv" class="frameContent commonTextSmall">
+                    <div class="titleText">Introduction to Animation</div>
+                    <div>
+                        Students will learn to animate hand-drawn, cell, cut out, sand, paint on glass, and 
+                        puppets. Each week, students will explore a new medium and will animate a short film with sound. At
+                        the end of the semester, they will choose their favorite medium and will write, direct, animate, and edit a
+                        longer film of their own creation. No experience necessary.<br><br>
+                        <a rel="schedule" class="courseLink" style="text-decoration: underline;">See the Schedule</a> 
+                    </div>
+                    
+                    <br>
+                    <div style="display: block; margin-left: auto; margin-right: auto;">
+                    <br>
+                    
+                    <!-- 
+                    <div style="display: inline-block;">
+                        <div class="commonText link"><a rel="#animationOverlay" id="animationWork" class="videoOverlay">Elementary School Work</a></div>
+                        <div class="commonText link"><a rel="#collegeAnimationOverlay" id="collegeAnimationWork" class="videoOverlay">High School Work</a></div>
+                        <div class="commonText link"><a rel="#boomBoomPowOverlay" id="boomBoomPowWork" class="videoOverlay">Boom Boom Pow</a></div>
+                    </div>
+                    <div style="display: inline-block;">
+                        <div class="commonText link"><a rel="#theGoodOverlay" id="theGoodWork" class="videoOverlay">The Good</a></div>
+                        <div class="commonText link"><a rel="#drawnAnimationOverlay" id="drawnAnimationWork" class="videoOverlay">Drawn Animation</a></div>
+                        <div class="commonText link"><a rel="#musicVideoOverlay" id="musicVideoWork" class="videoOverlay">Music Video</a></div>
+                    </div>
+                     -->
+                    </div>
+                    <br>
+                </div>
+                
+                <div id="studentWorkDiv" class="frameContent commonTextSmall">
+                    <div class="titleText">Student Work</div>
+                    <div>
+                        Have a look at the exciting work from the former and current students at LA Kids Make Movies.<br><br><br>
+                        
+                        <div class="commonText link"><a rel="#compilationOverlay" id="compilationWork" class="videoOverlay">Elementary School Students' Work</a></div><br>
+                        <div class="commonText link"><a rel="#highschoolOverlay" class="videoOverlay" id="highschoolLink">High School Students' Work'</a></div>
+                    </div>
+                </div>
+                
+                <div id="shortFilmsDiv" class="frameContent commonTextSmall" style="height: 230px; overflow: auto;">
+                    <div class="titleText">Short Films</div>
+                    
+                    <div style="overflow: auto;">
+                        This is a selected sample of some of the best animated shorts in the field to inspire the young artists of LA Kids Make Movies. Please click on the links below.<br><br>
+
+                        <div class="commonText link"><a rel="#whenTheDayBreaksOverlay" class="videoOverlay" id="whenTheDayBreaksLink">"When the Day Breaks"</a></div><br>
+                        <div class="commonText link"><a rel="#westernSpaghettiOverlay" class="videoOverlay" id="westernSpaghettiLink">"Western Spaghetti"</a></div><br>
+                        <div class="commonText link"><a rel="#whiteboardOverlay" class="videoOverlay" id="whiteboardLink">"Whiteboard"</a></div><br>
+                        <div class="commonText link"><a rel="#creatureComfortsOverlay" class="videoOverlay" id="creatureComfortsLink">"Creature Comforts"</a></div><br>
+                        <div class="commonText link"><a rel="#dannyAndAnnieOverlay" class="videoOverlay" id="dannyAndAnnieLink">"Danny and Annie"</a></div><br>
+                        <div class="commonText link"><a rel="#fireworksOverlay" class="videoOverlay" id="fireworksLink">"Fireworks"</a></div><br>
+                        <div class="commonText link"><a rel="#harvieKrumpetOverlay" class="videoOverlay" id="harvieKrumpetLink">"Harvie Krumpet"</a></div><br>
+                        <div class="commonText link"><a rel="#herMorningEleganceOverlay" class="videoOverlay" id="herMorningEleganceLink">"Her Morning Elegance"</a></div><br>
+                        <div class="commonText link"><a rel="#pancakeManOverlay" class="videoOverlay" id="pancakeManLink">"Pancake Man"</a></div><br>
+                        <div class="commonText link"><a rel="#devilsBallOverlay" class="videoOverlay" id="devilsBallLink">"The Devils Ball"</a></div><br>
+                        <div class="commonText link"><a rel="#sandmanOverlay" class="videoOverlay" id="sandmanLink">"The Sandman"</a></div><br>
+                        <div class="commonText link"><a rel="#streetOverlay" class="videoOverlay" id="streetLink">"The Street"</a></div><br>
+                    </div>
+
+                </div>
+                
+                <div id="freeClassDiv" class="frameContent commonTextSmall">
+                    <div class="titleText">Check Out the Free Class!</div>
+                    <div>
+Your first class is free on the first Saturday of every month! Here's the schedule:<br><br> 
+
+Oct 2:  9am-11am<br>
+Nov 6:  9am-11am<br>
+Dec 4:  9am-11am<br>
+Jan 8:  9am-11am<br>
+Feb 5:  9am-11am<br>
+March 5:  9am-11am<br>
+April 2:  9am-11am<br>
+May 7:  9am-11am<br><br>
+<!-- 
+June 4:  9am-11am<br><br>
+ -->
+
+E-mail to reserve your space to racheljohnson70@hotmail.com.
+                    </div>
+
+                </div>
+ 
+                <!-- 
+                <div id="drawingDiv" class="frameContent commonTextSmall">
+                    <div class="titleText">Drawing and Painting</div>
+                    <div>
+                        In this introductory class, students will learn drawing fundamentals such as line, shape, form, composition,
+                        value, shading, and perspective. They will experiment with pencil, charcoal, pastel, and ink to improve 
+                        their observational and technical skills. They will select key drawings to use as references for painting in
+                        acrylic and watercolor. Concepts of color, color mixing and composition, as well as brushwork techniques will
+                        be explored. This class will culminate in an art show of students' work.
+                    </div>
+                </div>
+                <div id="filmmakingDiv" class="frameContent commonTextSmall">
+                    <div class="titleText">Live Action Course</div>
+                    <div>
+                        Students will hit the ground running in this filmmaking class, writing short scripts using Final Draft, storyboarding, 
+                        directing, acting, and editing using Final Cut Pro. Genres will include comedy, musicals, action, horror, music videos,
+                        and commercials. Students will learn to use green screening techniques as well as After Effects for special effects.
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="commonText link"><a rel="#liveActionOverlay" class="videoOverlay">Click Here to View Previous Students' Work</a></div>
+                    </div>
+                </div>
+                -->
+                <!-- 
+                <div id="winterSessionDiv" class="frameContent commonTextSmall">
+                    <div class="titleText">Winter Sessions</div>
+                    <div>
+Students will make both live-action and animated films in these
+hit-the-ground-running intensive Winter courses. Topics will
+include puppet animation, paint on glass, cut out, pixilation,
+storyboarding, final draft, thumbnails, editing, sound effects,
+armature building, and set building.
+<br><br>
+ANIMATION
+Dec. 29 – Jan. 1, 9am-12pm.....$350<br><br>
+FILMMAKING
+Dec. 29 – Jan. 1, 12:15pm-3pm.....$350<br><br>
+
+<div class="titleText">Call Rachel at (917) 549-1979</div>
+                    </div>
+                </div>
+                 -->
+                <div id="springSessionDiv" class="frameContent commonTextSmall">
+                    <div class="titleText">Spring Sessions</div>
+                    <div>
+Students will make both live-action and animated films in these
+hit-the-ground-running intensive Winter courses. Topics will
+include puppet animation, paint on glass, cut out, pixilation,
+storyboarding, final draft, thumbnails, editing, sound effects,
+armature building, and set building.
+<br><br>
+ANIMATION<br>
+June 14-25 (M-F) 9AM - 11:30AM - $550<br>
+June 14-25 (M-F) 12PM - 2:30PM - $550<br><br>
+
+<div class="titleText">Call Rachel at (917)549-1979</div>
+                    </div>
+                </div>
+                 
+                <div id="scheduleDiv" class="frameContent commonTextSmall">
+                    <div class="titleText">Schedule: Call Rachel at (917) 549-1979</div>
+<div style="padding-left:80px; padding-right:80px; height: 230px; overflow: auto; padding-top: 10px;">
+<div>All classes are held at 759 1/2 Wilcox Ave, Los Angeles, CA 90038</div><br>
+<div>
+
+Winter/Spring term 2011:<br><br>
+
+Monday:<br>
+Jan: 17, 24, 31<br>
+Feb: 7, 14, 21, 28<br>
+March: 7, 14<br>
+April: 4, 11, 18, 25<br>
+May: 2, 9, 16, 23, 30<br>
+June: 1, 8<br><br>
+
+Tuesday<br>
+Jan: 18, 25<br>
+Feb: 1, 8, 15, 22<br>
+March: 1, 8, 15 <br>
+April: 5, 12, 19, 26<br>
+May: 3, 10, 17, 24, 31<br>
+June: 7, 14<br><br>
+
+Wednesday<br>
+Jan: 19, 26<br>
+Feb: 2, 9, 16, 23<br>
+March: 2, 9, 16 <br>
+April: 6, 13, 20, 27<br>
+May: 4, 11, 18, 25<br>
+June: 1, 8<br><br>
+
+Thursday<br>
+Jan: 20, 27<br>
+Feb: 3, 10, 17, 24<br>
+March: 3, 10, 17<br>
+April: 7, 14, 21, 28<br>
+May: 5, 12, 19, 26<br>
+June: 2, 9<br><br>
+
+Friday<br>
+Jan: 21, 28<br>
+Feb: 4, 11, 18, 25<br>
+March: 4, 11, 18, 25<br>
+April: 1, 8, 15, 22, 29<br>
+May: 6, 13, 20, 27<br>
+June: 3, 10<br><br>
+
+Sunday<br>
+Jan: 16, 23, 30<br>
+Feb: 6, 13, 20, 27<br>
+March: 6, 13 <br>
+April: 3, 10, 17, 24<br>
+May: 1, 8, 15, 22, 29<br>
+June: 5, 12<br>
+</div>
+
+<!-- 
+<div class="titleText">Animation 1:</div>
+<div>
+Students will learn how to animate hand drawn, cell, cut out, sand, paint on glass and puppet animation. Each week students will explore a new medium and animate a short film with sound. Lots of work but loads of fun!
+</div>
+<br>
+<br>
+<table>
+<tr><td align="left" style="text-align: left;">Monday:</td><td align="left" style="text-align: left;">FULL</td><td>$550</td></tr>
+<tr><td align="left" style="text-align: left;">Tuesday:</td><td align="left" style="text-align: left;">April 12-June 8   </td><td>$550</td></tr>
+<tr><td align="left" style="text-align: left;">Wednesday:</td><td align="left" style="text-align: left;">FULL</td><td>$550</td></tr>
+<tr><td align="left" style="text-align: left;">Thursday:</td><td align="left" style="text-align: left;">April 15-Jun 10   </td><td>$550</td></tr>
+<tr><td align="left" style="text-align: left;">Friday:</td><td align="left" style="text-align: left;">FULL</td><td>$550</td></tr>
+<tr><td align="left" style="text-align: left;">Saturday:</td><td align="left" style="text-align: left;">April 17-June 12   </td><td>$550</td></tr>
+<tr><td align="left" style="text-align: left;">Sunday:</td><td align="left" style="text-align: left;">FULL</td><td>$550</td></tr>
+
+<tr><td align="left" style="text-align: left;">Monday:</td><td align="left" style="text-align: left;">Jan 11 - Mar 22.......</td><td>$550</td></tr>
+<tr><td align="left" style="text-align: left;">Tuesday:</td><td align="left" style="text-align: left;">Jan 12 - Mar 23.......</td><td>$550</td></tr>
+<tr><td align="left" style="text-align: left;">Wednesday:</td><td align="left" style="text-align: left;">Jan 13 - Mar 24.......</td><td>$550</td></tr>
+<tr><td align="left" style="text-align: left;">Thursday:</td><td align="left" style="text-align: left;">Jan 14 - Mar 25.......</td><td>$550</td></tr>
+<tr><td align="left" style="text-align: left;">Friday:</td><td align="left" style="text-align: left;">Jan 15 - Mar 26.......</td><td>$550</td></tr> 
+</table>
+-->
+
+<!-- 
+<div class="titleText">June Animation Intensive:</div>
+
+<div>
+Students will make both live action and animated films in the hit-the-ground running early summer intensive. Topics will include puppet animation, paint on glass, cut out, pixilation, storyboarding, final draft, thumbnails, editing, sound effects, armature building and set building. 
+Class limit six students.<br><br>
+<b>SESSION 1 (9AM-11:30AM):</b><br>
+June 14-18 (M-F) - $275 (FULL)<br>
+June 21-25 (M-F) - $275 (FULL)<br><br>
+
+<b>SESSION 2 (12PM-2:30PM):</b><br>
+June 14-18 (M-F) - $275 (FULL)<br>
+June 21-25 (M-F) - $275<br>
+<span style="color: white;">(ONE SPOT LEFT)</span><br><br>
+
+<b>SESSION 3 (3PM-5:45PM):</b><br>
+June 14-18 (M-F) - $275 (FULL)<br>
+June 21-25 (M-F) - $275<br>
+<span style="color: white;">(FOUR SPOTS LEFT)</span><br><br>
+</div>
+
+<br>
+<hr>
+<br>
+<div class="titleText">Introducing: 2 New Sessions!</div>
+<div>
+<b>End of June Intensive:</b><br>
+June 28-July 2 (M-F) 9AM-11:30AM<br>
+$275<br>
+<span style="color: white;">(TWO SPOTS LEFT)</span><br><br>
+
+<b>July Fun:</b><br>
+July 5-30 (Mon, Wed, Fri) 9AM-11AM<br>
+$600 for 12 Classes<br>
+<span style="color: white;">(FOUR SPOTS LEFT)</span><br>
+</div>
+
+ -->
+
+<!-- 
+Animation:<br>
+Dec. 29 – Jan. 1, 9am-12pm......$350<br><br>
+
+Filmmaking:<br>
+Dec. 29 – Jan.1, 12:15pm-3pm......$350
+ -->
+
+<br>
+<hr>
+<br>
+<div class="commonTextSmall">
+All classes are limited to six students, but they will run at four. If you'd like to design your own class and you have four students interested, I am happy to work with any age or group.<br><br>
+</div>
+
+                    
+                    <!-- 
+                    <div style="padding-left:80px; padding-right:80px; height: 230px; overflow: auto; padding-top: 10px;">Session 1: Animation 1<br>
+Monday/ Wed/ Friday<br>
+June 22, 24, 26, 29<br>
+July 1, July 3<br>
+1-3pm<br>
+Cost $180.00<br>
+Ages 9-13<br>
+Location: 759 1/2 Wilcox<br><br>
+
+Session 2: Animation 1<br>
+Tuesday/ Thursday<br>
+June: 23, 25, 30<br>
+July: 2, 7, 9, 14, 16<br>
+Cost: $240.00<br>
+Ages 6-9<br>
+Location: 759 1/2 Wilcox<br><br>
+
+
+Session 3: Animation 2<br>
+Monday/Wed./ Friday<br>
+1-3pm<br>
+July 6, 8, 10<br>
+13, 15, 17<br>
+Cost: $180.00<br>
+Ages 9-13<br>
+Location: 759 1/2 Wilcox<br><br>
+ -->
+
+
+<!-- 
+Harvard Westlake Summer Animation Camp<br>
+taught by Rachel Johnson<br>
+Mon.-Friday<br>
+June 22- July 17<br>
+9am 12:30pm<br>
+Ages 13-16<br>
+Cost $995.00<br>
+To sign up call:<br>
+Jim Patterson<br>
+(818) 487-6535<br>
+Location:<br>
+Harvard-Westlake School<br>
+3700 Coldwater Canyon<br>
+North Hollywood, CA<br>
+ -->
+
+                    </div>
+                </div>
+                <div id="contactDiv" class="frameContent commonText" style="padding-top:0px">
+                    <div class="titleText" style="font-size: 28px;">Contact/Location/Sign Up</div>
+                    <div>For more information, call Rachel Johnson at:</div>
+                    <br>
+                    <div class="commonTextBigBold">(917) 549-1979</div>
+                    <br>
+                    <div>Or e-mail:</div>
+                    <br>
+                    <div class="commonTextBigBold">racheljohnson70@hotmail.com</div>
+                    <br>
+                    <div class="commonText">Classes will be held at<br>759 1/2 Wilcox Ave, Los Angeles, CA 90038</div>
+                </div>
+                <div id="biographiesDiv" class="frameContent commonTextSmall">
+                    <div class="titleText">Teacher Biography</div>
+                    <div id="rachel">
+                        Rachel Johnson is the founder of LA Kids Make Movies. She recently relocated to LA after having lived in New York for six years, where 
+                        she was a professor at NYU, Parson's School of Design, and Pratt Institute. She is currently teaching animation and film at USC. Rachel 
+                        is an award-winning director of animation, and her film "The Toll Collector" was met 
+                        with international critical acclaim and won a Golden Hugo at the Chicago Film Festival. She will be 
+                        releasing her first live action short this Winter.
+                        
+                        <br>
+                        <br>
+                        
+                        <div class="commonText link"><a rel="#tollCollectorOverlay" class="videoOverlay" id="tollCollectorLink">Click Here to View "The Toll Collector"</a></div>
+                        <!-- 
+                        <br>
+                        <br>
+                        <span class="commonText link">Click Here to View Rachel Johnson's Work</span>
+                         -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mainDiv">
+        <img id="kidImage" src="images/kid_600h.png"/>  
+        <div id="bottomDiv"></div>
+    </div>
+    <div id="bottomNav">
+        <div class="navLinks">
+            <center>
+            <!-- 
+                <table>
+                    <tr class="commonTextNav">
+                        <td><a rel="springSession" class="courseLink">Spring Sessions</a></td>
+                        <td><a rel="animation" class="courseLink">Animation Course</a></td>
+                    </tr>
+                </table>
+                 -->
+                <table>
+                    <tr class="commonTextNav">
+                        <td><a rel="animation" class="courseLink">Animation Course</a></td>
+                        <td><a rel="studentWork" class="courseLink">Student Work</a></td>
+                        <td><a rel="shortFilms" class="courseLink">Short Films</a></td>
+                    </tr>
+                    <!-- <tr><td><a class="courseLink"></a></td></tr>-->
+                    <tr class="commonTextNav"><td><a rel="biographies" class="courseLink">Teacher Biography</a></td><td><a rel="schedule" class="courseLink">Schedule of Classes</a></td><td><a rel="contact" class="courseLink">Contact/Location/Sign Up</a></td></tr>
+                    <tr class="commonTextNavBig"><td><a class="courseLink"></a></td><td><a rel="start" class="courseLink">Home</a></td><td><a class="courseLink"></a></td></tr>
+                </table>
+                
+            </center>
+<!-- 
+            <center>
+                <table>
+                    <tr class="commonTextNavBig"><td><a rel="freeClass" class="courseLink">Free Class!</a></td><td><a rel="start" class="courseLink">Home</a></td></tr>
+                </table>
+            </center>
+-->
+        </div>
+        
+        <div id="littleshoot" class="commonText">Built by <a href="http://www.littleshoot.org">LittleShoot Labs</a></div>
+    </div>
+
+    <div class="overlay" id="devilsBallOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/The_Devils_Ball.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+
+    <div class="overlay" id="sandmanOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/The_Sandman.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+
+    <div class="overlay" id="streetOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/The_Street.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="creatureComfortsOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/Creature_Comforts.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    <div class="overlay" id="dannyAndAnnieOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/Danny_and_Annie.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="fireworksOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/Fireworks_by_PES.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    <div class="overlay" id="harvieKrumpetOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/Harvie_Krumpet.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    <div class="overlay" id="herMorningEleganceOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/Her_Morning_Elegance.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    <div class="overlay" id="pancakeManOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/Pancake_Man.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="whenTheDayBreaksOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/WHEN_THE_DAY_BREAKS.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="westernSpaghettiOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/Western_Spaghetti_by_PES.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="whiteboardOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/White_Board_Animation.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="highschoolOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/highschool_animation.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="tollCollectorOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/toll_collector.m4v" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="animationOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/kids_animation-desktop.m4v" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="collegeAnimationOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/animation_college-desktop.m4v" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    
+    <!-- 
+    <div class="overlay" id="warMovieOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/The_War_Movie.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+     -->
+    
+    <div class="overlay" id="boomBoomPowOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/boom_boom_pow.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="musicVideoOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/music_video.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="theGoodOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/the_good.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="drawnAnimationOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/drawn_animation.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="compilationOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/compilation_1_2.mov" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    
+    <!-- 
+    <div class="overlay" id="summerAnimationOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://racheljohnson.s3.amazonaws.com/The_War_Movie.dv" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+     -->
+    
+    <div class="overlay" id="liveActionOverlay" style="z-index: 200000;">
+        <div style="background-color: #302419; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/kid_live_action-desktop.m4v" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+    <!-- 
+    <script type="text/javascript" src="js/jquery-1.2.6-custom-min.js"></script>
+     -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/flowplayer-3.0.1.pack.js"></script>
+    <script type="text/javascript">
+        {% include "lakmm.js" %}
+    </script>
+    
+    <script type="text/javascript" src="js/jquery.expose-0.14.min.js"></script>
+    <script type="text/javascript" src="js/jquery.overlay-0.14.pack.js"></script>
+    
+
+    
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+        <script type="text/javascript">
+        try {
+        var pageTracker = _gat._getTracker("UA-6608968-1");
+        pageTracker._trackPageview();
+        } catch(err) {}
+    </script>
+</body>
+</html>

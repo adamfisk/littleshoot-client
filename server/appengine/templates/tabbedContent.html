@@ -1,0 +1,71 @@
+{% extends "siteBase.html" %}
+{% block head %}
+{% endblock head %}
+
+{% block mainContentWhiteDiv %}
+<div id="searchContainer" {% block searchAttributes %}style="display:none;"{% endblock %}>
+    {% include "searchContent.html" %}
+</div>
+
+<div id="downloadsContainer" {% block downloadsAttributes %}style="display:none;"{% endblock %}>
+    {% include "downloadsContent.html" %}
+</div>
+
+<div id="publishContainer" {% block publishAttributes %}style="display:none;"{% endblock %}>
+    {% include "publishContent.html" %}
+</div>
+
+<div id="aboutContainer" {% block aboutAttributes %}style="display:none;"{% endblock %}>
+    {% include "aboutContent.html" %}
+</div>
+
+{% include "welcome.html" %}
+{% include "linkMessage.html" %}
+{% endblock mainContentWhiteDiv%}
+
+
+{% block extraHtml %}
+{% include "publishExtraHtml.html" %}
+{% endblock extraHtml %}
+
+{% block javascriptLateIncludes %}
+{% endblock %}
+
+{% block javascript %}
+
+    // These are here because jslint chokes on template code.
+    jQuery().ready(function() {
+        dojo.addOnLoad(function() {
+        {% if showWelcome %}
+            Welcome.welcome();
+        {% endif %}
+         
+        {% if showProCancelled %}
+            Pro.cancelled();});
+        {% endif %}
+        
+        {% if showProSuccess %}
+            Pro.success();
+        {% endif %}
+        
+        {% if showProFailed %}
+            Pro.failed();
+        {% endif %}
+        
+        {% if showDonateSuccess %}
+            Pro.donateSuccess();
+        {% endif %}
+        
+        {% if showLinkNotInstalled %}
+            Link.linkNotInstalledMessage('{{ link }}', '{{ title }}');
+        {% endif %}
+        
+        setInitialHistoryState("{{ tabId }}");
+        
+        // The class here needs to be coordinated with the navigation code that
+        // also calls onload with tab switches.
+        {{ tabJavaScriptClass }}.onOnLoad();
+        });
+    });
+    
+{% endblock javascript %}

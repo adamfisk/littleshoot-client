@@ -1,0 +1,19 @@
+Notes on the upgrade to LT 0.15.4 and Boost 1.44:
+
+OSX: The biggest issue was that we needed to build a new x86 binary for both 32 bit and 64 bit. This generally went fine except for the fact that we previously weren't specifying the "architecture" argument when building Boost, and for some reason this caused the i386 build to fail during the linking stage because the Boost build wasn't exporting the correct symbols. Adding the architectue=x86 (I think it was) argument solved the issue after much searching!
+
+We also had to apply a patch for Boost 1.44 that's going into Boost 1.45 for ASIO -- Arvid identified it and gave me the info.
+
+Windows: I believe we came across this same issue before, but for some reason the generated DLL only works in release mode. Otherwise we get EXCEPTION_ACCESS_VIOLATION on certain calls.
+
+It looks like it also has the Boost ASIO problem -- investigating now. Oh, and finally the Windows version would not compile with Boost 1.44 -- only 1.43. This makes applying to 1.44 patch slightly trickier!
+ 
+Old Visual Studio "Additional Dependencies" under Project->Properties->Linker->Input:
+
+libtorrent.lib
+libboost_system-mt-sgd.lib
+libboost_thread-mt-sgd.lib
+libboost_filesystem-mt-sgd.lib
+libeay32MTd.lib
+ssleay32MTd.lib
+

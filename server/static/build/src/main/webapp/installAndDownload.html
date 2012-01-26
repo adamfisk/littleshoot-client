@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    
+    <title>LittleShoot</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+    <style type="text/css">
+    <!--  DELETEME
+        @import "js/dijit/themes/tundra/tundra.css";
+        @import "js/dojo/resources/dojo.css";
+        DELETEME -->
+    </style>
+
+    <style type="text/css">
+        @import "dojo-release-1.1.0-src/dijit/themes/tundra/tundra.css";
+        @import "dojo-release-1.1.0-src/dojo/resources/dojo.css";
+    </style>
+    
+    <!--
+        Import our css separately for easy toggling between online and offline.
+    -->
+    <style type="text/css">
+        @import "css/installAndDownload.css";
+        @import "css/common.css";
+        @import "css/wizard.css";
+    </style>
+
+</head>
+
+<body class="tundra">
+    <div id="loading">
+        <img src="http://littleshootimages.appspot.com/images/loading.gif" alt="" />
+    </div>
+    <div id="leftDiv"></div>
+    
+    <div id="contentDiv">
+
+        <div id="logoDiv">
+            <img src="http://littleshootimages.appspot.com/images/logo_trans_big.gif" width="163" border="0" alt="LittleShoot"/>
+        </div>
+        <div id="descDiv">
+            <span class="normalMedium">
+            You need to have LittleShoot installed to view this file.  
+            The download for the installer will start automatically.  When 
+            LittleShoot is installed, it will automatically start downloading your file.  
+            If you don't want to install LittleShoot, click the "Cancel" button.
+            <br><br>
+            If the download does not start, please click 
+            <a href="javascript:CommonUtils.downloadInstaller()">here</a>.
+            
+            You can also choose to read 
+            <a href="http://www.littleshoot.org/site.html?contentId=download&noAutoDownload=true">more details about the installation process</a> 
+            or simply  
+            <a href="http://www.littleshoot.org/site.html?contentId=whatIs">learn more about LittleShoot</a>.
+            </span>
+        </div>
+    </div>
+    <div id="bottomDiv"></div>
+    
+    <script type="text/javascript" src="firebug/firebug.js"></script>
+
+<!-- DELETEME
+    <script type="text/javascript" src="js/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+    <script type="text/javascript" src="js/dojo/shootDojo.js"></script>
+DELETEME-->
+
+    <script type="text/javascript" src="dojo-release-1.1.0-src/dojo/dojo.js" djConfig="parseOnLoad: true"></script><!--  //DELETEME -->
+    
+    <script type="text/javascript" src="littleshoot/Constants.js"></script><!--  //DELETEME -->
+    <script type="text/javascript" src="littleshoot/CommonUtils.js"></script> <!--  //DELETEME -->
+    <script type="text/javascript" src="littleshoot/AppMonitor.js"></script> <!--  //DELETEME -->
+    <script type="text/javascript" src="littleshoot/Button.js"></script> <!--  //DELETEME -->
+    
+    <script type="text/javascript" src="littleshoot/InstallAndDownload.js"></script> <!--  //DELETEME -->
+    
+    
+    <script type="text/javascript">
+        dojo.require("dojo.parser"); //DELETEME
+        dojo.require("dojo.io.script"); //DELETEME
+        dojo.require("dijit.Dialog"); //DELETEME
+        dojo.require("dojo.cookie"); //DELETEME
+        //dojo.addOnLoad(InstallAndDownload.installAndDownload);
+    </script>
+
+    <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        _uacct = "UA-3025934-2";
+        urchinTracker();
+    </script>
+</body>
+</html>

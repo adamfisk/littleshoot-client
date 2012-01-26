@@ -1,0 +1,55 @@
+
+<form method="post" action="http://app.icontact.com/icp/signup.php" 
+    name="icpsignup" accept-charset="UTF-8" onsubmit="return verifyRequired();">
+        
+    <div class="commonDialogDiv">
+        <span class="normalMedium">
+            Enter your e-mail address below and click "Submit".
+        </span>
+        <br><br>
+        
+       
+        <input type=hidden name=redirect value="http://www.lastbamboo.org/site.html?emailSuccess=true"/>
+		<input type=hidden name=errorredirect value="http://www.lastbamboo.org/site.html?emailSuccess=false"/>
+		<script language=javascript>
+			function verifyRequired() 
+				{
+			  	if (document.icpsignup["fields_email"].value == "") 
+			  		{
+			    	alert("The Email field is required.");
+                    console.log("Verify called");
+			    	return false;
+			  		}
+				return true;
+				}
+		</script>
+        
+		<input type=hidden name="listid" value="5418">
+	    <input type=hidden name="specialid:5418" value="TRQ4">
+	    <input type=hidden name=clientid value="158077">
+	    <input type=hidden name=formid value="491">
+	    <input type=hidden name=reallistid value="1">
+	    <input type=hidden name=doubleopt value="0">
+
+        <div style="text-align:center">
+            <label for="fields_email">E-Mail: </label>
+            <input type="text" name="fields_email" 
+                dojoType="dijit.form.TextBox" trim="true"
+                maxLength="100"
+                />
+        </div>
+        <br>           
+
+        <div style="text-align:center">
+            <button dojoType="dijit.form.Button" type="submit">
+                Submit
+            </button>
+            <button dojoType="dijit.form.Button">
+                Cancel
+                <script type="dojo/method" event="onClick">
+                    dijit.byId('alertGlobalDialog').hide();
+                </script>
+            </button>
+        </div>
+    </div>
+</form>

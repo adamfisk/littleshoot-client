@@ -1,0 +1,15 @@
+﻿application: lakidsmakemovies
+version: 2
+runtime: python
+api_version: 1
+
+handlers:
+- url: /media
+  static_dir: media
+
+- url: /(.*\.(html|css|js|gif|png|jpg|ico|swf|m4v|mov|class))
+  static_files: static/\1
+  upload: static/(.*\.(html|css|js|gif|png|jpg|ico|swf|m4v|mov|class))
+
+- url: /.*
+  script: common/appenginepatch/main.py

@@ -1,0 +1,16 @@
+Dear {{ first_name }}: 
+
+As the founder of LittleShoot, I'd like to personally thank you for donating to LittleShoot. You're contributing to a future Internet based on open standards, open source, and a media infrastructure you and your peers control. We strive to make LittleShoot the best product it can be, and we sincerely value your support. 
+
+If you ever have any problems or suggestions, you can reach us on the forums at:
+
+http://groups.google.com/group/littleshooters/
+
+Also, always feel free to e-mail me directly at a@littleshoot.org.
+
+Thank you again!
+
+-Adam Fisk
+Founder 
+LittleShoot
+http://twitter.com/adamfisk

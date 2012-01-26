@@ -1,0 +1,18 @@
+Dear {{ first_name }}: 
+
+As the founder of LittleShoot, I'd like to personally welcome you to LittleShoot Pro, the P2P Browser Plugin. As a LittleShoot Pro user, you're contributing to a future Internet based on open standards, open source, and a media infrastructure you and your peers control. We strive to make LittleShoot the best product it can be, and we sincerely value your support. 
+
+You can download LittleShoot Pro from the link below. This will always point to the latest LittleShoot Pro version, so BE SURE TO SAVE THIS E-MAIL to access future versions! Your link will be valid for 1 year of updates.
+
+http://www.littleshoot.org/proDownload?key={{ pro_key }}
+
+We hope you enjoy using LittleShoot. If you ever have any problems or suggestions, contact us directly at the exclusive pro-only e-mail address at pro@littleshoot.org. If you're really in a bind, e-mail me directly at the address below.
+
+Thank you and, again, welcome.
+
+Adam Fisk
+Founder 
+LittleShoot
+
+afisk@littleshoot.org
+http://twitter.com/adamfisk

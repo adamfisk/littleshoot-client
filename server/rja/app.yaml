@@ -1,0 +1,32 @@
+application: racheljohnsonanimation 
+version: 1
+runtime: python
+api_version: 1
+
+default_expiration: '3650d'
+
+handlers:
+
+- url: /media
+  static_dir: _generated_media
+  
+- url: /dojo12/.*
+  script: $PYTHON_LIB/google/appengine/ext/zipserve
+
+- url: /dijit12/.*
+  script: $PYTHON_LIB/google/appengine/ext/zipserve
+
+- url: /dojox12/.*
+  script: $PYTHON_LIB/google/appengine/ext/zipserve
+
+- url: /timestamped/.*
+  script: common/appenginepatch/main.py
+  
+- url: /(.*\.(html|css|js|gif|png|jpg|ico|swf|class|flv|cab))
+  expiration: "3650d"
+  static_files: static/\1
+  upload: static/(.*\.(html|css|js|gif|png|jpg|ico|swf|class|flv|cab))
+
+- url: /.*
+  script: common/appenginepatch/main.py
+

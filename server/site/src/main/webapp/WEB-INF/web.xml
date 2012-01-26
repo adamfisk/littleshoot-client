@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app 
+    xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd"
+    version="2.5">
+
+
+    <display-name>LittleShoot Servlets</display-name>
+    <description>LittleShoot Servlets</description>
+
+    <!-- 
+     We set a really long session timeout for now because we rely on session
+     variables for login keys.  This is in minutes.
+     -->
+    <session-config>
+        <session-timeout>600</session-timeout>
+        </session-config>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/applicationContext.xml
+            classpath:/amazonEc2Beans.xml
+            classpath:/jmxClientBeans.xml
+            classpath:/serverControllerBeans.xml
+            classpath:/serverDbBeans.xml
+            classpath:/commonServicesBeans.xml
+            classpath:/serverServicesBeans.xml
+            classpath:/dbConfigBeans.xml
+            </param-value>
+        
+        </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+        </listener>
+        
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+        </listener>
+        
+    <!--
+        Filter for checking signatures on calls that need to be signed.
+    
+    <filter>
+        <filter-name>signatureFilter</filter-name>
+        <filter-class>org.lastbamboo.server.controllers.filters.SignatureFilter</filter-class>
+        </filter>
+
+    <filter-mapping>
+        <filter-name>signatureFilter</filter-name>
+        <url-pattern>/api/secure/*</url-pattern>
+        </filter-mapping>
+        -->
+        
+<!-- 
+    <servlet>
+        <servlet-name>publish-url</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+         -->
+  
+    <servlet>
+        <servlet-name>download</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+         
+    <servlet>
+        <servlet-name>key</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+                
+    <servlet>
+        <servlet-name>publish-file</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+   
+    <servlet>
+        <servlet-name>publish-raw-file</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+        </servlet>
+             
+    <servlet>
+        <servlet-name>delete-file</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+        </servlet>
+        
+    <servlet>
+        <servlet-name>edit-file</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+        </servlet>
+        
+    <servlet>
+        <servlet-name>search</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+        
+    <servlet>
+        <servlet-name>download-view</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+        
+    <servlet>
+        <servlet-name>download-sources</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+        
+    <servlet>
+        <servlet-name>user-online</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+
+<!--
+    <servlet>
+        <servlet-name>server-online</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+-->
+
+    <!--
+        Used for accessing available SIP servers to use.
+    -->
+    <servlet>
+        <servlet-name>sip-server</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+
+    <!--
+        Used for accessing available TURN servers to use.
+    -->  
+    <servlet>
+        <servlet-name>turn-server</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+
+    <servlet>
+        <servlet-name>server-monitor</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+    
+    <servlet>
+        <servlet-name>file-listing</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+
+    <servlet>
+        <servlet-name>login</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>3</load-on-startup>
+        </servlet>
+        
+    <servlet>
+        <servlet-name>new-user</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>3</load-on-startup>
+        </servlet>
+   
+    <servlet>
+        <servlet-name>new-group</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>3</load-on-startup>
+        </servlet>
+        
+    <servlet>
+        <servlet-name>forgot-password</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+        </servlet>
+ 
+    <servlet>
+        <servlet-name>reset-password</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+        </servlet>
+                
+    <servlet>
+        <servlet-name>confirm-new-user</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+        </servlet>
+
+<!--                    MAPPINGS                 -->
+
+    <servlet-mapping>
+        <servlet-name>login</servlet-name>
+        <url-pattern>/api/login</url-pattern>
+        </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>download</servlet-name>
+        <url-pattern>/api/download</url-pattern>
+        </servlet-mapping>
+        
+    <!--  
+    <servlet-mapping>
+        <servlet-name>publish-url</servlet-name>
+        <url-pattern>/api/publishUrl</url-pattern>
+        </servlet-mapping>
+         -->
+         
+    <servlet-mapping>
+        <servlet-name>key</servlet-name>
+        <url-pattern>/api/key</url-pattern>
+        </servlet-mapping>
+                
+    <servlet-mapping>
+        <servlet-name>publish-file</servlet-name>
+        <url-pattern>/api/publishFile</url-pattern>
+        </servlet-mapping>
+        
+    <servlet-mapping>
+        <servlet-name>publish-raw-file</servlet-name>
+        <url-pattern>/api/publishRawFile</url-pattern>
+        </servlet-mapping>
+        
+    <servlet-mapping>
+        <servlet-name>delete-file</servlet-name>
+        <url-pattern>/api/deleteFile</url-pattern>
+        </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>edit-file</servlet-name>
+        <url-pattern>/api/editFile</url-pattern>
+        </servlet-mapping>
+                
+    <servlet-mapping>
+        <servlet-name>search</servlet-name>
+        <url-pattern>/api/search</url-pattern>
+        </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>download-view</servlet-name>
+        <url-pattern>/api/downloadView</url-pattern>
+        </servlet-mapping>
+        
+    <servlet-mapping>
+        <servlet-name>download-sources</servlet-name>
+        <url-pattern>/api/downloadSources</url-pattern>
+        </servlet-mapping>
+        
+    <servlet-mapping>
+        <servlet-name>user-online</servlet-name>
+        <url-pattern>/api/userOnline</url-pattern>
+        </servlet-mapping>
+        
+<!--
+    <servlet-mapping>
+        <servlet-name>server-online</servlet-name>
+        <url-pattern>/api/serverOnline</url-pattern>
+        </servlet-mapping>
+-->    
+ 
+    <servlet-mapping>
+        <servlet-name>sip-server</servlet-name>
+        <url-pattern>/api/sipServer</url-pattern>
+        </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>turn-server</servlet-name>
+        <url-pattern>/api/turnServer</url-pattern>
+        </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>server-monitor</servlet-name>
+        <url-pattern>/api/serverMonitor</url-pattern>
+        </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>file-listing</servlet-name>
+        <url-pattern>/api/fileListing</url-pattern>
+        </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>new-user</servlet-name>
+        <url-pattern>/api/newUser</url-pattern>
+        </servlet-mapping>
+        
+    <servlet-mapping>
+        <servlet-name>new-group</servlet-name>
+        <url-pattern>/api/newGroup</url-pattern>
+        </servlet-mapping>
+        
+    <servlet-mapping>
+        <servlet-name>forgot-password</servlet-name>
+        <url-pattern>/api/forgotPassword</url-pattern>
+        </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>reset-password</servlet-name>
+        <url-pattern>/api/resetPassword</url-pattern>
+        </servlet-mapping>
+         
+    <servlet-mapping>
+        <servlet-name>confirm-new-user</servlet-name>
+        <url-pattern>/api/confirmNewUser</url-pattern>
+        </servlet-mapping>       
+    </web-app>
+

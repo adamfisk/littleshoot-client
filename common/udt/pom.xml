@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.lastbamboo</groupId>
+    <artifactId>lastbamboo-common-udt</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <name>UDT</name>
+    <description>Reliable UDP Using UDT</description>
+
+    <parent>
+        <groupId>org.lastbamboo</groupId>
+        <artifactId>lastbamboo-common</artifactId>
+        <version>1.0</version>
+        </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>util</artifactId>
+        </dependency>
+
+        </dependencies>
+
+<!--
+    <build>
+        <plugins>
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>2.2-beta-5</version>
+                    <executions>
+                        <execution>
+                            <id>latest-build</id>
+                            <phase>package</phase>
+                            <configuration>
+                                <descriptorRefs>
+                                    <descriptorRef>jar-with-dependencies</descriptorRef>
+                                </descriptorRefs>
+
+                                <archive>
+                                    <manifest>
+                                        <mainClass>udt.util.TestSocket</mainClass>
+                                    </manifest>
+                                </archive>
+                            </configuration>
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </build>
+-->
+
+    </project>

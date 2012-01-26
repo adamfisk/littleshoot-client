@@ -1,0 +1,69 @@
+<div dojoType="dijit.Dialog" id="publishDialog" title="Add Tags for the File" style="display:none;">
+    <form id="publishForm" name="publishForm" dojoType="dijit.form.Form" onSubmit="Publisher.onPublish(); return false;">
+        <div class="commonDialogDiv littleShoot">
+            <span class="normalMedium">
+            Enter your tags. Separate tags with commas, as in "beach, kite surfing, Mexico". Your
+            file will be searchable by the tags you enter so you and other
+            users can find your file.
+            </span>
+        </div>
+        <br>
+        <div class="simple bigTextInput">
+            <div id="publishTagsTextBox" style="text-align:center">
+                <label class="tagsInputLabel" for="tags">Tags: </label>
+                <input type="text" id="publishTagsTextBoxInput" name="tags" 
+                    dojoType="dijit.form.TextBox" trim="true"
+                    maxLength="250"/>
+            </div>
+            <br>
+            <div dojoType="dijit.TitlePane" title="Twitter" open="false" style="display:none;">
+                <div>
+                    <label class="inputLabel" for="twitterUserName">User Name: </label>
+                    <input type="text" id="twitterUserName" name="twitterUserName" 
+                        dojoType="dijit.form.TextBox" trim="true"
+                        maxLength="250" class="publishInput"/>
+                    <br>
+                    <br>    
+                    <label class="inputLabel" for="twitterPassword">Password: </label>
+                    <input type="password" id="twitterPassword" name="twitterPassword" 
+                        dojoType="dijit.form.TextBox" trim="true" maxLength="40" class="publishInput"/>
+                    <br>
+                    <br>
+                    <div id="twitterMessageDiv">
+                        <label id="twitterMessageLabel" class="inputLabel" for="twitterMessage">Tweet: </label> 
+                        <div id="twitterMessageCharCount" class="grayCount">0*</div>
+                        <textarea name="twitterMessage" id="twitterMessageTextArea" class="textAreaBigTextInput"></textarea>
+                        <div id="countDescDiv">*<span id="countDesc"> LittleShoot uses 16 characters to append a link to your file.</span></div>
+                    </div>
+                    
+                    <input id="storeTwitterCredentials" dojotype="dijit.form.CheckBox" 
+                           name="storeTwitterCredentials" checked="checked" value="on" 
+                           type="checkbox" />
+                    <label class="inputLabel" for="storeTwitterCredentials">Store Credentials Locally?</label>
+                    <br>
+                    <input id="useStoredTwitterCredentials" dojotype="dijit.form.CheckBox" 
+                           name="useStoredTwitterCredentials" checked="checked" value="on" 
+                           type="checkbox" /> 
+                    <label class="inputLabel" for="useStoredTwitterCredentials">Use Stored Credentials?</label>
+                </div>
+            </div>
+            <br>
+            
+            <div style="text-align:center">
+            <button dojoType="dijit.form.Button">
+                Publish
+                <script type="dojo/method" event="onClick">
+                        Publisher.onPublish();
+                        dijit.byId('publishDialog').hide();
+                    </script>
+            </button>
+            <button dojoType="dijit.form.Button">
+                Cancel
+                <script type="dojo/method" event="onClick">
+                        dijit.byId('publishDialog').hide();
+                    </script>
+            </button>
+            </div>
+        </div>
+    </form>
+</div>

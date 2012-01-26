@@ -1,0 +1,85 @@
+The LittleShoot Amazon S3 Toolkit provides a simple command line tool as well as 
+a simple Java API for interfacing with s3.  
+
+To use the automated "installer", simply run:
+
+$ ./install.sh
+
+This will move the aws script and accompanying jar file to /usr/local/littleshoot
+and will add symbolic links in /usr/local/bin to the scripts in 
+/usr/local/littleshoot.  It will also prompt you for your AWS access key ID
+and AWS secret access key, and it will automatically create a littleshoot
+properties file for you in ~/.littleshoot/littleshoot.properties.  This
+is just a properties file with your AWS key information.  LittleShoot reads
+it from a file to avoid it being readable with ps.     
+
+You can also put the scripts wherever you want manually, of course.  You
+will, however, have to create a file called "littleshoot.properties".  
+LittleShoot searches the following directories in order:
+
+~/.littleshoot/littleshoot.properties
+/etc/littleshoot/littleshoot.properties
+
+The file must look like the following:
+accessKeyId=XXXXXXXXXXXXXXXX
+accessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Again, the automated "installer" script is easier in that it just creates
+this file for you in /etc/littleshoot and prompts you for AWS information.
+
+The LittleShoot command line tool gives extensive information about its 
+various options.  For example, here's the output from just typing "aws" 
+with no arguments: 
+
+$ aws
+usage: aws
+  -h,--help                            Print this message.
+  -ls,--listbucket <bucket>            Lists all the files in the
+                                       specified bucket.
+  -mkdir,--makebucket <bucket>         Creates the specified bucket.
+  -put,--putprivate <bucket, file>     Adds the specified file to S3 as a
+                                       private file.
+  -puta,--putall <bucket, dir>         Adds all files in the specified
+                                       directory as private files.
+  -putap,--putallpublic <bucket, dir>  Adds all files in the specified
+                                       directory as public files.  Does not add directories or recurse.
+  -putp,--putpublic <bucket, file>     Adds the specified file to S3 as
+                                       publicly readable.
+  -rm,--delete <bucket, file>          Removes the file in the specified
+                                       bucket with the specified name.  Note that a '*' at the beginning or the
+                                       end acts as a wildcard.  For example,'aws -rm littleshoot *.sh' removes
+                                       all .sh files in the littleshoot bucket.  Use the star functionality with
+                                       some caution, of course.  It only works at the beginning or end of the
+                                       file name.
+  -rmb,--deletebucket <bucket>         Removes the specified bucket if
+                                       it's empty.
+
+
+As you can see, we've tried to follow command line syntax if possible.  For example:
+
+$ aws -ls littleshoot
+
+lists all the files in the littleshoot bucket, while
+
+$ aws -mkdir littleshoot 
+
+creates a littleshoot bucket.
+
+The help output should be fairly self-explanatory.  --putall, or "-puta", adds all of the 
+files in the specified directory to the specified bucket.  Also, the "*" functionality 
+of rm allows things like:
+
+$ aws -rm littleshoot *.sh
+
+which will remove all .sh files form the littleshoot bucket.  You can also do things like
+
+$ aws -rm littleshoot file*
+
+To remove all files from the littleshoot bucket starting with "file".  Note this only supports
+"*" from the command line and not any real regular expressions.  
+
+Enjoy!
+
+Adam Fisk
+http://www.littleshoot.org
+

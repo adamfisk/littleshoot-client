@@ -1,0 +1,28 @@
+    <div id="downloadStatsDiv" class="normalSmall">
+        <div class="downloadStatLine">Download Rate: <span id="downloadRate" class="downloadStat bold"></span></div>
+        <div class="downloadStatLine">Upload Rate: <span id="uploadRate" class="downloadStat bold"></span></div>
+        <div class="downloadStatLine">Total Downloaded: <span id="totalDownloadBytes" class="downloadStat bold"></span></div>
+        <div class="downloadStatLine">Total Uploaded: <span id="totalUploadBytes" class="downloadStat bold"></span></div>
+        <div class="downloadStatLine">Ratio: <span id="ratio" class="downloadStat bold"></span></div>
+    </div>
+    
+    <div id="downloadsErrorDiv" class="normalBoldBig downloadsStatusDiv" style="display:none;">
+        LittleShoot could not access your downloads. This could be because LittleShoot is no longer running or because you're using an older version.
+        <br><br>
+        Download display is only supported in LittleShoot 0.87 or above.
+        <br><br>
+        You can try the latest version <a class="downloadLink" href="#">here</a>.
+    </div>
+    
+    <div id="loadingDownloadsDiv" class="normalBoldBig downloadsStatusDiv" style="">
+        LittleShoot is loading your downloads.<br><br>
+        This may take a second if LittleShoot wasn't previously running.
+    </div>
+    
+    <div id="noDownloadsDiv" class="normalBoldBig downloadsStatusDiv" style="display:none;">
+        You have no active downloads.
+    </div>
+    
+    <div id="downloadsDiv"></div>
+    
+    

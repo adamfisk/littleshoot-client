@@ -1,0 +1,18 @@
+<div class="grayNav">
+    <div class="grayNavControlDiv">
+        {% block grayNavControlDiv %}{% endblock %}
+    </div>
+    
+    <div style="display:none;" class="forumsLink">
+        {% block grayNavExtraDiv %}
+        {% endblock grayNavExtraDiv %}
+        <a href="http://groups.google.com/group/littleshooters/">Visit the forums!</a>
+    </div>
+</div>
+
+<div id="contentDataDiv">
+    {% block content %}{% endblock %}
+</div>
+<div id="contentDataDivBottom">
+    {% block contentBottom %}{% endblock %}
+</div>

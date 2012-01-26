@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.lastbamboo</groupId>
+    <artifactId>lastbamboo-common-rudp-test-server</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <name>Reliable UDP Test Server</name>
+    <description>Last Bamboo Reliable UDP Test Server</description>
+
+    <parent>
+        <groupId>org.lastbamboo</groupId>
+        <artifactId>lastbamboo-common-rudp-test</artifactId>
+        <version>1.0</version>
+        </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-rudp</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-rudp-test-util</artifactId>
+            </dependency>
+        </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>
+                                org.lastbamboo.common.rudp.RudpTestServer
+                                </mainClass>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
+    </project>

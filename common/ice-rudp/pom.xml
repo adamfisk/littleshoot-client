@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.lastbamboo</groupId>
+    <artifactId>lastbamboo-common-ice-rudp</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <name>ICE RUDP Stream</name>
+    <description>Last Bamboo ICE RUDP</description>
+
+    <parent>
+        <groupId>org.lastbamboo</groupId>
+        <artifactId>lastbamboo-common</artifactId>
+        <version>1.0</version>
+        </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-ice</artifactId>
+            </dependency>
+                     
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-offer-answer</artifactId>
+            </dependency>
+                          
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-turn-http-server</artifactId>
+            </dependency>
+                                  
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-util-common</artifactId>
+            </dependency>
+
+<!--            
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-rudp</artifactId>
+            </dependency>            
+-->    
+           
+        </dependencies>
+    </project>

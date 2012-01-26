@@ -1,0 +1,24 @@
+﻿application: politicalvideo
+version: 3
+runtime: python
+api_version: 1
+
+default_expiration: '3650d'
+
+handlers:
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+
+- url: /media
+  static_dir: _generated_media
+
+- url: /(.*\.(html|gif|png|jpg|ico|swf|m4v|mov|class))
+  static_files: static/\1
+  upload: static/(.*\.(html|gif|png|jpg|ico|swf|m4v|mov|class))
+
+- url: /auth_test/.*
+  script: auth.py
+
+- url: /.*
+  script: common/appenginepatch/main.py

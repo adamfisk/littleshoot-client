@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<h1>Top {{ bugs|length }} JavaScript Bugs Reported</h1>
+
+<div id="bugsDiv" style="display:none;">
+    {% for bug in bugs %}
+    <div dojoType="dijit.TitlePane" title="{{ forloop.counter }}) Message: {{ bug.message }}, line: {{ bug.lineNumber }}, date: {{ bug.date }}" open="false">
+        <div class="normalSmall">
+            <strong>Message: </strong>{{ bug.message }} <br>
+            <strong>URL: </strong>{{ bug.url }} <br>
+            <strong>LineNumber: </strong>{{ bug.lineNumber }} <br>
+            <strong>Date: </strong>{{ bug.date }} <br>
+        </div>
+    </div>
+    <div style="min-height: 4px"></div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block javascript %}
+
+var show = function()
+    {
+    dojo.byId("bugsDiv").style.display = '';
+    };
+dojo.addOnLoad(show);
+{% endblock %}
+

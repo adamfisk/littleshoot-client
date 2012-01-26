@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <!--
+        The object that provides access to all meta file resources stored in the
+        database.
+    -->
+    <bean id="metaFileResourceDao"
+          class="org.lastbamboo.server.db.MetaFileResourceDaoImpl">
+        <constructor-arg ref="sessionFactory"/>
+        </bean>
+
+    <!--
+        The object that provides access to all file resources stored in the
+        database.
+    -->
+    <bean id="fileResourceDao"
+          class="org.lastbamboo.server.db.FileResourceDaoImpl">
+        <constructor-arg ref="sessionFactory"/>
+        </bean>
+
+    <!--
+        The object that provides access to all instance resources stored in the
+        database.
+    -->
+    <bean id="instanceDao"
+          class="org.lastbamboo.server.db.InstanceDaoImpl">
+        <constructor-arg ref="sessionFactory"/>
+        </bean>
+
+    <bean id="amazonSdb"
+        class="org.lastbamboo.common.amazon.sdb.AmazonSdbImpl">
+        </bean>
+        
+    <!--
+        The DAO for accessing users.
+    -->
+    <bean id="userDao"
+          class="org.lastbamboo.server.db.AmazonSdbUserDao">
+        <constructor-arg ref="amazonSdb"/>
+        </bean>
+
+    <!--
+        The DAO for accessing groups.
+    -->
+    <bean id="groupDao"
+          class="org.lastbamboo.server.db.GroupDaoImpl">
+        <constructor-arg ref="amazonSdb"/>
+        </bean>
+        
+    <!--
+        The object that searches resources stored in the database.
+    -->
+    <bean id="resourceSearchDao"
+          class="org.lastbamboo.server.db.ResourceSearchDaoImpl">
+        <constructor-arg ref="sessionFactory"/>
+        </bean>
+
+    <!--
+        The object that provides access to all resources stored in the
+        database.
+    -->
+    <bean id="resourceRepository"
+          class="org.lastbamboo.server.db.ResourceRepositoryImpl">
+        <constructor-arg><ref local="metaFileResourceDao"/></constructor-arg>
+        <constructor-arg><ref local="fileResourceDao"/></constructor-arg>
+        <constructor-arg><ref local="instanceDao"/></constructor-arg>
+        <constructor-arg><ref local="userDao"/></constructor-arg>
+        <constructor-arg><ref local="groupDao"/></constructor-arg>
+        <constructor-arg><ref local="resourceSearchDao"/></constructor-arg>
+        <constructor-arg ref="sessionFactory"/>
+        <constructor-arg ref="jmxMonitor"/>
+        </bean>
+
+    <!--
+        The factory for creating visitors that can format results in Amazon
+        Open Search result format.
+    -->
+    <bean id="openSearchFactory"
+          class="org.lastbamboo.server.db.OpenSearchResourceVisitorFactoryImpl">
+        </bean>
+
+    </beans>

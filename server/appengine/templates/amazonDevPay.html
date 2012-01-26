@@ -1,0 +1,82 @@
+{% extends "indexBase.html" %}
+
+{% block indexContent %}
+
+<center>
+    <img style="position:fixed; top:20px; right:300px;" src="http://littleshootimages.appspot.com/images/arrow_small_black.png"/>
+    <div style="margin-top: 80px; width: 420px;">
+        
+        <span class="normalBoldBig">Thanks for signing up for LittleShoot Pro!</span><br><br>
+        
+        <span class="normal">
+        You should see an <strong>"Activation Key"</strong> in red in the upper right of your browser window. The key should look something like "ADMAY7DVLJTWHJ76MMBMQYT5LATA." <br><br>
+        Please <strong>copy</strong> and <strong>paste</strong> it into the box below to activate your LittleShoot Pro account.<br><br>
+        </span>
+        
+        <div class="normalBoldMedium">
+        <form id="devPayActivationForm" name="devPayActivationForm" action="http://p2p2o.littleshoot.org:8107/api/client/activateDevPay?callback=?">
+            <input type="text" id="activationKey" name="activationKey"/><br><br>
+            <input class="simpleButton" type="submit" alt="Activate Pro!" name="submit" value="Activate Pro!"/>        
+        </form>
+        </div>
+    </div>
+</center>
+{% endblock indexContent %}
+  
+{% block indexJavaScript %}
+    {% include "javaScriptIncludes.html" %}
+    
+    <script type="text/javascript" src="http://littleshootjs.appspot.com/jquery.form.js"></script>
+    <script type="text/javascript">
+        {% include "setup.js" %}
+
+        
+        function validate(formData, jqForm, options) { 
+            // formData is an array of objects representing the name and value of each field 
+            // that will be sent to the server;  it takes the following form: 
+            // 
+            // [ 
+            //     { name:  activationKey, value: key }, 
+            // ] 
+            for (var i=0; i < formData.length; i++) { 
+                if (!formData[i].value) { 
+                    CommonUtils.showMessage("Blank Field", 
+                        "Please enter the activation ID from the top frame before submitting."); 
+                    return false; 
+                } 
+            }
+            return true; 
+        }
+
+        function beforeSubmit(formData, jqForm, options) {
+            if (!validate(formData, jqForm, options)) {
+                return false;
+            }
+        }
+
+        function processJson(data) { 
+            if (data.success === true) {
+                CommonUtils.showMessage("Activated!", 
+                    "Congratulations! LittleShoot Pro is now activated.");
+            } 
+            else {
+                CommonUtils.showMessage("Error!", 
+                    "There was an error activating your account from Amazon. "+
+                    "Activation IDs expire after one hour, so you may need to get a new one. "+
+                    "Amazon should have sent you an e-mail with instructions for how to obtain a new one.");
+            }
+        }
+        
+        $(document).ready(function() {
+            
+            $('#devPayActivationForm').ajaxForm({ 
+                beforeSubmit: beforeSubmit,
+                dataType:  'json', 
+                success: processJson
+            });
+        });
+    </script>
+
+    
+    {% include "analytics.html" %}
+{% endblock %}

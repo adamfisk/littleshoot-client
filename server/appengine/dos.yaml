@@ -1,0 +1,201 @@
+blacklist:
+- subnet: 82.232.179.212
+  description: chatty old version
+- subnet: 189.129.95.48
+  description: chatty old version
+- subnet: 82.50.162.106
+  description: chatty old version
+- subnet: 201.166.126.78
+  description: chatty old version
+- subnet: 84.114.211.184 
+  description: chatty old version
+- subnet: 190.101.49.216
+  description: chatty old version
+- subnet: 2.137.237.161
+  description: chatty old version
+- subnet: 70.81.48.8 
+  description: chatty old version
+- subnet: 98.229.71.93
+  description: chatty old version
+- subnet: 108.27.46.190
+  description: chatty old version
+- subnet: 187.135.139.166
+  description: chatty old version
+- subnet: 186.137.18.116 
+  description: chatty old version
+- subnet: 178.9.125.18
+  description: chatty old version
+- subnet: 188.154.181.49
+  description: chatty old version
+- subnet: 87.8.242.160
+  description: chatty old version
+- subnet: 189.155.7.27
+  description: chatty old version
+- subnet: 189.244.143.11 
+  description: chatty old version
+- subnet: 189.74.245.229
+  description: chatty old version
+- subnet: 178.139.229.64
+  description: chatty old version
+- subnet: 78.163.45.144
+  description: chatty old version
+- subnet: 217.255.230.18
+  description: chatty old version
+- subnet: 173.64.106.108 
+  description: chatty old version
+- subnet: 189.240.98.5
+  description: chatty old version
+- subnet: 94.120.45.150
+  description: chatty old version
+- subnet: 70.81.200.85
+  description: chatty old version
+- subnet: 66.65.33.117
+  description: chatty old version
+- subnet: 180.11.187.224
+  description: chatty old version
+- subnet: 190.149.25.219
+  description: chatty old version
+- subnet: 201.252.12.1 
+  description: chatty old version
+- subnet: 190.166.155.47
+  description: chatty old version
+- subnet: 189.130.185.178
+  description: chatty old version
+- subnet: 190.212.225.89
+  description: chatty old version
+- subnet: 190.132.205.203
+  description: chatty old version
+- subnet: 84.82.164.29
+  description: chatty old version
+- subnet: 60.229.141.248 
+  description: chatty old version
+- subnet: 24.201.156.170
+  description: chatty old version
+- subnet: 71.21.57.101
+  description: chatty old version
+- subnet: 201.141.250.225
+  description: chatty old version
+- subnet: 189.182.40.105
+  description: chatty old version
+- subnet: 187.159.29.193
+  description: chatty old version
+- subnet: 186.30.179.76
+  description: chatty old version
+- subnet: 189.242.142.64
+  description: chatty old version
+- subnet: 187.149.80.138
+  description: chatty old version
+- subnet: 216.80.125.154
+  description: chatty old version
+- subnet: 64.237.151.117
+  description: chatty old version
+- subnet: 83.37.26.143
+  description: chatty old version
+- subnet: 189.132.240.25
+  description: chatty old version
+- subnet: 187.199.203.15 
+  description: chatty old version
+- subnet: 155.212.109.106
+  description: chatty old version
+- subnet: 87.2.52.38
+  description: chatty old version
+- subnet: 77.202.99.109
+  description: chatty old version
+- subnet: 189.152.225.155
+  description: chatty old version
+- subnet: 187.145.71.101
+  description: chatty old version
+- subnet: 174.114.113.233
+  description: chatty old version
+- subnet: 189.217.57.126
+  description: chatty old version
+- subnet: 205.250.65.124
+  description: chatty old version
+- subnet: 200.8.181.99
+  description: chatty old version
+- subnet: 199.20.44.50
+  description: chatty old version
+- subnet: 91.40.91.186
+  description: chatty old version
+- subnet: 96.237.236.68
+  description: chatty old version
+- subnet: 89.82.115.137
+  description: chatty old version
+- subnet: 91.88.203.193
+  description: chatty old version
+- subnet: 188.119.4.249
+  description: chatty old version
+- subnet: 86.209.43.3
+  description: chatty old version
+- subnet: 79.250.27.169
+  description: chatty old version
+- subnet: 81.244.140.172
+  description: chatty old version
+- subnet: 189.189.72.7 
+  description: chatty old version
+- subnet: 200.77.195.237
+  description: chatty old version
+- subnet: 98.27.194.33
+  description: chatty old version
+- subnet: 85.1.254.61
+  description: chatty old version
+- subnet: 64.38.87.134
+  description: chatty old version
+- subnet: 186.30.160.157
+  description: chatty old version
+- subnet: 147.156.78.56
+  description: chatty old version
+- subnet: 201.138.112.207
+  description: chatty old version
+- subnet: 201.80.214.108 
+  description: chatty old version
+- subnet: 190.20.39.161
+  description: chatty old version
+- subnet: 189.155.207.149
+  description: chatty old version
+- subnet: 88.226.29.243
+  description: chatty old version
+- subnet: 88.244.247.88 
+  description: chatty old version
+- subnet: 85.103.182.52
+  description: chatty old version
+- subnet: 83.50.118.230
+  description: chatty old version
+- subnet: 88.161.53.22
+  description: chatty old version
+- subnet: 83.78.157.5
+  description: chatty old version
+- subnet: 187.173.194.26
+  description: chatty old version
+- subnet: 207.204.160.82
+  description: chatty old version
+- subnet: 189.251.232.110
+  description: chatty old version
+- subnet: 85.98.217.239
+  description: chatty old version
+- subnet: 189.154.75.188
+  description: chatty old version
+- subnet: 189.138.208.240
+  description: chatty old version
+- subnet: 201.155.1.230
+  description: chatty old version
+- subnet: 91.40.92.184
+  description: chatty old version
+- subnet: 98.218.229.76
+  description: chatty old version
+- subnet: 189.244.140.39
+  description: chatty old version
+- subnet: 75.142.68.65
+  description: chatty old version
+- subnet: 189.182.175.204 
+  description: chatty old version
+- subnet: 78.176.209.223
+  description: chatty old version
+- subnet: 87.14.241.154
+  description: chatty old version
+- subnet: 189.216.143.50
+  description: chatty old version
+- subnet: 189.153.63.187 
+  description: chatty old version
+- subnet: 176.45.96.93
+  description: chatty old version

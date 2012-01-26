@@ -1,0 +1,83 @@
+The postflight script in the current directory is the one that's used!!
+
+This file contains useful notes on anything related to the OSX installer.
+Writing installers can be somewhat of a black art, so this file includes
+any tidbits of information that might otherwise be easy to forget.
+
+DMG
+To edit the dmg, you need to open the dmg in the dmg folder, modify its 
+contents, eject it, and bzip2 it again.  You will need to first use 
+bunzip2 to get the straight dmg, then just type:
+
+afisk$ open LittleShoot.dmg
+
+To change the image of the volume once it's mounted, you need to set
+the .VolumeIcon.icns file in the root of the opened volume.  Then you
+need to set the custom icon resource fork bit on the volume.  To do 
+this, type:
+
+/Developer/Tools/SetFile -a C /Volumes/LittleShoot/
+
+That command tells Finder to look for the .VolumeIcon.icns file in the
+root of the volume and to use that for the volume icon.
+
+Once your done modifying it, just eject the disk image, create a new 
+bzip2 file with:
+
+afisk$ bzip2 LittleShoot.dmg
+
+and commit it.  When editing the background image, or any hidden files,
+there are a couple useful tricks.  First, when opening files in the 
+Finder, you can always use Cmd-Shift-G to enter the path directly.  Then,
+to specify the appropriate path for, say, the background image folder,  
+you can enter something like /Volumes/LittleShoot/.background/.  You can
+use the same path to copy a background image into the dmg, such as:
+
+afisk$ cp dmg/.background/background.jpg  /Volumes/LittleShoot/.background/
+
+That's it for now.  Still not sure how to customize the disk image icon on
+the desktop.  See:
+
+http://el-tramo.be/guides/fancy-dmg 
+http://decaffeinated.org/archives/2004/04/20/dmg
+
+PACKAGEMAKER
+To debug the installer as it's running, you can use the installer log at Window->Installer Log to see installer output.
+
+We use a PackageMaker installer because we want to launch the app right away after the installer runs.  It also gives us more flexibility generally, but running right away is the main reason.
+
+The "conclusion.txt" file is the text for the last page of the installer, so go ahead and edit that as necessary.
+
+UNINSTALLER:
+For the uninstaller, we just use a basic AppleScript file that calls a simple shell script and then displays a dialog box.  
+
+We've set up the uninstaller script to simple execute a bash script that runs the uninstall. This means to edit the uninstall, you typically just have to edit the bash script in: 
+
+LittleShootUninstaller.app/Contents/Resources/uninstall.bash 
+
+The AppleScript just automatically executes that file.
+
+To make changes to the AppleScript itself, modify the LittleShootUninstaller.scrpt file and then 
+save it as a "Run Only" application bundle with no Startup Screen.  This will 
+eventually overwrite the file the LittleShootUninstall.app app bundle, but don't save 
+it there.  The problem is the app bundle itself is a directory, so if you just 
+save it, you'll overwrite the .svn files for each subdirectory of the app 
+bundle.  You therefore should save it somewhere else, tgz it, and untgz it to 
+overwrite the files in the app bundle without killing the svn files.  
+
+Also be sure to save changes to the scrpt file itself and commit them both.  
+
+To edit either the installer or the uninstaller, simply call "open " followed
+by the file name from the terminal.
+
+Note the PackageMaker install leaves files in /Library/Receipts/ to record
+the install.  The files here determine whether the installer sees
+an install attempt as an "update" or an original install.  In some circumstances, the installer can put the receipt in ~/Library/Receipts.  On Tiger, this can happen if the user installs into home, but the situation is complex, and there are differences on Leopard.
+
+LAUNCHER:
+
+For the OSX launcher, it's also an AppleScript scpt file, super simple.  It just opens the URL.  Follow the same instructions for saving it as for the uninstaller above.  The main difference is the icns (icons) file.  Because it's used to actually launch the app from the Desktop, for example, we need it to have our LittleShoot icon.  That gives us on extra step at the end before committing any changes.  From the LittleShoot/component directory, you need to do the following:
+
+cp ../../dmg/LittleShoot.icns LittleShootLauncher.app/Contents/Resources/applet.icns
+
+Then commit!

@@ -1,0 +1,316 @@
+Index: build.xml
+===================================================================
+RCS file: /cvs/limewire/build.xml,v
+retrieving revision 1.43
+diff -u -p -r1.43 build.xml
+--- build.xml	16 Sep 2009 18:59:10 -0000	1.43
++++ build.xml	17 Aug 2010 21:03:07 -0000
+@@ -9,8 +9,8 @@
+ 	
+     <property name="aggregate.jar-jarname" value="LimeWire.jar"/>
+     <property name="aggregate.jar-includes" value="*/*/dist/main/*.jar"/>
+-    <property name="aggregate.jar-excludes" value="private-components/mock-core/**"/>
+-	
++    <property name="excludes" value="private-components/**,components/core-glue/**"/>
++        	
+     <import file="components/common/generic-multi-build.xml"/>
+     
+     <!-- runs all tests except those in gnutella-core. -->
+Index: components/gnutella-core/src/main/java/com/limegroup/gnutella/Downloader.java
+===================================================================
+RCS file: /cvs/components/gnutella-core/src/main/java/com/limegroup/gnutella/Downloader.java,v
+retrieving revision 1.82
+diff -u -p -r1.82 Downloader.java
+--- components/gnutella-core/src/main/java/com/limegroup/gnutella/Downloader.java	11 Dec 2009 00:54:54 -0000	1.82
++++ components/gnutella-core/src/main/java/com/limegroup/gnutella/Downloader.java	17 Aug 2010 21:03:07 -0000
+@@ -9,6 +9,7 @@ import org.limewire.core.api.download.Do
+ import org.limewire.io.Address;
+ import org.limewire.listener.ListenerSupport;
+ 
++import com.limegroup.gnutella.downloader.DownloadListener;
+ import com.limegroup.gnutella.downloader.DownloadStateEvent;
+ 
+ /**
+@@ -274,5 +275,7 @@ public interface Downloader extends Band
+         public void scanStarted();
+         public void scanStopped();
+     }
++    
++    void addDownloadListener(DownloadListener dl);
+ }
+ 
+Index: components/gnutella-core/src/main/java/com/limegroup/gnutella/bootstrap/TcpBootstrapImpl.java
+===================================================================
+RCS file: /cvs/components/gnutella-core/src/main/java/com/limegroup/gnutella/bootstrap/TcpBootstrapImpl.java,v
+retrieving revision 1.5
+diff -u -p -r1.5 TcpBootstrapImpl.java
+--- components/gnutella-core/src/main/java/com/limegroup/gnutella/bootstrap/TcpBootstrapImpl.java	5 Nov 2009 23:38:33 -0000	1.5
++++ components/gnutella-core/src/main/java/com/limegroup/gnutella/bootstrap/TcpBootstrapImpl.java	17 Aug 2010 21:03:07 -0000
+@@ -5,6 +5,7 @@ import java.io.IOException;
+ import java.io.InputStream;
+ import java.io.InputStreamReader;
+ import java.net.URI;
++import java.net.URISyntaxException;
+ import java.util.ArrayList;
+ import java.util.Collections;
+ import java.util.HashMap;
+@@ -259,5 +260,11 @@ class TcpBootstrapImpl implements TcpBoo
+     @Override
+     public void loadDefaults() {
+         // ADD DEFAULT HOST CACHES HERE.
++        try {
++            this.add(new URI("http://secondary.udp-host-cache.com:8080/gwc/"));
++            this.add(new URI("http://tertiary.udp-host-cache.com:8080/gwc/"));
++        } catch (URISyntaxException e) {
++            LOG.error("Error loading caches!", e);
++        }
+     }
+ }
+Index: components/gnutella-core/src/main/java/com/limegroup/gnutella/bootstrap/UDPHostCacheImpl.java
+===================================================================
+RCS file: /cvs/components/gnutella-core/src/main/java/com/limegroup/gnutella/bootstrap/UDPHostCacheImpl.java,v
+retrieving revision 1.7
+diff -u -p -r1.7 UDPHostCacheImpl.java
+--- components/gnutella-core/src/main/java/com/limegroup/gnutella/bootstrap/UDPHostCacheImpl.java	7 Apr 2009 15:35:53 -0000	1.7
++++ components/gnutella-core/src/main/java/com/limegroup/gnutella/bootstrap/UDPHostCacheImpl.java	17 Aug 2010 21:03:08 -0000
+@@ -312,6 +312,8 @@ class UDPHostCacheImpl implements UDPHos
+     @Override
+     public void loadDefaults() {
+         // ADD DEFAULT UDP HOST CACHES HERE.
++        createAndAdd("gnutelladev1.udp-host-cache.com", 1234);
++        createAndAdd("gnutelladev2.udp-host-cache.com", 5678);
+     }
+ 
+     /**
+Index: components/gnutella-core/src/main/java/com/limegroup/gnutella/downloader/AbstractCoreDownloader.java
+===================================================================
+RCS file: /cvs/components/gnutella-core/src/main/java/com/limegroup/gnutella/downloader/AbstractCoreDownloader.java,v
+retrieving revision 1.14
+diff -u -p -r1.14 AbstractCoreDownloader.java
+--- components/gnutella-core/src/main/java/com/limegroup/gnutella/downloader/AbstractCoreDownloader.java	22 Sep 2009 18:06:05 -0000	1.14
++++ components/gnutella-core/src/main/java/com/limegroup/gnutella/downloader/AbstractCoreDownloader.java	17 Aug 2010 21:03:08 -0000
+@@ -263,6 +263,6 @@ public abstract class AbstractCoreDownlo
+     public boolean isMementoSupported() {
+         return true;
+     }
+-    
+-    
++
++    public void addDownloadListener(DownloadListener dl) {}
+ }
+Index: components/gnutella-core/src/main/java/com/limegroup/gnutella/downloader/ManagedDownloaderImpl.java
+===================================================================
+RCS file: /cvs/components/gnutella-core/src/main/java/com/limegroup/gnutella/downloader/ManagedDownloaderImpl.java,v
+retrieving revision 1.91
+diff -u -p -r1.91 ManagedDownloaderImpl.java
+--- components/gnutella-core/src/main/java/com/limegroup/gnutella/downloader/ManagedDownloaderImpl.java	11 Dec 2009 00:54:54 -0000	1.91
++++ components/gnutella-core/src/main/java/com/limegroup/gnutella/downloader/ManagedDownloaderImpl.java	17 Aug 2010 21:03:09 -0000
+@@ -1943,12 +1943,16 @@ class ManagedDownloaderImpl extends Abst
+                     status = fireDownloadWorkers();//Exception may be thrown here.
+                 } finally {
+                     //3. Close the file controlled by commonOutFile.
+-                    commonOutFile.close();
++                    commonOutFile.close(status);
+                 }
+ 
+                 // 4. if all went well, save
+-                if (status == DownloadState.COMPLETE)
++                if (status == DownloadState.COMPLETE) {
+                     status = verifyAndSave();
++                    if(status == DownloadState.COMPLETE) {
++                        commonOutFile.onComplete();
++                    }
++                }
+                 else if (LOG.isDebugEnabled())
+                     LOG.debug("stopping early with status: " + status);
+ 
+@@ -3354,4 +3358,8 @@ class ManagedDownloaderImpl extends Abst
+             FileUtils.delete(incompleteFile, false);
+         }
+     }
++    
++    public void addDownloadListener(final DownloadListener dl) {
++        this.commonOutFile.addDownloadListener(dl);
++    }
+ }
+Index: components/gnutella-core/src/main/java/com/limegroup/gnutella/downloader/VerifyingFile.java
+===================================================================
+RCS file: /cvs/components/gnutella-core/src/main/java/com/limegroup/gnutella/downloader/VerifyingFile.java,v
+retrieving revision 1.98
+diff -u -p -r1.98 VerifyingFile.java
+--- components/gnutella-core/src/main/java/com/limegroup/gnutella/downloader/VerifyingFile.java	1 Dec 2009 16:51:24 -0000	1.98
++++ components/gnutella-core/src/main/java/com/limegroup/gnutella/downloader/VerifyingFile.java	17 Aug 2010 21:03:09 -0000
+@@ -5,6 +5,8 @@ import java.io.File;
+ import java.io.IOException;
+ import java.io.RandomAccessFile;
+ import java.util.ArrayList;
++import java.util.Collection;
++import java.util.LinkedList;
+ import java.util.List;
+ import java.util.NoSuchElementException;
+ 
+@@ -17,6 +19,7 @@ import org.limewire.io.DiskException;
+ import org.limewire.util.FileUtils;
+ 
+ import com.google.inject.Provider;
++import com.limegroup.gnutella.Downloader.DownloadState;
+ import com.limegroup.gnutella.tigertree.HashTree;
+ 
+ 
+@@ -171,6 +174,8 @@ public class VerifyingFile {
+     
+     /** The controller for doing disk reads/writes. */
+     private final Provider<DiskController> diskController;
++    
++    private File file;
+         
+     /**
+      * Constructs a new VerifyingFile for the specified size.
+@@ -205,6 +210,7 @@ public class VerifyingFile {
+             FileUtils.setWriteable(parentFile);
+         }
+         FileUtils.setWriteable(file);
++        this.file = file;
+         this.fos =  new RandomAccessFile(file,"rw");
+         SelectionStrategy myStrategy = SelectionStrategyFactory.getStrategyFor(
+                 FileUtils.getFileExtension(file), completedSize);
+@@ -216,6 +222,16 @@ public class VerifyingFile {
+             blockChooser = myStrategy;
+             isOpen = true;
+         }
++        notifyListeners();
++    }
++
++    private void notifyListeners() {
++        final int numChunks = (int) (this.completedSize / getChunkSize());
++        synchronized (listeners) {
++            for (final DownloadListener listener : listeners) {
++                listener.onData(this.file, this.fos, numChunks);
++            }
++        }
+     }
+ 
+     /**
+@@ -601,7 +617,7 @@ public class VerifyingFile {
+     /**
+      * Closes the file output stream.
+      */
+-    public void close() {
++    public void close(DownloadState downloadState) {
+         isOpen = false;
+         if(fos==null)
+             return;
+@@ -613,6 +629,11 @@ public class VerifyingFile {
+                     } catch (InterruptedException ignore) { }
+                 }
+             }
++            synchronized(listeners) {
++                for(DownloadListener dl : listeners) {
++                    dl.onPendingClose(downloadState);
++                }
++            }
+             fos.close();
+         } catch (IOException ignore) {}
+     }
+@@ -901,6 +922,12 @@ public class VerifyingFile {
+                     freedPending = true;
+                 }
+ 
++                synchronized(listeners) {
++                    for(DownloadListener listener : listeners) {
++                        listener.onRangeRead(intvl);
++                    }
++                }
++
+                 verifyChunks();
+             } catch (IOException diskIO) {
+                 synchronized(VerifyingFile.this) {
+@@ -1016,5 +1043,16 @@ public class VerifyingFile {
+         }
+ 
+     }
++    
++    private final Collection<DownloadListener> listeners = new LinkedList<DownloadListener>();
++    public void addDownloadListener(final DownloadListener dl) {
++        listeners.add(dl);
++    }
++    public void onComplete() {
++        synchronized (listeners) {
++            for (final DownloadListener dl : listeners) {
++                dl.onComplete();
++            }
++        }
++    }
+ }
+-
+Index: components/gnutella-core/src/main/java/com/limegroup/gnutella/util/LimeWireUtils.java
+===================================================================
+RCS file: /cvs/components/gnutella-core/src/main/java/com/limegroup/gnutella/util/LimeWireUtils.java,v
+retrieving revision 1.29
+diff -u -p -r1.29 LimeWireUtils.java
+--- components/gnutella-core/src/main/java/com/limegroup/gnutella/util/LimeWireUtils.java	5 Nov 2009 23:38:33 -0000	1.29
++++ components/gnutella-core/src/main/java/com/limegroup/gnutella/util/LimeWireUtils.java	17 Aug 2010 21:03:09 -0000
+@@ -28,7 +28,7 @@ public final class LimeWireUtils {
+ 	 * Constant for the current version of LimeWire.
+ 	 */
+     @InspectablePrimitive("limewire version")
+-	private static final String LIMEWIRE_VERSION = "@version@";
++	private static final String LIMEWIRE_VERSION = "5.4.8";
+     
+     /**
+      * The current revision of the BitTorrent protocol implementation.
+@@ -106,7 +106,7 @@ public final class LimeWireUtils {
+      * Variable for whether or not this is a PRO version of LimeWire. 
+      */
+     @InspectablePrimitive("pro")
+-    private static boolean _isPro = false;
++    private static boolean _isPro = true;
+ 
+     /** Whether or not a temporary directory is in use. */
+     private static boolean temporaryDirectoryInUse;
+@@ -220,9 +220,9 @@ public final class LimeWireUtils {
+     
+     /**
+      * Accessor for whether or not this is a testing version
+-     * (@version@) of LimeWire.
++     * (5.4.8) of LimeWire.
+      *
+-     * @return <tt>true</tt> if the version is @version@,
++     * @return <tt>true</tt> if the version is 5.4.8,
+      *  otherwise <tt>false</tt>
+      */
+     public static boolean isTestingVersion() {
+Index: components/gnutella-core/src/test/java/com/limegroup/gnutella/downloader/VerifyingFileTest.java
+===================================================================
+RCS file: /cvs/components/gnutella-core/src/test/java/com/limegroup/gnutella/downloader/VerifyingFileTest.java,v
+retrieving revision 1.30
+diff -u -p -r1.30 VerifyingFileTest.java
+--- components/gnutella-core/src/test/java/com/limegroup/gnutella/downloader/VerifyingFileTest.java	1 Dec 2009 16:51:24 -0000	1.30
++++ components/gnutella-core/src/test/java/com/limegroup/gnutella/downloader/VerifyingFileTest.java	17 Aug 2010 21:03:10 -0000
+@@ -78,7 +78,7 @@ public class VerifyingFileTest extends L
+     @Override
+     public void tearDown() {
+         if (vf != null) {
+-            vf.close();
++            vf.close(null);
+         }
+     }
+ 
+@@ -550,7 +550,7 @@ public class VerifyingFileTest extends L
+         assertEquals(0, exact.length() % exactTree.getNodeSize());
+         raf = new RandomAccessFile(exact, "r");
+ 
+-        vf.close();
++        vf.close(null);
+         vf = verifyingFileFactory.createVerifyingFile((int) exact.length());
+         vf.open(new File("outfile"));
+         vf.setHashTree(exactTree);
+@@ -614,7 +614,7 @@ public class VerifyingFileTest extends L
+      */
+     public void testExistingBlocksVerify() throws Exception {
+         vf.setHashTree(null);
+-        vf.close();
++        vf.close(null);
+ 
+         File outfile = new File("outfile");
+ 

@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>nplittleshoot</ProjectName>
+    <ProjectGuid>{B5AA50F8-8D21-4201-B5F6-4229292E7F51}</ProjectGuid>
+    <RootNamespace>littleshoot</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.21006.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>c:\boost;../../;../../control;../../nsprpub/pr/include;../../nsprpub/pr/include/obsolete;../../nsprpub/pr/src/md/mac;../../plugin\base\public;../../sun-java/stubs/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LITTLESHOOT_EXPORTS;XP_WIN;XP_WIN32;MOZILLA_STRICT_API;XPCOM_GLUE;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libboost_system-mt-sgd.lib;libboost_thread-mt-sgd.lib;libboost_filesystem-mt-sgd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\..\..\..\..\..\boost\bin.v2\libs\thread;..\..\..\..\..\..\..\..\..\boost\bin.v2\libs\thread\build\msvc-10.0\debug\link-static\runtime-link-static\threading-multi;..\..\..\..\..\..\..\..\..\boost\bin.v2\libs\system\build\msvc-10.0\debug\link-static\runtime-link-static\threading-multi;..\..\..\..\..\..\..\..\..\boost\bin.v2\libs\date_time\build\msvc-10.0\debug\link-static\runtime-link-static\threading-multi;..\..\..\..\..\..\..\..\..\boost\bin.v2\libs\filesystem\build\msvc-10.0\debug\link-static\runtime-link-static\threading-multi;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>littleshoot.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>c:\boost;../../;../../control;../../nsprpub/pr/include;../../nsprpub/pr/include/obsolete;../../nsprpub/pr/src/md/mac;../../plugin\base\public;../../sun-java/stubs/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LITTLESHOOT_EXPORTS;XP_WIN;XP_WIN32;MOZILLA_STRICT_API;XPCOM_GLUE;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libboost_system-mt-s.lib;libboost_thread-mt-s.lib;libboost_filesystem-mt-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\..\..\..\..\..\boost\bin.v2\libs\thread\build\msvc-10.0\release\link-static\runtime-link-static\threading-multi;..\..\..\..\..\..\..\..\..\boost\bin.v2\libs\system\build\msvc-10.0\release\link-static\runtime-link-static\threading-multi;..\..\..\..\..\..\..\..\..\boost\bin.v2\libs\date_time\build\msvc-10.0\release\link-static\runtime-link-static\threading-multi;..\..\..\..\..\..\..\..\..\boost\bin.v2\libs\filesystem\build\msvc-10.0\release\link-static\runtime-link-static\threading-multi;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>littleshoot.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\byte_buffer.cpp" />
+    <ClCompile Include="..\..\file.cpp" />
+    <ClCompile Include="..\launch_impl.cpp" />
+    <ClCompile Include="..\..\little_shoot_ipc.cpp" />
+    <ClCompile Include="..\..\littleshootplugin.cpp" />
+    <ClCompile Include="..\..\littleshootshell.cpp" />
+    <ClCompile Include="..\np_impl.cpp" />
+    <ClCompile Include="..\..\control\npo_littleshoot.cpp" />
+    <ClCompile Include="..\..\control\nporuntime.cpp" />
+    <ClCompile Include="..\..\path.cpp" />
+    <ClCompile Include="..\..\process.cpp" />
+    <ClCompile Include="..\..\random_number.cpp" />
+    <ClCompile Include="..\..\stream.cpp" />
+    <ClCompile Include="..\..\stream_entry.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\debug.hpp" />
+    <ClInclude Include="..\launch_impl.hpp" />
+    <ClInclude Include="..\..\little_shoot_ipc.hpp" />
+    <ClInclude Include="..\..\little_shoot_plugin.hpp" />
+    <ClInclude Include="..\..\path.hpp" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="littleshoot.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="nplittleshoot.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

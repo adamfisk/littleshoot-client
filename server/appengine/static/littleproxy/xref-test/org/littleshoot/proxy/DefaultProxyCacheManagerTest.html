@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" /><title>DefaultProxyCacheManagerTest xref</title>
+<link type="text/css" rel="stylesheet" href="../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../../../apidocs/org/littleshoot/proxy/DefaultProxyCacheManagerTest.html">View Javadoc</a></div><pre>
+
+<a name="1" href="#1">1</a>   <strong>package</strong> org.littleshoot.proxy;
+<a name="2" href="#2">2</a>   
+<a name="3" href="#3">3</a>   <strong>import</strong> <strong>static</strong> org.junit.Assert.*;
+<a name="4" href="#4">4</a>   
+<a name="5" href="#5">5</a>   <strong>import</strong> java.util.concurrent.Future;
+<a name="6" href="#6">6</a>   <strong>import</strong> java.util.concurrent.TimeUnit;
+<a name="7" href="#7">7</a>   
+<a name="8" href="#8">8</a>   <strong>import</strong> org.jboss.netty.buffer.ChannelBuffer;
+<a name="9" href="#9">9</a>   <strong>import</strong> org.jboss.netty.channel.Channel;
+<a name="10" href="#10">10</a>  <strong>import</strong> org.jboss.netty.channel.ChannelHandlerContext;
+<a name="11" href="#11">11</a>  <strong>import</strong> org.jboss.netty.handler.codec.http.DefaultHttpRequest;
+<a name="12" href="#12">12</a>  <strong>import</strong> org.jboss.netty.handler.codec.http.DefaultHttpResponse;
+<a name="13" href="#13">13</a>  <strong>import</strong> org.jboss.netty.handler.codec.http.HttpHeaders;
+<a name="14" href="#14">14</a>  <strong>import</strong> org.jboss.netty.handler.codec.http.HttpMethod;
+<a name="15" href="#15">15</a>  <strong>import</strong> org.jboss.netty.handler.codec.http.HttpRequest;
+<a name="16" href="#16">16</a>  <strong>import</strong> org.jboss.netty.handler.codec.http.HttpResponse;
+<a name="17" href="#17">17</a>  <strong>import</strong> org.jboss.netty.handler.codec.http.HttpResponseEncoder;
+<a name="18" href="#18">18</a>  <strong>import</strong> org.jboss.netty.handler.codec.http.HttpResponseStatus;
+<a name="19" href="#19">19</a>  <strong>import</strong> org.jboss.netty.handler.codec.http.HttpVersion;
+<a name="20" href="#20">20</a>  <strong>import</strong> org.junit.Ignore;
+<a name="21" href="#21">21</a>  <strong>import</strong> org.junit.Test;
+<a name="22" href="#22">22</a>  
+<a name="23" href="#23">23</a>  <em>/**<em>*</em></em>
+<a name="24" href="#24">24</a>  <em> * Test for the proxy cache manager.</em>
+<a name="25" href="#25">25</a>  <em> */</em>
+<a name="26" href="#26">26</a>  @Ignore
+<a name="27" href="#27">27</a>  <strong>public</strong> <strong>class</strong> <a href="../../../org/littleshoot/proxy/DefaultProxyCacheManagerTest.html">DefaultProxyCacheManagerTest</a> {
+<a name="28" href="#28">28</a>  
+<a name="29" href="#29">29</a>      @Test <strong>public</strong> <strong>void</strong> testCaching() throws Exception {
+<a name="30" href="#30">30</a>          <strong>final</strong> DefaultProxyCacheManager cm = <strong>new</strong> DefaultProxyCacheManager();
+<a name="31" href="#31">31</a>          <strong>final</strong> HttpRequest httpRequest = 
+<a name="32" href="#32">32</a>              <strong>new</strong> DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, 
+<a name="33" href="#33">33</a>                  <span class="string">"http://www.littleshoot.org"</span>);
+<a name="34" href="#34">34</a>          <strong>final</strong> HttpResponse httpResponse = 
+<a name="35" href="#35">35</a>              <strong>new</strong> DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
+<a name="36" href="#36">36</a>          httpResponse.setHeader(HttpHeaders.Names.CACHE_CONTROL, HttpHeaders.Values.PUBLIC);
+<a name="37" href="#37">37</a>          <strong>final</strong> <strong>class</strong> PubEncoder <strong>extends</strong> HttpResponseEncoder {
+<a name="38" href="#38">38</a>              <strong>public</strong> Object pubEncode(ChannelHandlerContext ctx, Channel channel, Object msg) throws Exception {
+<a name="39" href="#39">39</a>                  <strong>return</strong> encode(ctx, channel, msg);
+<a name="40" href="#40">40</a>              }
+<a name="41" href="#41">41</a>          };
+<a name="42" href="#42">42</a>          <strong>final</strong> PubEncoder encoder = <strong>new</strong> PubEncoder();
+<a name="43" href="#43">43</a>          Channel channel = <strong>new</strong> <a href="../../../org/littleshoot/proxy/ChannelAdapter.html">ChannelAdapter</a>();
+<a name="44" href="#44">44</a>          <strong>final</strong> ChannelBuffer encoded = (ChannelBuffer) encoder.pubEncode(<strong>null</strong>, channel, httpResponse);
+<a name="45" href="#45">45</a>          <strong>final</strong> Future&lt;String> future = cm.cache(httpRequest, httpResponse, httpResponse, encoded);
+<a name="46" href="#46">46</a>          
+<a name="47" href="#47">47</a>          assertNotNull(<span class="string">"No future?"</span>, future);
+<a name="48" href="#48">48</a>          future.get(2000, TimeUnit.MILLISECONDS);
+<a name="49" href="#49">49</a>          assertTrue(<span class="string">"No hit in cache!!"</span>, cm.returnCacheHit(httpRequest, channel));
+<a name="50" href="#50">50</a>      }
+<a name="51" href="#51">51</a>  }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+

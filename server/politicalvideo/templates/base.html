@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>{{ title }}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="description" content="LittleShoot is secure, flexible, next-generation P2P technology fully integrated with the browser and all brought to you by one of the creators of LimeWire, Adam Fisk.  LittleShoot defines P2P 2.0" />
+    <meta name="keywords" content="p2p, littleshoot, file sharing, open protocols, open source, gpl, sip, session initiation protocol, open infrastructure, adam fisk, p2p 2.0, open data" />
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+    {% block css %}{% endblock %}
+
+</head>
+
+<body class="tundra commonBody">
+    <div id="leftDiv"></div>
+    <div id="contentDiv">
+        {% block content %}{% endblock %}
+    </div>
+    <div id="bottom"></div>
+
+    
+    <script type="text/javascript">
+        littleShootConfig = {
+            disableAutoLoad : true
+        };
+    </script>
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.3.0/dojo/dojo.xd.js" djConfig="parseOnLoad: true, baseUrl: 'http://www.littleshoot.org/'"></script>
+    
+    <!-- 
+    <script type="text/javascript" src="generated_media/media/1/combined-en.js"></script>
+     -->
+    
+    
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}combined-ltr.css" />
+    <script type="text/javascript" src="{{ MEDIA_URL }}combined.js"></script>
+
+    {% block extraJavaScript %}{% endblock extraJavaScript %}
+    
+<!-- 
+    <script type="text/javascript">
+        djConfig = {
+            parseOnLoad: true, 
+            preventBackButtonFix: false, 
+            baseUrl: '/',
+            modulePaths: {'littleshoot': '/littleshoot'}
+            //dojoIframeHistoryUrl:'http://www.littleshoot.org/iframe_history.html'
+        };
+    </script>
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.2.0/dojo/dojo.xd.js" djConfig="parseOnLoad: true, baseUrl: 'http://littleshootjs.appspot.com/'"></script>
+    <script type="text/javascript" src="http://littleshootjs.appspot.com/littleshoot/littleshoot.xd.js"></script>
+    <script type="text/javascript">
+        {% block javascript %}{% endblock %}
+    </script>
+    -->
+</body>
+</html>

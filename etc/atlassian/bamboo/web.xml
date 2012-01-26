@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--  ================================================================ -->
+<!--  The Bamboo web descriptor                                        -->
+<!--                                                                   -->
+<!--  ================================================================ -->
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+         http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+ version="2.4">
+ <description>The Bamboo Continuous Build Server</description>
+ <display-name>Bamboo</display-name>
+ <context-param>
+  <param-name>contextConfigLocation</param-name>
+  <param-value> classpath:/applicationContext.xml,
+   classpath:/applicationContextJMSServer.xml,
+   classpath:/applicationContextJMSCommon.xml,
+   classpath:/applicationContextManagers.xml,
+   classpath:/applicationContextUser.xml,
+   classpath:/applicationContextPersistence.xml,
+   classpath:/applicationContextPlugin.xml,
+   classpath:/applicationContextLegacy.xml,
+   classpath:/applicationContextAcegiSecurity.xml,
+   classpath:/applicationContextAcegiAuthorization.xml,
+   classpath:/applicationContextCommon.xml,
+   classpath:/applicationContextAgentServer.xml </param-value>
+ </context-param>
+
+  <!--classpath:/securityContext.xml,-->
+  <!--classpath:/databaseSubsystemContext.xml,-->
+  <!--classpath:/indexingSubsystemContext.xml,-->
+  <!--classpath:/eventSubsystemContext.xml,-->
+  <!--classpath:/rpcSubsystemContext.xml,-->
+  <!--classpath:/upgradeSubsystemContext.xml,-->
+  <!--classpath:/wikiSubsystemContext.xml,-->
+  <!--classpath:/wikiFiltersSubsystemContext.xml,-->
+  <!--classpath:/importExportSubsystemContext.xml,-->
+  <!--classpath:/schedulingSubsystemContext.xml,-->
+  <!--classpath:/applicationContextPlugin.xml,-->
+  <!--classpath:/atlassianUserContext.xml-->
+
+  <!-- Uncomment the below to activiate JNDI mail session -->
+  <resource-env-ref>
+    <description>Mail Service</description>
+    <resource-env-ref-name>mail/gmail</resource-env-ref-name>
+    <resource-env-ref-type>javax.mail.Session</resource-env-ref-type>
+  </resource-env-ref>
+
+  <!-- ========================================================================================== Filter Definitions -->
+ <filter>
+  <filter-name>urlRewrite</filter-name>
+  <filter-class>com.atlassian.bamboo.filter.UrlRewriteFilter</filter-class>
+ </filter>
+ <filter>
+  <filter-name>acegi</filter-name>
+  <filter-class>com.atlassian.bamboo.filter.BambooAcegiProxyFilter</filter-class>
+  <init-param>
+   <param-name>targetClass</param-name>
+   <param-value>org.acegisecurity.util.FilterChainProxy</param-value>
+  </init-param>
+    <!--Setting lazy init to ensure this doesn't load before bamboo is setup -->
+  <init-param>
+   <param-name>init</param-name>
+   <param-value>lazy</param-value>
+  </init-param>
+ </filter>
+ <filter>
+  <filter-name>johnson</filter-name>
+  <filter-class>com.atlassian.johnson.filters.JohnsonFilter</filter-class>
+ </filter>
+ <filter>
+  <filter-name>license</filter-name>
+  <filter-class>com.atlassian.bamboo.filter.LicenseFilter</filter-class>
+ </filter>
+ <filter>
+  <filter-name>sessioninview</filter-name>
+  <filter-class>com.atlassian.config.FlushingSpringSessionInViewFilterForHibernate</filter-class>
+ </filter>
+ <filter>
+  <filter-name>login</filter-name>
+  <filter-class>com.atlassian.seraph.filter.LoginFilter</filter-class>
+ </filter>
+
+
+
+
+  <!-- Webwork and Sitemesh integrated filters -->
+ <filter>
+  <filter-name>webwork-cleanup</filter-name>
+  <filter-class>com.opensymphony.webwork.dispatcher.ActionContextCleanUp</filter-class>
+ </filter>
+ <filter>
+  <filter-name>sitemesh</filter-name>
+  <filter-class>com.atlassian.bamboo.ww2.FreemarkerRequestDispatcherPageFilter</filter-class>
+ </filter>
+ <filter>
+  <filter-name>webwork</filter-name>
+  <filter-class>com.atlassian.bamboo.ww2.BambooFilterDispatcher</filter-class>
+ </filter>
+ <filter>
+  <filter-name>security</filter-name>
+  <filter-class>com.atlassian.seraph.filter.SecurityFilter</filter-class>
+ </filter>
+
+  <!--  Compress the data written to the HttpServletResponse         -->
+ <filter>
+  <filter-name>pageCompression</filter-name>
+  <filter-class>com.atlassian.bamboo.filter.CompressingFilter</filter-class>
+    <!--<init-param>-->
+      <!--<param-name>debug</param-name>-->
+      <!--<param-value>true</param-value>-->
+    <!--</init-param>-->
+    <!--<init-param>-->
+      <!--<param-name>statsEnabled</param-name>-->
+      <!--<param-value>true</param-value>-->
+    <!--</init-param>-->
+ </filter>
+ <filter>
+  <filter-name>cachingUrlRewriteFilter</filter-name>
+  <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+ </filter>
+ <filter>
+  <filter-name>nonCachingFilter</filter-name>
+  <filter-class>com.atlassian.bamboo.filter.NonCachingHeaderFilter</filter-class>
+ </filter>
+ <filter>
+  <filter-name>requestCache</filter-name>
+  <filter-class>com.atlassian.bamboo.filter.RequestCacheThreadLocalFilter</filter-class>
+ </filter>
+ <filter>
+  <filter-name>accessLogFilter</filter-name>
+  <filter-class>com.atlassian.bamboo.filter.AccessLogFilter</filter-class>
+ </filter>
+ <filter>
+  <filter-name>charsetFilter</filter-name>
+  <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+  <init-param>
+   <param-name>encoding</param-name>
+   <param-value>UTF-8</param-value>
+  </init-param>
+ </filter>
+
+  <!-- ============================================================================================= Filter Mappings -->
+ <filter-mapping>
+  <filter-name>charsetFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>urlRewrite</filter-name>
+  <url-pattern>/browse/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>cachingUrlRewriteFilter</filter-name>
+  <url-pattern>/s/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>cachingUrlRewriteFilter</filter-name>
+  <url-pattern>/download/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>requestCache</filter-name>
+  <url-pattern>/s/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>requestCache</filter-name>
+  <url-pattern>*.action</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>nonCachingFilter</filter-name>
+  <url-pattern>/ajax/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>pageCompression</filter-name>
+  <url-pattern>*.action</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>pageCompression</filter-name>
+  <url-pattern>*.css</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>pageCompression</filter-name>
+  <url-pattern>*.js</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>pageCompression</filter-name>
+  <url-pattern>*.vm</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>sessioninview</filter-name>
+  <url-pattern>*.action</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>sessioninview</filter-name>
+  <url-pattern>/download/*</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>sessioninview</filter-name>
+  <url-pattern>*.vm</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>login</filter-name>
+  <url-pattern>/*</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>security</filter-name>
+  <url-pattern>/*</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>johnson</filter-name>
+  <url-pattern>/*</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>license</filter-name>
+  <url-pattern>/*</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>acegi</filter-name>
+  <url-pattern>*.action</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>acegi</filter-name>
+  <url-pattern>/download/*</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>accessLogFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>webwork-cleanup</filter-name>
+  <url-pattern>/*</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>sitemesh</filter-name>
+  <url-pattern>*.action</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>sitemesh</filter-name>
+  <url-pattern>*.vm</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>sitemesh</filter-name>
+  <url-pattern>*.ftl</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>webwork</filter-name>
+  <url-pattern>/*</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+ </filter-mapping>
+
+
+  <!-- =================================================================================================== Listeners -->
+
+  <!-- Loads the Bootstrap context for minimal app startup -->
+ <listener>
+  <listener-class>com.atlassian.bamboo.setup.BootstrapLoaderListener</listener-class>
+ </listener>
+
+  <!-- Loads the Spring servlet context if / when the app has been setup -->
+ <listener>
+  <listener-class>com.atlassian.bamboo.ww2.actions.setup.BambooContextLoaderListener</listener-class>
+ </listener>
+
+  <!-- Upgrades the data. -->
+ <listener>
+  <listener-class>com.atlassian.bamboo.upgrade.UpgradeLauncher</listener-class>
+ </listener>
+
+
+  <!-- ============================================================================================= Custom Servlets -->
+ <servlet>
+  <servlet-name>freemarker</servlet-name>
+  <servlet-class>com.opensymphony.webwork.views.freemarker.FreemarkerServlet</servlet-class>
+ </servlet>
+
+  <!--  Serve up build data files such as artifacts and rss        -->
+ <servlet>
+  <servlet-name>download</servlet-name>
+  <servlet-class>com.atlassian.bamboo.fileserver.FileServingServlet</servlet-class>
+ </servlet>
+
+  <!-- Servlet that writes out the contents of a page as a series of escaped document.write commands -->
+ <servlet>
+  <servlet-name>jsWrite</servlet-name>
+  <servlet-class>com.atlassian.bamboo.js.JavascriptWriteServlet</servlet-class>
+ </servlet>
+
+  <!-- DWR Servlet for remote javascripting-->
+ <servlet>
+  <servlet-name>dwr</servlet-name>
+  <servlet-class>uk.ltd.getahead.dwr.DWRServlet</servlet-class>
+  <init-param>
+   <param-name>debug</param-name>
+   <param-value>true</param-value>
+  </init-param>
+ </servlet>
+ <servlet>
+  <servlet-name>displayChart</servlet-name>
+  <servlet-class>org.jfree.chart.servlet.DisplayChart</servlet-class>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+
+  <!--@todo temporary - servlet action -->
+ <servlet>
+  <servlet-name>action</servlet-name>
+  <servlet-class>com.opensymphony.webwork.dispatcher.ServletDispatcher</servlet-class>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+
+  <!-- ============================================================================================ Servlet Mappings -->
+ <servlet-mapping>
+  <servlet-name>freemarker</servlet-name>
+  <url-pattern>*.ftl</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>dwr</servlet-name>
+  <url-pattern>/dwr/*</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>download</servlet-name>
+  <url-pattern>/download/*</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>jsWrite</servlet-name>
+  <url-pattern>/decorators/jsWrite</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>displayChart</servlet-name>
+  <url-pattern>/chart/*</url-pattern>
+ </servlet-mapping>
+
+  <!--@todo temporary - servlet action mapping -->
+ <servlet-mapping>
+  <servlet-name>action</servlet-name>
+  <url-pattern>/404.action</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>action</servlet-name>
+  <url-pattern>/500.action</url-pattern>
+ </servlet-mapping>
+
+  <!-- ============================================================================================== General Config -->
+ <session-config>
+  <session-timeout>30</session-timeout>
+ </session-config>
+ <welcome-file-list>
+  <welcome-file>start.action</welcome-file>
+ </welcome-file-list>
+
+  <!-- ================================================================================================= Error Pages -->
+ <error-page>
+  <error-code>404</error-code>
+  <location>/404.action</location>
+ </error-page>
+ <error-page>
+  <error-code>500</error-code>
+  <location>/500.action</location>
+ </error-page>
+</web-app>

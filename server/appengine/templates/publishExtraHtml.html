@@ -1,0 +1,50 @@
+<div id="fakeFileUpload" class="fakeFile" style="display:none;">
+    <input type="file" id="invisibleFileInput" class="invisibleFileInput" noscript="true" onchange="Publisher.onFileChanged()" size="1"/>
+    <div class="buttonFileInput">
+       <span>BROWSE...</span>
+    </div>  
+</div>
+
+<div id="loginFileUpload" class="button" style="display:none;">
+    <span>BROWSE...</span>
+</div>
+
+<div id="ff3FileUpload" class="button" style="display:none;">
+    <span>BROWSE...</span>
+</div>
+
+{% include "publishDialog.html" %}
+
+<div dojoType="dijit.Dialog" id="editFileDialog" title="Edit" style="display:none;" method="post" 
+    onSubmit="return true;" 
+    execute="javascript:CommonUtils.editFile();">
+    <div class="commonDialogDiv littleShoot">
+        <span class="normalMedium">
+        Edit your tags. Separate tags commas, as in "beach, kite surfing, Mexico".  Your
+        file will be searchable by the tags you enter so you and other
+        users can find your file.
+        </span>
+    </div>
+    <br>
+    <div style="text-align:center" class="bigTextInput">
+        <div id="editTagsTextBox">
+            <label class="tagsInputLabel" for="tags">Tags: </label>
+            <input type="text" id="editTagsTextBoxInput" name="tags" 
+                dojoType="dijit.form.TextBox" trim="true"
+                maxLength="250"
+                />
+        </div>
+        <br>
+        
+        <input id="editTagsSha1" name="sha1" dojoType="dijit.form.TextBox" type="hidden">
+        <button dojoType="dijit.form.Button" type="submit">
+            Edit
+        </button>
+        <button dojoType="dijit.form.Button">
+            Cancel
+            <script type="dojo/method" event="onClick">
+                    dijit.byId('editFileDialog').hide();
+                </script>
+        </button>
+    </div>
+</div> 

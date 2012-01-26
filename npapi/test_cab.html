@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>LittleShoot</title>
+	
+<script LANGUAGE="JavaScript">
+
+function startLittleShoot() 
+{
+    var ls = document.getElementById("littleshoot");
+    ls.start();
+	document.all.littleshoot.start();
+}
+
+function stopLittleShoot() 
+{
+    var ls = document.getElementById("littleshoot");
+    ls.stop();
+	//document.all.littleshoot.stop();
+} 
+
+function setState() 
+{
+    var ls = document.getElementById("littleshoot");
+    ls.booger = 1;
+	document.all.littleshoot.booger = 1;
+	//littleshoot.src = "http://movies.apple.com/movies/sony/2012/2012-tlr1_h480p.mov";
+} 
+
+</script>
+
+</head>
+<body>
+
+<center>
+
+<OBJECT ID="littleshoot" CLASSID="CLSID:0CC00AEB-7E95-4a80-8C29-ED90939FC99F" CODEBASE="axlittleshootTest.cab#version=0,9,0,0" width="100" height="100">
+  <PARAM name="type" value="application/x-bittorrent"/>
+  
+</OBJECT><BR>
+<form action="" method="post">
+<input type=button value="Start" onClick="startLittleShoot()">
+<input type=button value="Stop" onClick="stopLittleShoot()">
+<input type=button value="Set State" onClick="setState()">
+
+</form>
+
+<a href="#" onClick="setState()">Redirect stream.</a>
+
+</center>
+
+</body>
+</html>

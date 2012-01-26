@@ -1,0 +1,93 @@
+{% extends "projectNav.html" %}
+
+{% block imgWidthHeight %}
+width: 528px;
+height: 600px; 
+{% endblock imgWidthHeight %} 
+
+{% block bgColor %} 
+background-color: #302419;
+{% endblock bgColor %} 
+
+{% block linkColor %}
+color: #302419; 
+{% endblock linkColor %} 
+
+{% block courseLinkColor %}
+color: #302419; 
+{% endblock courseLinkColor %}
+
+{% block linkHoverColor %}
+color: black; 
+{% endblock linkHoverColor %} 
+
+{% block linkSelectedColor %}
+color: black; 
+{% endblock linkSelectedColor %} 
+
+{% block extraCss %}
+        #gorillaTitle {
+            position:relative;
+            margin-left: auto; margin-right: auto;
+            text-align:center;
+            z-index: 9;
+            margin-top: 160px;
+        }
+        
+        
+        .commonTextBig {
+            font-size: 30px;
+        }
+                
+        #kidImage {
+            position: fixed;
+            left:100px;
+            bottom: 10px;
+            z-index: 10;
+        }
+{% endblock extraCss %}
+
+{% block mainDiv %} 
+    <div id="mainDiv">
+        <div id="gorillaTitle">
+            <center>
+                <div class="commonTextBig">"The Gorilla House"</div>
+                <br>
+                <div class="commonText">A Short Film</div>
+            </center>
+        </div>
+
+        <img id="kidImage" src="images/kid_600h.png"/>  
+        <div id="bottomDiv"></div>
+    </div>
+   
+{% endblock mainDiv %} 
+    
+{% block afterMainDiv %}   
+    <div class="overlay" id="gorillaOverlay" style="z-index: 200000; background-color: black; width: 640px; height: 260px; padding-top: 40px; cursor: pointer;">
+        <center>
+            <img id="gorillaStills" src="images/gorilla.jpg" style="padding-bottom: 10px;"/>
+        </center>
+    </div>
+    
+      
+    <div class="overlay" id="gorillaPremiseOverlay" style="background-color: #302419; z-index: 200002; width: 300px; height: 140px; padding: 40px; cursor: pointer; text-align: center;">
+        <span class="commonTextMedium">"The Gorilla House"</span><br><br>    
+        <span class="commonTextSmall">
+            is an unmade short film about a five year-old boy dealing with
+            the death of his beloved grandmother.
+        </span>
+    </div>
+    
+{% endblock afterMainDiv %} 
+
+{% block contentLinks %}
+<a rel="#gorillaPremiseOverlay" class="courseOverlayLink overlayLink">Premise</a>
+<a rel="#gorillaOverlay" class="courseOverlayLink overlayLink">Stills</a>
+{% endblock contentLinks %}
+
+    
+{% block extraJavaScript %}   
+
+{% endblock extraJavaScript %}
+    

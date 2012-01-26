@@ -1,0 +1,3 @@
+horizontal.png is a sprite for all the horizontally repeating images (repeat-x) that are all 1 pixel wide.  It makes sense to always keep horizontal.css the same and generated from http://spritegen.website-performance.org/, and then to just include it in a template or whatever, replacing as needed because the class names won't change unless you change the image names.
+
+To update, just create a new png and copy the css to overwrite the "horizontal.css" template *in the main App Engine project* as well as the horizontal.png there.  The ones here are just for reference.

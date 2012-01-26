@@ -1,0 +1,14 @@
+{% extends "siteNavBase.html" %}
+
+{% block contactSelected %}color:black{% endblock %}
+{% block content %}
+    <div id="contact" class="toggleable innerContent siteToggle">
+        <span class="contentTitle normalBoldBig">Contact LittleShoot</span>
+        <div class="datum sprite-datumBackground"></div>
+        <div id="contactContentBody" class="contentBody">
+
+{% include "contactContentBody.html" %}
+        </div>
+    </div>
+
+{% endblock %}

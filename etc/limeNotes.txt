@@ -1,0 +1,5 @@
+Building LW uses the buildLime.bash script and the various patch files. Here's how we created the UDP host cache patch file:
+
+diff -u -p ./components/gnutella-core/src/main/java/com/limegroup/gnutella/bootstrap/UDPHostCacheImpl.java ../../limewire-prod-5-4-8-java16/components/gnutella-core/src/main/java/com/limegroup/gnutella/bootstrap/UDPHostCacheImpl.java >> hostcache_patch.txt
+
+Note that was done from *within /Users/afisk/code/limewire/lw_temp/limewire-prod-5-4-8-java16-BACKUP*. NOTE **lw_temp** -- that's the ultimate pristine version.

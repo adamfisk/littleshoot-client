@@ -1,0 +1,116 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure 1.2//EN" "http://jetty.mortbay.org/configure.dtd">
+
+<!-- =============================================================== -->
+<!-- Configure the Jetty Server                                      -->
+<!-- =============================================================== -->
+<!-- $Id: jetty.xml,v 2.0 2008/04/23 Brydie Exp $ -->
+<Configure class="org.mortbay.jetty.Server">
+
+  <!-- =============================================================== -->
+  <!-- Configure the ThreadPool                                        -->
+  <!-- =============================================================== -->
+  <!-- Configure a ThreadPool for the server                           -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <!--<Set name="ThreadPool">-->
+  <!--<New class="org.mortbay.thread.BoundedThreadPool">-->
+  <!--<Set name="name">MyThreadPool</Set>-->
+  <!--<Set name="minThreads">5</Set>-->
+  <!--<Set name="lowThreads">50</Set>-->
+  <!--<Set name="maxThreads">100</Set>-->
+  <!--<Set name="MaxIdleTimeMs">30000</Set>-->
+  <!--</New>-->
+  <!--</Set>-->
+
+  <!-- =============================================================== -->
+  <!-- Configure the Connector                                         -->
+  <!-- =============================================================== -->
+  <!-- Add and configure a Socket Connector to port 8085               -->
+  <!-- The default port can be changed using: java -Djetty.port=8085   -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <Call name="addConnector">
+    <Arg>
+      <New class="org.mortbay.jetty.bio.SocketConnector">
+        <Set name="Port">
+          <SystemProperty name="jetty.port" default="8085"/>
+        </Set>
+        <!--<Set name="Host">127.0.0.1</Set>-->
+        <!--<Set name="ConfidentialPort">8443</Set>-->
+        <!--<Set name="IntegralPort">8443</Set>-->
+      </New>
+    </Arg>
+  </Call>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+  <!-- For SSL Connextions use:                                         -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+
+  <!--<Call name="addConnector">-->
+  <!--<Arg>-->
+  <!--<New class="org.mortbay.jetty.security.SslSocketConnector">-->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+  <!-- Add web applications Context.                                    -->
+  <!-- The default location can be changed using: java -Dbamboo.webapp= -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+  <Call name="addHandler">
+    <Arg>
+      <New class="org.mortbay.jetty.webapp.WebAppContext">
+        <Arg name="webApp">
+          <SystemProperty name="bamboo.webapp" default="./webapp"/>
+        </Arg>
+        <Arg name="contextPath">
+          /
+        </Arg>
+        <Set name="parentLoaderPriority">true</Set>
+      </New>
+    </Arg>
+  </Call>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+  <!-- Add Any JNDI Resources                                           -->
+  <!-- The default location can be changed using: java -Dbamboo.webapp= -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+
+  <New id="mail/gmail" class="org.mortbay.jetty.plus.naming.Resource">
+    <Arg>mail/gmail</Arg>
+    <Arg>
+        <New class="org.mortbay.naming.factories.MailSessionReference">
+          <Set name="user">afisk@littleshoot.org</Set>
+          <Set name="password">flex1122ible2233</Set>
+          <Set name="properties">
+            <New class="java.util.Properties">
+                <Put name="mail.smtp.host">smtp.gmail.com</Put>
+                <Put name="mail.smtp.port">587</Put>
+                <Put name="mail.from">afisk@littleshoot.org</Put>
+                <Put name="mail.smtp.starttls.enable">true</Put>
+                <Put name="mail.debug">false</Put>
+                <Put name="mail.smtp.auth">true</Put>
+                <Put name="mail.smtp.socketFactory.port">465</Put>
+                <Put name="mail.smtp.socketFactory.fallback">false</Put>
+                <Put name="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</Put>
+            </New>
+          </Set>
+        </New>
+    </Arg>
+  </New>
+
+  <!-- <New id="resourceID" class="org.mortbay.jetty.plus.naming.Resource">
+    <Arg>resourceName</Arg>
+    <Arg>
+      <New class="org.mortbay.naming.factories.MailSessionReference">
+        <Set name="user">name</Set>
+        <Set name="password">password</Set>
+        <Set name="properties">
+          <New class="java.util.Properties">
+            <Put name="mail.smtp.host">host</Put>
+            <Put name="mail.from">fromaddress@example.com</Put>
+          </New>
+        </Set>
+      </New>
+    </Arg>
+  </New> -->
+
+</Configure>

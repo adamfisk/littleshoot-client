@@ -1,0 +1,76 @@
+
+<!--
+    EHCache config file.
+-->
+<ehcache>
+
+    <diskStore path="java.io.tmpdir"/>
+
+
+    <!--
+     Mandatory Default Cache configuration. These settings will be applied to caches
+     created programmatically using CacheManager.add(String cacheName)
+    -->
+    <defaultCache
+          maxElementsInMemory="10000"
+		  eternal="false"
+		  overflowToDisk="true"
+		  timeToIdleSeconds="120"
+		  timeToLiveSeconds="120"
+		  diskPersistent="false"
+		  diskExpiryThreadIntervalSeconds="120"
+          />
+
+    <!--
+        Cache for file resources.
+    -->
+    <cache
+        name="org.lastbamboo.server.db.MetaFileResourceImpl"
+        maxElementsInMemory="1000"
+        eternal="false"
+        timeToIdleSeconds="300"
+        timeToLiveSeconds="600"
+        overflowToDisk="true"
+        diskPersistent="true"
+     />
+ 
+    <!--
+    	Cache for file resources.
+    -->
+    <cache
+	    name="org.lastbamboo.server.db.FileResourceImpl"
+	    maxElementsInMemory="1000"
+	    eternal="false"
+	    timeToIdleSeconds="300"
+	    timeToLiveSeconds="600"
+	    overflowToDisk="true"
+	    diskPersistent="true"
+	/>
+    <!--
+        Cache for user resources.
+    -->
+    <cache
+         name="org.lastbamboo.server.db.OnlineInstanceImpl"
+         maxElementsInMemory="1000"
+         eternal="false"
+         timeToIdleSeconds="300"
+         timeToLiveSeconds="600"
+         overflowToDisk="true"
+         diskPersistent="true"
+     />
+
+    <!--
+        Cache for user resources.
+    -->
+    <cache
+         name="org.lastbamboo.server.db.WebUserImpl"
+         maxElementsInMemory="1000"
+         eternal="false"
+         timeToIdleSeconds="300"
+         timeToLiveSeconds="600"
+         overflowToDisk="true"
+         diskPersistent="true"
+     />
+
+</ehcache>
+

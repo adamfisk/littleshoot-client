@@ -1,0 +1,33 @@
+{% extends "siteNavBase.html" %}
+
+{% block technologySelected %}color:black{% endblock %}
+{% block content %}
+
+    <div id="technology" class="toggleable innerContent siteToggle" default="Intro">
+        <div class="subNavMenu normalLightBold">
+            <a href="javascript:SubContentNav.subContentNavBase('technology', 'Intro')" id="technologyIntroSubNav"  class="subNavLink subNavLinkSelected">Introduction</a><br>
+            <a href="javascript:SubContentNav.subContentNavBase('technology', 'OpenPlatform')"  id="technologyOpenPlatformSubNav"   class="subNavLink">Open Platform</a><br>
+            <a href="javascript:SubContentNav.subContentNavBase('technology', 'OpenSource')" id="technologyOpenSourceSubNav" class="subNavLink">Open Source</a><br>
+            <a href="javascript:SubContentNav.subContentNavBase('technology', 'OpenData')" id="technologyOpenDataSubNav"  class="subNavLink">Open Data</a><br>
+            <a href="javascript:SubContentNav.subContentNavBase('technology', 'Security')" id="technologySecuritySubNav"  class="subNavLink">Security</a><br>
+            <div class="normalBold subSubNavMenuTitle">Architecture</div>
+            <div class="subSubNavMenu">
+                <a href="javascript:SubContentNav.subContentNavBase('technology', 'ArchOverview')"  id="technologyArchOverviewSubNav"  class="subNavLink">Overview</a><br>
+                <a href="javascript:SubContentNav.subContentNavBase('technology', 'ArchSearch')"  id="technologyArchSearchSubNav"  class="subNavLink">Search</a><br>
+                <a href="javascript:SubContentNav.subContentNavBase('technology', 'ArchPublishing')"  id="technologyArchPublishingSubNav"  class="subNavLink">Publishing</a><br>
+                <a href="javascript:SubContentNav.subContentNavBase('technology', 'ArchDownloading')"  id="technologyArchDownloadingSubNav"  class="subNavLink">Downloading</a><br>
+                <a href="javascript:SubContentNav.subContentNavBase('technology', 'ArchNatFirewall')"  id="technologyArchNatFirewallSubNav"  class="subNavLink">NAT/Firewall</a><br>
+                <a href="javascript:SubContentNav.subContentNavBase('technology', 'ArchRudp')"  id="technologyArchRudpSubNav"  class="subNavLink">Reliable UDP</a><br>
+            </div>
+            <div>
+            <a href="javascript:SubContentNav.subContentNavBase('technology',  'Faq')" id="technologyFaqSubNav"  class="subNavLink">FAQ</a><br>
+            </div>
+        </div>
+        <div class="menuSeparator"></div>
+        <span class="contentTitle normalBoldBig">Technology - <span class="contentTitleSub"></span></span>
+        <div class="datum sprite-datumBackground"></div>
+        <div id="technologyContentBody"class="contentBody">
+{% include "technologyContentBody.html" %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,144 @@
+.darkButton {
+    background-image: url('../../../../images/darkButton.png'); 
+    background-repeat: no-repeat; 
+    width: 168px;
+    min-width: 168px; 
+    height: 41px;
+    min-height: 41px;
+    text-align: center;
+    font-family: verdana, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    padding-top: 12px;;
+    vertical-align: middle;
+    text-decoration: none;
+    cursor: pointer;
+ }
+ 
+.simpleButton, .simpleButtonOver {
+    border:1px solid #cccccc;
+    padding:3px 6px;
+    cursor: pointer;
+}
+ 
+.simpleButton {
+    background-color: white; 
+}
+
+.simpleButtonOver {
+    background-color: #DBDFDF;
+}
+
+.simpleGrayButton, .simpleGrayButtonOver {
+    border:1px solid #cccccc;
+    padding:3px 6px;
+    cursor: pointer;
+}
+ 
+.simpleGrayButton {
+    background-color: #eeeeee; 
+}
+
+.simpleGrayButtonOver {
+    background-color: #a8abab;
+}
+
+
+/* Button insanity */
+    .buttonDiv
+        {
+        position: relative;
+        
+        text-align: center;
+    
+        cursor: pointer;
+        font-family: verdana, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 400%;
+        vertical-align: middle;
+        text-decoration: none;
+        color: #545454;
+        border-style: none;
+        }
+
+.spriteButton {background: url(../../../../images/sprite.png) no-repeat top left;}
+
+/*
+    The horizontal, repeat-x images are in the horizontal.css template.
+    Vertical in vertical.css, both with corresponding png sprites.
+*/ 
+
+    .buttonCorner
+        {
+        position: absolute;
+        min-width: 4px;
+        min-height: 4px;
+        }
+        
+    .buttonEdgeHorizontal
+        {
+        position: absolute;
+        
+        min-height: 4px;
+        left: 4px;
+        right: 4px;
+        
+        background: url(../../../../images/horizontal.png) repeat-x top left;
+        }
+        
+    .buttonEdgeVertical
+        {
+        position: absolute;
+        min-width: 4px;
+        top: 4px;
+        bottom: 4px;
+        
+        background: url(../../../../images/vertical.png) repeat-y top left;
+        }
+    
+    .buttonDiv .buttonTopLeftCorner
+        {
+        top: 0px;
+        left: 0px;
+        }
+
+    .buttonDiv .buttonLeftBorder
+        {
+        left: 0px;
+        }
+                
+    .buttonDiv .buttonBottomLeftCorner
+        {
+        bottom: 0px;
+        left: 0px;
+        }
+        
+        
+    .buttonDiv .buttonTopRightCorner
+        {
+        top: 0px;
+        right: 0px;
+        }
+
+    .buttonDiv .buttonRightBorder
+        {
+        right: 0px;
+        }
+                
+    .buttonDiv .buttonBottomRightCorner
+        {
+        bottom: 0px;
+        right: 0px;
+        }
+        
+    .buttonDiv .buttonTopBorder
+        {
+        top: 0px;
+        }
+                
+    .buttonDiv .buttonBottomBorder
+        {
+        bottom: 0px;
+        }

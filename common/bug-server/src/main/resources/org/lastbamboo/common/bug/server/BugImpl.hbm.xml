@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.lastbamboo.common.bug.server">
+    <class name="BugImpl" table="bugs">
+        <cache usage="read-write" />
+        <id name="m_id" column="id" type="long" access="field">
+            <generator class="native"/>
+            </id>
+
+        <property name="m_message" column="message" access="field" type="string" not-null="true"/>
+        <property name="m_logLevel" column="log_level" access="field" type="string" not-null="true"/>         
+        <property name="m_className" column="class" access="field" type="string" not-null="true"/>
+        <property name="m_methodName" column="method" access="field" type="string" not-null="true"/>
+        <property name="m_lineNumber" column="line" access="field" type="int" not-null="true"/>  
+        <property name="m_instanceId" column="instance_id" access="field" type="long" not-null="true"/>  
+        <property name="m_threadName" column="thread" access="field" type="string" not-null="true"/>
+        <property name="m_startTime" column="start" access="field" type="timestamp" not-null="true"/>
+        <property name="m_timeStamp" column="time" access="field" type="timestamp" not-null="true"/>
+        <property name="m_javaVersion" column="javaVersion" access="field" type="string" not-null="true"/>
+        <property name="m_osName" column="os_name" access="field" type="string" not-null="true"/>
+        <property name="m_osArch" column="os_arch" access="field" type="string" not-null="true"/>
+        <property name="m_osVersion" column="os_version" access="field" type="string" not-null="true"/>
+        <property name="m_userName" column="user_name" access="field" type="string" not-null="true"/>
+        <property name="m_language" column="language" access="field" type="string" not-null="true"/> 
+        <property name="m_country" column="country" access="field" type="string" not-null="true"/> 
+        <property name="m_timeZone" column="time_zone" access="field" type="string" not-null="true"/> 
+        <property name="m_throwable" column="throwable" access="field" type="text" not-null="true"/> 
+        <property name="m_version" column="version" access="field" type="string" not-null="true"/> 
+        <property name="m_remoteAddress" column="remoteAddress" access="field" type="string" not-null="true"/> 
+        </class>
+    </hibernate-mapping>
+

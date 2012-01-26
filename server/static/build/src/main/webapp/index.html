@@ -1,0 +1,499 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>LittleShoot -- P2P 2.0 -- P2P File Sharing in the Browser</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="description" content="LittleShoot is secure, flexible, next-generation P2P technology fully integrated with the browser and all brought to you by one of the creators of LimeWire, Adam Fisk.  LittleShoot defines P2P 2.0" />
+    <meta name="keywords" content="p2p, littleshoot, file sharing, open protocols, open source, gpl, sip, session initiation protocol, open infrastructure, adam fisk, p2p 2.0, open data" />
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+    <style type="text/css">
+        @import "dijit/themes/tundra/tundra.css";
+        @import "dojo/resources/dojo.css";
+    </style>
+
+    <style type="text/css">
+        @import "http://littleshootcss.appspot.com/css/index.css";
+        @import "http://littleshootcss.appspot.com/css/common.css";
+    </style>
+
+</head>
+
+<body id="body" class="tundra commonBody">
+    <div id="loading">
+        <img src="http://littleshootimages.appspot.com/images/loading.gif" alt="Loading LittleShoot P2P File Sharing in the Browser" />
+    </div>
+    <div id="customLogoDiv" style="opacity:0;"></div>
+    <div id="leftDiv"></div>
+    <div id="contentDiv">
+
+        <div id="logoDiv">
+            <img src="http://littleshootimages.appspot.com/images/logo_trans_big.gif" width="163" border="0" alt="LittleShoot P2P File Sharing in the Browser"/>
+        </div>
+        <div id="searchDiv">
+            <div class="indexRow1">
+                <span class="labelText1">SEARCH: </span>
+                <span class="labelText2">SEE WHAT'S OUT THERE</span>
+            </div> 
+            <div class="indexRow2">
+                <form id="searchForm" name="searchForm" dojoType="dijit.form.Form" onSubmit="Search.startSearch(); return false;">
+                    <div id="searchCheckBoxes">
+                        <input id="videosCheckBox" dojotype="dijit.form.CheckBox"
+                               name="video" checked="checked" value="on"
+                               type="checkbox" />
+                        <label for="videosCheckBox" class="inputLabel">Video</label> 
+                        
+                        <input id="imagesCheckBox" dojotype="dijit.form.CheckBox"
+                               name="images" checked="checked" value="on"
+                               type="checkbox" />
+                        <label for="imagesCheckBox" class="inputLabel">Images</label> 
+                        
+                        <input id="audiosCheckBox" dojotype="dijit.form.CheckBox"
+                               name="audio" checked="checked" value="on"
+                               type="checkbox" />
+                        <label for="audiosCheckBox" class="inputLabel">Audio</label> 
+                        
+                        <input id="documentsCheckBox" dojotype="dijit.form.CheckBox"
+                               name="documents" checked="checked" value="on"
+                               type="checkbox" />
+                        <label for="documentsCheckBox" class="inputLabel">Documents</label> 
+                        
+                        <input id="applicationsCheckBox" dojotype="dijit.form.CheckBox"
+                               name="applications" checked="checked" value="on"
+                               type="checkbox" />
+                        <label for="applicationsCheckBox" class="inputLabel">Apps</label> 
+                    </div>
+                    <div id="searchSources" dojoType="dijit.TitlePane" title="Options:" open="false" style="display:none;">
+                        <div>
+                            <input id="flickrCheckBox" dojotype="dijit.form.CheckBox"
+                                   name="flickr" checked="checked" value="on" 
+                                   type="checkbox"/>
+                            <label for="flickrCheckBox" class="optionsLabel">Flickr</label> 
+                        </div>
+                        <div>
+                            <input id="limeWireCheckBox" dojotype="dijit.form.CheckBox"
+                                   name="limeWire" checked="checked" value="on"
+                                   type="checkbox"/>
+                            <label for="limeWireCheckBox" class="optionsLabel">LimeWire</label> 
+                        </div>
+                        <div>
+                            <input id="littleShootCheckBox" dojotype="dijit.form.CheckBox"
+                                   name="littleShoot" checked="checked" value="on"
+                                   type="checkbox" />
+                            <label for="littleShootCheckBox" class="optionsLabel">LittleShoot</label> 
+                        </div>
+                        <div>
+                            <input id="yahooCheckBox" dojotype="dijit.form.CheckBox"
+                                   name="yahoo" checked="checked" value="on"
+                                   type="checkbox" />
+                            <label for="yahooCheckBox" class="optionsLabel">Yahoo</label> 
+                        </div>
+                        <div>
+                            <input id="youTubeCheckBox" dojotype="dijit.form.CheckBox"
+                                   name="youTube" checked="checked" value="on"
+                                   type="checkbox" />
+                            <label for="youTubeCheckBox" class="optionsLabel">YouTube</label>
+                        </div> 
+                        
+                        <div id="safeSearchDiv">
+                            <input id="safeSearchCheckBox" dojotype="dijit.form.CheckBox"
+                               name="safeSearch" checked="checked" value="on"
+                               type="checkbox" />
+                            <label for="safeSearchCheckBox" class="optionsLabel">Safe Search</label> 
+                        </div>
+                    </div>
+                    <div class="indexFormRow2">
+                        <input class="mediumTextBox" id="searchBox" type="text" name="keywords" 
+                        dojoType="dijit.form.TextBox" trim="true" required="true"/>
+                    </div>
+                </form>
+                <div id="searchButton" class="button searchButton">
+                    <span>SEARCH</span>
+                </div>  
+            </div>
+        </div>
+        <div id="publishDiv">
+            <div class="indexRow1">
+                <span class="labelText1">PUBLISH: </span>
+                <span class="labelText2">PUT YOUR MEDIA OUT THERE</span>
+            </div> 
+            <div id="publishButtonDiv" class="indexRow2">
+
+            </div>
+        </div>
+      </div>
+    <div id="bottomDiv"></div>
+    
+    <div id="groupLink" style="display:none;"><a href="javascript:User.createGroup()">Create Group</a></div>
+
+    <div id="fakeFileUpload" class="fakeFile" style="display:none;">
+        <input type="file" id="invisibleFileInput" class="invisibleFileInput" noscript="true" onchange="Publisher.onFileChanged()" size="1"/>
+        <div class="buttonFileInput">
+           <span>BROWSE...</span>
+        </div>  
+    </div>
+    
+    <div id="loginFileUpload" class="button" style="display:none;">
+        <span>BROWSE...</span>
+    </div>
+
+    <div id="ff3FileUpload" class="button" style="display:none;">
+        <span>BROWSE...</span>
+    </div>
+        
+    <div dojoType="dijit.Dialog" id="publishDialog" title="Add Tags for the File" 
+        execute="Publisher.onTags(arguments[0]);" style="display:none;">
+        <div class="commonDialogDiv littleShoot">
+            <span class="normalMedium">
+            Enter your tags. Separate tags with commas, as in "beach, kite surfing, Mexico".  Your
+            file will be searchable by the tags you enter so you and other
+            users can find your file.
+            </span>
+        </div>
+        <br>
+        <div style="text-align:center">
+            <div id="publishTagsTextBox">
+                <label class="tagsInputLabel" for="tags">Tags: </label>
+                <input type="text" id="publishTagsTextBoxInput" name="tags" 
+                    dojoType="dijit.form.TextBox" trim="true"
+                    maxLength="250"/>
+            </div>
+            <br>
+            <button dojoType="dijit.form.Button" type="submit">
+                Publish
+            </button>
+            <button dojoType="dijit.form.Button">
+                Cancel
+                <script type="dojo/method" event="onClick">
+                    dijit.byId('publishDialog').hide();
+                </script>
+            </button>
+        </div>
+    </div> 
+
+    
+    <div dojoType="dijit.Dialog" id="newUserDialog" title="Create Your LittleShoot" 
+         style="display:none;">
+        <div id="newUserDiv">
+            <div id="newUserDialogMessage" class="commonDialogDiv littleShoot" >
+                <span class="normalMedium">
+                    Please enter your e-mail address and password.  We'll never share your information.
+                </span>
+                <br>
+            </div>
+            
+            <div id="newUserFormDiv" style="text-align:right; margin-right: 40px; margin-top: 18px">
+                <label for="email">E-Mail</label>
+                <input id="newUserEmail"  type="text" name="email" 
+                    dojoType="dijit.form.TextBox" trim="true"
+                    maxLength="100" required="true"
+                    />
+                <br>
+                <br>    
+                <label for="password">Password</label>
+                <input id="newUserPassword" type="password" name="password" 
+                    dojoType="dijit.form.TextBox" trim="true"
+                    maxLength="100"
+                    />
+                <br>
+                <br>    
+                <label for="confirm">Confirm Password</label>
+                <input id="newUserConfirm"  type="password" name="confirm" 
+                    dojoType="dijit.form.TextBox" trim="true"
+                    maxLength="100"
+                    />
+                <br>
+                <br>
+            </div>
+             <div style="text-align:center">
+                <button dojoType="dijit.form.Button">
+                    OK
+                    <script type="dojo/method" event="onClick">
+                        User.newUser("newUserDialog");
+                    </script>
+                </button>
+                <button dojoType="dijit.form.Button">
+                    Cancel
+                    <script type="dojo/method" event="onClick">
+                        dijit.byId('newUserDialog').hide();
+                    </script>
+                </button>
+            </div>
+            
+            <br>
+            <div id="newUserStatusDiv" class="commonDialogDiv normalBoldMedium"></div>
+        </div>
+    </div>
+    
+  
+    <div dojoType="dijit.Dialog" id="resetPasswordDialog" title="Reset Your Password" style="display:none;">
+        
+        <form id="resetPasswordForm" method="post"
+            name="resetPasswordForm" onSubmit="User.resetPassword('resetPasswordDialog');">
+            <input id="resetPasswordFormParam1" type=hidden name="param1" value="val1">
+            <input id="resetPasswordFormParam2" type=hidden name="param2" value="val2">
+            <div id="resetPasswordDiv">
+                <div id="resetPasswordDialogMessage" class="commonDialogDiv littleShoot" >
+                    <span class="normalMedium">
+                        Please enter your new password.
+                    </span>
+                    <br>
+                </div>
+                
+                <div id="resetPasswordFormDiv" style="text-align:right; margin-right: 40px; margin-top: 18px">
+                    <label for="password">Password</label>
+                    <input id="resetPasswordPassword" type="password" name="password" 
+                        dojoType="dijit.form.TextBox" trim="true"
+                        maxLength="100"
+                        />
+                    <br>
+                    <br>    
+                    <label for="confirm">Confirm Password</label>
+                    <input id="resetPasswordConfirm"  type="password" name="confirm" 
+                        dojoType="dijit.form.TextBox" trim="true"
+                        maxLength="100"
+                        />
+                    <br>
+                    <br>
+                </div>
+                 <div style="text-align:center">
+                    <button dojoType="dijit.form.Button" type="submit">
+                        OK
+                    </button>
+                    <button dojoType="dijit.form.Button">
+                        Cancel
+                        <script type="dojo/method" event="onClick">
+                           dijit.byId('resetPasswordDialog').hide();
+                        </script>
+                    </button>
+                </div>
+                
+                <br>
+                <div id="resetPasswordStatusDiv" class="commonDialogDiv normalBoldMedium"></div>
+            </div>
+        </form>
+    </div>
+        
+    <div dojoType="dijit.Dialog" id="loginPublishDialog" title="Sign In To LittleShoot" 
+        style="display:none;">
+        <form id="signInForm" method="post"
+            name="signInForm" onSubmit="User.login('loginPublishDialog'); return false;">
+            <div id="loginDiv">
+                <div id="loginDialogMessage" class="commonDialogDiv littleShoot" >
+                    <div id="loginMessageDiv" class="normalMedium">
+                        You need to sign in before you can publish files with LittleShoot.
+                    </div>
+                    <br>
+                    <span class="normalMedium">
+                    New user?  Please <a href="javascript:User.showNewUserDialog('loginPublishDialog')">register</a>.
+                    </span>
+                    <br>
+                </div>
+                
+                <div style="text-align:right; margin-right: 40px; margin-top: 18px">
+                    <label for="email">E-Mail</label>
+                    <input  id="loginEmail" type="text" name="email" 
+                        dojoType="dijit.form.TextBox" trim="true"
+                        maxLength="100" required="true"
+                        />
+                    <br>
+                    <br>    
+                    <label for="password">Password</label>
+                    <input  id="loginPassword" type="password" name="password" 
+                        dojoType="dijit.form.TextBox" trim="true"
+                        maxLength="100"
+                        />
+                    <br>
+                    <br>
+                </div>
+                <div style="text-align:center" class="bottomMargin">
+                    <button dojoType="dijit.form.Button" type="submit">
+                        Login
+                    </button>
+                    <button dojoType="dijit.form.Button">
+                        Cancel
+                        <script type="dojo/method" event="onClick">
+                        dijit.byId('loginPublishDialog').hide();
+                    </script>
+                    </button>
+                </div>
+                <div id="loginStatusDiv" class="commonDialogDiv normalBoldMedium"></div>
+            </div>    
+            <br>
+             
+            <br>
+            <div style="text-align:center">
+                <a href="javascript:User.forgotPassword('loginPublishDialog')">Forgot Password?</a>
+            </div>
+        </form>    
+    </div> 
+    
+    <div dojoType="dijit.Dialog" id="forgotPasswordDialog" title="Get Password Reminder" 
+        style="display:none;">
+        <div>
+            <div class="commonDialogDiv littleShoot" >
+                <span class="normalMedium">
+                Enter your login e-mail below, and we'll send you an e-mail with a link to reset your password.
+                <br><br>
+                </span>
+            </div>
+            
+            <div style="text-align:right; margin-right: 40px; margin-top: 18px">
+                <label for="email">E-Mail</label>
+                <input  id="forgotPasswordEmail" type="text" name="email" 
+                    dojoType="dijit.form.TextBox" trim="true"
+                    maxLength="100" required="true"
+                    />
+                <br>
+                <br>
+            </div>
+            <div style="text-align:center">
+                <button dojoType="dijit.form.Button">
+                    OK
+                    <script type="dojo/method" event="onClick">
+                        User.sendPasswordReminder('forgotPasswordDialog');
+                    </script>
+                </button>
+                <button dojoType="dijit.form.Button">
+                    Cancel
+                    <script type="dojo/method" event="onClick">
+                        console.info("Closing dialog");
+                        dijit.byId('forgotPasswordDialog').hide();
+                    </script>
+                </button>
+            </div>
+            <br>
+            <div id="forgotPasswordStatusDiv" class="commonDialogDiv normalBoldMedium"></div>
+        </div>        
+    </div> 
+    
+    <!--
+        This is not used for now.
+    -->
+    <div dojoType="dijit.Dialog" id="installDialog" title="Install LittleShoot?"
+        execute="CommonUtils.downloadInstaller()" style="display:none;">
+        <span class="normalMedium">
+            It looks like LittleShoot is not installed on your computer.  
+            Would you like to start Installing LittleShoot now?
+            <br><br>
+        </span>
+        <div class="installDialogDiv" style="text-align:center">
+            <button dojoType="dijit.form.Button">
+                Learn More
+                <script type="dojo/method" event="onClick">
+                    dijit.byId('installDialog').hide();
+                </script>
+            </button>
+            <button dojoType="dijit.form.Button" type="submit">
+                OK
+            </button>
+        </div>
+    </div> 
+     
+    <div dojoType="dijit.Dialog" id="emailDialog" title="Invite-Only Beta Testing" style="display:none;">
+        <form id="emailForm" method="post"
+            name="icpsignup" onSubmit="return CommonUtils.isValidEmail('emailDialogTextBoxInput');" 
+            action="http://app.icontact.com/icp/signup.php" accept-charset="UTF-8">
+                 
+            <div id="emailDialogDiv" class="normalMedium">
+                LittleShoot is currently in invite-only beta testing, so you 
+                unfortunately can't use the new LittleShoot plugin at this time.
+                <br><br>
+                If you'd like to be notified as soon as you can join, enter your
+                e-mail here.  We'll never share it with anyone.  Ever.  
+    
+                <br><br>
+
+                <input id="thankYouInput" type=hidden name=redirect value="http://www.lastbamboo.org/site.html?emailSuccess=true"/>
+                <input id="errorInput" type=hidden name=errorredirect value="http://www.lastbamboo.org/site.html?emailSuccess=false"/>
+
+                <input type=hidden name="listid" value="5418">
+                <input type=hidden name="specialid:5418" value="TRQ4">
+                <input type=hidden name=clientid value="158077">
+                <input type=hidden name=formid value="491">
+                <input type=hidden name=reallistid value="1">
+                <input type=hidden name=doubleopt value="0">
+
+                <div id="emailDialogTextBox" style="text-align:center">
+
+                    <label for="fields_email">E-Mail: </label>
+                    <input  id="emailDialogTextBoxInput" type="text" name="fields_email" 
+                        dojoType="dijit.form.TextBox" trim="true"
+                        maxLength="100" required="true"
+                        />
+                </div>
+                <br>           
+                
+                If you've already received an invitation e-mail, make sure you
+                follow the link from the e-mail and follow the instructions 
+                there.
+                <br><br>
+                <div id="emailDialogButtons" style="text-align:center">
+                    <button dojoType="dijit.form.Button" type="submit">
+                        Submit E-Mail
+                    </button>
+                    <button dojoType="dijit.form.Button">
+                        Just Learn More
+                        <script type="dojo/method" event="onClick">
+                            dijit.byId('emailDialog').hide();
+                            window.location.href = "site.html?contentId=whatIs";
+                        </script>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div> 
+    
+    <div class="displayNone"> 
+        <a href="site.html?contentId=whatis">What is LittleShoot?</a>
+        <a href="site.html?contentId=help">Help Using LittleShoot</a>
+        <a href="site.html?contentId=thanks">LittleShoot Thank You</a>
+        <a href="site.html?contentId=technology">LittleShoot Technology</a>
+        <a href="site.html?contentId=contact">Contact LittleShoot</a>
+        <a href="site.html?contentId=about">About LittleShoot</a>
+    </div>
+
+    <script type="text/javascript">
+       littleShootConfig = 
+           {
+           disableAutoLoad : true
+           };
+    </script>
+
+<!-- DELETEME 
+    <script type="text/javascript" src="dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+    <script type="text/javascript" src="littleshoot/littleshootlib.js"></script>
+ DELETEME-->
+
+    <script type="text/javascript" src="dojo/dojo.js" djConfig="parseOnLoad: true"></script><!-- DELETEME -->
+    <script type="text/javascript" src="littleshoot/Constants.js"></script><!--  //DELETEME -->
+    <script type="text/javascript" src="littleshoot/CommonUtils.js"></script> <!--  //DELETEME -->
+    <script type="text/javascript" src="littleshoot/AppMonitor.js"></script> <!--  //DELETEME -->
+    <script type="text/javascript" src="littleshoot/Button.js"></script> <!--  //DELETEME -->
+    <script type="text/javascript" src="littleshoot/HmacSha1.js"></script> <!--  //DELETEME -->
+    <script type="text/javascript" src="littleshoot/ClientApi.js"></script> <!--  //DELETEME -->
+    
+    <script type="text/javascript" src="littleshoot/User.js"></script> <!--  //DELETEME -->
+    <script type="text/javascript" src="littleshoot/publisher.js"></script> <!--  //DELETEME -->
+    <script type="text/javascript" src="littleshoot/search.js"></script> <!--  //DELETEME -->
+    <script type="text/javascript" src="littleshoot/Group.js"></script><!--  //DELETEME -->
+    <script type="text/javascript" src="littleshoot/LittleShootLoader.js"></script> <!--  //DELETEME -->
+    <script type="text/javascript" src="littleshoot/index.js"></script> <!--  //DELETEME -->
+
+    <script type="text/javascript"> <!-- DELETEME -->
+        dojo.require("dojox.validate.web"); //DELETEME
+        dojo.require("dojo.parser"); //DELETEME
+        dojo.require("dojo.io.script"); //DELETEME
+        dojo.require("dijit.Tooltip"); //DELETEME
+        dojo.require("dijit.Dialog"); //DELETEME
+        dojo.require("dijit.form.CheckBox"); //DELETEME
+        dojo.require("dijit.form.TextBox"); //DELETEME
+        dojo.require("dijit.form.Button"); //DELETEME
+        dojo.require("dijit.form.Form"); //DELETEME
+        dojo.require("dojo.cookie"); //DELETEME
+        dojo.require("dijit.TitlePane"); //DELETEME
+    </script><!--  //DELETEME -->
+    
+</body>
+</html>

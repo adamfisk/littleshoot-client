@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    
+    <title>LittleShoot</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+    <style type="text/css">
+        @import "js/dijit/themes/tundra/tundra.css";
+        @import "js/dojo/resources/dojo.css";
+    </style>
+
+
+    <style type="text/css">
+        @import "dojo-release-1.1.0-src/dijit/themes/tundra/tundra.css";
+        @import "dojo-release-1.1.0-src/dojo/resources/dojo.css";
+    </style>
+    
+    <!--
+        Import our css separately for easy toggling between online and offline.
+    -->
+    <style type="text/css">
+        @import "css/index.css";
+        @import "css/common.css";
+        @import "css/wizard.css";
+    </style>
+    
+</head>
+
+<body class="tundra">
+
+                <div id="littleShootNoFlash">
+            <a href="http://www.adobe.com/go/getflashplayer">
+                <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player">
+            </a>
+        </div>
+    <div id="loading">
+        <img src="http://littleshootimages.appspot.com/images/loading.gif" alt="" />
+    </div>
+    <div id="customLogoDiv" style="opacity:0;"></div>
+    <div id="leftDiv"></div>
+    <div id="contentDiv">
+
+        <div id="logoDiv">
+            <img src="http://littleshootimages.appspot.com/images/logo_trans_big.gif" width="163" border="0" alt="LittleShoot"/>
+        </div>
+        <div id="searchDiv">
+            <div class="indexRow1">
+                <span class="labelText1">SEARCH: </span>
+                <span class="labelText2">SEE WHAT'S OUT THERE</span>
+            </div> 
+            <div class="indexRow2">
+                <form id="searchForm" name="searchForm" onSubmit="Search.startSearch(); return false;">
+                    <input id="videosCheckBox" dojotype="dijit.form.CheckBox"
+                           name="video" checked="checked" value="on"
+                           type="checkbox" />
+                    <label for="videosCheckBox" class="indexInputLabel">Video</label> 
+                    
+                    <input id="imagesCheckBox" dojotype="dijit.form.CheckBox"
+                           name="images" checked="checked" value="on"
+                           type="checkbox" />
+                    <label for="imagesCheckBox" class="indexInputLabel">Images</label> 
+                    
+                    <input id="audiosCheckBox" dojotype="dijit.form.CheckBox"
+                           name="audio" checked="checked" value="on"
+                           type="checkbox" />
+                    <label for="audiosCheckBox" class="indexInputLabel">Audio</label> 
+                    
+                    <input id="documentsCheckBox" dojotype="dijit.form.CheckBox"
+                           name="documents" checked="checked" value="on"
+                           type="checkbox" />
+                    <label for="documentsCheckBox" class="indexInputLabel">Documents</label> 
+                    <input id="applicationsCheckBox" dojotype="dijit.form.CheckBox"
+                           name="applications" checked="checked" value="on"
+                           type="checkbox" />
+                    <label for="applicationsCheckBox" class="indexInputLabel">Applications</label> 
+                    <div class="indexFormRow2">
+                        <input id="searchBox" type="text" name="keywords" 
+                        dojoType="dijit.form.TextBox" trim="true"/>
+                    </div>
+                </form>
+                <div id="searchButton" class="button searchButton">
+                    <span>SEARCH</span>
+                </div>  
+            </div>
+        </div>
+        <div id="publishDiv">
+            <div class="indexRow1">
+                <span class="labelText1">PUBLISH: </span>
+                <span class="labelText2">PUT YOUR MEDIA OUT THERE</span>
+            </div> 
+            <div id="publishButtonDiv" class="indexRow2">
+
+            </div>
+        </div>
+      </div>
+    <div id="bottomDiv"></div>
+    
+    <div id="fakeFileUpload" class="fakeFile" style="display:none;">
+        <input type="file" id="invisibleFileInput" class="invisibleFileInput" noscript="true" onchange="Publisher.onFileChanged()" size="1"/>
+        <div class="buttonFileInput">
+           <span>BROWSE...</span>
+        </div>  
+    </div>
+    
+    <div id="loginFileUpload" class="button" style="display:none;">
+        <span>BROWSE...</span>
+    </div>
+    
+        <script type="text/javascript" src="swfobject/swfobject.js"></script>
+        <script type="text/javascript">
+            var flashvars = {};
+            var params = {};
+            params.play = "true";
+            params.loop = "false";
+            params.quality = "high";
+            params.allowscriptaccess = "sameDomain";
+            var attributes = {};
+            attributes.id = "LittleShoot";
+            attributes.name = "LittleShoot";
+            attributes.align = "middle";
+            swfobject.embedSWF("LittleShoot.swf", "littleShootNoFlash", "0%", "0%", "9.0.0", "expressInstall.swf", flashvars, params, attributes);
+        </script>
+    
+    <script type="text/javascript" src="firebug/firebug.js"></script>
+
+
+<script type="text/javascript" src="dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+    
+    
+    
+    <script type="text/javascript">
+        //dojo.addOnLoad(Index.init);
+        
+        function thisMovie(movieName) {
+            if (navigator.appName.indexOf("Microsoft") != -1) {
+                return window[movieName]
+            }
+            else {
+                return document[movieName]
+            }
+        }
+        function gotLittleShoot(data) {
+            console.info("Got litleshoot!!!! from flash!!: "+dojo.toJson(data));
+        }
+        
+        function callExternalInterface() {
+            //var url = "http://p2p2o.littleshoot.org:8107/api/client/appCheck?t=1224956144803&callback=gotLittleShoot"
+            //thisMovie("LittleShoot").httpGet("http://p2p2o.littleshoot.org:8107/api/client/appCheck?callback=gotLittleShoot");
+            console.info("About to poll");
+            thisMovie("LittleShoot").poll();
+        }
+
+        dojo.addOnLoad(callExternalInterface);
+    </script>
+
+    <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        _uacct = "UA-3025934-2";
+        urchinTracker();
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{% extends "indexBase.html" %}
+
+{% block extraCss %}
+{% include "link.css" %}
+{% endblock extraCss %}
+
+{% block indexContent %}
+<div id="contentDiv">
+<div id="main">
+    <center>
+        <div id="messagingDiv">
+            <div id="littleShootLogoDiv">
+                <div id="linkLogoDiv" class="sprite-logo_trans_big"></div>
+            </div>
+            <div id="downloadingContainerDiv" style="display:none">
+                <div id="downloadingDiv">
+                    
+                    <div id="downloadingTextDiv" class="downloadingText">
+                        Waiting for the LittleShoot Plugin.<br>
+                        When you finish installing the plugin, you will automatically start downloading 
+                        '<strong>{{ link }}</strong>.'
+                    </div>
+                    <div id="loadingDiv">
+                       <img src="images/loading_green.gif" border="0" alt="Loading LittleShoot P2P 2.0 File Sharing in the Browser"/>
+                   </div>
+                </div>
+            </div>
+            <div id="notDownloadingDiv" class="downloadLink" style="display:none">
+                The link you selected to '<strong>{{ link }}</strong>' requires the LittleShoot Plugin.
+                <br>Click anywhere to start downloading and installing LittleShoot.<br>
+                Learn more <a href="http://www.littleshoot.org/home" id="littleshootLink">here</a>.
+            </div>
+         </div>
+    </center>
+</div>
+</div>
+{% endblock indexContent %}
+
+
+{% block loading %}
+    <div id="loading">
+        <img src="http://littleshootimages.appspot.com/images/loading.gif" alt="Loading LittleShoot P2P 2.0 File Sharing in the Browser" />
+    </div>
+{% endblock %}
+ 
+  
+{% block indexJavaScript %}
+
+    {% include "javaScriptIncludes.html" %}
+    
+    <script type="text/javascript">
+        // We need to define this here since jslint chokes on the template chars.
+        // See linkNotInstalled.js
+        var p2pDownloadUrl = '{{ link }}';
+        {% include "linkNotInstalled.js" %}
+        {% include "appDetectionBase.js" %}
+        {% include "appDetectionFlash.js" %}
+    </script>
+    {% include "combinedMediaJs.html" %}
+    
+    {% include "analytics.html" %}
+{% endblock indexJavaScript %}
+

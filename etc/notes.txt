@@ -1,0 +1,3 @@
+We've created CVS patch files using:
+
+cvs diff -up > example.patch

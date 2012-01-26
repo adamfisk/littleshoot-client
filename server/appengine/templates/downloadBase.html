@@ -1,0 +1,17 @@
+{% extends "siteNavBase.html" %}
+
+{% block javascript %}
+    {{ block.super }}
+    // We load the applet to detect the application as soon as it's running. 
+    CommonUtils.loadLittleShootApplet();
+    var delayedDownload = function()
+        {
+        setTimeout(function()
+            {
+            CommonUtils.downloadInstaller();
+            }, 
+            2000);   
+        };
+    dojo.addOnLoad(delayedDownload);
+{% endblock javascript %}
+                        

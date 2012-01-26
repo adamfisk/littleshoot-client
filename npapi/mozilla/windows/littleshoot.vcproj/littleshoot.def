@@ -1,0 +1,8 @@
+LIBRARY	"nplittleshoot"
+
+EXPORTS
+	NP_GetEntryPoints     @1
+	NP_Initialize         @2
+	NP_Shutdown           @3
+	StartLittleShoot      @4
+	StopLittleShoot       @5

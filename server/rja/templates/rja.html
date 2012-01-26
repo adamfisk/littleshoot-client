@@ -1,0 +1,128 @@
+{% extends "rjaBase.html" %}
+
+
+{% block extraCss %}   
+    #tollAwards {
+        /*float: left;*/
+        position: absolute;
+        left: 40px;
+    }
+{% endblock extraCss %}
+        
+{% block mainDiv %} 
+    <div class="mainDiv">
+        <div id="tollDiv" class="mainContent selectedContent">
+            <span class="titleText titleSpan">Rachel Johnson Animation</span>
+            <!-- 
+            <img class="bgImage" src="images/toll_background_small.jpg" alt="Rachel Johnson Film and Animation"/>
+             -->
+            <img class="bgImage" src="images/opening_page.jpg" alt="Rachel Johnson Film and Animation"/>
+        </div>
+    </div>
+   
+    <div class="overlay" id="contactOverlay" style="z-index: 200000;">
+        <div class="popupOverlay">
+            <div class="resumeText">
+                <div style="text-align: center;">
+                    <br><br><br>
+                    You can reach Rachel any time via mail, e-mail, or phone.<br><br>
+                    
+                    Rachel Johnson Animation<br>
+                    759 1/2 North Wilcox Ave.<br>Los Angeles, CA 90038<br><br>
+                    
+                    racheljohnson70@hotmail.com<br>
+                    (917) 549-1979
+                </div>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="overlay" id="resumeOverlay" style="z-index: 200000;">
+        <div class="textOverlay">
+            <div class="resumeText">
+                {% include "resume.html" %}
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+    
+{% endblock mainDiv %} 
+
+{% block navLinks %}   
+
+       
+        <div class="navLinks">
+            <center>
+            <div id="tollAwards" style="display: none; background:white;">Hello</div> 
+                <table>
+                    <tr class="commonTextNav"><td><a href="toll" id="tollLink" class="firstCourseLink tooltip" title="This is a small tooltip with the Classname 'Tooltip'">The Toll Collector</a></td>
+                        <td><a href="gorilla" id="gorilla" class="courseLink">The Gorilla House</a></td>
+                        <td><a href="fairies" id="fairies" class="courseLink">The Replacement Fairies</a></td>
+                    </tr>
+                    <!-- <tr><td><a class="courseLink"></a></td></tr>-->
+                    <tr class="commonTextNav">
+                        <td>
+                            <!-- <a id="filmography" class="courseLink">Filmography</a>  -->
+                            <a id="filmography"  rel="#filmographyOverlay" class="firstCourseLink overlayLink">
+                                Filmography
+                            </a>
+                        </td>
+                        <td>
+                            <a id="resume"  rel="#resumeOverlay" class="courseOverlayLink overlayLink">
+                                Resume
+                            </a>
+                        </td>
+                        <!--  <td><a id="contact" class="courseLink">Contact</a></td> -->
+                        <td>
+                            <a id="contact"  rel="#contactOverlay" class="courseOverlayLink overlayLink">
+                                Contact
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                
+            </center>
+        </div>
+    
+{% endblock navLinks %}
+
+    
+{% block extraJavaScript %}   
+<script type="text/javascript">
+/*
+    $("#tollLink").mouseover(function() {
+        //console.info("OVer!!");
+        $("#tollAwards").show("slow");
+    }).mouseout(function() {
+        $("#tollAwards").hide("slow");
+    });
+    */
+
+function simple_tooltip(target_items, name){
+    $(target_items).each(function(i){
+        //console.info("Setting up tooltip");
+           $("body").append("<div class='"+name+"' id='"+name+i+"'><p>"+$(this).attr('title')+"</p></div>");
+           var my_tooltip = $("#"+name+i);
+           
+           $(this).removeAttr("title").mouseover(function(){
+          //     console.info("got over");
+                   my_tooltip.css({opacity:0.8, display:"none"}).fadeIn(400);
+                   //console.info("done over");
+           }).mousemove(function(kmouse){
+                   my_tooltip.css({left:kmouse.pageX+15, top:kmouse.pageY+15});
+           }).mouseout(function(){
+                   my_tooltip.fadeOut(400);
+                   //console.info("done out");                  
+           });
+       });
+   }
+
+       
+   $(document).ready(function(){
+        //simple_tooltip("a","tooltip");
+        simple_tooltip("#tollLink", "tooltip");
+   });
+</script>
+{% endblock extraJavaScript %}

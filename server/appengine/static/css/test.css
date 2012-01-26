@@ -1,0 +1,125 @@
+    
+.buttonMiddle
+    {
+    cursor: pointer;
+    background: red url('images/buttonHorizontal.gif') repeat-x 0px 0px;
+
+    width: 100px;
+    margin-right: 20px;
+    padding-right: 20px;
+    
+    height: 22px;
+    min-height: 22px;
+    text-align: center;
+    
+    font-family: verdana, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 180%;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #545454;
+    border-style: none;
+    }
+    
+
+
+.tundra .bigTextInput .dijitTextBox
+    {
+    font-size: 14px;
+    font-family:'Lucida Sans Unicode','Lucida Grande';
+    padding:1px 2px 2px 4px;
+    }
+    
+.tundra .bigTextInput .textAreaBigTextInput
+    {
+    font-size: 14px;
+    /*font-family: verdana, sans-serif;*/
+    font-family:'Lucida Sans Unicode','Lucida Grande';
+    padding:1px 2px 2px 4px;
+    }
+    
+    #searchBoxNew
+    {
+    /*
+    width: 100%;
+    border-style: solid; border-width: 1px; border-color: #AAAAAA; 
+    height: 18px;
+    font-size: 16px;
+    */
+    
+    border: 1px solid #AAAAAA;
+    color:#555555;
+    font-family:'Lucida Sans Unicode','Lucida Grande';
+    font-size:18px;
+    padding:1px 2px 2px 4px;
+    width:498px;
+    }
+    
+#searchButton 
+    {
+    position: absolute;
+    top: 62px;
+    left: 0px;
+    }
+
+#twitterMessageDiv
+    {
+    position: relative;
+    margin-top: 6px;
+    min-height: 142px;
+    left: 0px;
+    }
+    
+#twitterMessageLabel
+    {
+    position: absolute;
+    left: 0px;
+    top: 18px;
+    }
+
+#twitterMessageTextArea
+    {
+    position: absolute;
+    left: 50px;
+    top: 18px;
+    width: 250px;
+    height: 6em;
+    
+    /* Note this is taken directly from Tundra.*/
+    border: 1px solid #B3B3B3;
+    }
+    
+#twitterMessageCharCount
+    {
+    position: absolute;
+    top: 0px;
+    right: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    }
+
+.grayCount
+    {
+    color: #545454;
+    }
+    
+.redCount
+    {
+    color: #bb5555;
+    }
+    
+#countDesc
+    {
+    font-size: 12px;
+    color: #545454;
+    font-family:'Lucida Sans Unicode','Lucida Grande';
+    }
+
+#countDescDiv
+    {
+    position: absolute;
+    left: 50px;
+    width: 250px;
+    bottom: 8px;
+    }

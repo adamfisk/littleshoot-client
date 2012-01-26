@@ -1,0 +1,125 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.lastbamboo</groupId>
+    <artifactId>lastbamboo-common-sip-turn</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <name>SIP-TURN Launcher</name>
+    <description>Last Bamboo SIP/TURN Launcher</description>
+
+    <parent>
+        <groupId>org.lastbamboo</groupId>
+        <artifactId>lastbamboo-common</artifactId>
+        <version>1.0</version>
+        </parent>
+
+    <dependencies>
+     
+        <dependency>
+            <groupId>easymock</groupId>
+            <artifactId>easymock</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>amazon-ec2</artifactId>
+            </dependency>
+             
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>amazon-s3</artifactId>
+            </dependency>
+  
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-jmx-client</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-log4j-bug-appender</artifactId>
+            </dependency>
+            
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-online</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>sip-server</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>turn-server</artifactId>
+            </dependency>
+
+        </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-maven-plugin</artifactId>
+                <configuration>
+                    <bundleName>LittleShoot</bundleName>
+                    <javaArgs>
+                        <param>-server</param>
+                        <param>-Xmx700m</param>
+                        </javaArgs>
+                    <mainClass>
+                        org.lastbamboo.common.sipturn.Launcher
+                        </mainClass>
+                    <javaSystemProps>
+                        <property>
+                            <name>com.sun.management.jmxremote.port</name>
+                            <value>8190</value>
+                            </property>
+                        <property>
+                            <name>com.sun.management.jmxremote.authenticate</name>
+                            <value>false</value>
+                            </property>
+                        <property>
+                            <name>com.sun.management.jmxremote.ssl</name>
+                            <value>false</value>
+                            </property>
+                        </javaSystemProps>
+                    </configuration>
+                </plugin>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2-beta-5</version>
+                <executions>
+                        <execution>
+                        <id>latest-build</id>
+                        <phase>package</phase>
+                        <configuration>
+                                <finalName>sip-turn</finalName>
+                                <classesDirectory>target/classes</classesDirectory>
+                                <useDefaultManifestFile>true</useDefaultManifestFile>
+                                <outputDirectory>target</outputDirectory>
+                                <appendAssemblyId>false</appendAssemblyId>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <archive>
+                                                        <manifest>
+                                                                <mainClass>org.lastbamboo.common.sipturn.Launcher</mainClass>
+                                                        </manifest>
+                                                        </archive>
+
+                        </configuration>
+                        <goals>
+                                <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            </plugins>
+
+        </build>
+    </project>

@@ -1,0 +1,802 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>LittleShoot -- P2P 2.0 -- P2P File Sharing in the Browser</title>
+    <meta name="amazonid" content="littl08-20" />
+    <meta name="description" content="LittleShoot is secure, flexible, next-generation P2P technology fully integrated with the browser and all brought to you by one of the creators of LimeWire, Adam Fisk.  LittleShoot defines P2P 2.0." />
+    <meta name="keywords" content="p2p, littleshoot, file sharing, open protocols, open source, gpl, sip, session initiation protocol, open infrastructure, adam fisk, p2p 2.0, open data" />
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+    <style type="text/css">
+        @import "dijit/themes/tundra/tundra.css";
+        @import "dojo/resources/dojo.css";
+    </style>
+    
+    <!-- 
+        @import "css/searchResults.css";
+        @import "css/common.css";
+        @import "css/tabLayoutSite.css";
+        @import "css/site.css";
+     -->
+     
+    <style type="text/css">
+        @import "http://littleshootcss.appspot.com/css/searchResults.css";
+        @import "http://littleshootcss.appspot.com/css/common.css";
+        @import "http://littleshootcss.appspot.com/css/tabLayoutSite.css";
+        @import "http://littleshootcss.appspot.com/css/site.css";
+    </style>
+     
+</head>
+
+<body class="tundra commonBody" id="body">
+    <div id="loading">
+        <img src="http://littleshootimages.appspot.com/images/loading.gif" alt="Loading LittleShoot P2P File Sharing in the Browser" />
+    </div>
+    <div id="customLogoDiv"></div>
+    <div id="topDiv">
+    </div>
+    <div id="logoDiv">
+        <a href="index.html">
+            <img src="http://littleshootimages.appspot.com/images/logo_trans.gif" width="134" border="0" alt="LittleShoot P2P File Sharing in the Browser"/>
+        </a>    
+    </div>
+      
+    <div id="mainContentDiv">
+        <div id="tabs">
+            <div id="leftTab" class="unselectedTab">
+                <span>SEARCH</span>
+            </div> 
+            
+            <div id="rightTab" class="unselectedTab">
+                <span>PUBLISH</span>
+            </div> 
+            
+        </div>
+        <div id="mainContentInnerDiv">    
+            <div id="mainContentLeftEdge">
+            </div>
+            <div id="mainContentTopEdge">
+            </div>
+            <div id="mainContentRightEdge">
+            </div>
+
+            <div id="mainContentWhiteDiv">
+                <div id="grayNav">
+                    <div id="grayNavControlDiv">
+                    </div>
+                    <div id="forumsLink">
+                        <a href="http://groups.google.com/group/littleshooters/">Visit the forums!</a>
+                    </div>
+                </div>
+                
+                <div id="contentDataDiv">
+                </div>
+                <div id="contentDataDivBottom">
+                </div>
+            </div>
+                <div id="mainContentBottomEdge">
+            </div>
+        </div>
+
+    </div>
+    
+    <div id="bottomDiv">
+        <!--
+            This doesn't use siteNavToggle because the bottom links are always there.
+        -->
+        <div id="grayNavControlDivLinksBottom">
+        </div>
+    </div> 
+    
+    <div id="grayNavControlDivLinks" class="siteNavToggle">
+    </div>
+
+    <!--
+        Start search section.
+    -->
+    <!-- 
+        Search form in the gray nav area.  Swapped when switching between tabs. 
+    -->
+    <div id="grayNavControlDivSearch" style="display:none;" class="searchToggle">
+        <form id="searchForm" name="searchForm" dojoType="dijit.form.Form" onSubmit="Search.startSearch(); return false;">
+            <div id="searchCheckBoxDiv">
+                <input id="videosCheckBox" dojotype="dijit.form.CheckBox"
+                       name="video" checked="checked" value="on"
+                       type="checkbox" />
+                <label for="videosCheckBox" class="inputLabel">Video</label> 
+                
+                <input id="imagesCheckBox" dojotype="dijit.form.CheckBox"
+                       name="images" checked="checked" value="on"
+                       type="checkbox" />
+                <label for="imagesCheckBox" class="inputLabel">Images</label> 
+                
+                <input id="audiosCheckBox" dojotype="dijit.form.CheckBox"
+                       name="audio" checked="checked" value="on"
+                       type="checkbox" />
+                <label for="audiosCheckBox" class="inputLabel">Audio</label> 
+                
+                <input id="documentsCheckBox" dojotype="dijit.form.CheckBox"
+                       name="documents" checked="checked" value="on"
+                       type="checkbox" />
+                <label for="documentsCheckBox" class="inputLabel">Docs</label> 
+                
+                <input id="applicationsCheckBox" dojotype="dijit.form.CheckBox"
+                       name="applications" checked="checked" value="on"
+                       type="checkbox" />
+                <label for="applicationsCheckBox" class="inputLabel">Apps</label> 
+            </div>
+            
+            <div id="searchBoxDiv">
+                <input id="searchBox" type="text" name="keywords"
+                dojoType="dijit.form.TextBox" trim="true" required="true"/>     
+            </div>
+            <div id="searchButton" class="button searchButton">SEARCH</div>
+             
+            <div id="searchSources" dojoType="dijit.TitlePane" title="Options:" open="false"
+                style="">
+                <div>
+                    <input id="flickrCheckBox" dojotype="dijit.form.CheckBox"
+                           name="flickr" checked="checked" value="on" 
+                           type="checkbox"/>
+                    <label for="flickrCheckBox" class="optionsLabel">Flickr</label> 
+                </div>
+                
+                <div>
+                    <input id="limeWireCheckBox" dojotype="dijit.form.CheckBox"
+                           name="limeWire" checked="checked" value="on"
+                           type="checkbox"/>
+                    <label for="limeWireCheckBox" class="optionsLabel">LimeWire</label> 
+                </div>
+                
+                <div>
+                    <input id="littleShootCheckBox" dojotype="dijit.form.CheckBox"
+                           name="littleShoot" checked="checked" value="on"
+                           type="checkbox" />
+                    <label for="littleShootCheckBox" class="optionsLabel">LittleShoot</label> 
+                </div>
+                
+                <div>
+                    <input id="yahooCheckBox" dojotype="dijit.form.CheckBox"
+                           name="yahoo" checked="checked" value="on"
+                           type="checkbox" />
+                    <label for="yahooCheckBox" class="optionsLabel">Yahoo</label> 
+                </div>
+                
+                <div>
+                    <input id="youTubeCheckBox" dojotype="dijit.form.CheckBox"
+                           name="youTube" checked="checked" value="on"
+                           type="checkbox" />
+                    <label for="youTubeCheckBox" class="optionsLabel">YouTube</label>
+                </div> 
+                <div id="safeSearchDiv">
+                    <input id="safeSearchCheckBox" dojotype="dijit.form.CheckBox"
+                       name="safeSearch" checked="checked" value="on"
+                       type="checkbox" />
+                    <label for="safeSearchCheckBox" class="optionsLabel">Safe Search</label> 
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div id="contentDataDivSearch" style="display:none;" class="searchToggle">
+    
+        <div id="searchNavDiv">
+            <div id="searchBackDiv" class="smallIcon"></div>
+            <div id="searchForwardDiv" class="smallIcon"></div>
+            <div class="clearBoth"></div>
+        </div>
+        <div id="searchHeaderDiv">
+             
+            <div id="searchTermDiv" class="normalBoldBlack">
+            </div>
+            <div id="totalSearchResultsDiv">
+                <span id="totalSearchResultsSpan"> </span>    
+            </div>
+           
+        </div>
+        <div class="clearBoth"></div>
+        
+        
+        <div id="resultPageDivSearchTop" class="resultPageDivTop" style="display:none;">
+            <span id="resultPageSpan">Pages:</span>
+            <div id="previousLinkDiv" class="previousLinkDiv">
+                <a class="previousLink">Previous</a>
+            </div>
+            <div id="pageLinksDiv" class="pageLinksDiv"></div>
+            <div id="nextLinkDiv" class="nextLinkDiv">
+                <a class="nextLink">Next</a>
+            </div>
+        </div>
+        
+
+        <div class="contentColumnsDiv">
+            <div id="contentColumnDiv1Search" class="contentColumnDiv1"></div>
+            <div id="contentColumnDiv2Search" class="contentColumnDiv2"></div>
+            <div class="clearBoth"></div>
+        </div>
+        <div id="contentDataDivBottomSearch">
+            <div id="resultPageDivSearchBottom" class="resultPageDivBottom" style="display:none;">
+                <span id="resultPageSpan">Pages:</span>
+                <div id="previousLinkDiv" class="previousLinkDiv">
+                    <a class="previousLink">Previous</a>
+                </div>
+                <div id="pageLinksDiv" class="pageLinksDiv"></div>
+                <div id="nextLinkDiv" class="nextLinkDiv">
+                    <a class="nextLink">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+        End search section.
+    -->
+
+    <div id="fakeFileUpload" class="fakeFile" style="display:none;">
+        <input type="file" id="invisibleFileInput" class="invisibleFileInput" noscript="true" onchange="Publisher.onFileChanged()" size="1"/>
+        <div class="buttonFileInput">
+           <span>BROWSE...</span>
+        </div>  
+    </div>
+    
+    <div id="loginFileUpload" class="button" style="display:none;">
+        <span>BROWSE...</span>
+    </div>
+
+    <div id="ff3FileUpload" class="button" style="display:none;">
+        <span>BROWSE...</span>
+    </div>
+       
+    <!-- Publish area.  Swapped when toggling between tabs. -->
+    <div id="grayNavControlDivPublish" style="display:none;" class="publishToggle">
+        <div id="publishButtonDiv">
+        </div>
+        <!--
+        <div class="fakeFile">
+            <input type="file" id="invisibleFileInput" class="invisibleFileInput" noscript="true" onchange="Publisher.onFileChanged()" size="1"/>
+            <div class="buttonFileInput">
+               <span>BROWSE...</span>
+            </div>  
+        </div>
+         -->
+    </div>
+
+    <div id="contentDataDivPublish" style="display:none;" class="publishToggle">
+        <div class="contentDataDivHeading">
+            <span class="normalBoldBlack">My Publications</span>
+        </div>
+        <div id="publishResultsDataDiv">
+            <span id="publishResultsDataSpan"> </span>    
+        </div>
+        <div id="resultPageDivPublishTop" class="resultPageDivTop" style="display:none;">
+            <span id="resultPageSpan">Pages:</span>
+            <div id="previousLinkDiv" class="previousLinkDiv">
+                <a class="previousLink">Previous</a>
+            </div>
+            <div id="pageLinksDiv" class="pageLinksDiv"></div>
+            <div id="nextLinkDiv" class="nextLinkDiv">
+                <a class="nextLink">Next</a>
+            </div>
+        </div>
+        
+        <div class="contentColumnsDiv">
+            <div id="pendingFilesContainerDiv" style="display:none;"></div>
+            <div id="contentColumnDiv1Publish" class="contentColumnDiv1">
+                <div id="filesColumn1" class="filesToggle"></div>
+                <div id="foldersColumn1" style="display:none;" class="foldersToggle"></div>
+            </div>
+            <div id="contentColumnDiv2Publish" class="contentColumnDiv2">
+                <div id="filesColumn2" class="filesToggle"></div>
+                <div id="foldersColumn2" style="display:none;" class="foldersToggle"></div>
+            </div>
+            <div class="clearBoth"></div>
+        </div>
+        <div id="contentDataDivBottomPublish">
+            <div id="resultPageDivPublishBottom" class="resultPageDivBottom" style="display:none;">
+                <span id="resultPageSpan">Pages:</span>
+                <div id="previousLinkDiv" class="previousLinkDiv">
+                    <a class="previousLink">Previous</a>
+                </div>
+                <div id="pageLinksDiv" class="pageLinksDiv"></div>
+                <div id="nextLinkDiv" class="nextLinkDiv">
+                    <a class="nextLink">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="help" style="display:none;" class="toggleable innerContent siteToggle" default="General">
+        <div class="subNavMenu">
+            <span class="normalLightBold">
+                <a href="javascript:SiteNav.subContentNav('help', 'General')" id="helpGeneralSubNav" class="normalLightBold subNavLink">General</a><br>
+                <a href="javascript:SiteNav.subContentNav('help', 'Searching')" id="helpSearchingSubNav" class="normalLightBold subNavLink">Searching</a><br>
+                <a href="javascript:SiteNav.subContentNav('help', 'Downloading')" id="helpDownloadingSubNav" class="normalLightBold subNavLink">Downloading</a><br>
+                <a href="javascript:SiteNav.subContentNav('help', 'Publishing')" id="helpPublishingSubNav" class="normalLightBold subNavLink">Publishing</a><br>
+            </span>
+        </div>
+        <div class="menuSeparator"></div>
+        <span class="contentTitle normalBoldBig">How Do I Use LittleShoot? - <span class="contentTitleSub"></span></span>
+        
+        <div class="datum"></div>
+        <div id="helpContentBody" class="contentBody">
+        </div>
+    </div>
+    <div id="whatIs" style="display:none;" class="toggleable innerContent siteToggle"  default="BigIdea">
+        <div class="subNavMenu normalLightBold">
+            <a href="javascript:SiteNav.subContentNav('whatIs', 'BigIdea')" id="whatIsBigIdeaSubNav"  class="normalLightBold subNavLink">The Big Idea</a><br>
+            <a href="javascript:SiteNav.subContentNav('whatIs', 'Search')"  id="whatIsSearchSubNav"   class="normalLightBold subNavLink">Search</a><br>
+            <a href="javascript:SiteNav.subContentNav('whatIs', 'Download')" id="whatIsDownloadSubNav" class="normalLightBold subNavLink">Download</a><br>
+            <a href="javascript:SiteNav.subContentNav('whatIs',  'Publish')" id="whatIsPublishSubNav"  class="normalLightBold subNavLink">Publish</a><br>
+            <a href="javascript:SiteNav.subContentNav('whatIs', 'Privacy')"  id="whatIsPrivacySubNav"  class="normalLightBold subNavLink">Privacy</a><br>
+            <a href="javascript:SiteNav.subContentNav('whatIs', 'Security')" id="whatIsSecuritySubNav" class="normalLightBold subNavLink">Security</a><br>
+        </div>
+        <div class="menuSeparator"></div>
+        <span class="contentTitle normalBoldBig">What is LittleShoot? - <span class="contentTitleSub"></span></span>
+        <div class="datum"></div>
+        <div id="whatIsContentBody" class="contentBody"></div>
+    </div>
+    <div id="aboutUs" style="display:none;" class="toggleable innerContent siteToggle">
+        <span class="contentTitle normalBoldBig">About Us</span>
+        <div class="datum"></div>
+        <div id="aboutUsContentBody"class="contentBody">
+        </div>
+    </div>
+    <div id="contact" style="display:none;" class="toggleable innerContent siteToggle">
+        <span class="contentTitle normalBoldBig">Contact LittleShoot</span>
+        <div class="datum"></div>
+        <div id="contactContentBody" class="contentBody">
+        </div>
+    </div>
+
+    <div id="technology" style="display:none;" class="toggleable innerContent siteToggle" default="Intro">
+        <div class="subNavMenu normalLightBold">
+            <a href="javascript:SiteNav.subContentNav('technology', 'Intro')" id="technologyIntroSubNav"  class="normalLightBold subNavLink">Introduction</a><br>
+            <a href="javascript:SiteNav.subContentNav('technology', 'OpenPlatform')"  id="technologyOpenPlatformSubNav"   class="normalLightBold subNavLink">Open Platform</a><br>
+            <a href="javascript:SiteNav.subContentNav('technology', 'OpenSource')" id="technologyOpenSourceSubNav" class="normalLightBold subNavLink">Open Source</a><br>
+            <a href="javascript:SiteNav.subContentNav('technology', 'OpenData')" id="technologyOpenDataSubNav"  class="normalLightBold subNavLink">Open Data</a><br>
+            <a href="javascript:SiteNav.subContentNav('technology', 'Security')" id="technologySecuritySubNav"  class="normalLightBold subNavLink">Security</a><br>
+            <div class="normalBold subSubNavMenuTitle">Architecture</div>
+            <div class="subSubNavMenu">
+                <a href="javascript:SiteNav.subContentNav('technology', 'ArchOverview')"  id="technologyArchOverviewSubNav"  class="normalLightBold subNavLink">Overview</a><br>
+                <a href="javascript:SiteNav.subContentNav('technology', 'ArchSearch')"  id="technologyArchSearchSubNav"  class="normalLightBold subNavLink">Search</a><br>
+                <a href="javascript:SiteNav.subContentNav('technology', 'ArchPublishing')"  id="technologyArchPublishingSubNav"  class="normalLightBold subNavLink">Publishing</a><br>
+                <a href="javascript:SiteNav.subContentNav('technology', 'ArchDownloading')"  id="technologyArchDownloadingSubNav"  class="normalLightBold subNavLink">Downloading</a><br>
+                <a href="javascript:SiteNav.subContentNav('technology', 'ArchNatFirewall')"  id="technologyArchNatFirewallSubNav"  class="normalLightBold subNavLink">NAT/Firewall</a><br>
+                <a href="javascript:SiteNav.subContentNav('technology', 'ArchRudp')"  id="technologyArchRudpSubNav"  class="normalLightBold subNavLink">Reliable UDP</a><br>
+            </div>
+            <div>
+            <a href="javascript:SiteNav.subContentNav('technology',  'Faq')" id="technologyFaqSubNav"  class="normalLightBold subNavLink">FAQ</a><br>
+            </div>
+        </div>
+        <div class="menuSeparator"></div>
+        <span class="contentTitle normalBoldBig">Technology - <span class="contentTitleSub"></span></span>
+        <div class="datum"></div>
+        <div id="technologyContentBody"class="contentBody">
+        </div>
+    </div>
+    <div id="acknowledgements" style="display:none;" class="toggleable innerContent siteToggle">
+        <span class="contentTitle normalBoldBig">
+            Acknowledgements
+        </span>
+        <div class="datum"></div>
+        <div id="acknowledgementsContentBody" class="contentBody">
+        </div>
+    </div>
+    
+    <div id="download" style="display:none;" class="toggleable innerContent siteToggle">
+        <span class="contentTitle normalBoldBig">
+            Installing the LittleShoot Plugin is Easy
+        </span>
+        <div class="datum"></div>
+        <div id="downloadContentBody" class="contentBody">
+        </div>
+    </div>
+    <div class="contentBody" style="display:none;" id="macDownloadDiv">
+    </div>
+    
+    <div class="contentBody" style="display:none;" id="windowsDownloadDiv">
+    </div>
+    
+    <div class="contentBody" style="display:none;" id="otherDownloadDiv">
+    </div>
+    
+    <div dojoType="dijit.Dialog" id="installDialog" title="Install LittleShoot?" style="display:none;">
+        <div class="commonDialogDiv littleShoot">
+            <span class="normalMedium">
+                LittleShoot must be installed to use this feature.  Would you 
+                like to install LittleShoot now?
+                <br><br>
+            </span>
+            <button dojoType="dijit.form.Button" type="submit">
+                OK
+            </button>
+            <button dojoType="dijit.form.Button">Cancel
+                <script type="dojo/method" event="onClick">
+                    dijit.byId('installDialog').hide();
+                </script>
+            </button>
+        </div>
+    </div>  
+        
+    <div dojoType="dijit.Dialog" id="emailRestrictedDialog" title="Invite-Only Beta Testing" style="display:none;">
+        <form id="emailForm" method="post" action="http://app.icontact.com/icp/signup.php" 
+            name="icpsignup" accept-charset="UTF-8">
+                
+            <div id="emailDialogDiv" class="commonDialogDiv littleShoot">
+                <div class="normalMedium">
+                    We're sorry, but you can only use this feature when LittleShoot is installed.  If you'd like us to notify you as soon as you can join
+                    the network, enter your e-mail here and click "Submit".  Otherwise, just click "Cancel".
+                </div>
+                <br><br>
+                
+               
+                <input id="thankYouInput" type=hidden name=redirect value="http://www.lastbamboo.org/site.html?emailSuccess=true"/>
+                <input id="errorInput" type=hidden name=errorredirect value="http://www.lastbamboo.org/site.html?emailSuccess=false"/>
+                
+                <input type=hidden name="listid" value="5418">
+                <input type=hidden name="specialid:5418" value="TRQ4">
+                <input type=hidden name=clientid value="158077">
+                <input type=hidden name=formid value="491">
+                <input type=hidden name=reallistid value="1">
+                <input type=hidden name=doubleopt value="0">
+
+                <div id="emailDialogTextBox" style="text-align:center">
+                    <label for="fields_email">E-Mail: </label>
+                    <input type="text" id="emailDialogTextBoxInput" name="fields_email" 
+                        dojoType="dijit.form.ValidationTextBox" trim="true"
+                        maxLength="100"
+                        regexpgen="dojox.regexp.emailAddressList"
+                        invalidmessage="Not valid yet."
+                        />
+                </div>
+                <br>           
+
+                <div id="emailDialogButtons" style="text-align:center">
+                    <button dojoType="dijit.form.Button" type="submit">
+                        Submit
+                    </button>
+                    <button dojoType="dijit.form.Button">
+                        Cancel
+                        <script type="dojo/method" event="onClick">
+                            dijit.byId('emailRestrictedDialog').hide();
+                        </script>
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </div> 
+
+    <!--
+        Don't delete this!!  It's used in the dynamically downloaded pages.
+    -->
+    <div dojoType="dijit.Dialog" id="emailCollectDialog" title="Enter Your E-mail" style="display:none;">
+        <form id="emailForm" method="post" action="http://app.icontact.com/icp/signup.php" 
+            name="icpsignup" accept-charset="UTF-8">
+                
+            <div class="commonDialogDiv littleShoot">
+                <span id="normalMedium">
+                    Enter your e-mail address below, and we'll notify you as soon as you can join the LittleShoot network.
+                    As always, we will never share any of your personal information with anyone.
+                    Thank you for your interest in LittleShoot.
+                </span>
+                <br><br>
+                
+               
+                <input id="thankYouInput" type=hidden name=redirect value="http://www.lastbamboo.org/site.html?emailSuccess=true"/>
+                <input id="errorInput" type=hidden name=errorredirect value="http://www.lastbamboo.org/site.html?emailSuccess=false"/>
+                
+                <input type=hidden name="listid" value="5418">
+                <input type=hidden name="specialid:5418" value="TRQ4">
+                <input type=hidden name=clientid value="158077">
+                <input type=hidden name=formid value="491">
+                <input type=hidden name=reallistid value="1">
+                <input type=hidden name=doubleopt value="0">
+
+                <div style="text-align:center">
+                    <label for="fields_email">E-Mail: </label>
+                    <input type="text" name="fields_email" 
+                        dojoType="dijit.form.ValidationTextBox" trim="true"
+                        maxLength="100"
+                        regexpgen="dojox.regexp.emailAddressList"
+                        invalidmessage="Not valid yet."
+                        />
+                </div>
+                <br>           
+
+                <div style="text-align:center">
+                    <button dojoType="dijit.form.Button" type="submit">
+                        Submit
+                    </button>
+                    <button dojoType="dijit.form.Button">
+                        Cancel
+                        <script type="dojo/method" event="onClick">
+                            dijit.byId('emailCollectDialog').hide();
+                        </script>
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <div dojoType="dijit.Dialog" id="publishDialog" title="Add Tags for the File" 
+        execute="Publisher.onTags(arguments[0]);" style="display:none;">
+        <div class="commonDialogDiv littleShoot">
+            <span class="normalMedium">
+            Enter your tags. Separate tags with commas, as in "beach, kite surfing, Mexico".  Your
+            file will be searchable by the tags you enter so you and other
+            users can find your file.
+            </span>
+        </div>
+        <br>
+        <div style="text-align:center">
+            <div id="publishTagsTextBox">
+                <label class="tagsInputLabel" for="tags">Tags: </label>
+                <input type="text" id="publishTagsTextBoxInput" name="tags" 
+                    dojoType="dijit.form.TextBox" trim="true"
+                    maxLength="250"/>
+            </div>
+        
+            <br>
+            <button dojoType="dijit.form.Button" type="submit">
+                Publish
+            </button>
+            <button dojoType="dijit.form.Button">
+                Cancel
+                <script type="dojo/method" event="onClick">
+                    dijit.byId('publishDialog').hide();
+                </script>
+            </button>
+        </div>
+    </div> 
+
+
+    <div dojoType="dijit.Dialog" id="editFileDialog" title="Edit" style="display:none;" method="post" 
+        onSubmit="return true;" 
+        execute="javascript:CommonUtils.editFile();">
+            <div class="commonDialogDiv littleShoot">
+                <span class="normalMedium">
+                Edit your tags. Separate tags commas, as in "beach, kite surfing, Mexico".  Your
+                file will be searchable by the tags you enter so you and other
+                users can find your file.
+                </span>
+            </div>
+            <br>
+            <div style="text-align:center">
+                <div id="editTagsTextBox">
+                    <label class="tagsInputLabel" for="tags">Tags: </label>
+                    <input type="text" id="editTagsTextBoxInput" name="tags" 
+                        dojoType="dijit.form.TextBox" trim="true"
+                        maxLength="250"
+                        />
+                </div>
+                <br>
+                
+                <input id="editTagsSha1" name="sha1" dojoType="dijit.form.TextBox" type="hidden">
+                <button dojoType="dijit.form.Button" type="submit">
+                    Edit
+                </button>
+                <button dojoType="dijit.form.Button">
+                    Cancel
+                    <script type="dojo/method" event="onClick">
+                    dijit.byId('editFileDialog').hide();
+                </script>
+                </button>
+            </div>
+    </div> 
+    
+    <div dojoType="dijit.Dialog" id="newUserDialog" title="Create Your LittleShoot" 
+         style="display:none;">
+        <div id="newUserDiv">
+            <div id="newUserDialogMessage" class="commonDialogDiv littleShoot" >
+                <span class="normalMedium">
+                    Please enter your e-mail address and password.  We'll never share your information.
+                </span>
+                <br>
+            </div>
+            
+            <div id="newUserFormDiv" style="text-align:right; margin-right: 40px; margin-top: 18px">
+                <label for="email">E-Mail</label>
+                <input id="newUserEmail"  type="text" name="email" 
+                    dojoType="dijit.form.TextBox" trim="true"
+                    maxLength="100" required="true"
+                    />
+                <br>
+                <br>    
+                <label for="password">Password</label>
+                <input id="newUserPassword" type="password" name="password" 
+                    dojoType="dijit.form.TextBox" trim="true"
+                    maxLength="100"
+                    />
+                <br>
+                <br>    
+                <label for="confirm">Confirm Password</label>
+                <input id="newUserConfirm"  type="password" name="confirm" 
+                    dojoType="dijit.form.TextBox" trim="true"
+                    maxLength="100"
+                    />
+                <br>
+                <br>
+            </div>
+             <div style="text-align:center">
+                <button dojoType="dijit.form.Button">
+                    OK
+                    <script type="dojo/method" event="onClick">
+                        User.newUser("newUserDialog");
+                    </script>
+                </button>
+                <button dojoType="dijit.form.Button">
+                    Cancel
+                    <script type="dojo/method" event="onClick">
+                        dijit.byId('newUserDialog').hide();
+                    </script>
+                </button>
+            </div>
+            
+            <br>
+            <div id="newUserStatusDiv" class="commonDialogDiv normalBoldMedium"></div>
+        </div>
+    </div>
+    
+  
+    <div dojoType="dijit.Dialog" id="resetPasswordDialog" title="Reset Your Password" style="display:none;">
+        
+        <form id="resetPasswordForm" method="post"
+            name="resetPasswordForm" onSubmit="User.resetPassword('resetPasswordDialog');">
+            <input id="resetPasswordFormParam1" type=hidden name="param1" value="val1">
+            <input id="resetPasswordFormParam2" type=hidden name="param2" value="val2">
+            <div id="resetPasswordDiv">
+                <div id="resetPasswordDialogMessage" class="commonDialogDiv littleShoot" >
+                    <span class="normalMedium">
+                        Please enter your new password.
+                    </span>
+                    <br>
+                </div>
+                
+                <div id="resetPasswordFormDiv" style="text-align:right; margin-right: 40px; margin-top: 18px">
+                    <label for="password">Password</label>
+                    <input id="resetPasswordPassword" type="password" name="password" 
+                        dojoType="dijit.form.TextBox" trim="true"
+                        maxLength="100"
+                        />
+                    <br>
+                    <br>    
+                    <label for="confirm">Confirm Password</label>
+                    <input id="resetPasswordConfirm"  type="password" name="confirm" 
+                        dojoType="dijit.form.TextBox" trim="true"
+                        maxLength="100"
+                        />
+                    <br>
+                    <br>
+                </div>
+                 <div style="text-align:center">
+                    <button dojoType="dijit.form.Button" type="submit">
+                        OK
+                    </button>
+                    <button dojoType="dijit.form.Button">
+                        Cancel
+                        <script type="dojo/method" event="onClick">
+                           dijit.byId('resetPasswordDialog').hide();
+                        </script>
+                    </button>
+                </div>
+                
+                <br>
+                <div id="resetPasswordStatusDiv" class="commonDialogDiv normalBoldMedium"></div>
+            </div>
+        </form>
+    </div>
+        
+    <div dojoType="dijit.Dialog" id="loginPublishDialog" title="Sign In To LittleShoot" style="display:none;">
+        <form id="signInForm" name="signInForm" onSubmit="User.login('loginPublishDialog'); return false;">
+            <div id="loginDiv">
+                <div id="loginDialogMessage" class="commonDialogDiv littleShoot" >
+                    <div id="loginMessageDiv" class="normalMedium">
+                        You need to sign in before you can publish files with LittleShoot.
+                    </div>
+                    <br>
+                    <span class="normalMedium">
+                    New user?  Please <a href="javascript:User.showNewUserDialog('loginPublishDialog')">register</a>.
+                    </span>
+                    <br>
+                </div>
+                
+                <div style="text-align:right; margin-right: 40px; margin-top: 18px">
+                    <label for="email">E-Mail</label>
+                    <input  id="loginEmail" type="text" name="email" 
+                        dojoType="dijit.form.TextBox" trim="true"
+                        maxLength="100" required="true"
+                        />
+                    <br>
+                    <br>    
+                    <label for="password">Password</label>
+                    <input  id="loginPassword" type="password" name="password" 
+                        dojoType="dijit.form.TextBox" trim="true"
+                        maxLength="100"
+                        />
+                    <br>
+                    <br>
+                </div>
+                <div style="text-align:center" class="bottomMargin">
+                    <button dojoType="dijit.form.Button" type="submit">
+                        Login
+                    </button>
+                    <button dojoType="dijit.form.Button">
+                        Cancel
+                        <script type="dojo/method" event="onClick">
+                        dijit.byId('loginPublishDialog').hide();
+                    </script>
+                    </button>
+                </div>
+                <div id="loginStatusDiv" class="commonDialogDiv normalBoldMedium"></div>
+            </div>    
+            <br>
+             
+            <br>
+            <div style="text-align:center">
+                <a href="javascript:User.forgotPassword('loginPublishDialog')">Forgot Password?</a>
+            </div>
+        </form>    
+    </div> 
+    
+    <div dojoType="dijit.Dialog" id="forgotPasswordDialog" title="Get Password Reminder" 
+        style="display:none;">
+        <div>
+            <div class="commonDialogDiv littleShoot" >
+                <span class="normalMedium">
+                Enter your login e-mail below, and we'll send you an e-mail with a link to reset your password.
+                <br><br>
+                </span>
+            </div>
+            
+            <div style="text-align:right; margin-right: 40px; margin-top: 18px">
+                <label for="email">E-Mail</label>
+                <input  id="forgotPasswordEmail" type="text" name="email" 
+                    dojoType="dijit.form.TextBox" trim="true"
+                    maxLength="100" required="true"
+                    />
+                <br>
+                <br>
+            </div>
+            <div style="text-align:center">
+                <button dojoType="dijit.form.Button">
+                    OK
+                    <script type="dojo/method" event="onClick">
+                        User.sendPasswordReminder('forgotPasswordDialog');
+                    </script>
+                </button>
+                <button dojoType="dijit.form.Button">
+                    Cancel
+                    <script type="dojo/method" event="onClick">
+                        console.info("Closing dialog");
+                        dijit.byId('forgotPasswordDialog').hide();
+                    </script>
+                </button>
+            </div>
+            <br>
+            <div id="forgotPasswordStatusDiv" class="commonDialogDiv normalBoldMedium"></div>
+        </div>        
+    </div> 
+
+    <script type="text/javascript">
+        ympparams = 
+            {
+            scrape: false
+            }; 
+        
+        littleShootConfig = 
+           {
+           disableAutoLoad : true
+           };
+    </script>
+    <script type="text/javascript" src="http://mediaplayer.yahoo.com/js"></script>
+
+    <script type="text/javascript" src="dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+    <script type="text/javascript" src="littleshoot/littleshootlib.js"></script>
+
+    
+    
+</body>
+</html>

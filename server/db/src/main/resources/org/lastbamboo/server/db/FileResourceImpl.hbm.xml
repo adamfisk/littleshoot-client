@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.lastbamboo.server.db">
+    <class name="FileResourceImpl" table="file_resources">
+        <cache usage="read-write" />
+        <id name="m_id" column="id" type="long" access="field">
+            <generator class="native"/>
+            </id>
+          
+        <!--
+            Property for the creator.  This does not have a not-null constraint
+            because the creator is unkown for many works.
+        -->
+        <property name="m_creator" column="creator" access="field" type="string"/>
+        <property name="m_title" column="title" access="field" type="string" not-null="true"/>         
+        <property name="m_size" column="size" access="field" type="long" not-null="true"/>
+        <property name="m_mimeType" column="mime" access="field" type="string" not-null="true"/>
+        <property name="m_mediaType" column="media_type" access="field" type="string" not-null="true"/>  
+        <property name="m_uri" column="uri" access="field" type="string" not-null="true"/>
+        <property name="m_name" column="name" access="field" type="string" not-null="true"/>
+        <property name="m_sha1" column="sha1" access="field" type="string" not-null="true"/>
+        <property name="m_remoteHost" column="remote_host" access="field" type="string" not-null="true"/>
+        <property name="m_instanceId" column="instance_id" access="field" type="long" not-null="true"/>
+
+        <property name="m_userId" column="user_id" access="field" type="long" not-null="true"/>
+        <!-- 
+            The length properties below are based on Hibernates translation to 
+            MySQL types, as specified in "Java Persistence with Hibernate" page 215.
+            The tags length translates to "medium text".
+        -->
+        <property name="m_tags" column="tags" access="field" type="string" not-null="true" length="16777214"/>
+        <property name="m_lastModified" column="last_modified" access="field" type="timestamp" not-null="true"/>
+        <property name="m_timeZone" column="timezone" access="field" type="string" not-null="true"/> 
+        <property name="m_country" column="country" access="field" type="string" not-null="true"/> 
+        <property name="m_language" column="language" access="field" type="string" not-null="true"/> 
+        <property name="m_downloaded" column="downloaded" access="field" type="boolean" not-null="true"/> 
+        <property name="m_publishTime" column="publish_time" access="field" type="timestamp" not-null="true"/>
+        <property name="m_permission" column="permission" access="field" type="int" not-null="true"/>
+        
+        <property name="m_groupName" column="group_name" access="field" type="string"/>
+        </class>
+    </hibernate-mapping>
+

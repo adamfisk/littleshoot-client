@@ -1,0 +1,151 @@
+{% extends "siteBase.html" %}
+
+{% block firstTab %}sprite-selectedTab selectedTab{% endblock %}
+{% block grayNavControlDiv %}
+    <!-- 
+        Search form in the gray nav area.  Swapped when switching between tabs. 
+        <div id="grayNavControlDivSearch" class="searchToggle" style="opacity:0;">
+    -->
+    <div id="grayNavControlDivSearch" class="searchToggle" style="display:none;">
+        <form id="searchForm" name="searchForm" dojoType="dijit.form.Form" onSubmit="Search.startSearch(); return false;">
+            <div id="searchCheckBoxDiv">
+                <input id="videosCheckBox" dojotype="dijit.form.CheckBox"
+                       name="video" checked="checked" value="on"
+                       type="checkbox" />
+                <label for="videosCheckBox" class="inputLabel">Video</label> 
+                
+                <input id="imagesCheckBox" dojotype="dijit.form.CheckBox"
+                       name="images" checked="checked" value="on"
+                       type="checkbox" />
+                <label for="imagesCheckBox" class="inputLabel">Images</label> 
+                
+                <input id="audiosCheckBox" dojotype="dijit.form.CheckBox"
+                       name="audio" checked="checked" value="on"
+                       type="checkbox" />
+                <label for="audiosCheckBox" class="inputLabel">Audio</label> 
+                
+                <input id="documentsCheckBox" dojotype="dijit.form.CheckBox"
+                       name="documents" checked="checked" value="on"
+                       type="checkbox" />
+                <label for="documentsCheckBox" class="inputLabel">Docs</label> 
+                
+                <input id="applicationsCheckBox" dojotype="dijit.form.CheckBox"
+                       name="applications" checked="checked" value="on"
+                       type="checkbox" />
+                <label for="applicationsCheckBox" class="inputLabel">Apps</label> 
+            </div>
+            
+            <div id="searchBoxDiv">
+                <input id="searchBox" type="text" name="keywords"
+                dojoType="dijit.form.TextBox" trim="true" required="true"/>     
+            </div>
+            <div id="searchButton" class="button searchButton">SEARCH</div>
+             
+            <div id="searchSources" dojoType="dijit.TitlePane" title="Options:" open="false"
+                style="">
+                <div>
+                    <input id="flickrCheckBox" dojotype="dijit.form.CheckBox"
+                           name="flickr" checked="checked" value="on" 
+                           type="checkbox"/>
+                    <label for="flickrCheckBox" class="optionsLabel">Flickr</label> 
+                </div>
+                
+                <div>
+                    <input id="limeWireCheckBox" dojotype="dijit.form.CheckBox"
+                           name="limeWire" checked="checked" value="on"
+                           type="checkbox"/>
+                    <label for="limeWireCheckBox" class="optionsLabel">LimeWire</label> 
+                </div>
+                
+                <div>
+                    <input id="littleShootCheckBox" dojotype="dijit.form.CheckBox"
+                           name="littleShoot" checked="checked" value="on"
+                           type="checkbox" />
+                    <label for="littleShootCheckBox" class="optionsLabel">LittleShoot</label> 
+                </div>
+                
+                <div>
+                    <input id="yahooCheckBox" dojotype="dijit.form.CheckBox"
+                           name="yahoo" checked="checked" value="on"
+                           type="checkbox" />
+                    <label for="yahooCheckBox" class="optionsLabel">Yahoo</label> 
+                </div>
+                
+                <div>
+                    <input id="youTubeCheckBox" dojotype="dijit.form.CheckBox"
+                           name="youTube" checked="checked" value="on"
+                           type="checkbox" />
+                    <label for="youTubeCheckBox" class="optionsLabel">YouTube</label>
+                </div> 
+                <div id="safeSearchDiv">
+                    <input id="safeSearchCheckBox" dojotype="dijit.form.CheckBox"
+                       name="safeSearch" checked="checked" value="on"
+                       type="checkbox" />
+                    <label for="safeSearchCheckBox" class="optionsLabel">Safe Search</label> 
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div id="contentDataDivSearch" class="searchToggle">
+        <div id="searchNavDiv">
+            <div id="searchBackDiv" class="smallIcon"></div>
+            <div id="searchForwardDiv" class="smallIcon"></div>
+            <div class="clearBoth"></div>
+        </div>
+        <div id="searchHeaderDiv">
+             
+            <div id="searchTermDiv" class="normalBoldBlack">
+            </div>
+            <div id="totalSearchResultsDiv">
+                <span id="totalSearchResultsSpan"> </span>    
+            </div>
+        </div>
+        <div class="clearBoth"></div>
+        
+        <div id="resultPageDivSearchTop" class="resultPageDivTop" style="display:none;">
+            <span id="resultPageSpan">Pages:</span>
+            <div id="previousLinkDiv" class="previousLinkDiv">
+                <a class="previousLink">Previous</a>
+            </div>
+            <div id="pageLinksDiv" class="pageLinksDiv"></div>
+            <div id="nextLinkDiv" class="nextLinkDiv">
+                <a class="nextLink">Next</a>
+            </div>
+        </div>
+
+        <div class="contentColumnsDiv">
+            <div id="contentColumnDiv1Search" class="contentColumnDiv1"></div>
+            <div id="contentColumnDiv2Search" class="contentColumnDiv2"></div>
+            <div class="clearBoth"></div>
+        </div>
+    </div>
+    <!--
+        End search section.
+    -->
+{% endblock %}
+{% block contentBottom %}
+<div id="contentDataDivBottomSearch">
+    <div id="resultPageDivSearchBottom" class="resultPageDivBottom" style="display:none;">
+        <span id="resultPageSpan">Pages:</span>
+        <div id="previousLinkDiv" class="previousLinkDiv">
+            <a class="previousLink">Previous</a>
+        </div>
+        <div id="pageLinksDiv" class="pageLinksDiv"></div>
+        <div id="nextLinkDiv" class="nextLinkDiv">
+            <a class="nextLink">Next</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascriptEarlyIncludes %}
+<script type="text/javascript" src="http://mediaplayer.yahoo.com/js"></script>
+{% endblock %}
+
+{% block javascript %}
+    {% include "appDetectionFlash.js" %}
+    dojo.addOnLoad(Search.onOnLoad);
+{% endblock %}

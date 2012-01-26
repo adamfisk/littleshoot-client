@@ -1,0 +1,194 @@
+#!/usr/bin/env bash
+#
+# This script sets up LittleShoot to run as a background process controlled by launchd.
+#
+
+postFlightVersion=0.82
+
+function appendToFile()
+{
+  local escaped=`echo $3 | perl -MURI::Escape -lne 'print uri_escape($_)'`
+  echo "Got escaped: "$escaped
+
+  echo $2=$escaped >> $1
+}
+
+function reportErrors()
+{
+  local tmpBase=`basename $0`
+  local tmpDir=`mktemp -d /tmp/${tmpBase}.XXXXXX`
+
+  local errFile="$tmpDir/errFile"
+
+  #appendToFile $errFile "message" "$@"
+  #appendToFile $errFile "host" "`uname -a`"
+  #appendToFile $errFile "disk" "`df -h`"
+  #appendToFile $errFile "lineNumber" "${BASH_LINENO[1]}"
+
+  local message=`echo "$@" | perl -MURI::Escape -lne 'print uri_escape($_)'`
+  local uName=`uname -a`
+  local host=`echo "$uName" | perl -MURI::Escape -lne 'print uri_escape($_)'`
+  local diskInfo="`df -h`"
+  local disk=`echo "$diskInfo" | perl -MURI::Escape -lne 'print uri_escape($_)'`
+  local bashLineNumber=${BASH_LINENO[1]}
+  local lineNumber=`echo "$bashLineNumber" | perl -MURI::Escape -lne 'print uri_escape($_)'`
+  local version=`echo "$postFlightVersion" | perl -MURI::Escape -lne 'print uri_escape($_)'`
+
+  local groupInfo=`id -Gn`
+  local group=`echo "$groupInfo" | perl -MURI::Escape -lne 'print uri_escape($_)'`  
+
+  #curl -d @$errFile  "http://littleshootbugs.appspot.com/submitMacInstallerBug" || echo "Message (probably) not sent successfully." 2>&1
+  curl  -d message=$message \
+        -d host=$host \
+        -d lineNumber=$lineNumber \
+        -d group=$group \
+        -d version=$version \
+        "http://littleshootbugs.appspot.com/submitMacInstallerBug" || echo "Message (probably) not sent successfully." 2>&1
+}
+
+function die()
+{
+  echo "Failure: $@ ... Reporting errors"
+  reportErrors "$@"  
+  exit 1
+}
+
+function unpackJars()
+{
+  for f in $( ls *.pack ); do
+    echo "Unpacking packed jar: $f"
+    local jarName=`echo "${f%.pack}"`
+    unpack200 $f $jarName || die "Could not pack $f"
+    rm $f || die "Could not delete pack file $f"
+  done
+}
+
+
+echo "Starting postflight script"
+echo "Checking Java version"
+# This is just a dummy check since the installer doesn't always seem to catch a failure.
+#java -version | grep 1.4 && die "Cannot install LittleShoot when the Java version is 1.4"
+
+echo "Unloading LittleShoot from launchd..."
+echo "Running as `whoami`"
+echo "Running as $USER"
+
+OLD_APP_DIR=~/Applications
+#APP_DIR=~/Library/Application\ Support/LittleShoot/
+APP_DIR=/Applications/LittleShoot
+mkdir "$APP_DIR"  
+test -d "$APP_DIR" || die "No app dir at $APP_DIR"
+echo "Created app dir"
+LIB_DIR=~/Library/LaunchAgents
+PLIST_DIR=~/.littleshoot
+mkdir $PLIST_DIR
+#mkdir $LIB_DIR
+LAUNCHD_PLIST=$PLIST_DIR/org.lastbamboo.littleshoot.plist
+OLD_LAUNCHD_PLIST=$LIB_DIR/org.lastbamboo.littleshoot.plist
+
+function stopLittleShoot()
+{
+  echo "Unloading littleshoot plist"
+  launchctl unload $LAUNCHD_PLIST 
+  launchctl unload $OLD_LAUNCHD_PLIST 
+
+  launchctl list | grep littleshoot && echo "LittleShoot running before sleep"
+
+  echo "Unloaded app.."
+  sleep 1
+  launchctl list | grep littleshoot && echo "LittleShoot still running after sleep"
+
+  echo "Removing old LittleShoot app.."
+  rm -rf $OLD_APP_DIR/LittleShoot.app
+  rm -rf $OLD_APP_DIR/LittleShootUninstaller.app
+  rm -rf "$APP_DIR"/*
+}
+
+#test -f $LAUNCHD_PLIST && stopLittleShoot
+#launchctl list | grep littleshoot && stopLittleShoot
+stopLittleShoot
+
+# This is the little launcher script, not the real app.
+rm -rf ~/.littleshoot/LittleShoot.app
+rm -rf ~/.littleshoot/LittleShootUninstaller.app
+
+echo "Removing old launch agent if present from $LAUNCHD_PLIST" 
+test -f $LAUNCHD_PLIST && rm -f $LAUNCHD_PLIST 
+
+APP_INSTALL_DIR=$2/LittleShoot
+echo "Install dir is: "$APP_INSTALL_DIR
+echo "Printing $APP_INSTALL_DIR"
+echo `ls $APP_INSTALL_DIR`
+echo "Printing $APP_INSTALL_DIR/component"
+echo `ls -la $APP_INSTALL_DIR/component`
+
+app=$APP_INSTALL_DIR/component/LittleShoot.app
+plugin=$APP_INSTALL_DIR/component/LittleShootPlugIn.plugin
+test -e $app || die "No app at: $app"
+test -e $plugin || die "No plugin at: $plugin"
+
+## TODO: This will likely not work once we sign the bundle, as we cannot modify it.
+srcJavaDir=$app/Contents/Resources/Java
+pushd $srcJavaDir || die "Could not switch to jars dir!!"
+unpackJars || die "Could not unpack jars!!"
+popd
+
+#test -f $APP_INSTALL_DIR/component/libjnltorrent.jnilib || die "Could not find native library"
+#mv -fv $APP_INSTALL_DIR/component/*.jnilib "$destJavaDir"/ || die "Could not copy native libraries"
+
+test -d "$APP_DIR" && rm -rf "$APP_DIR"/*
+
+echo "Running mv $app $APP_DIR"
+mv -fv $app "$APP_DIR"/LittleShoot.app || die "Could not move app"
+
+echo "Moving plugin"
+pluginPath=~/Library/Internet\ Plug-Ins
+rm -rf "$pluginPath"/LittleShootPlugIn.plugin
+cp -Rf $plugin "$pluginPath"/ || die "Could not move plugin"
+
+echo "Moving uninstaller"
+mv -fv $APP_INSTALL_DIR/component/LittleShootUninstaller.app "$APP_DIR"/LittleShootUninstaller.app || die "Could not move uninstaller" 
+#echo "Moving plist"
+#mv -fv $APP_INSTALL_DIR/component/org.lastbamboo.littleshoot.plist $PLIST_DIR || die "Could not move plist!"
+
+# This just moves the LittleShoot launcher app to a temporary hidden directory -- the app moves it to /Applications (since it has permissions).
+mv -fv $APP_INSTALL_DIR/component/LittleShootLauncher.app "$APP_DIR"/LittleShootLauncher.app || die "Could not move launcher app" 
+
+rm -rf $APP_INSTALL_DIR/component
+rm -rf $APP_INSTALL_DIR/extras
+
+#cd $PLIST_DIR
+#echo $HOME
+#ESCAPED_HOME=`echo $HOME | sed 's|/|\\\/|g'`
+# plists don't do auto-expansion of ~
+#perl -pi -e "s/littleShootPath/$ESCAPED_HOME\/Applications\/LittleShoot.app\/Contents\/MacOS\/JavaApplicationStub/" org.lastbamboo.littleshoot.plist || die "Could not modify home of plist"
+
+# Just make sure the Java file is there.
+JAVA_FILE="$APP_DIR"/LittleShoot.app/Contents/MacOS/LittleShoot
+test -f "${JAVA_FILE}" || die "Java file does not exist at $JAVA_FILE"
+
+# Check the attributes on the app bundle.
+#echo "Printing app bundle"
+#echo `xattr -l "$APP_DIR"/LittleShoot.app` 
+
+#echo "Printing plist"
+#cat org.lastbamboo.littleshoot.plist
+#echo `xattr -l org.lastbamboo.littleshoot.plist`
+#echo `id -p`
+#echo `ls -la`
+
+
+# This is necessary on Leopard due to stricter checks for permissions.
+#chmod g-w org.lastbamboo.littleshoot.plist || die "Could not remove group writable flag on plist!!"
+
+#echo "Adding LittleShoot to launchd with launchctl load org.lastbamboo.littleshoot.plist"
+#launchctl load $LAUNCHD_PLIST || die 'Could not load LittleShoot with launchctl'
+
+echo "Starting LittleShoot..."
+#launchctl start org.lastbamboo.littleshoot || die 'Could not start LittleShoot with launchctl'
+
+echo "End postflight script"
+
+# This will also launch the plugin.
+open "http://www.littleshoot.org/?fromOsxInstaller=true"
+exit 0

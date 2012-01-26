@@ -1,0 +1,33 @@
+<projectDescription>
+  <name>lastbamboo-integration-tests</name>
+  <comment>Last Bamboo Integration tests. NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
+  <projects>
+    <project>lastbamboo-client-launcher-all</project>
+    <project>lastbamboo-client-prefs</project>
+    <project>lastbamboo-client-resource</project>
+    <project>lastbamboo-client-services</project>
+    <project>lastbamboo-common-bencode</project>
+    <project>lastbamboo-common-jlibtorrent</project>
+    <project>lastbamboo-common-jmx-client</project>
+    <project>lastbamboo-common-json</project>
+    <project>lastbamboo-common-log4j-bug-appender</project>
+    <project>lastbamboo-common-npapi</project>
+    <project>lastbamboo-common-online</project>
+    <project>lastbamboo-common-rest</project>
+    <project>lastbamboo-common-searchers-flickr</project>
+    <project>lastbamboo-common-searchers-isohunt</project>
+    <project>lastbamboo-common-searchers-limewire</project>
+    <project>lastbamboo-common-searchers-littleshoot</project>
+    <project>lastbamboo-common-searchers-yahoo</project>
+    <project>lastbamboo-common-searchers-youtube</project>
+    <project>lastbamboo-common-sip-turn</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>

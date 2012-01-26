@@ -1,0 +1,110 @@
+
+body
+	{
+	background-image: url('http://littleshootimages.appspot.com/images/index_bottom_grad.gif');
+   	background-repeat: repeat-x;
+   	background-position: bottom;
+   	background-attachment: fixed;
+   	}
+   	
+#openShoot 
+	{
+	list-style-type: disc;
+	list-style-position: inside;
+	}
+     	
+#leftDiv 
+    {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 540px;
+    width: 300px;
+    background-image: url('http://littleshootimages.appspot.com/images/bamboo.gif');
+    background-position: left bottom;
+    background-attachment: fixed;
+   	background-repeat: no-repeat;
+    }
+  
+#logoDiv
+	{
+	position: relative;
+	top: 0px;
+	left: 0px;
+	}
+	  
+#contentDiv
+	{
+	position: relative;
+	top: 90px;
+	width: 620px;
+	left: 100px;
+	text-align: left;
+	margin-left: auto; margin-right: auto;
+	}
+	
+#descriptionDiv
+	{
+	position: relative;
+	top: 20px;
+	left: 0px;
+	width: 500px;
+	}
+
+.descriptionText
+	{
+	font-family: verdana, sans-serif;
+	font-size: 100%;
+	color: #264F1C;
+	}
+
+a:link
+	{
+	color: #545454;
+	}
+
+a:visited
+	{
+	color: #7F8585;
+	}
+	
+a:hover
+	{
+	color: #000000;
+	}
+	
+a:visited:hover
+	{
+	color: #7F8585;
+	}
+    
+#formDiv
+	{
+	position: relative;
+	top: 40px;
+	left: 0px;
+	width: 300px;
+	}
+
+#emailForm
+	{
+	position: absolute;
+	left: 0px;
+	}
+
+#videoDescDiv
+	{
+	position: relative;
+	top: 80px;
+	left: 0px;
+	width: 500px;
+	}
+
+#videoDiv
+	{
+	position: relative;
+	top: 80px;
+	left: 0px;
+	width: 500px;
+	}
+

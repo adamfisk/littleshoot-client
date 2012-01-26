@@ -1,0 +1,5 @@
+ec02bb0b6221193d5a96980353c0b70e e7cbfb4fb424357014f97219f31ddd9d ffffffffffffffffffffffffffffffff 11825204 /Users/afisk/littleshoot/trunk/jni/jlibtorrent/build/Release/libjnltorrent.jnilib
+f21f3e79c9c8c414d9e0c9c164e6570c 277dc34d1178d80a0be332595e40e383 ffffffffffffffffffffffffffffffff 5820468 /Users/afisk/littleshoot/trunk/jni/jlibtorrent/build/jlibtorrent.build/Release/JNILib.build/Objects-normal/i386/libjnltorrent.jnilib
+c288a1a01c1542bf5e5b2205224d7f5b fbe8e79fa684479cd6ce419e4b2b7cda ffffffffffffffffffffffffffffffff 5998440 /Users/afisk/littleshoot/trunk/jni/jlibtorrent/build/jlibtorrent.build/Release/JNILib.build/Objects-normal/x86_64/libjnltorrent.jnilib
+000000003a2b73cc00000000000053c1 f21f3e79bff2b9c3d9e0c9c164a1d1a3 ffffffffffffffffffffffffffffffff 165704 /Users/afisk/littleshoot/trunk/jni/jlibtorrent/build/jlibtorrent.build/Release/JNILib.build/Objects-normal/i386/jnltorrentjnilib.o
+000000003a2b73cc00000000000053c1 c288a1a06a2f3f685e5b2205220af9f4 ffffffffffffffffffffffffffffffff 171756 /Users/afisk/littleshoot/trunk/jni/jlibtorrent/build/jlibtorrent.build/Release/JNILib.build/Objects-normal/x86_64/jnltorrentjnilib.o

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LittleShoot Plugin Test</title>
+
+    <style type="text/css">
+        
+        @import "http://littleshootcss.appspot.com/css/common.css";
+       
+    </style>
+    
+</head>
+<body class="tundra" id="body">
+    <embed id="littleShootPlugin" name="littleShootPlugin" type="application/x-littleshoot">
+    
+    <center>
+        <div><span class="normalBoldBig">Test Status: </span><span id="status" class="normalBig">Waiting</span></div>
+        <div><span class="normalBoldBig">State Set To (Calls Made): </span><span id="propStatus" class="normalBig">Waiting</span></div>
+        <br>
+        <div><div class="normalBoldBig">Last Call Made At: </div><div id="lastCall" class="normalBig"></div></div>
+    </center>
+    
+    <script type="text/javascript" src="http://www.littleshoot.org/timestamped/base-combined.js?version=littleShootTimeStampedResource"></script>
+    <script type="text/javascript">
+        var Tester = {
+            callsMade : 0,
+            started : false,
+            scheduleCheck : function() {
+                var randFactor = 10000;
+                var nextCallTime = Math.floor(Math.random() * randFactor);
+                console.info("Next call time: "+nextCallTime+" milliseconds");
+                var timeoutId = setTimeout(function() {
+                   Tester.callFunc();
+                }, nextCallTime);   
+            },
+
+            callFunc : function() {
+                var plugin = document.embeds[0];
+                var status;
+                if (!Tester.started) {
+                    console.info("Starting");
+                    status = "Started";
+                    $('#status').html(status);
+                    plugin.littleshoot.start();
+                    Tester.started = true;
+                }
+                else {
+                    console.info("Stopping");
+                    status = "Stopped";
+                    $('#status').html(status);
+                    plugin.littleshoot.stop();
+                    Tester.started = false;
+                }
+                Tester.callsMade++;
+                var ts = Date();
+                $("#lastCall").html(ts);
+                
+                plugin.littleshoot.state=Tester.callsMade;
+                $('#propStatus').html(Tester.callsMade);
+                Tester.scheduleCheck();
+            }
+        };
+
+        Tester.scheduleCheck();
+    </script>
+</body>
+</html>

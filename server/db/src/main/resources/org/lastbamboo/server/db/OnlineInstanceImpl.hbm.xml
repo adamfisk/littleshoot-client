@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.lastbamboo.server.db">
+    <class name="OnlineInstanceImpl" table="online_instances">
+        <cache usage="read-write" />
+        <id name="m_id" column="id" type="long" access="field">
+            <generator class="native"/>
+            </id>
+        
+        <set name="m_files" table="file_online_instance" cascade="save-update" access="field" inverse="true">
+            <key column="id_instance"/>
+            <many-to-many class="MetaFileResourceImpl" column="id_file"/>
+            </set>
+
+        <property name="m_instanceId" column="instance_id" access="field" type="long" not-null="true" unique="true"/>
+        <property name="m_baseUri" column="base_uri" access="field" type="string" not-null="true"/>
+        <property name="m_repeatInfringer" column="repeat_infringer" access="field" type="boolean" not-null="true"/>
+        <property name="m_serverAddress" column="server_address" access="field" type="string" not-null="true"/>
+        
+        </class>
+    </hibernate-mapping>
+

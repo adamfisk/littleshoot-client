@@ -1,0 +1,5 @@
+Flash debugging can be a nightmare.  Here are a couple of useful tips:
+
+1) Use the debug log script.
+2) FireFox 2 gives much less verbose error/warning messages than Safari 3.  If there's an error in FireFox, it will often be related to some policyfile problem.  Try running in Safari and see if you get any policy file warnings.  That could be the culprit.
+3) Calls between JavaScript and Flash are brittle in both directions.  Making calls from ActionScript, make sure the JavaScript function is loaded by the time you call addCallback, otherwise the addCallback function will always fail, often silently.  Making calls from JavaScript, you similarly need to be sure the swf file is loaded.  One way around this is to add a callback from the swf notifying the JavaScript that it's loaded.

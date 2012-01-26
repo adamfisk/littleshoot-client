@@ -1,0 +1,21 @@
+{% extends "siteNavBase.html" %}
+
+{% block helpSelected %}color:black{% endblock %}
+{% block content %}
+    <div id="help" class="toggleable innerContent siteToggle" default="General">
+        <div class="subNavMenu normalLightBold">
+            <a href="javascript:SubContentNav.subContentNavBase('help', 'General')" id="helpGeneralSubNav" class="subNavLink subNavLinkSelected">General</a><br>
+            <a href="javascript:SubContentNav.subContentNavBase('help', 'Searching')" id="helpSearchingSubNav" class="subNavLink">Searching</a><br>
+            <a href="javascript:SubContentNav.subContentNavBase('help', 'Downloading')" id="helpDownloadingSubNav" class="subNavLink">Downloading</a><br>
+            <a href="javascript:SubContentNav.subContentNavBase('help', 'Publishing')" id="helpPublishingSubNav" class="subNavLink">Publishing</a><br>
+        </div>
+        <div class="menuSeparator"></div>
+        <span class="contentTitle normalBoldBig">How Do I Use LittleShoot? - <span class="contentTitleSub"></span></span>
+        
+        <div class="datum sprite-datumBackground"></div>
+        <div id="helpContentBody" class="contentBody">
+
+{% include "helpContentBody.html" %}
+        </div>
+    </div>
+{% endblock %}

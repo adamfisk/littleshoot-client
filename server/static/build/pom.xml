@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.lastbamboo</groupId>
+    <artifactId>lastbamboo-server-static-build</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <name>Server Static Site Build</name>
+    <description>Last Bamboo Server Static Site Build</description>
+
+    <parent>
+        <groupId>org.lastbamboo</groupId>
+        <artifactId>lastbamboo-server-static</artifactId>
+        <version>1.0</version>
+        </parent>
+
+    <dependencies>
+        </dependencies>
+
+    </project>

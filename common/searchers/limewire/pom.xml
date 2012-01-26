@@ -1,0 +1,275 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.lastbamboo</groupId>
+    <artifactId>lastbamboo-common-searchers-limewire</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <name>LimeWire Searcher</name>
+    <description>Last Bamboo LimeWire Searcher</description>
+
+    <parent>
+        <groupId>org.lastbamboo</groupId>
+        <artifactId>lastbamboo-common-searchers</artifactId>
+        <version>1.0</version>
+        </parent>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>commons-discovery</groupId>
+            <artifactId>commons-discovery</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>commons-id</groupId>
+            <artifactId>commons-id</artifactId>
+            </dependency>
+                
+        
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-rest</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>util</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>aopalliance</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>bittorrent-api</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>clink</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>collection</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>common</artifactId>
+            </dependency>
+
+<!--
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>commons-codec-1.3</artifactId>
+            </dependency>
+-->
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>core-api</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>core-settings</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>daap</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>dnsjava-2.0.6</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>friend</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>geocode</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>glazedlists-snapshot20090628_java15</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>gnutella-core</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>guice-2.0-snapshot20090814</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>guice-assistedinject-snapshot20090814</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>hsqldb-1.8.0.10</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>http</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>httpclient-4.1-alpha1-r821939</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>httpcore-4.1-alpha2-r821939</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>httpcore-nio-4.1-alpha2-r821939</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>icu4j</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>io</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>jaudiotagger-1.0.9.1</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>jmdns</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>jna-3.1.0</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>jogg</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>jorbis</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>libtorrent</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>lwsserver</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>mime-util</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>mojito</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>net</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>nio</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>onion-common</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>onion-fec</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>player-api</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>promotion</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>rudp</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>security</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>setting</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>statistic</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>swarm</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>xmpp-api</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.limewire</groupId>
+            <artifactId>jacob-1.15-M1-lw</artifactId>
+            <classifier>win</classifier>
+            </dependency>
+
+        </dependencies>
+    </project>

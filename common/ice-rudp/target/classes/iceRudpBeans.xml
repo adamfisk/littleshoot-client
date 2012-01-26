@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+        
+    <!-- 
+        This is the message/http ICE media stream.
+         
+    <bean lazy-init="true" id="iceMediaStreamDesc"
+        class="org.lastbamboo.common.ice.IceMediaStreamDesc">
+        <constructor-arg><value>true</value></constructor-arg>
+        <constructor-arg><value>true</value></constructor-arg>
+        <constructor-arg><value>message</value></constructor-arg>
+        <constructor-arg><value>http</value></constructor-arg>
+        <constructor-arg><value>1</value></constructor-arg>
+        </bean>   
+        
+    <bean lazy-init="true" id="iceMediaStreamFactory"
+        class="org.lastbamboo.common.ice.rudp.IceMediaStreamFactoryImpl">
+        <constructor-arg ref="iceMediaStreamDesc"/>
+        <constructor-arg ref="rudpService"/>
+        </bean>
+
+    <bean lazy-init="true" id="iceRudpMediaFactory"
+        class="org.lastbamboo.common.ice.rudp.IceSocketFactory">
+        <constructor-arg ref="rudpService"/>
+        </bean>
+        
+    <bean lazy-init="true" id="iceOfferAnswerFactory"
+        class="org.lastbamboo.common.ice.IceOfferAnswerFactory">
+        <constructor-arg ref="iceMediaStreamFactory"/>
+        <constructor-arg ref="iceRudpMediaFactory"/>
+        </bean>
+    -->
+    </beans>

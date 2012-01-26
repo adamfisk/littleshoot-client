@@ -1,0 +1,14 @@
+<form action="https://littleshoot_test.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="key" value="user/{{ user.username }}/${filename}">
+    <input type="hidden" name="AWSAccessKeyId" value="{{ aws_access_key_id }}"> 
+    <input type="hidden" name="acl" value="public-read"> 
+    <input type="hidden" name="policy" value="{{ base64_policy_file }}">
+    <input type="hidden" name="signature" value="{{ policy_file_signature }}">
+    <input type="hidden" name="x-amz-security-token" value="{{ user.amazonDevPayUserToken }}" />
+
+    File to upload to S3: 
+    <input name="file" type="file"> 
+    <br> 
+    <input type="submit" value="Upload File to S3"> 
+</form>
+

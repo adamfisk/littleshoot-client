@@ -1,0 +1,44 @@
+{% extends "contentBox.html" %}
+
+{% block grayNavControlDiv %}
+
+        <div id="clearButtonsDiv">
+            <div id="clearFailedButtonDiv">
+                <input id="clearFailedButton" class="simpleGrayButton" type="submit" alt="Clear Canceled" name="submit" value="Clear Canceled"/>
+            </div>
+            <div id="clearInactiveButtonDiv">
+                <input id="clearInactiveButton" class="simpleGrayButton" type="submit" alt="Clear All Inactive" name="submit" value="Clear All Inactive"/>
+            </div>
+        </div>
+        
+    <div id="grayNavControlDivDownloads">
+
+    </div>
+{% endblock %}
+
+{% block grayNavExtraDiv %}
+
+{% endblock grayNavExtraDiv %}
+
+{% block content %}
+
+{% include "downloadsCommonTemplate.html" %}  
+        
+{% include "downloadTemplate.html" %}
+    
+{% endblock content %}
+{% block contentBottom %}
+<div id="contentDataDivBottomDownloads">
+    <div id="resultPageDivDownloadsBottom" class="resultPageDivBottom" style="display:none;">
+        <span id="resultPageSpan">Pages:</span>
+        <div id="previousLinkDiv" class="previousLinkDiv">
+            <a class="previousLink">Previous</a>
+        </div>
+        <div id="pageLinksDiv" class="pageLinksDiv"></div>
+        <div id="nextLinkDiv" class="nextLinkDiv">
+            <a class="nextLink">Next</a>
+        </div>
+    </div>
+</div>
+{% endblock contentBottom %}
+

@@ -1,0 +1,162 @@
+
+    <div style="display:none;">
+        <!-- 
+        <form id="buyProForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="4202494">
+            <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+         -->
+        
+        <form id="buyProForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="4337240">
+            <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+        
+        <form id="donateForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="4448048">
+            <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+    </div>
+    
+    <div id="payPalMessageDiv" style="display:none; color: white;" class="normalBoldBig">
+        <div style="float: right; padding: 6px;">
+            <div style="cursor:pointer;" class="overlayCloseIconDiv ui-state-default ui-corner-all"><span class="overlayCloseIcon ui-icon ui-icon-closethick"></span></div>
+        </div>
+        
+        <div style="padding-top: 10px;">
+        LittleShoot has partnered with PayPal for payments.<br><br>
+        
+        When you've purchased Pro, you'll get an e-mail at your address registered with PayPal with the link to 
+        download LittleShoot Pro.<br><br>
+        In case you missed it, LittleShoot is just $34.95 for one year of updates, with faster downloads, more search results, etc.<br><br>
+        You can also pay with a credit card. <br><br>
+        Click 'OK' to go to PayPal now!<br><br>
+        </div>
+        
+        <div id="creditCardDiv"></div>
+        
+        <br><br>
+        <center>
+            <div id="proOkButton" class="proButton" style="cursor:pointer; color: #333; font-size: 28px; background-color: white; border: 2px solid #888; width: 120px; text-align: center;">
+                <span>OK</span>
+                <br>
+            </div>
+        </center>
+    </div>
+    
+    <div id="proSuccessMessageDiv" style="display:none; color: white;" class="normalBoldBig">
+        <img style="float: left; padding: 16px;" src="images/littleshoot_logo_small.png"/>
+        
+        <div style="padding-top: 30px; font-size: 20px;">
+            Welcome to LittleShoot Publisher!<br><br>
+        </div>
+        
+        <div style="clear:both; color: white; text-align:left; font-size: 14px; padding: 16px;" class="normalBold">
+            You now have access to the most powerful publishing system on the planet. LittleShoot gives you pay-as-you-go publishing at rock-bottom rates. 
+            Even better, you're publishing to our state of the art peer-to-peer network to spread the heavy lifting between you and your peers. 
+            "Many hands make light work," as they say.<br><br>
+            
+            It's just a smarter Internet, with you at the helm.<br><br>
+            
+            If you have any problems or concerns, please e-mail us right away at pro@littleshoot.org.<br><br>
+            
+            <center style="color: white; font-size: 20px;" class="normalBold">
+                Thanks!
+            </center>
+        </div>
+        
+        <br>
+        <center>
+            <div id="successButton" style="cursor:pointer; color: #333; font-size: 24px; background-color: white; border: 2px solid #888; width: 120px; text-align: center;">
+                <span>OK</span>
+                <br>
+            </div>
+        </center>
+    </div>
+    
+    <div id="proFailedMessageDiv" style="display:none; color: white;" class="normalBoldBig">
+        <img style="float: left; padding: 16px;" src="images/littleshoot_logo_small.png"/>
+        
+        <div style="padding-top: 30px; font-size: 20px;">
+            Error Purchasing LittleShoot Publisher!<br><br>
+        </div>
+        
+        <div style="clear:both; color: white; text-align:left; font-size: 14px;" class="normalBold">
+            We're sorry, but there was an error completing your LittleShoot Publisher purchase.<br><br>
+            
+            Are you sure you were logged in when you made your purchase?  Please e-mail us for assistance at pro@littleshoot.org.<br><br>
+            
+            <center style="color: white; font-size: 20px;" class="normalBold">
+                Our apologies again!
+            </center>
+        </div>
+        
+        <br>
+        <center>
+            <div id="failedButton" style="cursor:pointer; color: #333; font-size: 24px; background-color: white; border: 2px solid #888; width: 120px; text-align: center;">
+                <span>OK</span>
+                <br>
+            </div>
+        </center>
+    </div>
+    
+    <div id="donateOverlay" style="display:none; color: white;" class="normalBoldBig">
+        <img style="position:absolute; left:0px; top: 0px; padding: 16px;" src="images/littleshoot_logo_small.png"/>
+        
+        <div style="padding-top: 30px; font-size: 20px;">
+            Donate to LittleShoot!<br><br>
+        </div>
+        <div style="clear:both; color: white; text-align:left; font-size: 14px;" class="normalBold">
+            LittleShoot's a small startup devoted to distributing digital media cheaply and efficiently using open source software and open protocols.<br><br>
+            
+            Ultimately we want it to be the best tool in the world for you to distribute large files online, and, with your help, we're getting closer to that goal every day.<br><br>
+            
+            That's the long way of saying we need all the help we can get! You can use a credit card or your PayPal account.<br><br>
+            
+            Thanks!
+        </div>
+        
+        <br>
+        <center>
+            <div>
+                <span id="donateOverlayOkButton" class="donateLinkDirect" style="cursor:pointer; color: #333; font-size: 22px; background-color: white; border: 2px solid #888; width: 120px; padding: 4px; text-align: center;">
+                    DONATE
+                </span>
+                <span class="overlayCancelButton" style="margin-left: 20px; cursor:pointer; color: #333; font-size: 22px; background-color: white; border: 2px solid #888; width: 120px; padding: 4px; text-align: center;">
+                    LATER
+                </span>
+            </div>
+            <br>
+        </center>
+    </div>
+    
+    <div id="donateSuccessMessageDiv" style="display:none; color: white; padding: 16px;" class="normalBoldBig">
+        <img style="position:absolute; left:0px; top: 0px; padding: 16px;" src="images/littleshoot_logo_small.png"/>
+        
+        <div style="padding-top: 30px; font-size: 20px;">
+            Thanks!<br><br>
+        </div>
+        <div style="clear:both; color: white; text-align:left; font-size: 14px;" class="normalBold">
+            Thanks so much for donating to LittleShoot! You're support means the world to us, and it will bolster our efforts to create the best software we possibly can.<br><br>
+            You should have also received a personal e-mail from 
+            the LittleShoot founder, Adam Fisk, at your PayPal address. Feel free to contact Adam directly any time if you have any issues with the software whatsoever.<br><br>
+            
+            Thanks again!
+        </div>
+        
+        <br>
+        <center>
+            <div>
+                <span class="overlayOkButton" style="margin-left: 20px; cursor:pointer; color: #333; font-size: 22px; background-color: white; border: 2px solid #888; width: 120px; padding: 4px; text-align: center;">
+                    OK
+                </span>
+            </div>
+            <br>
+        </center>
+    </div>

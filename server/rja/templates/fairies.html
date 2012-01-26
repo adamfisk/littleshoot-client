@@ -1,0 +1,76 @@
+{% extends "projectNav.html" %}
+
+{% block imgWidthHeight %}
+width: 528px;
+height: 600px; 
+{% endblock imgWidthHeight %} 
+
+{% block bgColor %} 
+background-color: #bee4f3;
+{% endblock bgColor %} 
+
+{% block linkColor %}
+color: #742e94; 
+{% endblock linkColor %} 
+
+{% block courseLinkColor %}
+color: #742e94;
+{% endblock courseLinkColor %}
+
+{% block commonTextColor %}
+color: #742e94; 
+{% endblock commonTextColor %} 
+
+{% block linkHoverColor %}
+color: black; 
+{% endblock linkHoverColor %} 
+
+{% block linkSelectedColor %}
+color: black; 
+{% endblock linkSelectedColor %} 
+
+{% block mainDiv %} 
+    <div id="mainDiv">
+        <img id="bgImage" src="images/fairies_background.png" alt="Rachel Johnson Film and Animation"/>
+    </div>
+    
+{% endblock mainDiv %} 
+
+{% block afterMainDiv %}  
+
+    <div class="overlay" id="fairiesPremiseOverlay" style="z-index: 200000;">
+        <div style="background-color: #bee4f3; z-index: 200002; width: 460px; height: 340px; padding: 40px 30px 30px 30px; cursor: pointer;">
+            <center>
+            <span class="commonTextMedium">The Replacement Fairies: a television series</span><br><br>
+            <span class="commonText">When the tooth fairy quit, the International Fairy Council had to find a replacement. They scoured fairy world and what they found shocked them: no one wanted the job. 
+            Then, the Copoddle siblings came forth. Gritt, a mischievous adventurer who adored human children, 
+Dill, a bookworm annoyed at everything besides education, and Cookie,
+a lethargic, overweight little boy who did nothing but eat became the world's
+tooth fairy. These unlikely heros had one thing nobody else in fairy world had:
+they were willing to try.
+            </span>
+            </center>
+        </div>
+    </div>
+    
+    
+    <div class="overlay" id="fairiesStillsOverlay" style="z-index: 200000;">
+        <div style="background-color: #bee4f3; z-index: 200002; width: 680px; height: 360px; padding-top: 0px; cursor: pointer;">
+            <center>
+            <br>
+            <br>
+            <div style="padding-top: 30px; padding-bottom: 10px;">
+                <img src="images/fairies_still_1.png"/>
+                <img src="images/fairies_still_2.png"/>
+            </div>
+            </center>
+        </div>
+    </div> 
+{% endblock afterMainDiv %} 
+
+
+{% block contentLinks %}
+<a rel="#fairiesPremiseOverlay" class="courseOverlayLink overlayLink">Premise</a>
+<a rel="#fairiesStillsOverlay" class="courseOverlayLink overlayLink">Stills</a>
+{% endblock contentLinks %}
+

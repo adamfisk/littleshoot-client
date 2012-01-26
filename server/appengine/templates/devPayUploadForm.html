@@ -1,0 +1,8 @@
+{% extends "uploadFormBase.html" %}
+    {% block extraFields %}
+    <input type="hidden" name="policy" value="{{ devpay_base64_policy_file }}">
+    <input type="hidden" name="signature" value="{{ devpay_policy_file_signature }}">
+    <input type="hidden" name="x-amz-security-token" value="{{ user.amazonDevPayUserToken }}" />
+    {% endblock extraFields %}
+    
+

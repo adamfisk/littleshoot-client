@@ -1,0 +1,7 @@
+body 
+	{
+	background-image: url('http://littleshootimages.appspot.com/images/bottom_grad.jpg');
+   	background-repeat: repeat-x;
+   	background-position: bottom;
+   	background-attachment: fixed;
+   	}

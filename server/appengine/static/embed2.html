@@ -1,0 +1,122 @@
+<html>
+<head>  
+    <title>Example Video Site - Powered by LittleShoot</title>
+    <style type="text/css">
+        @import "css/common.css";
+        @import "flowplayer/examples/css/common.css";
+    </style>
+    <script type="text/javascript" src="flowplayer/examples/js/flashembed.min.js"></script>
+</head>
+
+<body>
+    <div id="loading">
+        <img src="http://littleshootimages.appspot.com/images/loading.gif" alt="loading LittleShoot P2P File Sharing in the Browser" />
+    </div>
+
+    <!-- 
+    <div style="float:right;">
+    Powered by LittleShoot
+    </div>
+     --> 
+        
+    <div id="page">
+        <center>
+        <h1><em>LittleShoot PLATFORM Demo</em></h1>
+        
+        <h2>Sharks are Wicked Awesome but Kind of Scary</h2>
+
+        <div id="present"></div>
+        
+        <div id="presentMessage" style="display:none; margin-top:10px">
+            <h1><em>Downloading with p2p -- using LittleShoot!!!!</em></h1>
+        </div>
+        
+        <div id="notPresentMessage" style="display:none; margin-top:10px">
+            <h1><em>Not downloading with p2p -- not using LittleShoot.</em></h1>
+        </div>
+        
+        <div style="position:absolute; right: 200px; bottom: 110px;">
+            Powered by <img src="http://littleshootimages.appspot.com/images/logo_trans_big.gif" width="100" border="0" alt="LittleShoot P2P File Sharing in the Browser"/>
+        </div>
+        </center>
+    </div>
+    
+    
+    
+        <script type="text/javascript" src="js/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+        <script type="text/javascript" src="js/dojo/shootDojo.js"></script>
+
+    
+    
+    <script type="text/javascript">
+        var embedP2P = function (url, width, height, id)
+            {
+            var p2pUrl = "http://adamfisk.p2p2o.org:8107/api/client/download/file?";
+            
+            var uri = encodeURIComponent(url);
+            p2pUrl += "uri=";
+            p2pUrl += uri;
+            embed(p2pUrl, width, height, id);
+            }
+        
+        var goHighRes = function ()
+            {
+            var onLittleShoot = function()
+                {
+                embedP2P("http://www.sharksarewickedawesomebutkindofscary.com/flowplayer/examples/sharks1.mov", 540, 360, "present");
+                CommonUtils.showElement(dojo.byId("presentMessage"));
+                };
+            var onNoLittleShoot = function()
+                {
+                embed("http://www.sharksarewickedawesomebutkindofscary.com/flowplayer/examples/sharks2.mp4", 540, 360, "present");
+                CommonUtils.showElement(dojo.byId("notPresentMessage"));
+                };
+              
+            var onOldVersion = function()
+                {
+                };
+
+            var monitor = 
+                new littleshoot.AppMonitor(onLittleShoot, onNoLittleShoot, onOldVersion, 3000);
+            var deferred = monitor.checkApp();
+            var loading = dojo.byId("loading");
+            
+            deferred.addBoth(function()
+                {
+                var fo = dojo.fadeOut(
+                    {
+                    node: loading
+                    });
+                fo.play();
+                loading.parentNode.removeChild(loading);
+                });
+            }
+        
+        var embed = function(url, width, height, id)
+            {
+            flashembed(id, 
+                {
+                    src:'flowplayer/FlowPlayerDark.swf',
+                    width: width, 
+                    height: height
+                },
+                {config: {   
+                    autoPlay: false,
+                    autoBuffering: true,
+                    initialScale: 'scale',
+                    videoFile: url
+                }} 
+            );
+            }
+        dojo.addOnLoad(goHighRes);
+
+
+
+        var onLittleShoot2 = function()
+            {
+            embed("http://www.sharksarewickedawesomebutkindofscary.com/flowplayer/examples/sharks1.mov", 540, 360, "present");
+            CommonUtils.showElement(dojo.byId("presentMessage"));
+            };
+    </script>
+</body>
+</html>

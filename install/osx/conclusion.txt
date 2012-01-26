@@ -1,0 +1,11 @@
+Congratulations on successfully installing LittleShoot! LittleShoot includes "Little Bit" technology, the first true browser plugin for BitTorrent.
+
+You can use LittleShoot to:
+
+1) Publish your own content 
+2) Search for the files you want
+3) Download the files you want
+
+We sincerely hope you enjoy using LittleShoot, and please let us know if it gives you any problems on our user forums at: 
+
+http://groups.google.com/group/littleshooters/

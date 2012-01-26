@@ -1,0 +1,5 @@
+{% extends "aboutContentBodyWithHeader.html" %}
+{% block contentTitleCategory %}Download{% endblock %}
+{% block aboutContentBody %}{% include "downloadWindowsContentBody.html" %}{% endblock aboutContentBody %}
+
+{% block wrapperDivAttributues %} id="downloadWin" {% if not isWindows %}style="display:none;"{% endif %}{% endblock %}

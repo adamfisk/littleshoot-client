@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.lastbamboo</groupId>
+    <artifactId>lastbamboo-server-site</artifactId>
+    <packaging>war</packaging>
+    <version>1.0</version>
+    <name>Server Site</name>
+    <description>Last Bamboo Server Site</description>
+
+    <parent>
+        <groupId>org.lastbamboo</groupId>
+        <artifactId>lastbamboo-server</artifactId>
+        <version>1.0</version>
+        </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-server-controllers</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-db-config</artifactId>
+            </dependency>
+            
+        <dependency>
+            <groupId>org.lastbamboo</groupId>
+            <artifactId>lastbamboo-common-log4j-bug-appender</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+            </dependency>
+            
+        </dependencies>
+        
+    <distributionManagement>
+        <repository>
+            <id>shoot1</id>
+            <url>scp://shoot1/home/tomcat</url>
+            </repository>
+        </distributionManagement>
+
+   <build>
+       <!-- 
+          We change the name here because the JK connector between apache
+          and tomcat uses this name in it configuration.
+          See workers.properties and jk.conf on the server.
+       -->
+       <finalName>lastbamboo-server-site</finalName>
+       <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh-external</artifactId>
+                <version>1.0-beta-2</version>
+                </extension>
+            </extensions>
+        </build>
+
+    </project>

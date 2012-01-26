@@ -1,0 +1,27 @@
+--- ./components/gnutella-core/src/main/java/com/limegroup/gnutella/bootstrap/UDPHostCacheImpl.java	2010-08-17 16:23:09.000000000 -0700
++++ ../../limewire-prod-5-4-8-java16/components/gnutella-core/src/main/java/com/limegroup/gnutella/bootstrap/UDPHostCacheImpl.java	2010-11-16 16:18:35.000000000 -0800
+@@ -312,8 +312,22 @@ class UDPHostCacheImpl implements UDPHos
+     @Override
+     public void loadDefaults() {
+         // ADD DEFAULT UDP HOST CACHES HERE.
+-        createAndAdd("gnutelladev1.udp-host-cache.com", 1234);
+-        createAndAdd("gnutelladev2.udp-host-cache.com", 5678);
++        createAndAdd("sissy.gtkg.org",51557);
++        createAndAdd("ein.gtkg.net",60666);
++        createAndAdd("leet.gtkg.org",1337);
++        createAndAdd("drei.gtkg.net",62666);
++        createAndAdd("zwei.gtkg.net",61666);
++        createAndAdd("ec2-67-202-40-20.compute-1.amazonaws.com",51557);
++        createAndAdd("ec2-72-44-45-131.z-2.compute-1.amazonaws.com",60666);
++        createAndAdd("ec2-67-202-41-17.compute-1.amazonaws.com",1337);
++        createAndAdd("uhc1.frostwire.com",9000);
++        
++        // From GTK-GNUTELLA
++        createAndAdd("g6.dns6.org", 1337);
++        createAndAdd("gwc.ak-electron.eu", 12060);
++        createAndAdd("gwc.chickenkiller.com", 8080);
++        createAndAdd("yang.cloud.bishopston.net", 33558);
++        createAndAdd("yin.cloud.bishopston.net", 33558);
+     }
+ 
+     /**

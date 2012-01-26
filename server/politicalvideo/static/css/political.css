@@ -1,0 +1,102 @@
+.commonBody
+    {
+    background-color: #000000;
+    }
+    
+#flag
+    {
+    position: absolute;
+    height: 386px;
+    width: 428px;
+    bottom: 10px;
+    right: 10px;
+    background: transparent url('../images/flag.jpg') no-repeat 0px 100%;
+    opacity: 0.3;
+    }
+    
+#movie
+    {
+    position: relative;
+    top: 100px;
+    width: 540px;
+    height: 420px;
+    z-index: 200;
+    
+    /*border-color: #8F9595;*/
+    }
+
+#mainTitle
+    {
+    position: relative;
+    top: 60px;
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 30px;
+    color: #545454;
+    }
+    
+.displayNone
+    {
+    display: none;
+    }
+    
+.clearBoth
+    {
+    clear : both;
+    margin : 0px;
+    padding : 0px;
+    }
+
+.downloadBox
+    {
+    background: #222222 url('../images/littleshoot.png') no-repeat center;
+    }
+
+.downloadLittleShoot
+    {
+    cursor: pointer;
+    }
+    
+a:link
+    {
+    color: #dddddd;
+    }
+    
+#littleshootLink
+    {
+    color:#d4d4d4;
+    cursor: pointer;
+    text-decoration: underline;
+    }
+    
+#littleshootMessage
+    {
+    position: relative;
+    top: 280px;
+    width: 300px;
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 14px;
+    color: #848484;    
+    }
+    
+#loadingMessage
+    {
+    position: relative;
+    top: 240px;
+    width: 300px;
+    font-family: verdana, sans-serif;
+    text-decoration: none;
+    font-size: 14px;
+    color: #545454; 
+    }
+
+.loadingPolitics
+    {
+    border: 1px solid #333333;
+    background-image:url('../images/loading_green.gif');
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center;
+    }
+    

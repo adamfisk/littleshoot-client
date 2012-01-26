@@ -1,0 +1,1352 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.lastbamboo</groupId>
+    <artifactId>lastbamboo</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <name>All LittleShoot Projects</name>
+    <description>
+        This is the top level project that builds all of the subprojects.
+        </description>
+    <url>http://www.littleshoot.org</url>
+
+    <properties>
+       <littleshoot.version>0.29</littleshoot.version>
+       <snapshot.version>1.0-SNAPSHOT</snapshot.version>
+       <spring.version>3.0.5.RELEASE</spring.version>
+       <lw.version>5.4.8-SNAPSHOT</lw.version>
+       <lw.version.base>5.4.8</lw.version.base>
+       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+       <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+       <slf4j.version>1.6.1</slf4j.version>
+    </properties>
+
+    <organization>
+      <name>LittleShoot</name>
+      <url>http://www.littleshoot.org</url>
+    </organization>
+
+    <licenses>
+      <license>
+        <name>GNU General Public License Version 3</name> 
+        <url>http://www.gnu.org/licenses/gpl.txt</url> 
+        <distribution>repo</distribution> 
+      </license>
+    </licenses>
+
+    <issueManagement>
+      <system>JIRA</system>
+      <url>http://issues.littleshoot.org:8080</url>
+    </issueManagement>
+
+    <modules>
+        <module>client</module>
+        <module>common</module>
+<!--
+        <module>p2p</module>
+-->
+        <module>integration-tests</module>
+        <module>mojo</module>
+<!--
+        <module>jni</module>
+        <module>server</module>
+-->
+        </modules>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            </dependency>
+
+        </dependencies>
+
+    <!-- Dependency management is specified in alphabetical order with the
+         'groupId' as the primary criteria and 'artifactId' as the secondary
+         criteria. -->
+    <dependencyManagement>
+        <dependencies>
+
+             <dependency>
+                <groupId>apple</groupId>
+                <artifactId>cocoa</artifactId>
+                <version>0.1</version>
+            </dependency>
+
+<!--
+            <dependency>
+                <groupId>com.barchart.udt</groupId>
+                <artifactId>barchart-udt4</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.barchart.udt</groupId>
+                <artifactId>barchart-udt4-bundle</artifactId>
+                <version>1.0.2</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+
+        <dependency>
+            <groupId>com.barchart.udt</groupId>
+            <artifactId>barchart-udt4-bundle</artifactId>
+            <version>1.0.3-SNAPSHOT</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+-->
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>r09</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+
+            <dependency>
+                <groupId>commons-cli</groupId>
+                <artifactId>commons-cli</artifactId>
+                <version>1.2</version>
+                </dependency>
+
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>1.5</version>
+                </dependency>
+
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>3.2</version>
+                </dependency>
+
+            <dependency>
+                <groupId>commons-discovery</groupId>
+                <artifactId>commons-discovery</artifactId>
+                <version>0.2</version>
+                </dependency>
+
+            <dependency>
+                <groupId>commons-email</groupId>
+                <artifactId>commons-email</artifactId>
+                <version>1.1</version>
+                </dependency>
+
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>3.1</version>
+                </dependency>
+
+            <dependency>
+                <groupId>commons-id</groupId>
+                <artifactId>commons-id</artifactId>
+                <version>0.1</version>
+                </dependency>
+
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.0.1</version>
+                </dependency>
+
+<!--
+            <dependency>
+                <groupId>commons-jxpath</groupId>
+                <artifactId>commons-jxpath</artifactId>
+                <version>1.2</version>
+                </dependency>
+-->
+
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.6</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.easymock</groupId>
+                <artifactId>easymock</artifactId>
+                <version>2.2</version>
+                <scope>test</scope>
+                </dependency>
+
+            <dependency>
+                <groupId>easymock</groupId>
+                <artifactId>easymock</artifactId>
+                <version>1.1</version>
+                <scope>test</scope>
+                </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+                </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.8.2</version>
+                <scope>test</scope>
+                </dependency>
+
+            <dependency>
+                <groupId>jzoom</groupId>
+                <artifactId>jlayer</artifactId>
+                <version>1.0</version>
+                </dependency>
+
+            <dependency>
+                <groupId>jzoom</groupId>
+                <artifactId>mp3spi</artifactId>
+                <version>1.9.3</version>
+                </dependency>
+
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.14</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.jboss.netty</groupId>
+                <artifactId>netty</artifactId>
+                <version>3.2.4.GA</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>littleshoot-smack-xmpp</artifactId>
+                <version>3.2.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-client-controllers</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-client-http-server</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-client-launcher-all</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-client-native</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-client-prefs</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-client-resource</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-client-search</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-client-services</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-client-site</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-client-util</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>amazon-ec2</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+<!--
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>amazon-sdb</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+-->
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>amazon-s3</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>amazon-stack</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-bencode</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-bug-server</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>littleshoot-downloader</artifactId>
+                <version>${snapshot.version}</version>
+            </dependency>
+
+<!--
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-download</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+-->
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>http-client</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-jlibtorrent</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>jlibtorrent</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+<!--
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-paypal</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+-->
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>turn-http-server</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>ice</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+<!--
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-ice-rudp</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+-->
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-jmx-client</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-json</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-log4j-bug-appender</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+<!--
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-netmap</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+-->
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-npapi</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>offer-answer</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-online</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>p2p-sockets</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>portmapping</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-rest</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+<!--
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-rudp</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-rudp-test-util</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+-->
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>sdp</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-searchers-flickr</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-searchers-isohunt</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-searchers-limewire</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-searchers-littleshoot</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-searchers-yahoo</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-searchers-youtube</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>sip-bootstrap</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>sip-client</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>sip-http-client</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>sip-server</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>sip-stack</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-sip-turn</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>stun-client</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>stun-server</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>stun-stack</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>tcp-framing</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>turn-client</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>turn-server</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>udt</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+<!--
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-util-common</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-common-util-mina</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+-->
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>xmpp</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+<!--
+            <dependency>
+                <groupId>org.lastbamboo</groupId>
+                <artifactId>lastbamboo-maven-plugin</artifactId>
+                <version>${project.version}</version>
+                </dependency>
+-->
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>mina-util</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>util</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+<!--
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>lw-core</artifactId>
+                <version>4.18.8</version>
+                </dependency>
+-->
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>aopalliance</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>bittorrent-api</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>clink</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>collection</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>common</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+<!--
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>commons-codec-1.3</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+-->
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>core-api</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>core-settings</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>daap</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>dnsjava-2.0.6</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>friend</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>geocode</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>glazedlists-snapshot20090628_java15</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>gnutella-core</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>guice-2.0-snapshot20090814</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>guice-assistedinject-snapshot20090814</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>hsqldb-1.8.0.10</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>http</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>httpclient-4.1-alpha1-r821939</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>httpcore-4.1-alpha2-r821939</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>httpcore-nio-4.1-alpha2-r821939</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>icu4j</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>io</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>jaudiotagger-1.0.9.1</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>jmdns</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>jna-3.1.0</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>jogg</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>jorbis</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>libtorrent</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>lwsserver</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>mime-util</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>mojito</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>net</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>nio</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>onion-common</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>onion-fec</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>player-api</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>promotion</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>rudp</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>security</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>setting</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>statistic</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>swarm</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>xmpp-api</artifactId>
+                <version>${lw.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.limewire</groupId>
+                <artifactId>jacob-1.15-M1-lw</artifactId>
+                <version>${lw.version.base}</version>
+                <classifier>win</classifier>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot.mina</groupId>
+                <artifactId>mina-core</artifactId>
+                <version>1.1.7</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
+                <artifactId>p2p</artifactId>
+                <version>${snapshot.version}</version>
+                </dependency>
+
+<!--
+            <dependency>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-embedded</artifactId>
+                <version>6.1.26</version>
+                </dependency>
+-->
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-servlet</artifactId>
+                <version>7.3.1.v20110307</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-hibernate3</artifactId>
+                <version>${spring.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-remoting</artifactId>
+                <version>2.0.6</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-support</artifactId>
+                <version>2.0.6</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.tritonus</groupId>
+                <artifactId>tritonus-share</artifactId>
+                <version>0.3.6</version>
+                </dependency>
+
+            <dependency>
+                <groupId>tomcat</groupId>
+                <artifactId>jasper-compiler</artifactId>
+                <version>5.5.15</version>
+                </dependency>
+
+            <dependency>
+                <groupId>tomcat</groupId>
+                <artifactId>jasper-runtime</artifactId>
+                <version>5.5.15</version>
+                </dependency>
+
+            <dependency>
+                <groupId>xerces</groupId>
+                <artifactId>xercesImpl</artifactId>
+                <version>2.8.1</version>
+                <!--
+                    The scope is test here because we can typically use
+                    the parsing implementation in the JRE.  Xerces is more
+                    configurable, though, for things like offline tests.
+                 -->
+                <scope>test</scope>
+                </dependency>
+
+            <dependency>
+                <groupId>xmlrpc</groupId>
+                <artifactId>xmlrpc</artifactId>
+                <version>2.0</version>
+                </dependency>
+            </dependencies>
+       
+ 
+        </dependencyManagement>
+
+<!--
+ <distributionManagement>
+
+ <repository>
+  <id>archiva.internal</id>
+  <name>Internal Release Repository</name>
+  <url>http://192.168.1.91/archiva/repository/internal</url>
+ </repository>
+
+ <snapshotRepository>
+  <id>archiva.snapshots</id>
+  <name>Internal Snapshot Repository</name>
+  <url>http://192.168.1.91/archiva/repository/snapshots</url>
+ </snapshotRepository>
+ </distributionManagement>
+-->
+    <distributionManagement>
+        <repository>
+            <id>littleshoot</id>
+            <url>scpexe://dev.littleshoot.org/var/maven</url>
+        </repository>
+        <snapshotRepository>
+            <id>littleshoot</id>
+            <url>scpexe://dev.littleshoot.org/var/maven</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <scm>
+        <connection>scm:svn:https://svn.littleshoot.org/svn/littleshoot</connection>
+        <developerConnection>scm:svn:https://svn.littleshoot.org/svn/littleshoot</developerConnection>
+        <tag>HEAD</tag>
+        <url>http://svn.littleshoot.org</url>
+    </scm>
+
+    <prerequisites>
+        <maven>2.0.11</maven>
+    </prerequisites>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh-external</artifactId>
+                <version>1.0-beta-6</version>
+                </extension>
+            </extensions>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>2.1.1</version>
+            </plugin>
+
+            <!-- Compiling with java 1.5 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                    <!-- The following force compilation with full warnings. -->
+                    <!--
+                        <fork>true</fork>
+                        <showWarnings>true</showWarnings>
+                        <showDeprecation>true</showDeprecation>
+                        <compilerArguments><Xlint/></compilerArguments>
+                    -->
+                    </configuration>
+                </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <show>private</show>
+                    </configuration>
+                </plugin>
+            </plugins>
+<!--
+  <profiles>
+    <profile>
+      <id>windows</id>
+      <activation>
+        <os>
+          <family>windows</family>
+        </os>
+      </activation>
+      <properties>
+        <envClassifier>win</envClassifier>
+      </properties>
+    </profile>
+    <profile>
+      <id>linux</id>
+      <activation>
+        <os>
+          <family>unix</family>
+        </os>
+      </activation>
+      <properties>
+        <envClassifier>linux</envClassifier>
+      </properties>
+    </profile>
+  </profiles>
+-->
+
+        </build>
+
+    <reporting>
+        <plugins>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>2.3.1</version>
+            </plugin>
+
+            <!-- Standard maven site report -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+            </plugin>
+
+            <!-- Style report -->
+            <!--    <plugin>   error - heap space problem
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>-->
+
+            <!-- Report code metrics using JDepend. -->
+            <!--    <plugin>  error - could not download
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jdepend-maven-plugin</artifactId>
+                <version>2.0-beta-1-SNAPSHOT</version>
+            </plugin>-->
+
+            <!-- Tag Report -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>taglist-maven-plugin</artifactId>
+                <configuration>
+                    <multipleLineComments>true</multipleLineComments>
+                     <tags>
+                        <tag>mudo</tag>
+                        <tag>todo</tag>
+                        <tag>idea</tag>
+                        <tag>MUDO</tag>
+                        <tag>TODO</tag>
+                        <tag>IDEA</tag>
+                        </tags>
+                </configuration>
+            </plugin>
+
+            <!-- Unit Test Report -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>surefire-report-maven-plugin</artifactId>
+            </plugin>
+
+            <!-- Changes Report -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>changes-maven-plugin</artifactId>
+                <version>2.0-beta-1</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>changes-report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+            <!-- SCM activity report -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>changelog-maven-plugin</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <id>dual-report</id>
+                        <configuration>
+                            <type>range</type>
+                            <range>30</range>
+                        </configuration>
+                        <reports>
+                            <report>changelog</report>
+                            <report>file-activity</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+
+            </plugin>
+
+            <!-- Javadoc report -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                </configuration>
+            </plugin>
+
+            <!-- Source ref plugin -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jxr-maven-plugin</artifactId>
+                </plugin>
+        </plugins>
+    </reporting>
+
+    <developers>
+        <developer>
+            <id>afisk</id>
+            <name>Adam fisk</name>
+            <email>a@lastbamboo.org</email>
+            <organization>Last Bamboo, LLC</organization>
+            <organizationUrl>http://www.lastbamboo.org/</organizationUrl>
+            <roles><role>Developer</role></roles>
+            <timezone>-5</timezone>
+            </developer>
+        <developer>
+            <id>jjc</id>
+            <name>Jerry Charumilind</name>
+            <email>j@lastbamboo.org</email>
+            <organization>Last Bamboo, LLC</organization>
+            <organizationUrl>http://www.lastbamboo.org/</organizationUrl>
+            <roles><role>Developer</role></roles>
+            <timezone>-5</timezone>
+            </developer>
+        </developers>
+
+    <repositories>
+<!--
+ <repository>
+  <id>ArchivaSnapshots</id>
+  <url>http://192.168.1.91/archiva/repository/snapshots
+  </url>
+ </repository>
+
+ <repository>
+  <id>ArchivaInternal</id>
+  <url>http://192.168.1.91/archiva/repository/internal
+  </url>
+ </repository> 
+
+        <repository>
+            <id>repo1</id>
+            <name>Maven Repository Switchboard</name>
+            <url>http://repo1.maven.org/maven2</url>
+            </repository>
+
+
+        <repository>
+            <id>sun</id>
+            <name>Sun Repository</name>
+            <url>http://download.java.net/maven/1</url>
+            <layout>legacy</layout>
+            </repository>
+-->
+
+        <repository>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>sonatype-nexus-releases</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/releases</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+
+        <repository>
+            <id>littleshoot</id>
+            <name>LittleShoot Repository</name>
+            <url>http://svn.littleshoot.org/maven</url>
+            </repository>
+
+        </repositories>
+
+    </project>

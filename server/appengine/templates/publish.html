@@ -1,0 +1,186 @@
+{% extends "siteBase.html" %}
+
+{% block secondTab %}sprite-selectedTab selectedTab{% endblock %}
+{% block grayNavControlDiv %}
+    <div id="grayNavControlDivPublish">
+        <div id="publishButtonDiv">
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div id="contentDataDivPublish" class="publishToggle">
+    <div class="contentDataDivHeading">
+        <span class="normalBoldBlack">My Publications</span>
+    </div>
+    <div id="publishResultsDataDiv">
+        <span id="publishResultsDataSpan"> </span>    
+    </div>
+    <div id="resultPageDivPublishTop" class="resultPageDivTopPublish" style="display:none;">
+        <span id="resultPageSpan">Pages:</span>
+        <div id="previousLinkDiv" class="previousLinkDiv">
+            <a class="previousLink">Previous</a>
+        </div>
+        <div id="pageLinksDiv" class="pageLinksDiv"></div>
+        <div id="nextLinkDiv" class="nextLinkDiv">
+            <a class="nextLink">Next</a>
+        </div>
+    </div>
+    
+    <div class="contentColumnsDiv">
+        <div id="pendingFilesContainerDiv" style="display:none;"></div>
+        <div id="contentColumnDiv1Publish" class="contentColumnDiv1">
+            <div id="filesColumn1" class="filesToggle"></div>
+            <div id="foldersColumn1" style="display:none;" class="foldersToggle"></div>
+        </div>
+        <div id="contentColumnDiv2Publish" class="contentColumnDiv2">
+            <div id="filesColumn2" class="filesToggle"></div>
+            <div id="foldersColumn2" style="display:none;" class="foldersToggle"></div>
+        </div>
+        <div class="clearBoth"></div>
+    </div>
+</div>
+{% endblock %}
+{% block contentBottom %}
+<div id="contentDataDivBottomPublish">
+    <div id="resultPageDivPublishBottom" class="resultPageDivBottom" style="display:none;">
+        <span id="resultPageSpan">Pages:</span>
+        <div id="previousLinkDiv" class="previousLinkDiv">
+            <a class="previousLink">Previous</a>
+        </div>
+        <div id="pageLinksDiv" class="pageLinksDiv"></div>
+        <div id="nextLinkDiv" class="nextLinkDiv">
+            <a class="nextLink">Next</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block extraHtml %}
+<div id="fakeFileUpload" class="fakeFile" style="display:none;">
+    <input type="file" id="invisibleFileInput" class="invisibleFileInput" noscript="true" onchange="Publisher.onFileChanged()" size="1"/>
+    <div class="buttonFileInput">
+       <span>BROWSE...</span>
+    </div>  
+</div>
+
+<div id="loginFileUpload" class="button" style="display:none;">
+    <span>BROWSE...</span>
+</div>
+
+<div id="ff3FileUpload" class="button" style="display:none;">
+    <span>BROWSE...</span>
+</div>
+
+    <div dojoType="dijit.Dialog" id="publishDialog" title="Add Tags for the File" style="display:none;">
+        <form id="publishForm" name="publishForm" dojoType="dijit.form.Form" onSubmit="Publisher.onPublish(); return false;">
+            <div class="commonDialogDiv littleShoot">
+                <span class="normalMedium">
+                Enter your tags. Separate tags with commas, as in "beach, kite surfing, Mexico".  Your
+                file will be searchable by the tags you enter so you and other
+                users can find your file.
+                </span>
+            </div>
+            <br>
+            <div class="simple bigTextInput">
+                <div id="publishTagsTextBox" style="text-align:center">
+                    <label class="tagsInputLabel" for="tags">Tags: </label>
+                    <input type="text" id="publishTagsTextBoxInput" name="tags" 
+                        dojoType="dijit.form.TextBox" trim="true"
+                        maxLength="250"/>
+                </div>
+                <br>
+                <div dojoType="dijit.TitlePane" title="Twitter" open="false" style="display:none;">
+                    <div>
+                        <label class="inputLabel" for="twitterUserName">User Name: </label>
+                        <input type="text" id="twitterUserName" name="twitterUserName" 
+                            dojoType="dijit.form.TextBox" trim="true"
+                            maxLength="250" class="publishInput"/>
+                        <br>
+                        <br>    
+                        <label class="inputLabel" for="twitterPassword">Password: </label>
+                        <input type="password" id="twitterPassword" name="twitterPassword" 
+                            dojoType="dijit.form.TextBox" trim="true" maxLength="40" class="publishInput"/>
+                        <br>
+                        <br>
+                        <div id="twitterMessageDiv">
+                            <label id="twitterMessageLabel" class="inputLabel" for="twitterMessage">Tweet: </label> 
+                            <div id="twitterMessageCharCount" class="grayCount">0*</div>
+                            <textarea name="twitterMessage" id="twitterMessageTextArea" class="textAreaBigTextInput"></textarea>
+                            <div id="countDescDiv">*<span id="countDesc"> LittleShoot uses 16 characters to append a link to your file.</span></div>
+                        </div>
+                        
+                        <input id="storeTwitterCredentials" dojotype="dijit.form.CheckBox" 
+                               name="storeTwitterCredentials" checked="checked" value="on" 
+                               type="checkbox" />
+                        <label class="inputLabel" for="storeTwitterCredentials">Store Credentials Locally?</label>
+                        <br>
+                        <input id="useStoredTwitterCredentials" dojotype="dijit.form.CheckBox" 
+                               name="useStoredTwitterCredentials" checked="checked" value="on" 
+                               type="checkbox" /> 
+                        <label class="inputLabel" for="useStoredTwitterCredentials">Use Stored Credentials?</label>
+                    </div>
+                </div>
+                <br>
+                
+                <div style="text-align:center">
+                <button dojoType="dijit.form.Button">
+                    Publish
+                    <script type="dojo/method" event="onClick">
+                        Publisher.onPublish();
+                        dijit.byId('publishDialog').hide();
+                    </script>
+                </button>
+                <button dojoType="dijit.form.Button">
+                    Cancel
+                    <script type="dojo/method" event="onClick">
+                        dijit.byId('publishDialog').hide();
+                    </script>
+                </button>
+                </div>
+            </div>
+        </form>
+    </div> 
+
+<div dojoType="dijit.Dialog" id="editFileDialog" title="Edit" style="display:none;" method="post" 
+    onSubmit="return true;" 
+    execute="javascript:CommonUtils.editFile();">
+    <div class="commonDialogDiv littleShoot">
+        <span class="normalMedium">
+        Edit your tags. Separate tags commas, as in "beach, kite surfing, Mexico".  Your
+        file will be searchable by the tags you enter so you and other
+        users can find your file.
+        </span>
+    </div>
+    <br>
+    <div style="text-align:center" class="bigTextInput">
+        <div id="editTagsTextBox">
+            <label class="tagsInputLabel" for="tags">Tags: </label>
+            <input type="text" id="editTagsTextBoxInput" name="tags" 
+                dojoType="dijit.form.TextBox" trim="true"
+                maxLength="250"
+                />
+        </div>
+        <br>
+        
+        <input id="editTagsSha1" name="sha1" dojoType="dijit.form.TextBox" type="hidden">
+        <button dojoType="dijit.form.Button" type="submit">
+            Edit
+        </button>
+        <button dojoType="dijit.form.Button">
+            Cancel
+            <script type="dojo/method" event="onClick">
+                    dijit.byId('editFileDialog').hide();
+                </script>
+        </button>
+    </div>
+</div> 
+
+{% endblock %}
+
+{% block javascript %}
+    {% include "appDetectionFlash.js" %}
+    CommonUtils.loadLittleShootApplet();
+    dojo.addOnLoad(Publisher.onOnLoad);
+{% endblock %}

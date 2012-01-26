@@ -1,0 +1,227 @@
+{% include "header.html" %}
+
+    {% include "dojoCss.html" %}
+    <style type="text/css">
+        {% include "site.css" %}
+        {% include "searchResults.css" %}
+        
+        div.overlay {
+            display:none;
+        }
+        
+        div.overlay div.close {
+            z-index:10000;
+            background:url(images/close.png) no-repeat;
+            position:absolute;
+            top:2px;
+            right:5px; 
+            width:35px;
+            height:35px;
+            cursor:pointer;
+        }
+        
+        /* v2 */
+.ymp-player-max #ymp-body { width:569px!important; }
+.ymp-player-max #ymp-body #ymp-getplayer { display: none!important; }
+.ymp-player-max #ymp-body #ymp-body-base { width: 559px!important; }
+.ymp-player-max #ymp-body #ymp-body-strip { width:556px!important; }
+
+a.ymp-btn-page-pause em.ymp-skin { display: none!important; }
+a.ymp-btn-page-play em.ymp-skin { display: none!important; }
+#ymp-btn-pop { display:none!important; }
+#ymp-tray-list li { background: none; }
+        
+    </style>
+
+    {% include "combinedMediaCss.html" %}
+ 
+    {% block head %}{% endblock %}
+    
+</head>
+
+<body class="tundra commonBody" id="body">
+    {% include "seoLinks.html" %}
+    
+    <div id="loading" style="display:none;">
+        <img src="http://littleshootimages.appspot.com/images/loading.gif" alt="Loading LittleShoot P2P 2.0 File Sharing in the Browser" />
+    </div>
+    <div id="customLogoDiv"></div>
+    <div id="topDiv"></div>
+    <div id="logosDiv">
+        <div id="logoDiv" class="sprite-logo_trans"></div>
+        <div id="proLogoDiv" style="display:none;"></div>
+    </div>
+    
+    <div id="accountDiv" class="normal">
+        
+        <!--
+        <iframe id="loginIframe" src ="http://littleshootapi.appspot.com/loginControl" width="100%" height="100%" frameborder="0">
+            <p>Your browser does not support iframes.</p>
+        </iframe>
+         
+        <iframe id="loginIframe" src ="https://36.latest.littleshootapi.appspot.com/loginControl" width="100%" height="100%" frameborder="0">
+            <p>Your browser does not support iframes.</p>
+        </iframe>
+         
+        -->
+    </div>
+      
+    <div id="mainContentDiv">
+        <div id="tabs">
+            <div id="firstTab" class="{% block firstTab %}sprite-unselectedTab unselectedTab{% endblock %} tab tabNav searchNav">
+                <a style="text-decoration: none;" class="tabNav searchNav" title="LittleShoot P2P Search">SEARCH</a> 
+            </div> 
+            <div id="secondTab" class="{% block secondTab %}sprite-unselectedTab unselectedTab{% endblock %} tab tabNav downloadsNav">
+                <a style="text-decoration: none;" class="tabNav downloadsNav" title="LittleShoot Downloads">DOWNLOADS</a> 
+            </div>
+            <div id="thirdTab" class="{% block thirdTab %}sprite-unselectedTab unselectedTab{% endblock %} tab tabNav publishNav">
+                <a style="text-decoration: none;" class="tabNav publishNav" title="LittleShoot Publishing">PUBLISH</a> 
+            </div> 
+            <div id="forthTab" class="{% block forthTab %}sprite-unselectedTab unselectedTab{% endblock %} tab tabNav aboutNav">
+                <a style="text-decoration: none;" class="tabNav aboutNav" title="More About LittleShoot">ABOUT</a> 
+            </div>
+
+        </div>
+        <div id="mainContentInnerDiv">    
+            <div id="mainContentLeftEdge" class="sprite-leftShadow"></div>
+            <div id="mainContentTopEdge" class="sprite-topShadow"></div>
+            <div id="mainContentRightEdge" class="sprite-rightShadow"></div>
+
+            <div id="mainContentWhiteDiv">
+                <!-- sub-templates can replace the entire div if they want -->
+                {% block mainContentWhiteDiv %}
+                <div id="grayNav">
+                    <div id="grayNavControlDiv">
+                        {% block grayNavControlDiv %}{% endblock %}
+                    </div>
+                    
+                    <div style="display:none;" class="forumsLink">
+                        {% block grayNavExtraDiv %}
+                            <span id="shareThisContainer" style="margin-left: 100px;">
+                                <script type="text/javascript">
+                                    var title = document.title;
+                                    var url = window.location.href;
+                                    SHARETHIS.addEntry({ title: title, url: url });
+                                </script>
+                            </span>
+                        {% endblock grayNavExtraDiv %}
+                        <a href="http://groups.google.com/group/littleshooters/" title="LittleShoot Forum">Visit the Forums!</a>
+                    </div>
+                </div>
+                
+                <div id="contentDataDiv">
+                    {% block content %}{% endblock %}
+                </div>
+                <div id="contentDataDivBottom">
+                    {% block contentBottom %}{% endblock %}
+                </div>
+                {% endblock mainContentWhiteDiv%}
+            </div>
+            <div id="mainContentBottomEdge" class="sprite-bottomShadow"></div>
+        </div>
+    </div>
+    
+    <div id="bottomDiv" class="sprite-bottom_grad">
+        <div id="grayNavControlDivLinksBottom">
+            <a href="#firstTab" class="tabNavLink" title="Search">Search</a> | 
+            <a href="#secondTab" class="tabNavLink" title="Downloads">Downloads</a> | 
+            <a href="#thirdTab" class="tabNavLink" title="Publish">Publish</a> | 
+            <a href="#forthTab" class="tabNavLink" title="Home">About</a> 
+        </div>
+    </div> 
+    
+    <div class="overlay" id="videoOverlay" style="z-index: 200000;">
+        <div style="background-color: #333333; z-index: 200002;">
+        <a class="player" title="LittleShoot Video" href="http://cloudfront.littleshoot.org/littleshoot-desktop.m4v" style="display:block; width:640px;height:480px;padding: 40px;z-index: 200003;">
+            &nbsp;
+        </a>
+        
+<!-- 
+<div id="bg_player_location">
+<a href="http://www.adobe.com/go/getflashplayer">
+<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
+</a>
+</div>
+<script type="text/javascript" src="http://bitcast-b.bitgravity.com/player/6/functions.js"></script>
+<script type="text/javascript">
+var flashvars = {};
+flashvars.File = "http://cloudfront.littleshoot.org/littleshoot-desktop.m4v";
+flashvars.Mode = "ondemand";
+flashvars.AutoPlay = "true";
+var params = {};
+params.allowFullScreen = "true";
+params.allowScriptAccess = "always";
+var attributes = {};
+attributes.id = "bitgravity_player_6";
+swfobject.embedSWF(stablerelease, "bg_player_location", "640", "500", "9.0.0", "http://bitcast-b.bitgravity.com/player/expressInstall.swf", flashvars, params, attributes);
+</script>
+ -->
+        </div>
+    </div>
+
+{% if showActiveX %}
+<div id="activeXDiv">
+<OBJECT ID="littleshoot" CLASSID="CLSID:0CC00AEB-7E95-4a80-8C29-ED90939FC99F" CODEBASE="axlittleshoot.cab#version=0,9,0,0" width="1" height="1"><PARAM name="type" value="application/x-bittorrent"/></OBJECT>
+</div>
+{% endif %}
+
+    <div id="littleShootEmbed"></div>
+ 
+{% include "flashDetection.html" %}
+
+{% block extraHtml %}{% endblock %}
+
+<!-- 
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+ -->
+
+
+    {% block javascriptEarlyIncludes %}{% endblock %}
+    
+    {% include "javaScriptIncludes.html" %}
+    
+    <script type="text/javascript"> 
+        dojo.subscribe("globalChannel", function(args) {
+            //alert("Global channel bitches!! "+dojo.toJson(args));
+
+            console.info(args.eventName);
+            console.dir(args);
+            var eventName = args.eventName;
+
+            if (eventName === "filesLoaded") {
+                var jsonData = args.files;
+                var keys = jsonData.keys;
+                for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    var keyDiv = document.createElement("div");
+                    $(keyDiv).html(key.name);
+                    $("#filesDiv").append(keyDiv);
+                }
+            }
+        });
+    </script>
+
+    {% block javascriptLateIncludes %}{% endblock %}
+    
+    {% include "combinedMediaJs.html" %}
+    
+    <script type="text/javascript"> 
+        jQuery().ready(function() {
+            dojo.addOnLoad(SiteBase.onOnLoad);
+            //dojo.require("dojo.cookie");
+            //dojo.require("dojo.data.ItemFileReadStore");
+            dojo.addOnLoad(function() {
+                //console.info("Dojo loaded, loading Facebook");
+                //LittleShootFacebook.init();
+            });
+            //dojo.subscribe("filesLoaded", function(args) {
+            //alert("Global files loaded!!");
+            
+        });
+        {% block javascript %}{% endblock %}
+    </script>
+
+    {% include "analytics.html" %}
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="LittleShoot Open Source, Open Protocols Project">
+
+   <bannerLeft>
+     <name>LittleShoot Open Source, Open Protocols Project</name>
+     <src>images/littleshoot.gif</src>
+     <href>http://www.littleshoot.org/</href>
+   </bannerLeft>
+    <body>
+
+<menu name="Projects">
+    <item name="Swarm Downloader" href="lastbamboo-common/lastbamboo-common-download/index.html"/>
+    <item name="ICE" href="lastbamboo-common/lastbamboo-common-ice/index.html"/>
+    <item name="ICE-RUDP" href="lastbamboo-common/lastbamboo-common-ice-rudp/index.html"/>
+    <item name="RUDP" href="lastbamboo-common/lastbamboo-common-rudp/index.html"/>
+    <item name="SIP Projects" href="lastbamboo-common/lastbamboo-common-sip/index.html"/>
+    <item name="STUN Projects" href="lastbamboo-common/lastbamboo-common-stun/index.html"/>
+    <item name="TURN Projects" href="lastbamboo-common/lastbamboo-common-turn/index.html"/>
+    </menu>
+<menu ref="reports" />
+</body>
+</project>

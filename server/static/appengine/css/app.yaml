@@ -1,0 +1,11 @@
+application: littleshootcss 
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+  
+- url: /css/(.*\.(css))
+  static_files: static/\1
+  upload: static/(.*\.(css))
+

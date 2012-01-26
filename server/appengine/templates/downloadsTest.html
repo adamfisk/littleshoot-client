@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <title>Downloads Test</title>
+        
+        <style type="text/css">
+            {% include "common.css" %}
+            {% include "searchResults.css" %}
+            
+            #downloadsTemplate {
+                display:none;
+            }
+            
+            .downloadsDiv {
+                position: relative;
+            }
+            .singleDownload {
+                position: relative;
+                clear: both;
+                width: 90%;
+                margin-bottom: 12px;
+                border: 1px solid;
+                border-color: #FFFFFF;
+                padding: 6px;
+            }
+            
+           .singleDownloadHover {
+               background-color: #f5f9f5;
+               border: 1px solid;
+               border-color: #8F9595;
+               cursor:pointer;
+            }
+            
+            .progressBarDiv {
+            }
+            
+            .downloadStopOuter {
+                position: relative;
+            }
+            
+            div .ui-progressbar {
+                height:1em;
+                text-align:left;
+                width: 240px;
+            }
+            
+            .downloadStopIcon {
+                position: absolute;
+                bottom: 2px;
+                left: 250px;
+            }
+            
+            .downloadDetail {
+                margin-right: 8px;
+            }
+            
+            .downloadLine {
+                margin-bottom: 2px;
+            }
+        </style>
+        <link rel="stylesheet" href="http://ui.jquery.com/applications/themes/base/ui.core.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="http://ui.jquery.com/applications/themes/base/ui.theme.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="http://ui.jquery.com/applications/themes/base/ui.progressbar.css" type="text/css" media="screen">
+        <!-- 
+        <link rel="stylesheet" href="http://ui.jquery.com/applications/themes/base/ui.all.css" type="text/css" media="screen" title="Flora (Default)">
+         -->
+    </head>
+    <body>
+    <div id="mainDiv">
+        <div id="downloadsDiv">
+        </div>
+    </div>
+    
+        <div id="downloadsTemplate" class="downloadsDiv downloadDir@id">
+            <div class="downloads singleDownload id@id uri@class+ uri@rel">
+                <div class="downloadDetails searchResultDetails downloadLine">
+                    <div class="title normalBoldMedium downloadLine"></div>
+                    
+                    <div class="downloadLine">
+                        <span class="downloadDetail sizeDetail size">Size: </span>
+                        <span class="downloadDetail numFiles">Num Files: </span>
+                        
+                        <span class="downloadDetail numSourcesDetail downloadNumSources+">Sources: </span>
+                        
+                        <!-- 
+                        <span class="downloadDetail speedDetail downloadSpeed+">Speed: </span>
+                         
+                        <span class="downloadDetail bytesReadDetail downloadBytesRead+">Read: </span>
+                        -->
+                    </div>
+                </div>
+                
+                <div class="downloadStopOuter">
+                    <div class="progressBarDiv"></div>
+                    <div class="downloadDetails stopIcon smallIcon stopEnabled downloadStopIcon uri@rel"></div>
+                </div>
+                <div class="searchResultDetails downloadLine downloadStatus"></div>
+            </div>
+        </div>
+    
+    <!--  
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.2.3/dojo/dojo.xd.js"></script>
+    -->
+
+    <!-- 
+    <script type="text/javascript" src="js/jquery-ui-personalized-1.6rc5.packed.js"></script>
+     
+    <script type="text/javascript" src="js/purePacked-1.21.js"></script>
+    -->
+
+{% include "javaScriptIncludes.html" %}
+
+
+<!-- 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+-->
+
+    
+    <script type="text/javascript">
+        console.info("Loading...");
+        
+        var jsonDownloadsTemplate = {"total":0,"numDownloads":0,"downloadDir":"dir",
+            downloads: [{"title":"file", "downloadBytesRead":30, "numFiles": 10, "downloadNumSources" : 20, "downloadSpeed": 2.2, "size": 425, "downloadStatus":2,"uri":"YIX","id":"r","lastModified":11,"size":13}]
+        };
+        
+        var downloadData0 = {"total":4,"numDownloads":4,
+            downloads:[
+                         {"title":"bucket 0 file 1", "downloadBytesRead":30, "numFiles": 10, "downloadNumSources" : 20, "downloadSpeed": 432.2, "size": 424225, "downloadStatus":2,"uri":"YIUYICJNDKJLJMNHYGVL3HJQLXSPEQ7","lastModified":1231639053000,"size":13},
+                         {"title":"bucket 0 file 2","downloadBytesRead":10, "downloadNumSources" : 10, "downloadSpeed": 1000000.1, "length": 424225, "downloadStatus":6,"uri":"L554K2BE3JDSVA4CPWK4N34FQZ6CRXH6","lastModified":1231639054000,"size":15}],
+                         "downloadDir":"/Users/adamfisk/littleshoot/trunk/client/services/JsonDownloadsVisitorTest-TestDir"}; 
+
+        var downloadData1 = {"total":4,"numDownloads":4,
+            downloads:[
+                         {"title":"bucket 1 file 1", "downloadBytesRead":30, "numFiles": 10, "downloadNumSources" : 20, "downloadSpeed": 432.2, "size": 424225, "downloadStatus":2,"uri":"VLTPXCQP7FRZGKMNHYGVL3HJQLXSPEQ7","lastModified":1231639053000,"size":13},
+                         {"title":"bucket 1 file 2","downloadBytesRead":10, "downloadNumSources" : 10, "downloadSpeed": 1000000.1, "length": 424225, "downloadStatus":6,"uri":"L554K2BE3JDSVA4CPWK4N34FQZ6CRXH6","lastModified":1231639054000,"size":15},
+                         {"title":"bucket 1 file 3","downloadBytesRead":10, "downloadNumSources" : 10, "downloadSpeed": 1000000.1, "length": 424225, "downloadStatus":6,"uri":"L554K2BE3JDSVA4CPWK4N34FQZ6CRXH6","lastModified":1231639054000,"size":15},
+                         {"title":"bucket 1 file 4","downloadBytesRead":10, "downloadNumSources" : 10, "downloadSpeed": 1000000.1, "length": 424225, "downloadStatus":6,"uri":"L554K2BE3JDSVA4CPWK4N34FQZ6CRXH6","lastModified":1231639054000,"size":15}],
+                         "downloadDir":"/Users/adamfisk/littleshoot/trunk/client/services/JsonDownloadsVisitorTest-TestDir"}; 
+
+        var downloadData2 = {"total":4,"numDownloads":4,
+            downloads:[
+                         {"title":"bucket 2 file 1", "downloadBytesRead":30, "numFiles": 10, "downloadNumSources" : 20, "downloadSpeed": 432.2, "size": 424225, "downloadStatus":2,"uri":"URIOEOUORUOWUOWUOU","lastModified":1231639053000,"size":13},
+                         {"title":"bucket 2 file 2","downloadBytesRead":10, "downloadNumSources" : 10, "downloadSpeed": 1000000.1, "length": 424225, "downloadStatus":6,"uri":"YUIOPRROPEWIROP","lastModified":1231639054000,"size":15}],
+                         "downloadDir":"/Users/adamfisk/littleshoot/trunk/client/services/JsonDownloadsVisitorTest-TestDir"}; 
+
+        var dataSets = [downloadData0, downloadData1, downloadData2];
+
+        {% include "downloads.template.js" %}
+    </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+{% include "header.html" %}
+
+    {% include "dojoCss.html" %}
+    
+    <style type="text/css">
+        {% include "index.css" %}
+
+        {% block extraCss %}{% endblock extraCss %}
+    </style>
+    
+    {% include "combinedMediaCss.html" %}
+    
+</head>
+
+<body id="body" class="tundra commonBody">
+    
+    {% include "seoLinks.html" %}
+    
+    {% block loading %}{% endblock %}
+
+    <div id="customLogoDiv" style="opacity:0;"></div>
+    <div id="leftDiv"></div>
+    
+    {% block indexContent %}
+    <div id="contentDiv">
+        <div id="indexLogoDiv" class="sprite-logo_trans_big"></div>
+        
+        <div id="searchDiv">
+            <div class="indexRow1">
+                <span class="labelText1">SEARCH: </span>
+                <span class="labelText2">SEE WHAT'S OUT THERE</span>
+            </div> 
+            <div id="searchFormDiv" class="indexRow2" style="display:none;">
+                <form id="searchForm" name="searchForm" dojoType="dijit.form.Form" onSubmit="Search.startSearch(); return false;">
+                    <div id="searchCheckBoxes">
+                        <input id="videosCheckBox" dojotype="dijit.form.CheckBox"
+                               name="video" checked="checked" value="on"
+                               type="checkbox" />
+                        <label for="videosCheckBox" class="inputLabel">Video</label> 
+                        
+                        <input id="imagesCheckBox" dojotype="dijit.form.CheckBox"
+                               name="images" checked="checked" value="on"
+                               type="checkbox" />
+                        <label for="imagesCheckBox" class="inputLabel">Images</label> 
+                        
+                        <input id="audiosCheckBox" dojotype="dijit.form.CheckBox"
+                               name="audio" checked="checked" value="on"
+                               type="checkbox" />
+                        <label for="audiosCheckBox" class="inputLabel">Audio</label> 
+                        
+                        <input id="documentsCheckBox" dojotype="dijit.form.CheckBox"
+                               name="documents" checked="checked" value="on"
+                               type="checkbox" />
+                        <label for="documentsCheckBox" class="inputLabel">Documents</label> 
+                        
+                        <input id="applicationsCheckBox" dojotype="dijit.form.CheckBox"
+                               name="applications" checked="checked" value="on"
+                               type="checkbox" />
+                        <label for="applicationsCheckBox" class="inputLabel">Apps</label> 
+                    </div>
+                    <div id="searchSources" dojoType="dijit.TitlePane" title="Options:" open="false">
+                        <div>
+                            <input id="flickrCheckBox" dojotype="dijit.form.CheckBox"
+                                   name="flickr" checked="checked" value="on" 
+                                   type="checkbox"/>
+                            <label for="flickrCheckBox" class="optionsLabel">Flickr</label> 
+                        </div>
+                        <div>
+                            <input id="isoHuntCheckBox" dojotype="dijit.form.CheckBox"
+                                   name="isoHunt" checked="checked" value="on"
+                                   type="checkbox" />
+                            <label for="isoHuntCheckBox" class="optionsLabel">IsoHunt</label>
+                        </div> 
+                        <div>
+                            <input id="limeWireCheckBox" dojotype="dijit.form.CheckBox"
+                                   name="limeWire" checked="checked" value="on"
+                                   type="checkbox"/>
+                            <label for="limeWireCheckBox" class="optionsLabel">LimeWire</label> 
+                        </div>
+                        <div>
+                            <input id="littleShootCheckBox" dojotype="dijit.form.CheckBox"
+                                   name="littleShoot" checked="checked" value="on"
+                                   type="checkbox" />
+                            <label for="littleShootCheckBox" class="optionsLabel">LittleShoot</label> 
+                        </div>
+                        <div>
+                            <input id="yahooCheckBox" dojotype="dijit.form.CheckBox"
+                                   name="yahoo" checked="checked" value="on"
+                                   type="checkbox" />
+                            <label for="yahooCheckBox" class="optionsLabel">Yahoo</label> 
+                        </div>
+                        <div>
+                            <input id="youTubeCheckBox" dojotype="dijit.form.CheckBox"
+                                   name="youTube" checked="checked" value="on"
+                                   type="checkbox" />
+                            <label for="youTubeCheckBox" class="optionsLabel">YouTube</label>
+                        </div> 
+                        
+                        <div id="safeSearchDiv">
+                            <input id="safeSearchCheckBox" dojotype="dijit.form.CheckBox"
+                               name="safeSearch" checked="checked" value="on"
+                               type="checkbox" />
+                            <label for="safeSearchCheckBox" class="optionsLabel">Safe Search</label> 
+                        </div>
+                    </div>
+                    <div class="indexFormRow2">
+                        <input class="mediumTextBox" id="searchBox" type="text" name="keywords" 
+                        dojoType="dijit.form.TextBox" trim="true" required="true"/>
+                    </div>
+                </form>
+                <div id="searchButton" class="button searchButton">
+                    <span>SEARCH</span>
+                </div>  
+            </div>
+        </div>
+        <div id="publishDiv" style="display:none;">
+            <div class="indexRow1">
+                <span class="labelText1">PUBLISH: </span>
+                <span class="labelText2">PUT YOUR MEDIA OUT THERE</span>
+            </div> 
+            <div id="publishButtonDiv" class="indexRow2">
+
+            </div>
+        </div>
+    </div>
+    
+    <div id="bottomDiv"></div>
+
+    <div id="littleShootEmbed"></div>
+        
+    <div id="fakeFileUpload" class="fakeFile" style="display:none;">
+        <input type="file" id="invisibleFileInput" class="invisibleFileInput" noscript="true" onchange="Publisher.onFileChanged()" size="1"/>
+        <div class="buttonFileInput">
+           <span>BROWSE...</span>
+        </div>  
+    </div>
+    
+    <div id="loginFileUpload" class="button" style="display:none;">
+        <span>BROWSE...</span>
+    </div>
+
+    <div id="ff3FileUpload" class="button" style="display:none;">
+        <span>BROWSE...</span>
+    </div>
+    {% endblock indexContent %}
+
+    {% include "publishDialog.html" %}
+     
+    
+    {% include "flashDetection.html" %}
+
+    {% block indexJavaScript %}
+        <script type="text/javascript">
+            djConfig = {
+               parseOnLoad: true
+            };
+            littleShootConfig = 
+               {
+               disableAutoLoad : true
+               };
+        </script>
+    
+    
+        {% include "javaScriptIncludes.html" %}
+        
+        {% include "combinedMediaJs.html" %}
+        <script type="text/javascript">
+            jQuery().ready(function() {
+                dojo.addOnLoad(function() {
+                    LittleShootIndex.onOnLoad();
+                });
+            });
+        </script>
+        
+        {% include "analytics.html" %}
+    {% endblock %}
+
+</body>
+</html>

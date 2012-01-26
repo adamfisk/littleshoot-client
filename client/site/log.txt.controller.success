@@ -1,0 +1,392 @@
+0      2011-06-06 18:10:26,649 INFO  [Thread-2] download.DownloadFactoryImpl.loadTorrents (DownloadFactoryImpl.java:282) - Loading pre-existing torrents
+5      2011-06-06 18:10:26,654 WARN  [main] jni.JLibTorrent.<init> (JLibTorrent.java:91) - Could not load LibTorrent library!
+java.lang.UnsatisfiedLinkError: no jnltorrent in java.library.path
+	at java.lang.ClassLoader.loadLibrary(Unknown Source)
+	at java.lang.Runtime.loadLibrary0(Unknown Source)
+	at java.lang.System.loadLibrary(Unknown Source)
+	at org.lastbamboo.jni.JLibTorrent.<init>(JLibTorrent.java:84)
+	at org.lastbamboo.client.services.download.LibTorrentManagerImpl.<init>(LibTorrentManagerImpl.java:49)
+	at org.lastbamboo.client.LittleShootModule.<clinit>(LittleShootModule.java:85)
+	at org.lastbamboo.client.services.http.HttpServerImpl.<init>(HttpServerImpl.java:126)
+	at org.lastbamboo.client.launcher.all.Launcher.startServer(Launcher.java:579)
+	at org.lastbamboo.client.launcher.all.Launcher.main(Launcher.java:243)
+66     2011-06-06 18:10:26,715 DEBUG [main] http.HttpServerImpl.startServer (HttpServerImpl.java:299) - Starting server on port 8107
+110    2011-06-06 18:10:26,759 DEBUG [main] http.HttpServerImpl.launchServices (HttpServerImpl.java:251) - Launching services...
+111    2011-06-06 18:10:26,760 DEBUG [main] http.HttpServerImpl.joinServer (HttpServerImpl.java:309) - Starting server on port 8107
+1579   2011-06-06 18:10:28,228 INFO  [Launch-Services-Thread] services.SystemTrayImpl.createTray (SystemTrayImpl.java:57) - Creating tray...
+1811   2011-06-06 18:10:28,460 DEBUG [Launch-Services-Thread] services.Configurator.<init> (Configurator.java:27) - Configuring...
+3517   2011-06-06 18:10:30,166 INFO  [P2P-Init-Thread] services.Configurator.run (Configurator.java:41) - NOT AUTOMATICALLY LOGGING IN TO SIP SERVER WITH HII INSTANCE.
+4824   2011-06-06 18:10:31,473 DEBUG [Launch-Services-Thread] services.FileRefresherImpl.addDefaultSharedDirectories (FileRefresherImpl.java:126) - Creating shared directories...
+4825   2011-06-06 18:10:31,474 DEBUG [Heartbeat-Thread-12134742] services.HeartbeatImpl.run (HeartbeatImpl.java:36) - Starting update process...
+4827   2011-06-06 18:10:31,476 DEBUG [Launch-Services-Thread] services.FileRefresherImpl.addDefaultSharedDirectories (FileRefresherImpl.java:145) - Will continually refresh directory at: C:\Users\afisk\shared\public
+16313  2011-06-06 18:10:42,962 INFO  [qtp10038190-20] handlers.LoginController.doPost (LoginController.java:31) - Processing login request...
+16316  2011-06-06 18:10:42,965 DEBUG [qtp10038190-20] bootstrap.SipClientLauncher.login (SipClientLauncher.java:66) - Registering...
+16329  2011-06-06 18:10:42,978 INFO  [qtp10038190-20] handlers.LoginController.doPost (LoginController.java:53) - Logged in
+16329  2011-06-06 18:10:42,978 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] bootstrap.RobustProxyRegistrarFactoryImpl.getCandidates (RobustProxyRegistrarFactoryImpl.java:63) - Accessing SIP servers...
+16331  2011-06-06 18:10:42,980 INFO  [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] bootstrap.RobustProxyRegistrarFactoryImpl.getCandidates (RobustProxyRegistrarFactoryImpl.java:69) - Connecting to servers: [sip2.littleshoot.org/75.101.156.158:5061]
+16331  2011-06-06 18:10:42,980 INFO  [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] bootstrap.RobustProxyRegistrarFactoryImpl.getCandidates (RobustProxyRegistrarFactoryImpl.java:72) - Processing candidate address: sip2.littleshoot.org/75.101.156.158:5061
+16333  2011-06-06 18:10:42,982 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] bootstrap.RegistrarConnectionEstablisher.establish (RegistrarConnectionEstablisher.java:163) - Registering with: sip:75.101.156.158:5061;transport=tcp
+16344  2011-06-06 18:10:42,993 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] util.UriUtilsImpl.getUserInSipUri (UriUtilsImpl.java:132) - Getting user for URI: sip:7777777@lastbamboo.org
+16345  2011-06-06 18:10:42,994 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] util.UriUtilsImpl.getHostInSipUri (UriUtilsImpl.java:141) - Parsing URI string: sip:75.101.156.158:5061;transport=tcp
+16346  2011-06-06 18:10:42,995 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] util.UriUtilsImpl.getHostInSipUri (UriUtilsImpl.java:147) - Candidate 1: 75.101.156.158
+16346  2011-06-06 18:10:42,995 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] util.UriUtilsImpl.getPortInSipUri (UriUtilsImpl.java:179) - Getting port from URI: sip:75.101.156.158:5061;transport=tcp
+16347  2011-06-06 18:10:42,996 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] util.UriUtilsImpl.getPortInSipUri (UriUtilsImpl.java:185) - Found port: 5061
+16347  2011-06-06 18:10:42,996 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] client.SipClientImpl.connect (SipClientImpl.java:195) - Connecting to registrar at: /75.101.156.158:5061
+16621  2011-06-06 18:10:43,270 DEBUG [SocketConnectorIoProcessor-0.0] client.SipClientImpl.serviceActivated (SipClientImpl.java:435) - Service activated.
+16627  2011-06-06 18:10:43,276 DEBUG [SocketConnectorIoProcessor-0.0] client.SipClientImpl.sessionCreated (SipClientImpl.java:445) - Session created.
+16627  2011-06-06 18:10:43,276 DEBUG [SIP-Client-Thread-Pool-26516103] codec.SipIoHandler.sessionOpened (SipIoHandler.java:95) - Session opened!!!
+16628  2011-06-06 18:10:43,277 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] client.SipClientImpl.connect (SipClientImpl.java:259) - Successfully connected to the SIP server!
+16631  2011-06-06 18:10:43,280 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+16632  2011-06-06 18:10:43,281 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+16634  2011-06-06 18:10:43,283 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+16634  2011-06-06 18:10:43,283 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+16635  2011-06-06 18:10:43,284 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+16636  2011-06-06 18:10:43,285 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+16637  2011-06-06 18:10:43,286 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+16637  2011-06-06 18:10:43,286 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+16642  2011-06-06 18:10:43,291 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] transport.SipTcpTransportLayerImpl.register (SipTcpTransportLayerImpl.java:127) - Writing request to: (SOCKET, R: /75.101.156.158:5061, L: /192.168.2.72:60780, S: /75.101.156.158:5061)
+16643  2011-06-06 18:10:43,292 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+16647  2011-06-06 18:10:43,296 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] client.SipTransactionTrackerImpl.trackTransaction (SipTransactionTrackerImpl.java:27) - Tracking transaction...
+16651  2011-06-06 18:10:43,300 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] encoder.SipMessageProtocolEncoder.encode (SipMessageProtocolEncoder.java:38) - Attempted encodes: 1
+16652  2011-06-06 18:10:43,301 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] encoder.SipMessageEncoderImpl.encodeStartLine (SipMessageEncoderImpl.java:102) - Encoding start line: 'REGISTER sip:lastbamboo.org SIP/2.0'
+16654  2011-06-06 18:10:43,303 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] encoder.SipMessageEncoderImpl.encodeHeaders (SipMessageEncoderImpl.java:117) - Appending headers: {From=From: [Anonymous <sip:7777777@lastbamboo.org> {tag=b4f94723-b}], To=To: [Anonymous <sip:7777777@lastbamboo.org> {}], CSeq=CSeq: [2 REGISTER {}], Content-Length=Content-Length: [0 {}], Expires=Expires: [7200 {}], Contact=Contact: [<sip:7777777@192.168.2.72> {+sip.instance="<urn:uuid:85dfe14d-be30-4a9d-b330-3720cc5e305c>"}], Via=Via: [SIP/2.0/TCP 192.168.2.72 {branch=z9hG4bK3fdd93c}], Max-Forwards=Max-Forwards: [70 {}], Call-ID=Call-ID: [3857769- {}]}
+16658  2011-06-06 18:10:43,307 DEBUG [SocketConnectorIoProcessor-0.0] transport.SipTcpTransportLayerImpl.operationComplete (SipTcpTransportLayerImpl.java:291) - Wrote messages: 1 on session (SOCKET, R: /75.101.156.158:5061, L: /192.168.2.72:60780, S: /75.101.156.158:5061)
+16659  2011-06-06 18:10:43,308 DEBUG [SIP-Client-Thread-Pool-26516103] codec.SipIoHandler.messageSent (SipIoHandler.java:90) - Message sent to: /75.101.156.158:5061
+16892  2011-06-06 18:10:43,541 DEBUG [SocketConnectorIoProcessor-0.0] codec.SipProtocolCodecFactory.getDecoder (SipProtocolCodecFactory.java:35) - Creating new decoder...
+16905  2011-06-06 18:10:43,554 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipFirstLineDecodingState.determineMessageType (SipFirstLineDecodingState.java:125) - Matching message type for: SIP/2.0
+16907  2011-06-06 18:10:43,556 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipFirstLineDecodingState.finishDecode (SipFirstLineDecodingState.java:82) - Found message type: SIP_2_0
+16919  2011-06-06 18:10:43,568 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipMessageDecodingState.finishDecode (SipMessageDecodingState.java:99) - Handling message type: SIP_2_0
+16930  2011-06-06 18:10:43,579 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipHeaderDecodingState.finishDecode (SipHeaderDecodingState.java:116) - Read header value: Anonymous <sip:7777777@lastbamboo.org>;tag=b4f94723-b
+16935  2011-06-06 18:10:43,584 DEBUG [SocketConnectorIoProcessor-0.0] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+16939  2011-06-06 18:10:43,588 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipHeaderDecodingState.finishDecode (SipHeaderDecodingState.java:116) - Read header value: Anonymous <sip:7777777@lastbamboo.org>;tag=2f9317e0-a
+16941  2011-06-06 18:10:43,590 DEBUG [SocketConnectorIoProcessor-0.0] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+16943  2011-06-06 18:10:43,592 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipHeaderDecodingState.finishDecode (SipHeaderDecodingState.java:116) - Read header value: 2 REGISTER
+16951  2011-06-06 18:10:43,600 DEBUG [SocketConnectorIoProcessor-0.0] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+16952  2011-06-06 18:10:43,601 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipHeaderDecodingState.finishDecode (SipHeaderDecodingState.java:116) - Read header value: outbound
+16953  2011-06-06 18:10:43,602 DEBUG [SocketConnectorIoProcessor-0.0] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+16954  2011-06-06 18:10:43,603 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipHeaderDecodingState.finishDecode (SipHeaderDecodingState.java:116) - Read header value: SIP/2.0/TCP 192.168.2.72;branch=z9hG4bK3fdd93c
+16954  2011-06-06 18:10:43,603 DEBUG [SocketConnectorIoProcessor-0.0] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+16955  2011-06-06 18:10:43,604 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipHeaderDecodingState.finishDecode (SipHeaderDecodingState.java:116) - Read header value: 3857769-
+16956  2011-06-06 18:10:43,605 DEBUG [SocketConnectorIoProcessor-0.0] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+16957  2011-06-06 18:10:43,606 DEBUG [SocketConnectorIoProcessor-0.0] message.SipMessageUtils.extractContentLength (SipMessageUtils.java:342) - No Content-Length header
+16957  2011-06-06 18:10:43,606 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipMessageDecodingState.finishDecode (SipMessageDecodingState.java:159) - Returning SIP message with NO body...
+16958  2011-06-06 18:10:43,607 DEBUG [SocketConnectorIoProcessor-0.0] message.AbstractSipMessage.createResponseStatusLine (AbstractSipMessage.java:89) - Returning response line: SIP/2.0 200 OK
+16960  2011-06-06 18:10:43,609 DEBUG [SIP-Client-Thread-Pool-26516103] codec.SipIoHandler.messageReceived (SipIoHandler.java:75) - Received message.  Now read: 1 
+16962  2011-06-06 18:10:43,611 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipClientMessageVisitor.visitResponse (SipClientMessageVisitor.java:128) - Visiting OK response: SipResponse
+16963  2011-06-06 18:10:43,612 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipTransactionTrackerImpl.getClientTransaction (SipTransactionTrackerImpl.java:36) - Accessing client transaction...
+16964  2011-06-06 18:10:43,613 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipTransactionTrackerImpl.getClientTransaction (SipTransactionTrackerImpl.java:38) - Using key: z9hG4bK3fdd93cREGISTER
+16965  2011-06-06 18:10:43,614 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipClientMessageVisitor.notifyTransaction (SipClientMessageVisitor.java:135) - Accessed transaction: org.lastbamboo.common.sip.stack.transaction.client.SipClientTransactionImpl@1286180
+16965  2011-06-06 18:10:43,614 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipClientTransactionImpl.visitResponse (SipClientTransactionImpl.java:103) - SIP client transaction visiting response...
+16966  2011-06-06 18:10:43,615 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipClientTransactionImpl.visitResponse (SipClientTransactionImpl.java:110) - Canceling TIMER B
+16967  2011-06-06 18:10:43,616 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipClientTransactionImpl.visitResponse (SipClientTransactionImpl.java:119) - Transaction time: 320
+16967  2011-06-06 18:10:43,616 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipClientImpl.onTransactionSucceeded (SipClientImpl.java:370) - Received OK response to register request: SipResponse
+16968  2011-06-06 18:10:43,617 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipTransactionTrackerImpl.removeTransaction (SipTransactionTrackerImpl.java:78) - Removing transaction with key 'z9hG4bK3fdd93cREGISTER'
+16969  2011-06-06 18:10:43,618 DEBUG [SIP-Client-Thread-Pool-26516103] codec.SipIoHandler.messageReceived (SipIoHandler.java:83) - Message processing complete for: SipResponse
+16970  2011-06-06 18:10:43,619 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] bootstrap.ProxyRegistrarImpl.register (ProxyRegistrarImpl.java:125) - Adding SIP client!!
+16971  2011-06-06 18:10:43,620 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] client.SipClientTrackerImpl.addSipClient (SipClientTrackerImpl.java:73) - Adding SIP client: org.lastbamboo.common.sip.client.SipClientImpl@144c5bb
+16972  2011-06-06 18:10:43,621 DEBUG [ConnectionMaintainerImpl-25659337-establisher-RegistrarConnectionEstablisher] bootstrap.SipClientLauncher.registered (SipClientLauncher.java:105) - Got registered
+35499  2011-06-06 18:11:02,148 TRACE [Start-Call-Thread] bootstrap.SipClientLauncher.newUnreliableSocket (SipClientLauncher.java:142) - Creating SIP socket for URI: sip:4444@lastbamboo.org
+35791  2011-06-06 18:11:02,440 DEBUG [UdpStunClient-4] ice.IceStunConnectivityCheckerFactoryImpl.createVisitor (IceStunConnectivityCheckerFactoryImpl.java:46) - Creating new message visitor for session: (DATAGRAM, R: stun.ideasip.com/208.97.25.20:3478, L: /192.168.2.72:52728, S: stun.ideasip.com/208.97.25.20:3478)
+35799  2011-06-06 18:11:02,448 DEBUG [UdpStunClient-4] ice.IceStunConnectivityCheckerImpl.visitBindingSuccessResponse (StunClientMessageVisitor.java:53) - Received Binding Response: BindingSuccessResponse with MAPPED ADDRESS: /219.89.215.162:52728
+35801  2011-06-06 18:11:02,450 DEBUG [UdpStunClient-4] ice.IceStunConnectivityCheckerImpl.notifyTransaction (StunClientMessageVisitor.java:61) - Accessed transaction: org.littleshoot.stun.stack.transaction.StunClientTransactionImpl@9dc8f2
+35821  2011-06-06 18:11:02,470 DEBUG [Start-Call-Thread] ice.IceStunUdpPeer.<init> (IceStunUdpPeer.java:117) - Started STUN CLIENT on local address: /192.168.2.72:52728
+35821  2011-06-06 18:11:02,470 DEBUG [Start-Call-Thread] ice.IceStunUdpPeer.<init> (IceStunUdpPeer.java:119) - Started STUN SERVER on local address: /192.168.2.72:52728
+35824  2011-06-06 18:11:02,473 DEBUG [Start-Call-Thread] ice.GeneralIceMediaStreamFactoryImpl.newIceMediaStream (GeneralIceMediaStreamFactoryImpl.java:118) - Added media stream as listener...connecting...
+35828  2011-06-06 18:11:02,477 INFO  [Start-Call-Thread] ice.IceStunUdpPeer.getServerReflexiveAddress (IceStunUdpPeer.java:143) - Getting server reflexive address
+35828  2011-06-06 18:11:02,477 INFO  [Start-Call-Thread] candidate.UdpIceCandidateGatherer.createUdpCandidates (UdpIceCandidateGatherer.java:114) - Got server reflexive: /219.89.215.162:52728
+35829  2011-06-06 18:11:02,478 DEBUG [Start-Call-Thread] candidate.UdpIceCandidateGatherer.eliminateRedundantCandidates (UdpIceCandidateGatherer.java:78) - Checking: IceUdpHostCandidate controlling /192.168.2.72:52728 UDP
+35830  2011-06-06 18:11:02,479 DEBUG [Start-Call-Thread] candidate.UdpIceCandidateGatherer.eliminateRedundantCandidates (UdpIceCandidateGatherer.java:78) - Checking: IceUdpServerReflexiveCandidate controlling /219.89.215.162:52728 UDP
+35834  2011-06-06 18:11:02,483 DEBUG [Start-Call-Thread] ice.IceCheckListImpl.<init> (IceCheckListImpl.java:80) - Using local candidates: [IceUdpHostCandidate controlling /192.168.2.72:52728 UDP, IceUdpServerReflexiveCandidate controlling /219.89.215.162:52728 UDP]
+35836  2011-06-06 18:11:02,485 INFO  [Start-Call-Thread] ice.IceOfferAnswerFactory.newTcpOfferAnswer (IceOfferAnswerFactory.java:191) - Creating new TCP offer answer
+35837  2011-06-06 18:11:02,486 INFO  [Start-Call-Thread] ice.TcpOfferAnswer.<init> (TcpOfferAnswer.java:81) - Using pooled offerer server
+35838  2011-06-06 18:11:02,487 INFO  [Start-Call-Thread] ice.TcpOfferAnswer.<init> (TcpOfferAnswer.java:88) - Starting offer answer
+35838  2011-06-06 18:11:02,487 INFO  [TCP-Ice-Server-Thread-3811922: afisk-protege/192.168.2.72:26612] ice.TcpOfferAnswer.run (TcpOfferAnswer.java:129) - Waiting for incoming socket on: afisk-protege/192.168.2.72:26612
+35865  2011-06-06 18:11:02,514 DEBUG [DatagramAcceptor-0] ice.IceMediaStreamImpl.sessionCreated (IceMediaStreamImpl.java:584) - Setting media stream on session
+35866  2011-06-06 18:11:02,515 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerFactoryImpl.createVisitor (IceStunConnectivityCheckerFactoryImpl.java:46) - Creating new message visitor for session: (DATAGRAM, R: /208.97.25.20:3478, L: /192.168.2.72:52728, S: /192.168.2.72:52728)
+35867  2011-06-06 18:11:02,516 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.visitBindingSuccessResponse (StunClientMessageVisitor.java:53) - Received Binding Response: BindingSuccessResponse with MAPPED ADDRESS: /219.89.215.162:52728
+35867  2011-06-06 18:11:02,516 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.notifyTransaction (StunClientMessageVisitor.java:61) - Accessed transaction: null
+35868  2011-06-06 18:11:02,517 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.notifyTransaction (StunClientMessageVisitor.java:68) - No matching transaction for response: BindingSuccessResponse with MAPPED ADDRESS: /219.89.215.162:52728
+36027  2011-06-06 18:11:02,676 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerFactoryImpl.createVisitor (IceStunConnectivityCheckerFactoryImpl.java:46) - Creating new message visitor for session: (DATAGRAM, R: /208.97.25.20:3478, L: /192.168.2.72:52728, S: /192.168.2.72:52728)
+36028  2011-06-06 18:11:02,677 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.visitBindingSuccessResponse (StunClientMessageVisitor.java:53) - Received Binding Response: BindingSuccessResponse with MAPPED ADDRESS: /219.89.215.162:52728
+36030  2011-06-06 18:11:02,679 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.notifyTransaction (StunClientMessageVisitor.java:61) - Accessed transaction: null
+36031  2011-06-06 18:11:02,680 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.notifyTransaction (StunClientMessageVisitor.java:68) - No matching transaction for response: BindingSuccessResponse with MAPPED ADDRESS: /219.89.215.162:52728
+36083  2011-06-06 18:11:02,732 INFO  [Start-Call-Thread] ice.TcpOfferAnswer.gatherCandidates (TcpOfferAnswer.java:339) - Not adding public candidate. PA: /219.89.215.162 mapped: false
+36084  2011-06-06 18:11:02,733 INFO  [Start-Call-Thread] sdp.IceCandidateSdpEncoder.visitCandidates (IceCandidateSdpEncoder.java:161) - Visiting candidates: [IceUdpServerReflexiveCandidate controlling /219.89.215.162:52728 UDP, IceUdpHostCandidate controlling /192.168.2.72:52728 UDP, IceTcpHostPassiveCandidate controlling afisk-protege/192.168.2.72:26612 TCP]
+36084  2011-06-06 18:11:02,733 INFO  [Start-Call-Thread] sdp.IceCandidateSdpEncoder.visitUdpServerReflexiveCandidate (IceCandidateSdpEncoder.java:247) - Visiting UDP server reflexive: IceUdpServerReflexiveCandidate controlling /219.89.215.162:52728 UDP
+36092  2011-06-06 18:11:02,741 DEBUG [Start-Call-Thread] sdp.IceCandidateSdpEncoder.visitCandidates (IceCandidateSdpEncoder.java:184) - Adding media description
+36096  2011-06-06 18:11:02,745 INFO  [Start-Call-Thread] p2p.DefaultTcpUdpSocket.waitForSocket (DefaultTcpUdpSocket.java:128) - Waiting for socket -- sent offer.
+36097  2011-06-06 18:11:02,746 INFO  [pool-2-thread-1] client.SipClientImpl.offer (SipClientImpl.java:299) - Sending offer to SIP URI: sip:4444@lastbamboo.org
+36097  2011-06-06 18:11:02,746 INFO  [Start-Call-Thread] p2p.DefaultTcpUdpSocket.waitForSocket (DefaultTcpUdpSocket.java:131) - Waiting for answer
+36103  2011-06-06 18:11:02,752 DEBUG [pool-1-thread-1] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+36103  2011-06-06 18:11:02,752 DEBUG [pool-1-thread-1] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+36104  2011-06-06 18:11:02,753 DEBUG [pool-1-thread-1] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+36104  2011-06-06 18:11:02,753 DEBUG [pool-1-thread-1] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+36105  2011-06-06 18:11:02,754 DEBUG [pool-1-thread-1] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+36105  2011-06-06 18:11:02,754 DEBUG [pool-1-thread-1] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+36105  2011-06-06 18:11:02,754 DEBUG [pool-1-thread-1] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+36106  2011-06-06 18:11:02,755 DEBUG [pool-1-thread-1] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+36106  2011-06-06 18:11:02,755 DEBUG [pool-1-thread-1] transport.SipTcpTransportLayerImpl.invite (SipTcpTransportLayerImpl.java:99) - Writing request to: (SOCKET, R: /75.101.156.158:5061, L: /192.168.2.72:60780, S: /75.101.156.158:5061)
+36107  2011-06-06 18:11:02,756 DEBUG [pool-1-thread-1] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+36108  2011-06-06 18:11:02,757 DEBUG [pool-1-thread-1] client.SipTransactionTrackerImpl.trackTransaction (SipTransactionTrackerImpl.java:27) - Tracking transaction...
+36108  2011-06-06 18:11:02,757 DEBUG [pool-1-thread-1] encoder.SipMessageProtocolEncoder.encode (SipMessageProtocolEncoder.java:38) - Attempted encodes: 2
+36109  2011-06-06 18:11:02,758 DEBUG [pool-1-thread-1] encoder.SipMessageEncoderImpl.encodeStartLine (SipMessageEncoderImpl.java:102) - Encoding start line: 'INVITE sip:4444@lastbamboo.org SIP/2.0'
+36110  2011-06-06 18:11:02,759 DEBUG [pool-1-thread-1] encoder.SipMessageEncoderImpl.encodeHeaders (SipMessageEncoderImpl.java:117) - Appending headers: {From=From: [Anonymous <sip:7777777@lastbamboo.org> {tag=d3409764-a}], To=To: [Anonymous <sip:4444@lastbamboo.org> {}], CSeq=CSeq: [3 INVITE {}], Content-Length=Content-Length: [396 {}], Expires=Expires: [7200 {}], Contact=Contact: [<sip:7777777@192.168.2.72> {+sip.instance="<urn:uuid:85dfe14d-be30-4a9d-b330-3720cc5e305c>"}], Via=Via: [SIP/2.0/TCP 192.168.2.72 {branch=z9hG4bKa979878}], Max-Forwards=Max-Forwards: [70 {}], Call-ID=Call-ID: [5cdb59a- {}]}
+36113  2011-06-06 18:11:02,762 DEBUG [SocketConnectorIoProcessor-0.0] transport.SipTcpTransportLayerImpl.operationComplete (SipTcpTransportLayerImpl.java:291) - Wrote messages: 2 on session (SOCKET, R: /75.101.156.158:5061, L: /192.168.2.72:60780, S: /75.101.156.158:5061)
+36113  2011-06-06 18:11:02,762 DEBUG [SIP-Client-Thread-Pool-26516103] codec.SipIoHandler.messageSent (SipIoHandler.java:90) - Message sent to: /75.101.156.158:5061
+37544  2011-06-06 18:11:04,193 DEBUG [DatagramAcceptor-0] ice.IceMediaStreamImpl.sessionCreated (IceMediaStreamImpl.java:584) - Setting media stream on session
+37548  2011-06-06 18:11:04,197 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerFactoryImpl.createVisitor (IceStunConnectivityCheckerFactoryImpl.java:46) - Creating new message visitor for session: (DATAGRAM, R: /210.55.240.72:53694, L: /192.168.2.72:52728, S: /192.168.2.72:52728)
+37551  2011-06-06 18:11:04,200 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.visitBindingRequest (IceStunConnectivityCheckerImpl.java:81) - Visiting Binding Request message: BindingRequest {ICE_CONTROLLED=IceControlledAttribute with tie breaker: A0 EC 3A 9D B4 D8 4A 7A, ICE_PRIORITY=IcePriorityAttribute priority: 1852440575} body length: 20
+37553  2011-06-06 18:11:04,202 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.visitBindingRequest (IceStunConnectivityCheckerImpl.java:117) - Not from ourselves...
+37556  2011-06-06 18:11:04,205 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceRoleCheckerImpl.checkAndRepairRoles (IceRoleCheckerImpl.java:31) - Checking roles...
+37558  2011-06-06 18:11:04,207 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.visitBindingRequest (IceStunConnectivityCheckerImpl.java:125) - Checked role conflict...
+37559  2011-06-06 18:11:04,208 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.visitBindingRequest (IceStunConnectivityCheckerImpl.java:138) - Processing no role conflict...
+37560  2011-06-06 18:11:04,209 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.processNoRoleConflict (IceStunConnectivityCheckerImpl.java:190) - Using normal remote address: /210.55.240.72:53694
+37561  2011-06-06 18:11:04,210 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.processNoRoleConflict (IceStunConnectivityCheckerImpl.java:199) - Writing success response...
+37564  2011-06-06 18:11:04,213 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceMediaStreamImpl.getCandidate (IceMediaStreamImpl.java:337) - /210.55.240.72:53694 with transport: UDP not found in []
+37567  2011-06-06 18:11:04,216 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.processNoRoleConflict (IceStunConnectivityCheckerImpl.java:212) - New remote candidate...
+37569  2011-06-06 18:11:04,218 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceMediaStreamImpl.addRemotePeerReflexive (IceMediaStreamImpl.java:169) - Creating new peer reflexive candidate
+37572  2011-06-06 18:11:04,221 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.processNoRoleConflict (IceStunConnectivityCheckerImpl.java:215) - Added peer reflexive remote candidate: IceUdpPeerReflexiveCandidate controlling /210.55.240.72:53694 UDP
+37573  2011-06-06 18:11:04,222 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.processNoRoleConflict (IceStunConnectivityCheckerImpl.java:227) - Using existing local candidate: IceUdpHostCandidate controlling /192.168.2.72:52728 UDP
+37574  2011-06-06 18:11:04,223 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.processNoRoleConflict (IceStunConnectivityCheckerImpl.java:296) - Creating new candidate pair.
+37583  2011-06-06 18:11:04,232 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceMediaStreamImpl.addPair (IceMediaStreamImpl.java:519) - Adding pair to media stream: IceMediaStreamImpl controlling: true
+37585  2011-06-06 18:11:04,234 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceMediaStreamImpl.addTriggeredPair (IceMediaStreamImpl.java:502) - Adding triggered pair to media stream: IceMediaStreamImpl controlling: true
+37585  2011-06-06 18:11:04,234 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceCheckListImpl.addTriggeredPair (IceCheckListImpl.java:152) - Adding triggered pair:
+local:               IceUdpHostCandidate controlling /192.168.2.72:52728 UDP
+remote:              IceUdpPeerReflexiveCandidate controlling /210.55.240.72:53694 UDP
+state:               WAITING
+use-candidate:       false
+nominated:           false
+37587  2011-06-06 18:11:04,236 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerFactoryImpl.createVisitor (IceStunConnectivityCheckerFactoryImpl.java:46) - Creating new message visitor for session: (DATAGRAM, R: /210.55.240.72:53694, L: /192.168.2.72:52728, S: /192.168.2.72:52728)
+37587  2011-06-06 18:11:04,236 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.visitBindingRequest (IceStunConnectivityCheckerImpl.java:81) - Visiting Binding Request message: BindingRequest {ICE_CONTROLLED=IceControlledAttribute with tie breaker: A0 EC 3A 9D B4 D8 4A 7A, ICE_PRIORITY=IcePriorityAttribute priority: 1852440575} body length: 20
+37588  2011-06-06 18:11:04,237 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.visitBindingRequest (IceStunConnectivityCheckerImpl.java:89) - We've recently processed the request -- ignoring duplicate
+37589  2011-06-06 18:11:04,238 INFO  [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.visitBindingRequest (IceStunConnectivityCheckerImpl.java:98) - Writing same response again
+37612  2011-06-06 18:11:04,261 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerFactoryImpl.createVisitor (IceStunConnectivityCheckerFactoryImpl.java:46) - Creating new message visitor for session: (DATAGRAM, R: /210.55.240.72:53694, L: /192.168.2.72:52728, S: /192.168.2.72:52728)
+37613  2011-06-06 18:11:04,262 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.visitBindingRequest (IceStunConnectivityCheckerImpl.java:81) - Visiting Binding Request message: BindingRequest {ICE_CONTROLLED=IceControlledAttribute with tie breaker: A0 EC 3A 9D B4 D8 4A 7A, ICE_PRIORITY=IcePriorityAttribute priority: 1852440575} body length: 20
+37613  2011-06-06 18:11:04,262 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.visitBindingRequest (IceStunConnectivityCheckerImpl.java:89) - We've recently processed the request -- ignoring duplicate
+37614  2011-06-06 18:11:04,263 INFO  [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.visitBindingRequest (IceStunConnectivityCheckerImpl.java:98) - Writing same response again
+37716  2011-06-06 18:11:04,365 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipFirstLineDecodingState.determineMessageType (SipFirstLineDecodingState.java:125) - Matching message type for: SIP/2.0
+37718  2011-06-06 18:11:04,367 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipFirstLineDecodingState.finishDecode (SipFirstLineDecodingState.java:82) - Found message type: SIP_2_0
+37719  2011-06-06 18:11:04,368 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipMessageDecodingState.finishDecode (SipMessageDecodingState.java:99) - Handling message type: SIP_2_0
+37721  2011-06-06 18:11:04,370 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipHeaderDecodingState.finishDecode (SipHeaderDecodingState.java:116) - Read header value: Anonymous <sip:7777777@lastbamboo.org>;tag=d3409764-a
+37722  2011-06-06 18:11:04,371 DEBUG [SocketConnectorIoProcessor-0.0] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+37723  2011-06-06 18:11:04,372 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipHeaderDecodingState.finishDecode (SipHeaderDecodingState.java:116) - Read header value: Anonymous <sip:4444@lastbamboo.org>;tag=d64c445b-5
+37725  2011-06-06 18:11:04,374 DEBUG [SocketConnectorIoProcessor-0.0] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+37726  2011-06-06 18:11:04,375 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipHeaderDecodingState.finishDecode (SipHeaderDecodingState.java:116) - Read header value: 3 INVITE
+37727  2011-06-06 18:11:04,376 DEBUG [SocketConnectorIoProcessor-0.0] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+37729  2011-06-06 18:11:04,378 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipHeaderDecodingState.finishDecode (SipHeaderDecodingState.java:116) - Read header value: 539
+37730  2011-06-06 18:11:04,379 DEBUG [SocketConnectorIoProcessor-0.0] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+37732  2011-06-06 18:11:04,381 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipHeaderDecodingState.finishDecode (SipHeaderDecodingState.java:116) - Read header value: <sip:4444@192.168.1.56>;+sip.instance="<urn:uuid:9ce506a6-a40c-4ff7-9559-fa33981e5feb>"
+37733  2011-06-06 18:11:04,382 DEBUG [SocketConnectorIoProcessor-0.0] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+37734  2011-06-06 18:11:04,383 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipHeaderDecodingState.finishDecode (SipHeaderDecodingState.java:116) - Read header value: SIP/2.0/TCP 192.168.2.72;branch=z9hG4bKa979878;received=219.89.215.162;rport=60780
+37735  2011-06-06 18:11:04,384 DEBUG [SocketConnectorIoProcessor-0.0] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+37737  2011-06-06 18:11:04,386 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipHeaderDecodingState.finishDecode (SipHeaderDecodingState.java:116) - Read header value: 5cdb59a-
+37737  2011-06-06 18:11:04,386 DEBUG [SocketConnectorIoProcessor-0.0] header.SipHeaderImpl.<init> (SipHeaderImpl.java:31) - Creating header with 1 values...
+37738  2011-06-06 18:11:04,387 DEBUG [SocketConnectorIoProcessor-0.0] message.SipMessageUtils.extractContentLength (SipMessageUtils.java:354) - Parsing length: 539
+37739  2011-06-06 18:11:04,388 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipMessageDecodingState.finishDecode (SipMessageDecodingState.java:154) - Reading body with length: 539
+37741  2011-06-06 18:11:04,390 DEBUG [SocketConnectorIoProcessor-0.0] decoder.SipMessageDecodingState.finishDecode (SipMessageDecodingState.java:189) - Returning SIP message with body...
+37742  2011-06-06 18:11:04,391 DEBUG [SocketConnectorIoProcessor-0.0] message.AbstractSipMessage.createResponseStatusLine (AbstractSipMessage.java:89) - Returning response line: SIP/2.0 200 OK
+37743  2011-06-06 18:11:04,392 DEBUG [SIP-Client-Thread-Pool-26516103] codec.SipIoHandler.messageReceived (SipIoHandler.java:75) - Received message.  Now read: 2 
+37744  2011-06-06 18:11:04,393 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipClientMessageVisitor.visitResponse (SipClientMessageVisitor.java:128) - Visiting OK response: SipResponse
+37745  2011-06-06 18:11:04,394 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipTransactionTrackerImpl.getClientTransaction (SipTransactionTrackerImpl.java:36) - Accessing client transaction...
+37746  2011-06-06 18:11:04,395 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipTransactionTrackerImpl.getClientTransaction (SipTransactionTrackerImpl.java:38) - Using key: z9hG4bKa979878INVITE
+37747  2011-06-06 18:11:04,396 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipClientMessageVisitor.notifyTransaction (SipClientMessageVisitor.java:135) - Accessed transaction: org.lastbamboo.common.sip.stack.transaction.client.SipClientTransactionImpl@ec1e6f
+37748  2011-06-06 18:11:04,397 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipClientTransactionImpl.visitResponse (SipClientTransactionImpl.java:103) - SIP client transaction visiting response...
+37749  2011-06-06 18:11:04,398 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipClientTransactionImpl.visitResponse (SipClientTransactionImpl.java:110) - Canceling TIMER B
+37750  2011-06-06 18:11:04,399 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipClientTransactionImpl.visitResponse (SipClientTransactionImpl.java:119) - Transaction time: 1642
+37751  2011-06-06 18:11:04,400 TRACE [SIP-Client-Thread-Pool-26516103] p2p.DefaultTcpUdpSocket.onTransactionSucceeded (DefaultTcpUdpSocket.java:219) - Received INVITE OK
+37752  2011-06-06 18:11:04,401 DEBUG [SIP-Client-Thread-Pool-26516103] p2p.DefaultTcpUdpSocket.onTransactionSucceeded (DefaultTcpUdpSocket.java:221) - Successful transaction after 2251 milliseconds...
+37753  2011-06-06 18:11:04,402 INFO  [Start-Call-Thread] p2p.DefaultTcpUdpSocket.waitForSocket (DefaultTcpUdpSocket.java:150) - Got answer...
+37754  2011-06-06 18:11:04,403 INFO  [Start-Call-Thread] p2p.DefaultTcpUdpSocket.waitForSocket (DefaultTcpUdpSocket.java:153) - Got socket lock...
+37754  2011-06-06 18:11:04,403 TRACE [Start-Call-Thread] p2p.DefaultTcpUdpSocket.waitForSocket (DefaultTcpUdpSocket.java:159) - Waiting for socket...
+37755  2011-06-06 18:11:04,404 DEBUG [SIP-Client-Thread-Pool-26516103] client.SipTransactionTrackerImpl.removeTransaction (SipTransactionTrackerImpl.java:78) - Removing transaction with key 'z9hG4bKa979878INVITE'
+37755  2011-06-06 18:11:04,404 INFO  [pool-2-thread-1] ice.IceOfferAnswerFactory.processAnswer (IceOfferAnswerFactory.java:138) - Processing answer...
+37756  2011-06-06 18:11:04,405 DEBUG [SIP-Client-Thread-Pool-26516103] codec.SipIoHandler.messageReceived (SipIoHandler.java:83) - Message processing complete for: SipResponse
+37757  2011-06-06 18:11:04,406 INFO  [pool-2-thread-1] ice.IceOfferAnswerFactory.processAnswer (IceOfferAnswerFactory.java:139) - Turn offer answer: org.lastbamboo.common.ice.TcpTurnOfferAnswer@832226
+37784  2011-06-06 18:11:04,433 DEBUG [pool-2-thread-1] sdp.IceCandidateSdpDecoderImpl.decode (IceCandidateSdpDecoderImpl.java:61) - Creating candidates from media descs:
+[m=message 40737 tcp-pass http
+c=IN IP4 75.101.156.158
+a=candidate:udp-host-192.168.1.56 1 udp 2120876031 192.168.1.56 53694 typ host
+a=candidate:tcp-pass-host-192.168.1.56 1 tcp-pass 2130051071 192.168.1.56 8108 typ host
+a=candidate:tcp-pass-relay-75.101.156.158-75.101.156.158 1 tcp-pass 16121855 75.101.156.158 40737 typ relay raddr 210.55.240.72 rport 55906
+a=candidate:udp-srflx-192.168.1.56-208.97.25.20 1 udp 1684668415 210.55.240.72 53694 typ srflx raddr 192.168.1.56 rport 53694
+]
+37785  2011-06-06 18:11:04,434 TRACE [pool-2-thread-1] sdp.IceCandidateSdpDecoderImpl.createCandidates (IceCandidateSdpDecoderImpl.java:121) - Parsing attribute: udp-host-192.168.1.56 1 udp 2120876031 192.168.1.56 53694 typ host
+37788  2011-06-06 18:11:04,437 TRACE [pool-2-thread-1] sdp.IceCandidateSdpDecoderImpl.createCandidates (IceCandidateSdpDecoderImpl.java:121) - Parsing attribute: tcp-pass-host-192.168.1.56 1 tcp-pass 2130051071 192.168.1.56 8108 typ host
+37789  2011-06-06 18:11:04,438 TRACE [pool-2-thread-1] sdp.IceCandidateSdpDecoderImpl.createCandidates (IceCandidateSdpDecoderImpl.java:121) - Parsing attribute: tcp-pass-relay-75.101.156.158-75.101.156.158 1 tcp-pass 16121855 75.101.156.158 40737 typ relay raddr 210.55.240.72 rport 55906
+37790  2011-06-06 18:11:04,439 DEBUG [pool-2-thread-1] sdp.IceCandidateSdpDecoderImpl.createIceCandidate (IceCandidateSdpDecoderImpl.java:189) - Received a TCP relay passive candidate
+37792  2011-06-06 18:11:04,441 TRACE [pool-2-thread-1] sdp.IceCandidateSdpDecoderImpl.createCandidates (IceCandidateSdpDecoderImpl.java:121) - Parsing attribute: udp-srflx-192.168.1.56-208.97.25.20 1 udp 1684668415 210.55.240.72 53694 typ srflx raddr 192.168.1.56 rport 53694
+37795  2011-06-06 18:11:04,444 INFO  [pool-2-thread-1] ice.TcpOfferAnswer$2.visitUdpHostCandidate (IceCandidateVisitorAdapter.java:114) - Visiting unhandled candidate: IceUdpHostCandidate controlling /192.168.1.56:53694 UDP
+37796  2011-06-06 18:11:04,445 INFO  [pool-2-thread-1] ice.TcpOfferAnswer.visitTcpHostPassiveCandidate (TcpOfferAnswer.java:209) - Visiting TCP passive host candidate: IceTcpHostPassiveCandidate controlling /192.168.1.56:8108 TCP
+37797  2011-06-06 18:11:04,446 INFO  [pool-2-thread-1] ice.TcpOfferAnswer$2.visitTcpRelayPassiveCandidate (IceCandidateVisitorAdapter.java:73) - Visiting unhandled candidate: IceTcpRelayPassiveCandidate controlling /75.101.156.158:40737 TCP
+37797  2011-06-06 18:11:04,446 INFO  [ICE-TCP-Connect-For-Candidate-IceTcpHostPassiveCandidate controlling /192.168.1.56:8108 TCP-9332925] ice.TcpOfferAnswer.run (TcpOfferAnswer.java:227) - Connecting to: IceTcpHostPassiveCandidate controlling /192.168.1.56:8108 TCP
+37798  2011-06-06 18:11:04,447 INFO  [pool-2-thread-1] ice.TcpOfferAnswer$2.visitUdpServerReflexiveCandidate (IceCandidateVisitorAdapter.java:155) - Visiting unhandled candidate: IceUdpServerReflexiveCandidate controlling /210.55.240.72:53694 UDP
+37800  2011-06-06 18:11:04,449 DEBUG [pool-2-thread-1] sdp.IceCandidateSdpDecoderImpl.decode (IceCandidateSdpDecoderImpl.java:61) - Creating candidates from media descs:
+[m=message 40737 tcp-pass http
+c=IN IP4 75.101.156.158
+a=candidate:udp-host-192.168.1.56 1 udp 2120876031 192.168.1.56 53694 typ host
+a=candidate:tcp-pass-host-192.168.1.56 1 tcp-pass 2130051071 192.168.1.56 8108 typ host
+a=candidate:tcp-pass-relay-75.101.156.158-75.101.156.158 1 tcp-pass 16121855 75.101.156.158 40737 typ relay raddr 210.55.240.72 rport 55906
+a=candidate:udp-srflx-192.168.1.56-208.97.25.20 1 udp 1684668415 210.55.240.72 53694 typ srflx raddr 192.168.1.56 rport 53694
+]
+37801  2011-06-06 18:11:04,450 TRACE [pool-2-thread-1] sdp.IceCandidateSdpDecoderImpl.createCandidates (IceCandidateSdpDecoderImpl.java:121) - Parsing attribute: udp-host-192.168.1.56 1 udp 2120876031 192.168.1.56 53694 typ host
+37801  2011-06-06 18:11:04,450 TRACE [pool-2-thread-1] sdp.IceCandidateSdpDecoderImpl.createCandidates (IceCandidateSdpDecoderImpl.java:121) - Parsing attribute: tcp-pass-host-192.168.1.56 1 tcp-pass 2130051071 192.168.1.56 8108 typ host
+37802  2011-06-06 18:11:04,451 TRACE [pool-2-thread-1] sdp.IceCandidateSdpDecoderImpl.createCandidates (IceCandidateSdpDecoderImpl.java:121) - Parsing attribute: tcp-pass-relay-75.101.156.158-75.101.156.158 1 tcp-pass 16121855 75.101.156.158 40737 typ relay raddr 210.55.240.72 rport 55906
+37803  2011-06-06 18:11:04,452 DEBUG [pool-2-thread-1] sdp.IceCandidateSdpDecoderImpl.createIceCandidate (IceCandidateSdpDecoderImpl.java:189) - Received a TCP relay passive candidate
+37803  2011-06-06 18:11:04,452 TRACE [pool-2-thread-1] sdp.IceCandidateSdpDecoderImpl.createCandidates (IceCandidateSdpDecoderImpl.java:121) - Parsing attribute: udp-srflx-192.168.1.56-208.97.25.20 1 udp 1684668415 210.55.240.72 53694 typ srflx raddr 192.168.1.56 rport 53694
+37804  2011-06-06 18:11:04,453 INFO  [pool-2-thread-1] ice.IceCheckListImpl.formCheckList (IceCheckListImpl.java:226) - Ignoring site local address: /192.168.1.56
+37805  2011-06-06 18:11:04,454 INFO  [pool-2-thread-1] ice.IceCheckListImpl.formCheckList (IceCheckListImpl.java:226) - Ignoring site local address: /192.168.1.56
+37806  2011-06-06 18:11:04,455 INFO  [pool-2-thread-1] ice.IceCheckListImpl.formCheckList (IceCheckListImpl.java:226) - Ignoring site local address: /192.168.1.56
+37806  2011-06-06 18:11:04,455 INFO  [pool-2-thread-1] ice.IceCheckListImpl.formCheckList (IceCheckListImpl.java:226) - Ignoring site local address: /192.168.1.56
+37806  2011-06-06 18:11:04,455 DEBUG [pool-2-thread-1] ice.IceCheckListImpl.formCheckList (IceCheckListImpl.java:239) - Pairs before conversion: 2
+37807  2011-06-06 18:11:04,456 DEBUG [pool-2-thread-1] ice.IceCheckListImpl.formCheckList (IceCheckListImpl.java:245) - Pairs after conversion:  2
+37808  2011-06-06 18:11:04,457 DEBUG [pool-2-thread-1] ice.IceCheckListImpl.formCheckList (IceCheckListImpl.java:273) - 2 converted
+37808  2011-06-06 18:11:04,457 DEBUG [pool-2-thread-1] ice.IceCheckListImpl.formCheckList (IceCheckListImpl.java:275) - 1 after pruned
+37809  2011-06-06 18:11:04,458 DEBUG [pool-2-thread-1] ice.IceCheckListImpl.formCheckList (IceCheckListImpl.java:280) - Created pairs:
+[
+local:               IceUdpHostCandidate controlling /192.168.2.72:52728 UDP
+remote:              IceUdpPeerReflexiveCandidate controlling /210.55.240.72:53694 UDP
+state:               WAITING
+use-candidate:       false
+nominated:           false, 
+local:               IceUdpHostCandidate controlling /192.168.2.72:52728 UDP
+remote:              IceUdpServerReflexiveCandidate controlled /210.55.240.72:53694 UDP
+state:               FROZEN
+use-candidate:       false
+nominated:           false]
+37810  2011-06-06 18:11:04,459 DEBUG [pool-2-thread-1] ice.IceMediaStreamImpl.processPairGroups (IceMediaStreamImpl.java:225) - 2 before sorting...
+37810  2011-06-06 18:11:04,459 DEBUG [pool-2-thread-1] ice.IceCheckSchedulerImpl.scheduleChecks (IceCheckSchedulerImpl.java:55) - Scheduling checks...
+37811  2011-06-06 18:11:04,460 DEBUG [ICE-Controlling-Timer] ice.IceCheckSchedulerImpl.run (IceCheckSchedulerImpl.java:68) - About to check pair...
+37812  2011-06-06 18:11:04,461 DEBUG [ICE-Controlling-Timer] ice.IceCheckSchedulerImpl.getNextPair (IceCheckSchedulerImpl.java:157) - Scheduler using TRIGGERED pair...
+37812  2011-06-06 18:11:04,461 DEBUG [ICE-Controlling-Timer] ice.IceCheckSchedulerImpl.checkPair (IceCheckSchedulerImpl.java:120) - About to perform check on:
+local:               IceUdpHostCandidate controlling /192.168.2.72:52728 UDP
+remote:              IceUdpPeerReflexiveCandidate controlling /210.55.240.72:53694 UDP
+state:               WAITING
+use-candidate:       false
+nominated:           false
+37814  2011-06-06 18:11:04,463 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processLocalCandidate (IceStunClientCandidateProcessor.java:137) - Writing Binding Request: BindingRequest {ICE_PRIORITY=IcePriorityAttribute priority: 1852440575, ICE_CONTROLLING=IceControllingAttribute with tie breaker: 5A 4C C5 71 D5 23 C5 3D} body length: 20
+37815  2011-06-06 18:11:04,464 DEBUG [ICE-Controlling-Timer] candidate.IceUdpCandidatePair.check (IceUdpCandidatePair.java:163) - Creating new STUN checker...
+37817  2011-06-06 18:11:04,466 DEBUG [ICE-Controlling-Timer] candidate.IceUdpCandidatePair.check (IceUdpCandidatePair.java:170) - Writing request...
+37817  2011-06-06 18:11:04,466 DEBUG [ICE-Controlling-Timer] transport.IceUdpStunChecker.write (AbstractIceStunChecker.java:62) - Writing Binding Request...
+37864  2011-06-06 18:11:04,513 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerFactoryImpl.createVisitor (IceStunConnectivityCheckerFactoryImpl.java:46) - Creating new message visitor for session: (DATAGRAM, R: /210.55.240.72:53694, L: /192.168.2.72:52728, S: /192.168.2.72:52728)
+37866  2011-06-06 18:11:04,515 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.visitBindingSuccessResponse (StunClientMessageVisitor.java:53) - Received Binding Response: BindingSuccessResponse with MAPPED ADDRESS: /219.89.215.162:52728
+37867  2011-06-06 18:11:04,516 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.notifyTransaction (StunClientMessageVisitor.java:61) - Accessed transaction: org.littleshoot.stun.stack.transaction.StunClientTransactionImpl@1e335d7
+37869  2011-06-06 18:11:04,518 DEBUG [ICE-Controlling-Timer] transport.IceUdpStunChecker.writeInternal (IceUdpStunChecker.java:111) - Received STUN response: BindingSuccessResponse with MAPPED ADDRESS: /219.89.215.162:52728
+37873  2011-06-06 18:11:04,522 INFO  [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.visitBindingSuccessResponse (IceStunClientCandidateProcessor.java:149) - Visiting binding success response...
+37874  2011-06-06 18:11:04,523 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processSuccess (IceStunClientCandidateProcessor.java:340) - Processing success...
+37875  2011-06-06 18:11:04,524 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processSuccess (IceStunClientCandidateProcessor.java:361) - Original pair not equal
+37877  2011-06-06 18:11:04,526 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processSuccess (IceStunClientCandidateProcessor.java:362) - Original pair was: 
+local:               IceUdpHostCandidate controlling /192.168.2.72:52728 UDP
+remote:              IceUdpPeerReflexiveCandidate controlling /210.55.240.72:53694 UDP
+state:               IN_PROGRESS
+use-candidate:       false
+nominated:           false
+37878  2011-06-06 18:11:04,527 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processSuccess (IceStunClientCandidateProcessor.java:363) - New pair addresses: /210.55.240.72:53694/219.89.215.162:52728
+37882  2011-06-06 18:11:04,531 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processSuccess (IceStunClientCandidateProcessor.java:418) - Creating new pair...
+37884  2011-06-06 18:11:04,533 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processSuccess (IceStunClientCandidateProcessor.java:422) - Created pair:
+
+local:               IceUdpServerReflexiveCandidate controlling /219.89.215.162:52728 UDP
+remote:              IceUdpPeerReflexiveCandidate controlling /210.55.240.72:53694 UDP
+state:               FROZEN
+use-candidate:       false
+nominated:           false
+37885  2011-06-06 18:11:04,534 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processSuccess (IceStunClientCandidateProcessor.java:426) - Adding valid pair...
+37884  2011-06-06 18:11:04,533 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerFactoryImpl.createVisitor (IceStunConnectivityCheckerFactoryImpl.java:46) - Creating new message visitor for session: (DATAGRAM, R: /210.55.240.72:53694, L: /192.168.2.72:52728, S: /192.168.2.72:52728)
+37886  2011-06-06 18:11:04,535 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processSuccess (IceStunClientCandidateProcessor.java:433) - Updating pair states...
+37888  2011-06-06 18:11:04,537 DEBUG [ICE-Controlling-Timer] ice.IceMediaStreamImpl.updatePairStates (IceMediaStreamImpl.java:378) - Updating pair states...
+37887  2011-06-06 18:11:04,536 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.visitBindingSuccessResponse (StunClientMessageVisitor.java:53) - Received Binding Response: BindingSuccessResponse with MAPPED ADDRESS: /219.89.215.162:52728
+37890  2011-06-06 18:11:04,539 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.updateNominatedFlag (IceStunClientCandidateProcessor.java:495) - Not nominating pair.
+37890  2011-06-06 18:11:04,539 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.notifyTransaction (StunClientMessageVisitor.java:61) - Accessed transaction: null
+37891  2011-06-06 18:11:04,540 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processSuccess (IceStunClientCandidateProcessor.java:443) - Not Nominated.  Notifying agent of valid pairs...
+37892  2011-06-06 18:11:04,541 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.notifyTransaction (StunClientMessageVisitor.java:68) - No matching transaction for response: BindingSuccessResponse with MAPPED ADDRESS: /219.89.215.162:52728
+37893  2011-06-06 18:11:04,542 DEBUG [ICE-Controlling-Timer] ice.IceAgentImpl.onValidPairs (IceAgentImpl.java:302) - Processing valid pair...
+37894  2011-06-06 18:11:04,543 DEBUG [ICE-Controlling-Timer] ice.IceAgentImpl.onValidPairs (IceAgentImpl.java:327) - Repeating check that produced the valid pair using USE-CANDIDATE
+37901  2011-06-06 18:11:04,550 DEBUG [ICE-Controlling-Timer] ice.IceMediaStreamImpl.addTriggeredPair (IceMediaStreamImpl.java:502) - Adding triggered pair to media stream: IceMediaStreamImpl controlling: true
+37902  2011-06-06 18:11:04,551 DEBUG [ICE-Controlling-Timer] ice.IceCheckListImpl.addTriggeredPair (IceCheckListImpl.java:152) - Adding triggered pair:
+local:               IceUdpServerReflexiveCandidate controlling /219.89.215.162:52728 UDP
+remote:              IceUdpPeerReflexiveCandidate controlling /210.55.240.72:53694 UDP
+state:               FROZEN
+use-candidate:       true
+nominated:           false
+37903  2011-06-06 18:11:04,552 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processSuccess (IceStunClientCandidateProcessor.java:448) - Updating check list and timer states.
+37904  2011-06-06 18:11:04,553 DEBUG [ICE-Controlling-Timer] ice.IceCheckSchedulerImpl.checkPair (IceCheckSchedulerImpl.java:122) - Scheduling new timer task...
+37912  2011-06-06 18:11:04,561 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerFactoryImpl.createVisitor (IceStunConnectivityCheckerFactoryImpl.java:46) - Creating new message visitor for session: (DATAGRAM, R: /210.55.240.72:53694, L: /192.168.2.72:52728, S: /192.168.2.72:52728)
+37914  2011-06-06 18:11:04,563 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.visitBindingSuccessResponse (StunClientMessageVisitor.java:53) - Received Binding Response: BindingSuccessResponse with MAPPED ADDRESS: /219.89.215.162:52728
+37915  2011-06-06 18:11:04,564 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.notifyTransaction (StunClientMessageVisitor.java:61) - Accessed transaction: null
+37915  2011-06-06 18:11:04,564 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.notifyTransaction (StunClientMessageVisitor.java:68) - No matching transaction for response: BindingSuccessResponse with MAPPED ADDRESS: /219.89.215.162:52728
+38206  2011-06-06 18:11:04,855 DEBUG [ICE-Controlling-Timer] ice.IceCheckSchedulerImpl.run (IceCheckSchedulerImpl.java:68) - About to check pair...
+38207  2011-06-06 18:11:04,856 DEBUG [ICE-Controlling-Timer] ice.IceCheckSchedulerImpl.getNextPair (IceCheckSchedulerImpl.java:157) - Scheduler using TRIGGERED pair...
+38208  2011-06-06 18:11:04,857 DEBUG [ICE-Controlling-Timer] ice.IceCheckSchedulerImpl.checkPair (IceCheckSchedulerImpl.java:120) - About to perform check on:
+local:               IceUdpServerReflexiveCandidate controlling /219.89.215.162:52728 UDP
+remote:              IceUdpPeerReflexiveCandidate controlling /210.55.240.72:53694 UDP
+state:               FROZEN
+use-candidate:       true
+nominated:           false
+38210  2011-06-06 18:11:04,859 INFO  [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processLocalCandidate (IceStunClientCandidateProcessor.java:123) - Creating Binding Request with USE CANDIDATE
+38213  2011-06-06 18:11:04,862 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processLocalCandidate (IceStunClientCandidateProcessor.java:137) - Writing Binding Request: BindingRequest {ICE_PRIORITY=IcePriorityAttribute priority: 1852440575, ICE_USE_CANDIDATE=IceUseCandidateAttribute, ICE_CONTROLLING=IceControllingAttribute with tie breaker: 5A 4C C5 71 D5 23 C5 3D} body length: 24
+38214  2011-06-06 18:11:04,863 DEBUG [ICE-Controlling-Timer] candidate.IceUdpCandidatePair.check (IceUdpCandidatePair.java:163) - Creating new STUN checker...
+38215  2011-06-06 18:11:04,864 DEBUG [ICE-Controlling-Timer] candidate.IceUdpCandidatePair.check (IceUdpCandidatePair.java:170) - Writing request...
+38216  2011-06-06 18:11:04,865 DEBUG [ICE-Controlling-Timer] transport.IceUdpStunChecker.write (AbstractIceStunChecker.java:62) - Writing Binding Request...
+38265  2011-06-06 18:11:04,914 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerFactoryImpl.createVisitor (IceStunConnectivityCheckerFactoryImpl.java:46) - Creating new message visitor for session: (DATAGRAM, R: /210.55.240.72:53694, L: /192.168.2.72:52728, S: /192.168.2.72:52728)
+38267  2011-06-06 18:11:04,916 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.visitBindingSuccessResponse (StunClientMessageVisitor.java:53) - Received Binding Response: BindingSuccessResponse with MAPPED ADDRESS: /219.89.215.162:52728
+38268  2011-06-06 18:11:04,917 DEBUG [UDP-STUN-Server-Thread-Pool--Controlling-16347368] ice.IceStunConnectivityCheckerImpl.notifyTransaction (StunClientMessageVisitor.java:61) - Accessed transaction: org.littleshoot.stun.stack.transaction.StunClientTransactionImpl@6fd560
+38270  2011-06-06 18:11:04,919 DEBUG [ICE-Controlling-Timer] transport.IceUdpStunChecker.writeInternal (IceUdpStunChecker.java:111) - Received STUN response: BindingSuccessResponse with MAPPED ADDRESS: /219.89.215.162:52728
+38272  2011-06-06 18:11:04,921 INFO  [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.visitBindingSuccessResponse (IceStunClientCandidateProcessor.java:149) - Visiting binding success response...
+38273  2011-06-06 18:11:04,922 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processSuccess (IceStunClientCandidateProcessor.java:340) - Processing success...
+38274  2011-06-06 18:11:04,923 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processSuccess (IceStunClientCandidateProcessor.java:356) - Using original pair...
+38275  2011-06-06 18:11:04,924 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processSuccess (IceStunClientCandidateProcessor.java:426) - Adding valid pair...
+38276  2011-06-06 18:11:04,925 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processSuccess (IceStunClientCandidateProcessor.java:433) - Updating pair states...
+38277  2011-06-06 18:11:04,926 DEBUG [ICE-Controlling-Timer] ice.IceMediaStreamImpl.updatePairStates (IceMediaStreamImpl.java:378) - Updating pair states...
+38278  2011-06-06 18:11:04,927 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.updateNominatedFlag (IceStunClientCandidateProcessor.java:472) - Nominating pair on controlling agent.
+38279  2011-06-06 18:11:04,928 DEBUG [ICE-Controlling-Timer] ice.IceAgentImpl.onNominatedPair (IceAgentImpl.java:220) - Received nominated pair on agent.  Controlling: true pair: 
+local:               IceUdpServerReflexiveCandidate controlling /219.89.215.162:52728 UDP
+remote:              IceUdpPeerReflexiveCandidate controlling /210.55.240.72:53694 UDP
+state:               SUCCEEDED
+use-candidate:       true
+nominated:           true
+38281  2011-06-06 18:11:04,930 DEBUG [ICE-Controlling-Timer] ice.IceCheckListImpl.removeWaitingAndFrozenPairs (IceCheckListImpl.java:603) - Removing waiting and frozen pairs...
+38284  2011-06-06 18:11:04,933 DEBUG [ICE-Controlling-Timer] ice.IceCheckListImpl.evaluate (IceCheckListImpl.java:615) - Closing pair:
+
+local:               IceUdpHostCandidate controlling /192.168.2.72:52728 UDP
+remote:              IceUdpServerReflexiveCandidate controlled /210.55.240.72:53694 UDP
+state:               WAITING
+use-candidate:       false
+nominated:           false
+38285  2011-06-06 18:11:04,934 DEBUG [ICE-Controlling-Timer] candidate.IceUdpCandidatePair.close (IceUdpCandidatePair.java:269) - Closing pair...
+38286  2011-06-06 18:11:04,935 DEBUG [ICE-Controlling-Timer] ice.IceCheckListImpl.setState (IceCheckListImpl.java:105) - State changed to: COMPLETED
+38287  2011-06-06 18:11:04,936 DEBUG [pool-2-thread-1] ice.IceCheckListImpl.check (IceCheckListImpl.java:135) - Returning from check
+38289  2011-06-06 18:11:04,938 INFO  [ICE-Controlling-Timer] ice.BarchartUdtSocketFactory.newSocket (BarchartUdtSocketFactory.java:42) - Creating new Barchart UDT Socket
+38291  2011-06-06 18:11:04,940 INFO  [ICE-Controlling-Timer] ice.BarchartUdtSocketFactory.clear (BarchartUdtSocketFactory.java:168) - Clearing session: (DATAGRAM, R: /210.55.240.72:53694, L: /192.168.2.72:52728, S: /192.168.2.72:52728)
+38296  2011-06-06 18:11:04,945 INFO  [ICE-Controlling-Timer] ice.BarchartUdtSocketFactory.clear (BarchartUdtSocketFactory.java:187) - Service is: org.littleshoot.mina.transport.socket.nio.DatagramAcceptor@80bc28
+38298  2011-06-06 18:11:04,947 INFO  [ICE-Controlling-Timer] ice.BarchartUdtSocketFactory.clear (BarchartUdtSocketFactory.java:189) - Unbinding all!!
+38299  2011-06-06 18:11:04,948 INFO  [ICE-Controlling-Timer] ice.BarchartUdtSocketFactory.clear (BarchartUdtSocketFactory.java:196) - Open: false
+38300  2011-06-06 18:11:04,949 INFO  [ICE-Controlling-Timer] ice.BarchartUdtSocketFactory.clear (BarchartUdtSocketFactory.java:197) - Connected: false
+38301  2011-06-06 18:11:04,950 INFO  [ICE-Controlling-Timer] ice.BarchartUdtSocketFactory.clear (BarchartUdtSocketFactory.java:198) - Sleeping on channel
+39102  2011-06-06 18:11:05,751 INFO  [ICE-Controlling-Timer] ice.BarchartUdtSocketFactory.clear (BarchartUdtSocketFactory.java:200) - Closed channel
+39108  2011-06-06 18:11:05,757 DEBUG [ICE-Controlling-Timer] ice.IceStunUdpPeer.close (IceStunUdpPeer.java:195) - Closing ICE UDP peer...
+39116  2011-06-06 18:11:05,765 DEBUG [ICE-Controlling-Timer] ice.IceStunUdpPeer.close (IceStunUdpPeer.java:195) - Closing ICE UDP peer...
+39118  2011-06-06 18:11:05,767 DEBUG [ICE-Controlling-Timer] ice.BarchartUdtSocketFactory.newSocket (BarchartUdtSocketFactory.java:74) - Creating UDT server socket on CONTROLLING agent.
+39120  2011-06-06 18:11:05,769 DEBUG [ICE-Controlling-Timer] ice.BarchartUdtSocketFactory.newSocket (BarchartUdtSocketFactory.java:75) - Listening on: (DATAGRAM, R: /210.55.240.72:53694, L: /192.168.2.72:52728, S: /192.168.2.72:52728)
+39122  2011-06-06 18:11:05,771 DEBUG [ICE-Controlling-Timer] ice.IceStunClientCandidateProcessor.processSuccess (IceStunClientCandidateProcessor.java:448) - Updating check list and timer states.
+39123  2011-06-06 18:11:05,772 DEBUG [ICE-Controlling-Timer] ice.IceMediaStreamImpl.updateCheckListAndTimerStates (IceMediaStreamImpl.java:394) - All check lists are either failed or succeeded
+39124  2011-06-06 18:11:05,773 DEBUG [ICE-Controlling-Timer] ice.IceCheckSchedulerImpl.checkPair (IceCheckSchedulerImpl.java:122) - Scheduling new timer task...
+39122  2011-06-06 18:11:05,771 INFO  [UDT Accepting Thread] ice.BarchartUdtSocketFactory.openClientSocket (BarchartUdtSocketFactory.java:105) - Session local was: /192.168.2.72:52728
+39126  2011-06-06 18:11:05,775 INFO  [UDT Accepting Thread] ice.BarchartUdtSocketFactory.openClientSocket (BarchartUdtSocketFactory.java:106) - Binding to port: 52728
+39145  2011-06-06 18:11:05,794 WARN  [UDT Accepting Thread] lib.RES.makeTargetFolder (RES.java:171) - found folder=.\lib\bin\x86-Windows-gpp
+39149  2011-06-06 18:11:05,798 WARN  [UDT Accepting Thread] lib.RES.makeTargetFolder (RES.java:171) - found folder=.\lib\bin\x86-Windows-gpp
+39154  2011-06-06 18:11:05,803 WARN  [UDT Accepting Thread] lib.RES.makeTargetFolder (RES.java:171) - found folder=.\lib\bin\x86-Windows-gpp
+39162  2011-06-06 18:11:05,811 INFO  [UDT Accepting Thread] ice.BarchartUdtSocketFactory.openClientSocket (BarchartUdtSocketFactory.java:110) - Binding to address and port
+39163  2011-06-06 18:11:05,812 INFO  [UDT Accepting Thread] ice.BarchartUdtSocketFactory.openClientSocket (BarchartUdtSocketFactory.java:116) - Client side sleeping for 700 milliseconds
+39425  2011-06-06 18:11:06,074 DEBUG [ICE-Controlling-Timer] ice.IceCheckSchedulerImpl.run (IceCheckSchedulerImpl.java:68) - About to check pair...
+39426  2011-06-06 18:11:06,075 DEBUG [ICE-Controlling-Timer] ice.IceCheckSchedulerImpl.checkPair (IceCheckSchedulerImpl.java:103) - Checks are completed!  Returning
+39864  2011-06-06 18:11:06,513 INFO  [UDT Accepting Thread] ice.BarchartUdtSocketFactory.openClientSocket (BarchartUdtSocketFactory.java:118) - About to connect...
+39955  2011-06-06 18:11:06,604 INFO  [UDT Accepting Thread] ice.BarchartUdtSocketFactory.openClientSocket (BarchartUdtSocketFactory.java:120) - Connected!!!
+39956  2011-06-06 18:11:06,605 INFO  [UDT Accepting Thread] ice.BarchartUdtSocketFactory.openClientSocket (BarchartUdtSocketFactory.java:123) - Got socket...notifying listener
+39957  2011-06-06 18:11:06,606 INFO  [UDT Accepting Thread] p2p.DefaultTcpUdpSocket.processedSocket (DefaultTcpUdpSocket.java:270) - Processing socket
+39958  2011-06-06 18:11:06,607 INFO  [UDT Accepting Thread] p2p.DefaultTcpUdpSocket.processedSocket (DefaultTcpUdpSocket.java:280) - Notifying socket lock!!
+39959  2011-06-06 18:11:06,608 INFO  [UDT Accepting Thread] p2p.DefaultTcpUdpSocket.notifySocketLock (DefaultTcpUdpSocket.java:210) - Waiting for socket lock
+39960  2011-06-06 18:11:06,609 INFO  [UDT Accepting Thread] p2p.DefaultTcpUdpSocket.notifySocketLock (DefaultTcpUdpSocket.java:212) - Got socket lock...notifying...
+39962  2011-06-06 18:11:06,611 INFO  [UDT Accepting Thread] ice.TcpOfferAnswer.close (TcpOfferAnswer.java:100) - Closing!!
+39962  2011-06-06 18:11:06,611 TRACE [Start-Call-Thread] p2p.DefaultTcpUdpSocket.waitForSocket (DefaultTcpUdpSocket.java:199) - Returning socket!!
+39963  2011-06-06 18:11:06,612 INFO  [UDT Accepting Thread] ice.BarchartUdtSocketFactory.openClientSocket (BarchartUdtSocketFactory.java:126) - Exiting...
+39964  2011-06-06 18:11:06,613 INFO  [Start-Call-Thread] p2p.DefaultRawUdpServerDepot.addSocket (DefaultRawUdpServerDepot.java:79) - Adding socket with ID: 52d7b686-65e2-4aa8-b9be-d8a80d1eb85bto: 19552348
+52901  2011-06-06 18:11:19,550 DEBUG [LibTorrent-Shutdown-Thread] download.LibTorrentManagerImpl.saveDownloads (LibTorrentManagerImpl.java:80) - Saving downloads....

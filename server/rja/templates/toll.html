@@ -1,0 +1,62 @@
+{% extends "projectNav.html" %}
+
+{% block imgWidthHeight %}
+width: 703px;
+height: 578px; 
+{% endblock imgWidthHeight %} 
+
+{% block bgColor %} 
+background-color: #0b0100;
+{% endblock bgColor %} 
+
+{% block linkColor %}
+color: #908c95; 
+{% endblock linkColor %} 
+
+{% block courseLinkColor %}
+color: white; 
+{% endblock courseLinkColor %}
+
+{% block linkHoverColor %}
+color: #fdfefe; 
+{% endblock linkHoverColor %} 
+
+{% block linkSelectedColor %}
+color: white;
+{% endblock linkSelectedColor %} 
+
+{% block mainDiv %} 
+    <div class="mainDiv">
+        <div id="tollDiv" class="mainContent selectedContent">
+            <span class="titleText titleSpan" style="top: 26px;">The Toll Collector</span>
+            <!-- 
+            <img class="bgImage" src="images/moon_blurred.png" alt="Rachel Johnson Film and Animation"/>
+             -->
+            <div style="top: 60px;">
+                <img class="bgImage" style="margin-top: 60px;" src="images/moon_small.jpg" alt="Rachel Johnson Film and Animation"/>
+            </div>
+        </div>
+    </div>
+    
+    <div class="overlay" id="tollCollectorOverlay" style="z-index: 200000;">
+        <div style="background-color: black; z-index: 200002;">
+            <a class="player" href="http://la-kids-film-school.s3.amazonaws.com/toll_collector.m4v" style="display:block; width:640px;height:480px;padding: 20px;z-index: 200003;">
+                &nbsp;
+            </a>
+        </div>
+    </div>
+{% endblock mainDiv %} 
+
+{% block contentLinks %}
+<a rel="#tollCollectorOverlay" class="videoOverlay courseOverlayLink">Watch Film</a>
+<a rel="#filmographyOverlay" class="courseOverlayLink overlayLink">Filmography</a>
+{% endblock contentLinks %}
+
+    
+{% block extraJavaScript %}
+    <script type="text/javascript" src="js/flowplayer-3.0.1.pack.js"></script>   
+    <script type="text/javascript">
+
+    </script>
+{% endblock extraJavaScript %}
+    

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block css %}
+    <style type="text/css">
+        @import "http://littleshootcss.appspot.com/css/common.css";
+    </style>
+    
+    <style type="text/css">
+    
+        @import "http://ajax.googleapis.com/ajax/libs/dojo/1.3.0/dijit/themes/tundra/tundra.css";
+        @import "http://ajax.googleapis.com/ajax/libs/dojo/1.3.0/dojo/resources/dojo.css";
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<center>
+    <div id="mainTitle">Obama on the Campaign Trail</div>
+    <div id="movie" class="loadingPolitics">
+        <center>
+            <div id="loadingMessage">
+                Loading the LittleShoot Plugin...
+            </div>
+            <div id="littleshootMessage" style="display: none;">
+            This site requires the LittleShoot Plugin. Click anywhere to start downloading and installing LittleShoot.<br>
+            Learn more <a href="http://www.littleshoot.org" id="littleshootLink" title="LittleShoot P2P File Sharing Plugin Download">here</a>.
+            </div>
+        </center>
+    </div>
+</center>
+<div id="flag"></div>
+
+<div id="baseNav"><div id="about">About</div></div>
+
+
+{% endblock content %}
+
+{% block javascript %}
+{% endblock %}
+
+{% block extraJavaScript %}
+    <script type="text/javascript" src="http://littleshootjs.appspot.com/littleshoot/flashembed.min.js"></script>
+    <script type="text/javascript">
+        var embed = function(url, width, height, id)
+            {
+            console.info("Embedding movie with URL: "+url);
+            flashembed(id, 
+                {
+                src:'FlowPlayerDark.swf',
+                width: width, 
+                height: height
+                },
+                {config: {   
+                    autoPlay: true,
+                    autoBuffering: true,
+                    initialScale: 'orig',
+                    videoFile: url,
+                    useNativeFullScreen: true,
+                }} 
+                );
+            };
+
+        littleShootConfig = {
+            littleShootPresent : function (apiVersion) {
+                console.info("LittleShoot present");
+                $("#movie").removeClass("loadingPolitics");
+                var p2pUrl = LittleShoot.p2pUrl("http://cloudfront.littleshoot.org/obama_new_hampshire.mov");
+                // This just embeds the Flash player.
+                embed(p2pUrl, 510, 415, "movie");
+            },
+            littleShootNotPresent : function () {
+                console.info("LittleShoot not present");
+                //LittleShoot.downloadPrompt();
+                CommonUtils.hideElement(dojo.byId("loadingMessage"));
+                //var movie = dojo.byId("movie");
+                //dojo.removeClass(movie, "loadingPolitics");
+                var mv = $("#movie"); 
+                mv.removeClass("loadingPolitics").addClass("downloadBox").addClass("downloadLittleShoot");
+                //dojo.addClass(movie, "downloadBox");
+                //dojo.addClass(movie, "downloadLittleShoot");
+
+                mv.click(function() {CommonUtils.downloadInstaller();});
+                $("#littleshootMessage").show();
+            },
+
+            //littleShootLoading : "loading"
+        };
+
+        jQuery().ready(function() {
+            dojo.addOnLoad(function() {
+            });
+        });
+    </script>
+    
+{% endblock extraJavaScript %}
+
+

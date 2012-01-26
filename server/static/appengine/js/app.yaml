@@ -1,0 +1,22 @@
+application: littleshootjs 
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+  
+- url: /dojo/.*
+  script: $PYTHON_LIB/google/appengine/ext/zipserve
+
+- url: /dijit/.*
+  script: $PYTHON_LIB/google/appengine/ext/zipserve
+
+- url: /dojox/.*
+  script: $PYTHON_LIB/google/appengine/ext/zipserve
+
+- url: /littleshoot/.*
+  script: $PYTHON_LIB/google/appengine/ext/zipserve
+
+- url: /(.*\.(html|css|js|gif|png|jpg|ico|swf))
+  static_files: static/\1
+  upload: static/(.*\.(html|css|js|gif|png|jpg|ico|swf))

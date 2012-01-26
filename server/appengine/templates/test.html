@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test</title>
+
+<!--
+@import "css/test.css"; 
+ -->
+    {% include "dojoCss.html" %}
+    <style type="text/css">
+        
+        @import "http://littleshootcss.appspot.com/css/common.css";
+        @import "http://littleshootcss.appspot.com/css/index.css";
+        
+       
+    </style>
+    
+</head>
+<body class="tundra" id="body">
+<div id="leftDiv"></div>
+<!-- 
+    <div class="buttonLeft"></div><div class="buttonMiddle"></div><div class="buttonRight"></div>
+     -->
+    <div id="loading">
+        <img src="../../images/loading.gif" alt="Loading LittleShoot P2P 2.0 File Sharing in the Browser" />
+    </div>
+    
+</div>
+
+    <div id="statusMessageDiv" class="box normalSmall" style="visibility:hidden;">
+        <center>
+        <div id="statusMessage">Scanning for LittleShoot...</div>
+        <img id="loadingIconMessage" src="images/arrows_loader_292929.gif" alt="Loading LittleShoot P2P 2.0 File Sharing in the Browser"/>
+        </center>
+    </div>
+    
+    <div id="littleShootNoFlash" style="display: none;">
+        <a href="http://www.adobe.com/go/getflashplayer">
+            <img src="" alt="Get Adobe Flash player" />
+        </a>
+    </div>
+    
+    <div id="button" class="buttonDiv" style="min-height: 40px">
+        <div class="buttonNotOver">
+            <span style="color: #6e9f1a;">DOWNLOAD</span> <span style="color: #8abc33;">LITTLESHOOT</span>
+            <div class="sprite-buttonTopLeftCorner buttonTopLeftCorner spriteButton buttonCorner"></div>
+            <div class="sprite-buttonLeftBorder buttonLeftBorder buttonEdgeVertical"></div>
+            <div class="sprite-buttonBottomLeftCorner buttonBottomLeftCorner spriteButton buttonCorner" style="top:44px"></div>
+            
+            <div class="sprite-buttonTopBorder buttonTopBorder buttonEdgeHorizontal spriteButtonHorizontal"></div>
+            <!-- Top styling is for IE -->
+            <div class="sprite-buttonBottomBorder buttonBottomBorder buttonEdgeHorizontal spriteButtonHorizontal" style="top:44px"></div>
+            
+            <div class="sprite-buttonTopRightCorner buttonTopRightCorner spriteButton buttonCorner"></div>
+            <div class="sprite-buttonRightBorder buttonRightBorder buttonEdgeVertical"></div>
+            <div class="sprite-buttonBottomRightCorner buttonBottomRightCorner spriteButton buttonCorner" style="top:44px"></div>
+            
+        </div>
+        
+        <div class="buttonOver" style="display:none;">
+            <span style="color: black;">DOWNLOAD</span> <span style="color: #646464;">LITTLESHOOT</span>
+            <div class="sprite-buttonTopLeftCornerOver buttonTopLeftCorner spriteButton buttonCorner"></div>
+            <div class="sprite-buttonLeftBorderOver buttonLeftBorder buttonEdgeVertical"></div>
+            <div class="sprite-buttonBottomLeftCornerOver buttonBottomLeftCorner spriteButton buttonCorner" style="top:44px"></div>
+            
+            <div class="sprite-buttonTopBorderOver buttonTopBorder buttonEdgeHorizontal"></div>
+            <!-- Top styling is for IE -->
+            <div class="sprite-buttonBottomBorderOver buttonBottomBorder buttonEdgeHorizontal" style="top:44px"></div>
+            
+            <div class="sprite-buttonTopRightCornerOver buttonTopRightCorner spriteButton buttonCorner"></div>
+            <div class="sprite-buttonRightBorderOver buttonRightBorder buttonEdgeVertical"></div>
+            <div class="sprite-buttonBottomRightCornerOver buttonBottomRightCorner spriteButton buttonCorner" style="top:44px"></div>
+            
+        </div>
+    </div>
+    
+    
+    <script type="text/javascript">
+        littleShootConfig = 
+           {
+           disableAutoLoad : true
+           };
+    </script>
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.2.0/dojo/dojo.xd.js" djConfig="parseOnLoad: true, preventBackButtonFix: false, baseUrl: './', dojoIframeHistoryUrl:'iframe_history.html'"></script>
+    <!--
+    <script type="text/javascript" src="timestamped/base-combined.js?version=littleShootTimeStampedResource"></script>
+     
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.2.0/dojo/dojo.xd.js" djConfig="parseOnLoad: true, preventBackButtonFix: false, baseUrl: './', dojoIframeHistoryUrl:'iframe_history.html'"></script>
+    <script type="text/javascript" src="timestamped/littleshoot-combined.js?version=littleShootTimeStampedResource"></script>
+     -->
+    
+    {% include "javaScriptIncludes.html" %}
+    <script type="text/javascript">
+        dojo.require("dojo.number"); 
+	    function bytesToMb (bytes) {
+	        if(!bytes) {
+	            return 0;
+	        }
+	        var num = bytes/1048576;
+	        return dojo.number.format(num, {places: 2});
+	        //return dojo.number.format(num, {pattern: "###,###,###.##"});
+	    }
+
+	    dojo.addOnLoad(function() {
+		    console.info(bytesToMb(10000000000000000000000));
+	    });
+
+	    /*
+        jQuery().ready(function() {
+            var torrent1 = "http://www.mininova.org/get/2068940";
+            var torrent2 = "http://torrents.thepiratebay.org/4558258/Test_Your_IQ-400_Question_To_Boost_Your_Brainpower--(_)riGiII_l_.4558258.TPB.torrent";
+            var torrent3 = "http://torrents.thepiratebay.org/4458590/Photoshop_CS4_Retail_with_Crack_MAC_OSX.4458590.TPB.torrent";
+            var torrent4 = "http://torrents.thepiratebay.org/4573249/patent_it_yourself.4573249.TPB.torrent";
+            $("#button").click(function(evt) {
+                var url = "http://p2p2o.littleshoot.org:8107/api/client/download/patent_it.pdf?uri=" +encodeURIComponent(torrent4);
+                window.location.href=url;
+            });
+        });
+        */
+    </script>
+</body>
+</html>

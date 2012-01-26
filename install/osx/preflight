@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+echo "Running pre-install script for plugin"
+pluginPath=/Library/Internet\ Plug-Ins
+
+rm -rf "$pluginPath"/LittleShootPlugIn.plugin || echo "Could not delete existing plugin directory"
+rm -rf ~/Library/Internet\ Plug-Ins/LittleShootPlugIn.plugin || echo "Could not delete existing plugin directory"

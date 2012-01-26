@@ -1,0 +1,13 @@
+#!/bin/sh
+
+javaArgs="${javaArgs}"
+
+classpath="\
+${classpath}
+"
+
+javaSystemProps="\
+${javaSystemProps}
+"
+
+java -Dorg.lastbamboo.client.version=${appVersion} \$javaArgs \$javaSystemProps -classpath \$classpath ${mainClass} launchd $@

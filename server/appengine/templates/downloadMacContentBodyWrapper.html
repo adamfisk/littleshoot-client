@@ -1,0 +1,5 @@
+{% extends "aboutContentBodyWithHeader.html" %}
+{% block contentTitleCategory %}Download{% endblock %}
+{% block aboutContentBody %}{% include "downloadMacContentBody.html" %}{% endblock aboutContentBody %}
+
+{% block wrapperDivAttributues %} id="downloadMac" {% if not isMac %}style="display:none;"{% endif %}{% endblock %}

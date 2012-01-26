@@ -1,0 +1,11 @@
+application: littleshootimages 
+version: 2
+runtime: python
+api_version: 1
+
+handlers:
+  
+- url: /images/(.*\.(html|css|js|gif|png|jpg|ico))
+  expiration: "3650d"
+  static_files: static/\1
+  upload: static/(.*\.(html|css|js|gif|png|jpg|ico))

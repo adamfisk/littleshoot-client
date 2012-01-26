@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <style type="text/css">
+        #bugsDiv {
+            position: relative;
+            margin-left: 100px;
+        }
+    </style>
+    
+{% endblock head%}
+{% block content %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<h1>Top {{ bugs|length }} Bugs for {{ bugsTitle }} Version {{ version }}</h1>
+<br>
+<div id="versionsDiv" style="position: relative; margin-bottom: 40px;">
+    <form action="/bugsForVersion" method="post">
+        {% for version in versions %}
+            <input type="radio" name="version" id="version{{ forloop.counter }}" value="{{ version.version }}" />
+            <label for="version{{ forloop.counter }}">LittleShoot Version {{ version.version }} Released {{ version.date }}</label><br />
+        {% endfor %}
+        <br>
+        <input type="submit" value="Change Version" />
+    </form>
+</div>
+
+
+<div id="bugsDiv" style="display:none;">
+    {% for bug in bugs %}
+    <div dojoType="dijit.TitlePane" title="{{ forloop.counter }}) class: {{ bug.className }}, line: {{ bug.lineNumber }}, os: {{ bug.osName }} count {{ bug.count }}" open="false">
+        <div class="normalSmall">
+            <strong>Class: </strong>{{ bug.className }} <br>
+            <strong>Method: </strong>{{ bug.methodName }} <br>
+            <strong>LineNumber: </strong>{{ bug.lineNumber }} <br>
+            <strong>Thread: </strong>{{ bug.threadName }} <br>
+            <strong>Throwable: </strong>{{ bug.throwable }} <br>
+            <strong>Message: </strong>{{ bug.message }} <br>
+            <strong>Date: </strong>{{ bug.date }} <br>
+            <!--<strong>User: </strong>{{ bug.userName }}<br>-->
+            <strong>Version: </strong>{{ bug.version }} <br>
+            <strong>OS: </strong>{{ bug.osName }} {{ bug.osArch }} {{ bug.osVersion }}<br>
+            <strong>Java Version: </strong>{{ bug.javaVersion }} <br>
+            <strong>Instance ID: </strong>{{ bug.instanceId }} <br>
+            <strong>Country: </strong>{{ bug.country }} <br>
+            <strong>Language: </strong>{{ bug.language }} <br>
+            <strong>Time Zone: </strong>{{ bug.timeZone }} <br>
+            <strong>Free Space: </strong>{{ bug.freeSpace }}<br>
+            <strong>Count: </strong>{{ bug.count }}<br>
+        </div>
+    </div>
+    <div style="min-height: 4px"></div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block javascript %}
+
+var show = function()
+    {
+    dojo.byId("bugsDiv").style.display = '';
+    };
+dojo.addOnLoad(show);
+{% endblock %}
+
