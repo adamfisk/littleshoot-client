@@ -1352,8 +1352,8 @@
             <name>LittleShoot Repository</name>
             <url>http://svn.littleshoot.org/maven</url>
             </repository>
+-->
 
         </repositories>
--->
 
     </project>

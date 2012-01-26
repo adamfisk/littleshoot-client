@@ -35,6 +35,10 @@ mkdir $tempBuildDir || die "Could not create temp build dir for installing"
 
 echo "Moving to client site dir"
 #cd ~/$INSTALL_DIR/trunk/client/site/
+cd ~/$INSTALL_DIR/littleshoot-client
+
+# We do this again here in case we're running this standalone during testing, for example
+git pull origin master
 cd ~/$INSTALL_DIR/littleshoot-client/client/site/
 
 echo "Deleting old OSX app bundle..."
