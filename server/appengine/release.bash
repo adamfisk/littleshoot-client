@@ -5,7 +5,7 @@ function die()
   echo $*
   #svn revert littleshoot/amazonDevPay.py
   #svn revert littleshoot/awsUtils.py
-  svn revert settings.py
+  git checkout settings.py
   exit 1
 }
 
@@ -86,7 +86,7 @@ curDate=`date "+date-%Y-%m-%d--time-%H-%M-%S"`
 pushd templates
 grep uncompressed *.js && die "Looks like you're committing uncompressed code"
 
-svn ci -m 'Auto-committing templates from release script' * || die "commit failed"
+#svn ci -m 'Auto-committing templates from release script' * || die "commit failed"
 echo "Setting timestamped resources to use date: $curDate"
 
 perl -pi -e "s/littleShootTimeStampedResource/$curDate/g" *
@@ -110,7 +110,7 @@ pushd littleshoot
 #perl -pi -e "s,awsSecretAccessKeyToken,$key,g" awsUtils.py || die "Could not replace key"
 popd
 
-svn up
+git pull origin master
 
 RELEASE=release
 
@@ -152,15 +152,15 @@ find . -name "*.bak" | xargs rm
 
 pushd templates
 echo "About to revert timestamped files"
-svn revert *
+git checkout *
 popd
 
 pushd media
 echo "About to revert timestamped files"
-svn revert tabbedContent.js
+git checkout tabbedContent.js
 popd
 
-svn revert settings.py
+git checkout settings.py
  
 #pushd littleshoot
 #echo "Reverting python files"
