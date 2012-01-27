@@ -152,6 +152,8 @@ urlpatterns = auth_patterns + patterns('',
     
     (r'^downloadsWindow$',  direct_to_template, {'template': 'downloadsWindow.html'}),
     
+    (r'^downloadsDemo$',  direct_to_template, {'template': 'downloadsDemo.html'}),
+    
     # This gets called when we download a torrent file from a site that doesn't
     # use x-application/bittorrent or that uses Content-Disposition: attachment.
     (r'^torrentFiles$',  direct_to_template, {'template': 'downloadsWindow.html'}),

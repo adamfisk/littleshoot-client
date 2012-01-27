@@ -1,0 +1,166 @@
+{% include "header.html" %}
+
+    {% include "dojoCss.html" %}
+        
+        <style type="text/css">
+            {% include "button.css" %}
+            {% include "common.css" %}
+            {% include "searchResults.css" %}
+            {% include "sprite.css" %}
+            
+            #mainDiv { 
+                margin-left: 30px;
+            }
+            
+            #logoDiv {
+                background-image: url('images/sprite.png');
+                background-repeat: no-repeat;
+                position: relative;
+                margin-top: 16px;
+                left: 50px;
+                height: 32px;
+                width: 134px;
+                cursor: pointer;
+            }
+            
+            #proLogoDiv {
+                position: relative;
+                margin-top:8px;
+                padding-left: 50px;
+            }
+            
+            #downloadsDiv {
+                border-bottom: 3px solid #545454;
+            }
+            
+            .downloadsStatusDiv { 
+                position: relative;
+                margin: 40px;
+                width: 600px;
+            }
+            
+                        
+            .downloadsDiv {
+                position: relative;
+            }
+            
+            #torrentSeparator, #commentsDiv, #returnToTorrentSite, #logoDiv, #downloadsDiv {
+                margin-right: 4%;
+            }
+            
+            #torrentSeparator { 
+                min-height: 3px;
+                max-height: 3px;
+                min-width: 300px;
+                margin-top: 20px;
+                margin-bottom: 18px;
+                background-color: #545454;
+            }
+            
+            #commentsDiv {
+               position: relative;
+               padding-top: 8px;
+               text-align: center;
+            }
+            
+            #returnToTorrentSite {
+                position: relative;
+                margin-top: 18px;
+            }
+            
+            #returnToTorrentLink {
+                cursor: pointer;
+                text-decoration: underline;
+                text-align: center;
+            }
+            
+            #clearButtonsDiv {
+                position: absolute;
+                top: 14px;
+                right: 60px;
+                z-index:10;
+                margin-top: 18px;
+                margin-left: 10px;
+            }
+            
+            #clearFailedButtonDiv {
+                float: left;
+            }
+            
+            #clearInactiveButtonDiv {
+                margin-left: 6px;
+                float: left;
+            }
+
+            
+            #downloadStatsDiv {
+                position: absolute;
+                margin-top: 6px;
+                right: 60px;
+            }
+            
+            
+        </style>
+        <!--
+        <link rel="stylesheet" href="http://ui.jquery.com/applications/themes/base/ui.core.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="http://ui.jquery.com/applications/themes/base/ui.theme.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="http://ui.jquery.com/applications/themes/base/ui.progressbar.css" type="text/css" media="screen">
+        {% include "combinedMediaCss.html" %}
+        -->
+        
+        <link rel="stylesheet" href="test/download.css" type="text/css" media="screen"> 
+        <link rel="stylesheet" href="test/easyTooltip.css" type="text/css" media="screen"> 
+        <link rel="stylesheet" href="test/ui.core.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="test/ui.theme.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="test/ui.progressbar.css" type="text/css" media="screen"> 
+        
+        <!--
+            Layout notes: The reason we can't just float everything left for individual downloads or use inline display is
+            that the main download contents, like the progress bar, don't take up any space in the dom (positioned absolutely?),
+            so floating left just puts everything way over to the left.
+         -->
+    </head>
+    <body class="tundra" id="body">
+            <div id="loading" style="display:none;">
+                <img src="http://littleshootimages.appspot.com/images/loading.gif" alt="Loading LittleShoot P2P 2.0 File Sharing in the Browser" />
+            </div>
+    <div id="mainDiv">
+        <div id="logoDiv" class="sprite-logo_trans"></div>
+        <div id="proLogoDiv" style="display:none;"></div>
+        <div id="torrentSeparator"></div>
+        
+        {% include "downloadsCommonTemplate.html" %}   
+        
+        <div id="clearButtonsDiv">
+            <div id="clearFailedButtonDiv">
+                <input id="clearFailedButton" class="simpleButton" type="submit" alt="Clear Canceled" name="submit" value="Clear Canceled"/>
+            </div>
+            <div id="clearInactiveButtonDiv">
+                <input id="clearInactiveButton" class="simpleButton" type="submit" alt="Clear All Inactive" name="submit" value="Clear All Inactive"/>
+            </div>
+        </div>
+        <div id="baseDiv">
+            <div id="commentsDiv" class="normalBold">Problems? Questions? Comments? <a href="http://groups.google.com/group/littleshooters/" title="LittleShoot Forum">Let Us Know!</a></div>
+            <div id="returnToTorrentSite"><center><span id="returnToTorrentLink" class="normalBold">Go Back to My Torrent Site</span></center></div>
+        </div>
+        
+    </div>
+    <div id="lsEmbed"></div>
+    
+{% include "downloadTemplate.html" %}        
+
+{% include "flashDetection.html" %}
+
+{% include "javaScriptIncludes.html" %}
+{% include "combinedMediaJs.html" %}
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            Downloads.loadAllDownloads();
+            
+            $("#lsEmbed").html('<embed type="application/x-littleshoot" pluginspage="http://www.littleshoot.org"></embed>');
+        });
+    </script>
+    {% include "analytics.html" %}
+</body>
+</html>
