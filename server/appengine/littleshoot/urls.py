@@ -59,6 +59,8 @@ urlpatterns = auth_patterns + patterns('',
     # These are just to append the trailing slash
     (r'^littleproxy$', 'django.views.generic.simple.redirect_to', {'url': 'littleproxy/'}),
     (r'^maven-docs$', 'django.views.generic.simple.redirect_to', {'url': 'maven-docs/'}),
+    (r'^embedded-demo$', 'django.views.generic.simple.redirect_to', {'url': 'embedded-demo/'}),
+    
     
     #(r'^api/client/(?P<path>.*)$', 'django.views.generic.simple.redirect_to', {'url': 'http://client.littleshoot.org/%(path)s'}),
     url(r'^api/client/(?P<path>.*)$', redirect_get, {'url':'http://client.littleshoot.org:8107'}),    

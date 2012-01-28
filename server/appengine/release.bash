@@ -76,7 +76,7 @@ function cleanDjango()
 #  ;;
 #esac
 pushd ~/littleshoot/trunk/bin
-./checkJavaScript.bash || die "Bad JavaScript, Bad!"
+#./checkJavaScript.bash || die "Bad JavaScript, Bad!"
 popd
 
 startDir=`pwd`
@@ -152,7 +152,9 @@ find . -name "*.bak" | xargs rm
 
 pushd templates
 echo "About to revert timestamped files"
-git checkout *
+git checkout *.html
+git checkout *.js
+git checkout *.css
 popd
 
 pushd media

@@ -50,5 +50,6 @@ public final class StartTorrentDownloadController extends HttpServlet {
         } catch (final IOException e) {
             m_log.warn("Could not write JSON response", e);
         }
+        m_log.info("Finished processing get");
     }
 }

@@ -54,7 +54,7 @@ public class JsonControllerUtils {
 
         final OutputStream os = response.getOutputStream();
 
-        LOG.debug("Writing javascript callback.");
+        LOG.debug("Writing javascript callback func "+functionName);
         os.write(content);
         os.flush();
     }

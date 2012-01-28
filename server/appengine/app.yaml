@@ -1,5 +1,5 @@
 application: littleshootapi 
-version: 58
+version: 59
 runtime: python
 api_version: 1
 
@@ -95,6 +95,16 @@ handlers:
   expiration: "3650d"
   static_files: static/littleproxy/\1
   upload: static/littleproxy/(.+)
+  
+- url: /embedded-demo/
+  expiration: "3650d"
+  static_files: static/embedded-demo/index.html
+  upload: static/embedded-demo/index.html
+
+- url: /embedded-demo/(.+)
+  expiration: "3650d"
+  static_files: static/embedded-demo/\1
+  upload: static/embedded-demo/(.+)
   
 - url: /maven-docs/
   expiration: "3650d"
