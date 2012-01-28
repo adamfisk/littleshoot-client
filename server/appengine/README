@@ -1,0 +1,3 @@
+To run locally, just do:
+
+./manage.py runserver
