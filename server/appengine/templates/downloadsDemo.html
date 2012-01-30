@@ -155,40 +155,31 @@
 {% include "combinedMediaJs.html" %}
     
 <script type="text/javascript">
-$(document).ready(function() {
-    Downloads.loadAllDownloads();
+    $(document).ready(function() {
+        Downloads.loadAllDownloads();
     
-    $("#lsEmbed").html('<embed type="application/x-littleshoot" pluginspage="http://www.littleshoot.org"></embed>');
-    
-    function getParameterByName(name) {
-        var match = RegExp('[?&]' + name + 
-            '=([^&]*)').exec(window.location.search);
-        return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-    }
-    
-    var title = getParameterByName("title");
-    var dlUrl = "http://p2p2o.littleshoot.org:8107/api/client/startTorrentDownload/"+
-        encodeURIComponent(title)+"?callback=?";
-    var params = {
-        callback : "lsnoop",
-        uri : getParameterByName("uri")
-    };
-    // console.info("Creating params");
-    //params.uri = uri;
-    //params.callback="lsnoop";
-    
-    //var dlUrl = downloadUrl(uri, title);
-    //alert("URI: "+uri);
-    
-    var jqxhr = $.getJSON(dlUrl, 
-    	params,	
-    	function() {
-            alert("success");
-        });
-    //.success(function() { alert("second success"); })
-    //.error(function() { alert("error"); })
-    //.complete(function() { alert("complete"); });
-});
+        $("#lsEmbed").html('<embed type="application/x-littleshoot" pluginspage="http://www.littleshoot.org"></embed>');
+        
+        function getParameterByName(name) {
+            var match = RegExp('[?&]' + name + 
+                '=([^&]*)').exec(window.location.search);
+            return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+        }
+        
+        var title = getParameterByName("title");
+        var dlUrl = "http://p2p2o.littleshoot.org:8107/api/client/startTorrentDownload/"+
+            encodeURIComponent(title)+"?callback=?";
+        var params = {
+            callback : "lsnoop",
+            uri : getParameterByName("uri")
+        };
+        
+        var jqxhr = $.getJSON(dlUrl, 
+            params,    
+            function() {
+                //alert("success told ls to start the download");
+            });
+    });
 </script>
     {% include "analytics.html" %}
 </body>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<install4j version="5.0.9" transformSequenceNumber="3">
-  <directoryPresets config="../../../../../temp_install_dir/trunk" />
+<install4j version="5.0.11" transformSequenceNumber="3">
+  <directoryPresets config="." />
   <application name="${compiler:appName}" distributionSourceDir="" applicationId="1425-8440-1666-8005" mediaDir="." mediaFilePattern="${compiler:sys.shortName}_${compiler:sys.platform}" compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" commonExternalFiles="false" createMd5Sums="true" shrinkRuntime="true" shortName="${compiler:shortName}" publisher="${compiler:publisher}" publisherWeb="${compiler:publisherUrl}" version="0.1" allPathsRelative="true" backupOnSave="false" autoSave="true" convertDotsToUnderscores="true" macSignature="????" installerName="" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false" languageSelectionInPrincipalLanguage="false">
       <principalLanguage id="en" customLocalizationFile="" />
@@ -34,7 +34,7 @@
       <mountPoint id="233" root="232" location="" mode="755" />
     </mountPoints>
     <entries>
-      <dirEntry mountPoint="55" file="generated_install_files" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" entryMode="direct" subDirectory="hii_install" excludeSuffixes=".svn, *.java" dirMode="755" overrideDirMode="false">
+      <dirEntry mountPoint="55" file="generated_install_files" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" entryMode="direct" subDirectory="generated_install_files" excludeSuffixes=".svn, *.java" dirMode="755" overrideDirMode="false">
         <exclude />
       </dirEntry>
       <dirEntry mountPoint="133" file="generated_win_files" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" entryMode="direct" subDirectory="lib" excludeSuffixes=".svn, *.jnilib, *.so, *.ps1" dirMode="755" overrideDirMode="false">
@@ -133,8 +133,8 @@
       </customScript>
       <iconImageFiles />
     </launcher>
-    <launcher name="HIIWindowsGui" id="80" customizedId="" external="false" excludeFromMenu="false" unixMode="755" menuName="" icnsFile="" swtApp="false" fileset="131">
-      <executable name="${compiler:appName}" type="1" iconSet="false" iconFile="" executableDir="" redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="true" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="true" globalSingleInstance="false">
+    <launcher name="LittleShootWindowsGui" id="80" customizedId="" external="false" excludeFromMenu="false" unixMode="755" menuName="" icnsFile="" swtApp="false" fileset="131">
+      <executable name="LittleShoot" type="1" iconSet="false" iconFile="" executableDir="" redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="true" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="true" globalSingleInstance="false">
         <versionInfo include="false" fileVersion="" fileDescription="" legalCopyright="" internalName="" productName="" />
       </executable>
       <splashScreen show="false" autoOff="true" alwaysOnTop="true" width="0" height="0" bitmapFile="" java6SplashScreen="false">
@@ -143,7 +143,7 @@
           <versionLine x="20" y="40" text="version ${compiler:sys.version}" font="Arial" fontSize="8" fontColor="0,0,0" fontWeight="500" />
         </text>
       </splashScreen>
-      <java mainClass="org.lastbamboo.client.launcher.all.Launcher" vmParameters="-Dhii.key=true -Dorg.lastbamboo.client.version=${compiler:sys.version}" arguments="launchd" allowVMPassthroughParameters="true" preferredVM="" bundleRuntime="true">
+      <java mainClass="org.lastbamboo.client.launcher.all.Launcher" vmParameters="-Dorg.lastbamboo.client.version=${compiler:sys.version}" arguments="launchd" allowVMPassthroughParameters="true" preferredVM="" bundleRuntime="true">
         <classPath>
           <archive location="LittleShoot.jar" failOnError="false" />
         </classPath>
@@ -739,7 +739,7 @@
         <customAttributes />
       </autoUpdate>
     </macosFolderArchive>
-    <windows name="Windows" id="85" customizedId="" mediaFileName="LittleShootPlugin" installDir="HII" overridePrincipalLanguage="false" jreBitType="32" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" includedJRE="" manualJREEntry="false" bundleType="2" jreURL="" jreFtpURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="" contentFilesType="1" downloadURL="" verifyIntegrity="true">
+    <windows name="Windows" id="85" customizedId="" mediaFileName="LittleShootPlugin" installDir="LittleShoot" overridePrincipalLanguage="false" jreBitType="32" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" includedJRE="" manualJREEntry="false" bundleType="2" jreURL="" jreFtpURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="" contentFilesType="1" downloadURL="" verifyIntegrity="true">
       <excludedLaunchers>
         <launcher id="239" />
         <launcher id="293" />
@@ -758,7 +758,7 @@
     </windows>
   </mediaSets>
   <buildIds buildAll="false">
-    <mediaSet refId="77" />
+    <mediaSet refId="85" />
   </buildIds>
   <buildOptions verbose="false" faster="true" debug="false" />
 </install4j>
