@@ -27,7 +27,7 @@ git pull origin master
 
 echo "Cleaning and building all projects"
 mvn clean
-mvn install -Dmaven.test.skip=true
+mvn install -Dmaven.test.skip=true || die "Could not build"
 
 echo "Moving to client site dir"
 pushd client/site/ || die "Could not move to client site?"
@@ -47,7 +47,7 @@ cp ../../../lib/static/*.dll . || die "Could not copy static dlls!"
 
 cd ..
 
-/Applications/install4j\ 5/bin/install4jc -D "appName=LittleShoot,shortName=little,publisher=LittleShoot,publisherUrl=http://www.littleshoot.org" -m win32 -r $APP_VERSION ./LittleShoot.install4j
+/Applications/install4j\ 5/bin/install4jc -D "appName=LittleShoot,shortName=little,publisher=LittleShoot,publisherUrl=http://www.littleshoot.org" -m windows -r $APP_VERSION ./LittleShoot.install4j
 
 lsname=LittleShoot-$APP_VERSION.exe
 mv LittleShootPlugin.exe $lsname
