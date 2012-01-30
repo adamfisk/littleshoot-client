@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<updateDescriptor baseUrl="">
-  <entry targetMediaFileId="85" updatableVersionMin="" updatableVersionMax="" fileName="LittleShootPlugin.exe" newVersion="0.1" newMediaFileId="85" fileSize="4310016" bundledJre="" archive="false">
-    <comment language="en" />
-  </entry>
-</updateDescriptor>
-
