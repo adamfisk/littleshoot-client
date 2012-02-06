@@ -51,11 +51,15 @@ cd ..
 
 lsname=LittleShoot-$APP_VERSION.exe
 mv LittleShootPlugin.exe $lsname
+echo "File is in `pwd`"
+echo "Copying to desktop"
+cp $lsname ~/Desktop
 echo "Uploading $lsname to Amazon!!"
-#aws -putp littleshoot $lsname
+aws -putp littleshoot $lsname
 #scp $lsname afisk@10.0.2.155:/home/afisk
 echo "Uploaded LittleShootPlugin.exe"
 
+echo "Also available at http://littleshoot.s3.amazonaws.com/$lsname"
 popd
 popd
 exit 0
