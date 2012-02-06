@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="5.0.11" transformSequenceNumber="3">
-  <directoryPresets config="." />
+  <directoryPresets config="../win/images" />
   <application name="${compiler:appName}" distributionSourceDir="" applicationId="1425-8440-1666-8005" mediaDir="." mediaFilePattern="${compiler:sys.shortName}_${compiler:sys.platform}" compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" commonExternalFiles="false" createMd5Sums="true" shrinkRuntime="true" shortName="${compiler:shortName}" publisher="${compiler:publisher}" publisherWeb="${compiler:publisherUrl}" version="0.1" allPathsRelative="true" backupOnSave="false" autoSave="true" convertDotsToUnderscores="true" macSignature="????" installerName="" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false" languageSelectionInPrincipalLanguage="false">
       <principalLanguage id="en" customLocalizationFile="" />
@@ -448,6 +448,99 @@
                 </serializedBean>
                 <condition>return Util.isMacOS();</condition>
               </action>
+              <action name="" id="514" customizedId="" beanClass="com.install4j.runtime.beans.actions.desktop.CreateDesktopLinkAction" enabled="true" commentSet="false" comment="" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.actions.desktop.CreateDesktopLinkAction">
+                      <void property="file">
+                        <object class="java.io.File">
+                          <string>LittleShoot</string>
+                        </object>
+                      </void>
+                      <void property="name">
+                        <string>${compiler:appName}</string>
+                      </void>
+                      <void property="startIn">
+                        <object class="java.io.File">
+                          <string>${installer:sys.installationDir}</string>
+                        </object>
+                      </void>
+                      <void property="winIconFile">
+                        <object class="com.install4j.api.beans.ExternalFile">
+                          <string>${installer:sys.installationDir}/images/48.ico</string>
+                        </object>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <condition />
+              </action>
+              <action name="" id="515" customizedId="" beanClass="com.install4j.runtime.beans.actions.files.MoveFileAction" enabled="true" commentSet="false" comment="" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.actions.files.MoveFileAction">
+                      <void property="destinationFile">
+                        <object class="java.io.File">
+                          <string>${installer:sys.programFilesDir}/LittleShoot</string>
+                        </object>
+                      </void>
+                      <void property="files">
+                        <array class="java.io.File" length="1">
+                          <void index="0">
+                            <object class="java.io.File">
+                              <string>${installer:sys.desktopDir}/LittleShoot.lnk</string>
+                            </object>
+                          </void>
+                        </array>
+                      </void>
+                      <void property="overwriteMode">
+                        <object class="com.install4j.api.context.OverwriteMode" field="ALWAYS" />
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <condition />
+              </action>
+              <action name="" id="516" customizedId="" beanClass="com.install4j.runtime.beans.actions.desktop.CreateUrlLinkAction" enabled="true" commentSet="false" comment="" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.actions.desktop.CreateUrlLinkAction">
+                      <void property="file">
+                        <object class="java.io.File">
+                          <string>${installer:sys.desktopDir}/LittleShoot.url</string>
+                        </object>
+                      </void>
+                      <void property="icon">
+                        <object class="com.install4j.api.beans.ExternalFile">
+                          <string>${installer:sys.installationDir}/images/48.ico</string>
+                        </object>
+                      </void>
+                      <void property="url">
+                        <string>http://www.littleshoot.org/shortcut?fromWinDesktop=true&amp;version=${compiler:sys.version}</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <condition />
+              </action>
+              <action name="" id="517" customizedId="" beanClass="com.install4j.runtime.beans.actions.desktop.CreateFileAssociationAction" enabled="true" commentSet="false" comment="" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.actions.desktop.CreateFileAssociationAction">
+                      <void property="extension">
+                        <string>.torrent</string>
+                      </void>
+                      <void property="launcherId">
+                        <string>80</string>
+                      </void>
+                      <void property="mac">
+                        <boolean>false</boolean>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <condition />
+              </action>
             </actions>
             <formComponents />
           </screen>
@@ -716,7 +809,7 @@
       <excludedComponents />
       <includedDownloadableComponents />
     </macosFolder>
-    <macos name="Mac OS X Single Bundle" id="77" customizedId="" mediaFileName="" installDir="${compiler:appName}HII" overridePrincipalLanguage="false" jreBitType="all" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" customInstallBaseDir="" contentFilesType="1" downloadURL="" launcherId="76">
+    <macos name="Mac OS X Single Bundle" id="77" customizedId="" mediaFileName="" installDir="${compiler:appName}" overridePrincipalLanguage="false" jreBitType="all" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" customInstallBaseDir="" contentFilesType="1" downloadURL="" launcherId="76">
       <excludedBeans />
       <overriddenPrincipalLanguage id="en" customLocalizationFile="" />
       <exclude />
@@ -739,7 +832,7 @@
         <customAttributes />
       </autoUpdate>
     </macosFolderArchive>
-    <windows name="Windows" id="85" customizedId="" mediaFileName="LittleShootPlugin" installDir="LittleShoot" overridePrincipalLanguage="false" jreBitType="32" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" includedJRE="" manualJREEntry="false" bundleType="2" jreURL="" jreFtpURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="" contentFilesType="1" downloadURL="" verifyIntegrity="true">
+    <windows name="Windows" id="85" customizedId="" mediaFileName="LittleShootPlugin" installDir="LittleShoot-${compiler:sys.version}" overridePrincipalLanguage="false" jreBitType="32" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" includedJRE="" manualJREEntry="false" bundleType="2" jreURL="" jreFtpURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="" contentFilesType="1" downloadURL="" verifyIntegrity="true">
       <excludedLaunchers>
         <launcher id="239" />
         <launcher id="293" />

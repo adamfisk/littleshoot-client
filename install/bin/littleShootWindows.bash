@@ -52,8 +52,8 @@ cd ..
 lsname=LittleShoot-$APP_VERSION.exe
 mv LittleShootPlugin.exe $lsname
 echo "Uploading $lsname to Amazon!!"
-aws -putp littleshoot $lsname
-
+#aws -putp littleshoot $lsname
+#scp $lsname afisk@10.0.2.155:/home/afisk
 echo "Uploaded LittleShootPlugin.exe"
 
 popd
