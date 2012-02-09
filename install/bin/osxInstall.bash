@@ -94,7 +94,7 @@ echo "Internet enabled in dmg: `hdiutil internet-enable -query LittleShoot.dmg`"
 echo "Copying dmg to upload directory"
 cp LittleShoot.dmg ~/$INSTALL_DIR/littleshoot-client/client/site/LittleShootPlugin.dmg
 
-echo "Copying dmg for easy testing"
+echo "Copying LittleShoot.dmg to desktop for testing"
 cp LittleShoot.dmg ~/Desktop
 
 #echo "Removing pkg directory..."

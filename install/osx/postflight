@@ -158,7 +158,7 @@ touch /Applications/LittleShoot.app
 
 echo "Opening www.littleshoot.org"
 # We need to open the default browser for the user, not the super user.
-su $USER -c "open 'http://www.littleshoot.org/welcome?fromOsxInstaller=true'"
+#su $USER -c "open 'http://www.littleshoot.org/welcome?fromOsxInstaller=true'"
 
 echo "End postflight script"
 exit 0
