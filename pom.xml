@@ -125,7 +125,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>r09</version>
+            <version>13.0.1</version>
         </dependency>
 
         <dependency>
@@ -242,11 +242,13 @@
                 <version>1.2.14</version>
                 </dependency>
 
+<!--
             <dependency>
                 <groupId>org.jboss.netty</groupId>
                 <artifactId>netty</artifactId>
                 <version>3.2.4.GA</version>
                 </dependency>
+-->
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
@@ -320,14 +322,6 @@
                 <artifactId>amazon-ec2</artifactId>
                 <version>${snapshot.version}</version>
                 </dependency>
-
-<!--
-            <dependency>
-                <groupId>org.littleshoot</groupId>
-                <artifactId>amazon-sdb</artifactId>
-                <version>${project.version}</version>
-                </dependency>
--->
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
