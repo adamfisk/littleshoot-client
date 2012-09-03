@@ -5,6 +5,8 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.prefs.Preferences;
 
+import javax.security.auth.login.CredentialException;
+
 import org.lastbamboo.client.prefs.PrefKeys;
 import org.lastbamboo.client.prefs.Prefs;
 import org.lastbamboo.common.p2p.P2PClient;
@@ -52,6 +54,8 @@ public final class NatDependentServicesLauncher {
         try {
             this.p2pClient.login(Long.toString(Prefs.getId()), "");
         } catch (final IOException e) {
+            log.error("Error logging in!", e);
+        } catch (final CredentialException e) {
             log.error("Error logging in!", e);
         }
     }

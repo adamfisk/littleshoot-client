@@ -2,6 +2,7 @@ package org.lastbamboo.client.handlers;
 
 import java.io.IOException;
 
+import javax.security.auth.login.CredentialException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -54,6 +55,9 @@ public class LoginController extends HttpServlet {
             log.info("Logged in");
             JsonControllerUtils.writeResponse(request, response, json);
         } catch (final IOException e) {
+            log.warn("Could not log in!", e);
+            error(request, response, e.getMessage());
+        } catch (final CredentialException e) {
             log.warn("Could not log in!", e);
             error(request, response, e.getMessage());
         }
