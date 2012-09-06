@@ -20,7 +20,18 @@ fi
 APP_VERSION="$1";
 echo "Building windows installer with app version: $APP_VERSION"
 
+
 INSTALL_DIR=../../../temp_install_dir
+
+# For rapid development this is commented out, but should be re-added for updated real releases.
+#echo "Removing old install dir..."
+#rm -rf $INSTALL_DIR || die "Could not clean install dir!!"
+#mkdir -p $INSTALL_DIR || die "Could not make install dir?"
+#cd $INSTALL_DIR || die "Could not cd to install dir?"
+
+#echo "Cloning littleshoot-client"
+#git clone git@github.com:adamfisk/littleshoot-client.git || die "Could not clone littleshoot-client!"
+#cd littleshoot-client
 
 pushd $INSTALL_DIR/littleshoot-client
 git pull origin master
@@ -50,7 +61,7 @@ cd ..
 /Applications/install4j\ 5/bin/install4jc -D "appName=SmartFiles,shortName=smart,publisher=LittleShoot,publisherUrl=http://www.littleshoot.org" -m windows -r $APP_VERSION ./LittleShoot.install4j
 
 echo "Uploading LittleShootPlugin.exe to Amazon!!"
-aws -putp smartfiles LittleShootPlugin.exe
+#aws -putp smartfiles LittleShootPlugin.exe
 
 echo "Uploaded LittleShootPlugin.exe"
 
