@@ -1,8 +1,16 @@
 .DS_Store
 *.swp
 *.un~
+*.*~
 *.settings
 *.classpath
 *.project
 *.pyc
+*.prefs
+.idea
+bin/
+nbactions.xml
+dependency-reduced-pom.xml
+.sass-cache
+log.txt*
 target/

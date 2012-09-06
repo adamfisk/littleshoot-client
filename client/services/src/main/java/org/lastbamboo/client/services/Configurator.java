@@ -33,11 +33,12 @@ public class Configurator {
     private void configureP2P() {
         final Runnable p2pRunner = new Runnable()  {
             public void run() {
-                final P2PClient p2pClient = LittleShootModule.getP2PSipClient();
+                //final P2PClient p2pClient = LittleShootModule.getP2PSipClient();
+                final P2PClient p2pClient = LittleShootModule.getP2PXmppClient();
                 if (!isHii()) {
-                    log.info("Logging in -- not running HII!!");
-                    final NatDependentServicesLauncher servicesLauncher =
-                        new NatDependentServicesLauncher(p2pClient);
+                    //log.info("Logging in -- not running HII!!");
+                    //final NatDependentServicesLauncher servicesLauncher =
+                    //    new NatDependentServicesLauncher(p2pClient);
                 } else {
                     log.info("NOT AUTOMATICALLY LOGGING IN TO SIP SERVER " +
                         "WITH HII INSTANCE.");

@@ -89,7 +89,7 @@ public final class Launcher  {
     private static final AtomicBoolean s_releasingLock = 
         new AtomicBoolean(false);
     
-    private HttpServer m_server;
+    private HttpServer server;
     
     /**
      * Entry point for the application.  Starts everything.
@@ -567,7 +567,7 @@ public final class Launcher  {
     private void stopServer() {
         System.out.println("Stopping the server!!");
 
-        m_server.stopServer();
+        server.stopServer();
     }
 
     /**
@@ -576,14 +576,14 @@ public final class Launcher  {
      * @param cl The class loader to use for starting the app.
      */
     private void startServer() {
-        this.m_server = new HttpServerImpl();
+        this.server = new HttpServerImpl();
         final long elapsed = System.currentTimeMillis() - START_TIME;
 
         System.out.println("SYSTEM STARTUP IN " + elapsed / 1000
                 + " seconds...");
         System.out.println("SYSTEM STARTUP IN " + elapsed + " milliseconds...");
         try {
-            this.m_server.joinServer();
+            this.server.joinServer();
         } catch (final Throwable t) {
             LOG.warn("Caught unexpected exception", t);
         }

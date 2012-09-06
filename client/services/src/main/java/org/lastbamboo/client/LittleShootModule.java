@@ -33,6 +33,7 @@ import org.lastbamboo.common.portmapping.UpnpService;
 import org.lastbamboo.common.searchers.limewire.LimeWire;
 import org.lastbamboo.common.searchers.limewire.LimeWireImpl;
 import org.lastbamboo.jni.JLibTorrent;
+import org.littleshoot.commom.xmpp.XmppP2PClient;
 import org.littleshoot.p2p.P2P;
 import org.littleshoot.util.NetworkUtils;
 import org.littleshoot.util.ShootConstants;
@@ -85,6 +86,26 @@ public class LittleShootModule {
     private static final LibTorrentManager torrentManager = 
         new LibTorrentManagerImpl();
     
+    private volatile static XmppP2PClient xmppP2PClient;
+    
+    public static XmppP2PClient getP2PXmppClient() {
+        if (xmppP2PClient == null) {
+            final JLibTorrent lt =
+                    LittleShootModule.getTorrentManager().getLibTorrent();
+                final NatPmpService natPmp = lt;
+                final UpnpService upnp = lt;
+            try {
+                xmppP2PClient = P2P.newXmppP2PHttpClient("shoot", natPmp, upnp, 
+                    LittleShootModule.getFilesAddress());
+            } catch (final IOException e) {
+                LOG.error("Could not start XMPP P2P Client!", e);
+                throw new Error("Could not start XMPP P2P Client!", e);
+            }
+        }
+        return xmppP2PClient;
+    }
+    
+    /*
     public static P2PClient getP2PSipClient() {
         if (p2pClient == null) {
             try {
@@ -102,6 +123,7 @@ public class LittleShootModule {
         }
         return p2pClient;
     }
+    */
     
     public static FileMapper getFileMapper() {
         if (fileMapper == null) {

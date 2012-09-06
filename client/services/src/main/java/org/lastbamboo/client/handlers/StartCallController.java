@@ -62,7 +62,7 @@ public class StartCallController extends HttpServlet {
                     // can get, and everything's not quite in place for purely
                     // unreliable UDP-based connections.
                     final Socket sock = 
-                        LittleShootModule.getP2PSipClient().newUnreliableSocket(uri);
+                        LittleShootModule.getP2PXmppClient().newUnreliableSocket(uri);
                     depot.addSocket(url, sock);
                 } catch (final NoAnswerException e) {
                     log.info("Issue starting call", e);

@@ -25,11 +25,11 @@ classpath="\
 /Users/afisk/.m2/repository/org/lastbamboo/lastbamboo-common-rest/1.0/lastbamboo-common-rest-1.0.jar:\
 /Users/afisk/.m2/repository/commons-id/commons-id/0.1/commons-id-0.1.jar:\
 /Users/afisk/.m2/repository/org/lastbamboo/lastbamboo-common-json/1.0/lastbamboo-common-json-1.0.jar:\
+/Users/afisk/.m2/repository/org/json/json/20090211/json-20090211.jar:\
 /Users/afisk/.m2/repository/org/lastbamboo/lastbamboo-common-searchers-flickr/1.0/lastbamboo-common-searchers-flickr-1.0.jar:\
 /Users/afisk/.m2/repository/org/lastbamboo/lastbamboo-common-searchers-isohunt/1.0/lastbamboo-common-searchers-isohunt-1.0.jar:\
 /Users/afisk/.m2/repository/commons-discovery/commons-discovery/0.2/commons-discovery-0.2.jar:\
 /Users/afisk/.m2/repository/org/lastbamboo/lastbamboo-common-searchers-littleshoot/1.0/lastbamboo-common-searchers-littleshoot-1.0.jar:\
-/Users/afisk/.m2/repository/org/lastbamboo/lastbamboo-common-searchers-yahoo/1.0/lastbamboo-common-searchers-yahoo-1.0.jar:\
 /Users/afisk/.m2/repository/org/lastbamboo/lastbamboo-common-searchers-youtube/1.0/lastbamboo-common-searchers-youtube-1.0.jar:\
 /Users/afisk/.m2/repository/org/littleshoot/sip-stack/1.0-SNAPSHOT/sip-stack-1.0-SNAPSHOT.jar:\
 /Users/afisk/.m2/repository/commons-collections/commons-collections/3.2/commons-collections-3.2.jar:\
@@ -69,7 +69,7 @@ classpath="\
 /Users/afisk/.m2/repository/org/littleshoot/smack-xmpp-3-2-2/1.0-SNAPSHOT/smack-xmpp-3-2-2-1.0-SNAPSHOT.jar:\
 /Users/afisk/.m2/repository/com/jcraft/jzlib/1.0.7/jzlib-1.0.7.jar:\
 /Users/afisk/.m2/repository/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar:\
-/Users/afisk/.m2/repository/com/google/guava/guava/r09/guava-r09.jar:\
+/Users/afisk/.m2/repository/com/google/guava/guava/13.0.1/guava-13.0.1.jar:\
 /Users/afisk/.m2/repository/log4j/log4j/1.2.14/log4j-1.2.14.jar:\
 /Users/afisk/.m2/repository/org/slf4j/slf4j-api/1.6.1/slf4j-api-1.6.1.jar:\
 /Users/afisk/.m2/repository/org/slf4j/slf4j-log4j12/1.6.1/slf4j-log4j12-1.6.1.jar:\

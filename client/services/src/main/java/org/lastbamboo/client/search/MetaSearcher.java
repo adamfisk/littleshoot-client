@@ -12,7 +12,7 @@ import org.lastbamboo.common.searchers.flickr.FlickrSearcher;
 import org.lastbamboo.common.searchers.isohunt.IsoHuntSearcher;
 import org.lastbamboo.common.searchers.limewire.LimeWireJsonResult;
 import org.lastbamboo.common.searchers.littleshoot.JsonLittleShootResult;
-import org.lastbamboo.common.searchers.yahoo.YahooImageSearcher;
+//import org.lastbamboo.common.searchers.yahoo.YahooImageSearcher;
 import org.lastbamboo.common.searchers.youtube.YouTubeGDataSearcher;
 import org.littleshoot.util.DaemonThread;
 
@@ -120,6 +120,7 @@ public class MetaSearcher implements Searcher {
             search(flickr);
         }
 
+        /*
         if (request.isYahoo()) {
             final RestSearcher yahoo = new YahooImageSearcher(
                     this.m_searchResultProcessor,
@@ -128,6 +129,7 @@ public class MetaSearcher implements Searcher {
                     searchString);
             search(yahoo);
         }
+        */
     }
 
     private void searchVideoSites(final SearchRequestBean request,

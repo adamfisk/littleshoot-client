@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
 import org.json.simple.JSONObject;
 import org.lastbamboo.client.LittleShootModule;
-import org.lastbamboo.common.p2p.P2PClient;
 import org.lastbamboo.common.sip.stack.SipUriFactory;
+import org.littleshoot.commom.xmpp.XmppP2PClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,12 +26,22 @@ public class LoginController extends HttpServlet {
     private final Logger log = LoggerFactory.getLogger(getClass());
     
     @Override
+    protected void doGet(final HttpServletRequest request, 
+            final HttpServletResponse response) throws ServletException, 
+            IOException {
+        doPost(request, response);
+    }
+    
+    @Override
     protected void doPost(final HttpServletRequest request, 
         final HttpServletResponse response) throws ServletException, 
         IOException {
         log.info("Processing login request...");
         final String username = request.getParameter("username");
         final String password = request.getParameter("password");
+        log.info("Got password: {}", password);
+        final String server = request.getParameter("server");
+        final String port = request.getParameter("port");
         if (StringUtils.isBlank(username)) {
             error(request, response, 
                 "'username' and 'password' arguments required");
@@ -42,16 +52,31 @@ public class LoginController extends HttpServlet {
                 "'username' and 'password' arguments required");
             return;
         }
-        final P2PClient p2pClient = LittleShootModule.getP2PSipClient();
+        if (StringUtils.isBlank(server)) {
+            error(request, response, "'server' argument required");
+            return;
+        }
+        final XmppP2PClient p2pClient = LittleShootModule.getP2PXmppClient();
+        
+        if (!p2pClient.isLoggedOut()) {
+            p2pClient.logout();
+        }
         
         final JSONObject json = new JSONObject();
         // Note the following call *will not* login again if it's already
         // logged in.
         try {
-            p2pClient.login(username, password);
+            final String userName;
+            if (StringUtils.isBlank(port)) {
+                userName = p2pClient.login(username, password, server);
+            } else {
+                userName = p2pClient.login(username, password, server, 
+                    Integer.parseInt(port), "");
+            }
+            //p2pClient.login(username, password);
             json.put("success", true);
-            json.put("uri", 
-                SipUriFactory.createSipUri(username).toASCIIString());
+            json.put("uri", userName);
+                //SipUriFactory.createSipUri(username).toASCIIString());
             log.info("Logged in");
             JsonControllerUtils.writeResponse(request, response, json);
         } catch (final IOException e) {
