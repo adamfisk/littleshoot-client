@@ -49,6 +49,7 @@ public class StartCallController extends HttpServlet {
         final UUID id = UUID.randomUUID();
         final URI uri = URI.create(uriStr);
         final String url = id.toString();
+        /*
         final Runnable runner = new Runnable() {
             
             public void run() {
@@ -76,6 +77,7 @@ public class StartCallController extends HttpServlet {
         final Thread t = new Thread(runner, "Start-Call-Thread");
         t.setDaemon(true);
         t.start();
+        */
         final JSONObject json = new JSONObject();
         json.put("id", url);
         JsonControllerUtils.writeResponse(request, response, json);

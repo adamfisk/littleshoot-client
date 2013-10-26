@@ -63,7 +63,7 @@
             
         <dependency>
             <groupId>org.littleshoot</groupId>
-            <artifactId>ice</artifactId>
+            <artifactId>littleshoot-ice</artifactId>
             </dependency>
     
 <!-- 

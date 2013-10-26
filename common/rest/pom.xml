@@ -18,30 +18,26 @@
     <dependencies>
 
         <dependency>
-            <groupId>commons-id</groupId>
-            <artifactId>commons-id</artifactId>
-            </dependency>
-
+            <groupId>org.littleshoot</groupId>
+            <artifactId>littleshoot-commons-id</artifactId> 
+            <version>1.0.3</version>
+        </dependency>
+            
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            </dependency>
+        </dependency>
 
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
-            </dependency>
-            
+        </dependency>
+        
         <dependency>
             <groupId>org.lastbamboo</groupId>
             <artifactId>lastbamboo-common-json</artifactId>
-            </dependency>
+        </dependency>
 
-        <dependency>
-            <groupId>org.littleshoot</groupId>
-            <artifactId>http-client</artifactId>
-            </dependency>
-                         
         <dependency>
             <groupId>org.littleshoot</groupId>
             <artifactId>util</artifactId>

@@ -172,6 +172,7 @@ public class SystemTrayImpl implements SystemTray {
                 public void actionPerformed(final ActionEvent e) {
                     final boolean enabled = prefs.getBoolean(
                             CommonUtils.LIMEWIRE_ENABLED_KEY, true);
+                    /*
                     if (enabled) {
                         limeWireMenuItem.setLabel("Turn LimeWire On");
                         limeWireStatusMenuItem.setLabel("LimeWire: Off");
@@ -184,6 +185,7 @@ public class SystemTrayImpl implements SystemTray {
                         prefs.putBoolean(CommonUtils.LIMEWIRE_ENABLED_KEY, true);
                         LittleShootModule.getLimeWire().setEnabled(true);
                     }
+                    */
                 }
             });
 

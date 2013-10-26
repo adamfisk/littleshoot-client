@@ -100,6 +100,7 @@
             <artifactId>lastbamboo-common-searchers-isohunt</artifactId>
         </dependency>
 
+<!--
         <dependency>
             <groupId>org.lastbamboo</groupId>
             <artifactId>lastbamboo-common-searchers-limewire</artifactId>
@@ -109,6 +110,7 @@
             <groupId>org.lastbamboo</groupId>
             <artifactId>lastbamboo-common-searchers-littleshoot</artifactId>
         </dependency>
+-->
 <!--
         <dependency>
             <groupId>org.lastbamboo</groupId>
@@ -156,18 +158,13 @@
             <groupId>org.limewire</groupId>
             <artifactId>gnutella-core</artifactId>
         </dependency>
--->
             <dependency>
                 <groupId>org.limewire</groupId>
                 <artifactId>libtorrent</artifactId>
             </dependency>
+-->
 
 
-        <dependency>
-            <groupId>org.littleshoot</groupId>
-            <artifactId>p2p</artifactId>
-        </dependency>
-        
     </dependencies>
 
 </project>

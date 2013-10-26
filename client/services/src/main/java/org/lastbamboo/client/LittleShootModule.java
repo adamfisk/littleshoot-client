@@ -30,8 +30,6 @@ import org.lastbamboo.common.p2p.P2PClient;
 import org.lastbamboo.common.p2p.RawUdpServerDepot;
 import org.lastbamboo.common.portmapping.NatPmpService;
 import org.lastbamboo.common.portmapping.UpnpService;
-import org.lastbamboo.common.searchers.limewire.LimeWire;
-import org.lastbamboo.common.searchers.limewire.LimeWireImpl;
 import org.lastbamboo.jni.JLibTorrent;
 import org.littleshoot.commom.xmpp.XmppP2PClient;
 import org.littleshoot.p2p.P2P;
@@ -57,7 +55,7 @@ public class LittleShootModule {
     
     private volatile static DownloadTracker downloadTracker;
 
-    private volatile static LimeWire limeWire;
+    //private volatile static LimeWire limeWire;
     
     /**
      * We start this here because it loads old torrents and resumes them.
@@ -153,6 +151,7 @@ public class LittleShootModule {
         return downloadTracker;
     }
 
+    /*
     public static LimeWire getLimeWire() {
         if (limeWire == null) {
             limeWire = new LimeWireImpl();
@@ -160,6 +159,7 @@ public class LittleShootModule {
         }
         return limeWire;
     }
+    */
 
     public static LibTorrentManager getTorrentManager() {
         return torrentManager;

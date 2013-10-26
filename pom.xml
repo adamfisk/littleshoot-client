@@ -14,13 +14,13 @@
 
     <properties>
        <littleshoot.version>0.29</littleshoot.version>
-       <snapshot.version>1.0-SNAPSHOT</snapshot.version>
+       <platform.version>1.0.3</platform.version>
        <spring.version>3.0.5.RELEASE</spring.version>
        <lw.version>5.4.8-SNAPSHOT</lw.version>
        <lw.version.base>5.4.8</lw.version.base>
        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-       <slf4j.version>1.6.1</slf4j.version>
+       <slf4j.version>1.7.2</slf4j.version>
     </properties>
 
     <organization>
@@ -46,8 +46,8 @@
         <module>common</module>
 <!--
         <module>p2p</module>
--->
         <module>integration-tests</module>
+-->
         <module>mojo</module>
 <!--
         <module>jni</module>
@@ -257,12 +257,6 @@
             </dependency>
 
             <dependency>
-                <groupId>org.littleshoot</groupId>
-                <artifactId>littleshoot-smack-xmpp</artifactId>
-                <version>3.2.0-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.lastbamboo</groupId>
                 <artifactId>lastbamboo-client-controllers</artifactId>
                 <version>${project.version}</version>
@@ -325,20 +319,26 @@
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
+                <artifactId>littleshoot-smack-xmpp-3-2-2</artifactId>
+                <version>1.0.6</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.littleshoot</groupId>
                 <artifactId>amazon-ec2</artifactId>
-                <version>${snapshot.version}</version>
-                </dependency>
+                <version>${platform.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>amazon-s3</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>amazon-stack</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
@@ -356,7 +356,7 @@
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>littleshoot-downloader</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
             </dependency>
 
 <!--
@@ -370,19 +370,19 @@
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>http-client</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
                 <groupId>org.lastbamboo</groupId>
                 <artifactId>lastbamboo-common-jlibtorrent</artifactId>
-                <version>${project.version}</version>
+                <version>1.0.0-SNAPSHOT</version>
                 </dependency>
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>jlibtorrent</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
 <!--
@@ -396,13 +396,13 @@
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>turn-http-server</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
-                <artifactId>ice</artifactId>
-                <version>${snapshot.version}</version>
+                <artifactId>littleshoot-ice</artifactId>
+                <version>1.0.4</version>
                 </dependency>
 
 <!--
@@ -448,7 +448,7 @@
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>offer-answer</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
@@ -460,13 +460,13 @@
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>p2p-sockets</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>portmapping</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
@@ -492,7 +492,7 @@
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>sdp</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
@@ -507,6 +507,7 @@
                 <version>${project.version}</version>
                 </dependency>
 
+<!--
             <dependency>
                 <groupId>org.lastbamboo</groupId>
                 <artifactId>lastbamboo-common-searchers-limewire</artifactId>
@@ -518,7 +519,7 @@
                 <artifactId>lastbamboo-common-searchers-littleshoot</artifactId>
                 <version>${project.version}</version>
                 </dependency>
-
+-->
 <!--
             <dependency>
                 <groupId>org.lastbamboo</groupId>
@@ -536,31 +537,31 @@
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>sip-bootstrap</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>sip-client</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>sip-http-client</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>sip-server</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>sip-stack</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
@@ -572,43 +573,43 @@
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>stun-client</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>stun-server</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>stun-stack</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>tcp-framing</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>turn-client</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>turn-server</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>udt</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
 <!--
@@ -628,7 +629,7 @@
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>xmpp</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
 <!--
@@ -642,13 +643,13 @@
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>mina-util</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>util</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
             <dependency>
@@ -947,7 +948,7 @@
             <dependency>
                 <groupId>org.littleshoot</groupId>
                 <artifactId>p2p</artifactId>
-                <version>${snapshot.version}</version>
+                <version>${platform.version}</version>
                 </dependency>
 
 <!--
@@ -960,8 +961,14 @@
 
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-http</artifactId>
+                <version>7.4.0.v20110414</version>
+                </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-servlet</artifactId>
-                <version>7.3.1.v20110307</version>
+                <version>7.4.0.v20110414</version>
                 </dependency>
 
             <dependency>
@@ -975,56 +982,6 @@
                 <artifactId>slf4j-log4j12</artifactId>
                 <version>${slf4j.version}</version>
                 </dependency>
-
-<!--
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
-                <version>${spring.version}</version>
-                </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${spring.version}</version>
-                </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${spring.version}</version>
-                </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-hibernate3</artifactId>
-                <version>${spring.version}</version>
-                </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-remoting</artifactId>
-                <version>2.0.6</version>
-                </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-support</artifactId>
-                <version>2.0.6</version>
-                </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>${spring.version}</version>
-                </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-webmvc</artifactId>
-                <version>${spring.version}</version>
-                </dependency>
--->
 
             <dependency>
                 <groupId>org.tritonus</groupId>
@@ -1081,7 +1038,6 @@
   <url>http://192.168.1.91/archiva/repository/snapshots</url>
  </snapshotRepository>
  </distributionManagement>
--->
     <distributionManagement>
         <repository>
             <id>littleshoot</id>
@@ -1092,39 +1048,233 @@
             <url>scpexe://dev.littleshoot.org/var/maven</url>
         </snapshotRepository>
     </distributionManagement>
+-->
 
+  <distributionManagement>
+    <repository>
+      <id>aws-release</id>
+      <name>AWS Release Repository</name>
+      <url>s3://littleshoot-mvn-repo/release</url>
+    </repository>
+    <snapshotRepository>
+      <id>aws-snapshot</id>
+      <name>AWS Snapshot Repository</name>
+      <url>s3://littleshoot-mvn-repo/snapshot</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <scm>
+    <connection>scm:git:git://github.com/adamfisk/littleshoot-client.git</connection>
+    <developerConnection>scm:git:git@github.com:adamfisk/littleshoot-client.git</developerConnection>
+    <url>scm:git:git@github.com:adamfisk/littleshoot-client.git</url>
+  </scm>
+
+<!--
     <scm>
         <connection>scm:svn:https://svn.littleshoot.org/svn/littleshoot</connection>
         <developerConnection>scm:svn:https://svn.littleshoot.org/svn/littleshoot</developerConnection>
         <tag>HEAD</tag>
         <url>http://svn.littleshoot.org</url>
     </scm>
+-->
 
     <prerequisites>
-        <maven>2.0.11</maven>
+        <maven>3.0.0</maven>
     </prerequisites>
 
-    <build>
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ssh-external</artifactId>
-                <version>1.0-beta-6</version>
-                </extension>
-            </extensions>
+  <build>
+    <defaultGoal>install</defaultGoal>
 
-        <plugins>
+    <!-- Make sure the lantern common parent doesn't override this -->
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+      </testResource>
+    </testResources>
+
+    <extensions>
+      <extension>
+        <groupId>org.springframework.build</groupId>
+        <artifactId>aws-maven</artifactId>
+        <version>4.8.0.RELEASE</version>
+      </extension>
+    </extensions>
+
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.4.1</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.15</version>
+        <configuration>
+          <argLine>-Xmx1600m -XX:+HeapDumpOnOutOfMemoryError -Djava.library.path=${java.library.path}</argLine>
+          <systemProperties>
+            <property>
+              <name>testing</name>
+              <value>true</value>
+            </property>
+          </systemProperties>
+        </configuration>
+      </plugin>
+
+<!--
+      <plugin>
+        <groupId>com.github.github</groupId>
+        <artifactId>downloads-maven-plugin</artifactId>
+        <version>0.4</version>
+        <configuration>
+          <description>Official ${project.name} build of the ${project.version} release</description>
+          <override>true</override>
+          <includeAttached>true</includeAttached>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>upload</goal>
+            </goals>
+            <phase>install</phase>
+          </execution>
+        </executions>
+      </plugin>
+-->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <version>2.0</version>
+      </plugin>
+
+      <plugin>
+        <groupId>com.github.github</groupId>
+        <artifactId>site-maven-plugin</artifactId>
+        <version>0.8</version>
+        <configuration>
+          <message>Building site for ${project.version}</message>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>site</goal>
+            </goals>
+            <phase>site</phase>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.3</version>
+        <configuration>
+          <reportPlugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>2.1.1</version>
+              <artifactId>maven-dependency-plugin</artifactId>
+              <version>2.8</version>
+              <reportSets>
+                <reportSet>
+                  <reports>
+                    <report>analyze-report</report>
+                  </reports>
+                </reportSet>
+              </reportSets>
             </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-project-info-reports-plugin</artifactId>
+              <version>2.6</version>
+              <configuration>
+                <dependencyDetailsEnabled>true</dependencyDetailsEnabled>
+                <dependencyLocationsEnabled>true</dependencyLocationsEnabled>
+              </configuration>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-javadoc-plugin</artifactId>
+              <version>2.7</version>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-surefire-report-plugin</artifactId>
+              <version>2.13</version>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-checkstyle-plugin</artifactId>
+              <version>2.6</version>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-changelog-plugin</artifactId>
+              <version>2.2</version>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-changes-plugin</artifactId>
+              <version>2.8</version>
+              <reportSets>
+                <reportSet>
+                    <reports>
+                      <report>github-report</report>
+                    </reports>
+                </reportSet>
+              </reportSets>
+            </plugin>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>findbugs-maven-plugin</artifactId>
+              <version>2.5.2</version>
+              <configuration>
+                <!-- Optional directory to put findbugs xml report -->
+              </configuration>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-jxr-plugin</artifactId>
+              <version>2.3</version>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-pmd-plugin</artifactId>
+              <version>2.7.1</version>
+              <configuration>
+                <linkXref>true</linkXref>
+                <sourceEncoding>utf-8</sourceEncoding>
+                <minimumTokens>100</minimumTokens>
+                <targetJdk>1.6</targetJdk>
+              </configuration>
+            </plugin>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>cobertura-maven-plugin</artifactId>
+              <version>2.5.2</version>
+            </plugin>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>versions-maven-plugin</artifactId>
+              <version>2.0</version>
+              <reportSets>
+                <reportSet>
+                  <reports>
+                    <report>dependency-updates-report</report>
+                    <report>plugin-updates-report</report>
+                    <report>property-updates-report</report>
+                  </reports>
+                </reportSet>
+              </reportSets>
+            </plugin>
+          </reportPlugins>
+        </configuration>
+      </plugin>
 
-            <!-- Compiling with java 1.5 -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
+        <version>3.1</version>
         <configuration>
           <source>1.6</source>
           <target>1.6</target>
@@ -1133,47 +1283,11 @@
           <fork>true</fork>
           <showWarnings>true</showWarnings>
           <showDeprecation>true</showDeprecation>
-          <compilerArguments><Xlint/></compilerArguments>
+          <compilerArguments><Xlint /></compilerArguments>
         </configuration>
       </plugin>
-
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <configuration>
-                    <show>private</show>
-                    </configuration>
-                </plugin>
-            </plugins>
-<!--
-  <profiles>
-    <profile>
-      <id>windows</id>
-      <activation>
-        <os>
-          <family>windows</family>
-        </os>
-      </activation>
-      <properties>
-        <envClassifier>win</envClassifier>
-      </properties>
-    </profile>
-    <profile>
-      <id>linux</id>
-      <activation>
-        <os>
-          <family>unix</family>
-        </os>
-      </activation>
-      <properties>
-        <envClassifier>linux</envClassifier>
-      </properties>
-    </profile>
-  </profiles>
--->
-
-        </build>
+      </plugins>
+    </build>
 
     <reporting>
         <plugins>

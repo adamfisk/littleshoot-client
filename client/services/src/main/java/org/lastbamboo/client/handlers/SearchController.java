@@ -21,13 +21,7 @@ import org.lastbamboo.client.search.SearchResultManager;
 import org.lastbamboo.client.search.Searcher;
 import org.lastbamboo.client.services.SessionAttributeKeys;
 import org.lastbamboo.client.services.command.SearchCommand;
-import org.lastbamboo.common.rest.RestSearcher;
 import org.lastbamboo.common.rest.SearchRequestBean;
-import org.lastbamboo.common.searchers.limewire.LimeWire;
-import org.lastbamboo.common.searchers.limewire.LimeWireJsonResult;
-import org.lastbamboo.common.searchers.limewire.LimeWireSearcher;
-import org.lastbamboo.common.searchers.littleshoot.JsonLittleShootResult;
-import org.lastbamboo.common.searchers.littleshoot.LittleShootSearcher;
 import org.littleshoot.util.HttpParamKeys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,10 +60,11 @@ public final class SearchController extends HttpServlet {
 
         // LimeWire crams information into the GUID, so we need to use it's
         // version.
-        final LimeWire limewire = LittleShootModule.getLimeWire();
+        //final LimeWire limewire = LittleShootModule.getLimeWire();
         final SearchResultManager srm = 
             LittleShootModule.getSearchResultManager();
-        final UUID uuid = limewire.newUuid();
+        //final UUID uuid = limewire.newUuid();
+        final UUID uuid = UUID.randomUUID();
         srm.addMapping(session.getId(), uuid, bean);
 
         final Map<String, String> paramMap = 
@@ -89,13 +84,14 @@ public final class SearchController extends HttpServlet {
         final Map<String, String> shootCopy = new HashMap<String, String>();
         shootCopy.putAll(paramMap);
         shootCopy.put(HttpParamKeys.INSTANCE_ID, String.valueOf(Prefs.getId()));
+        /*
         final RestSearcher<JsonLittleShootResult> littleShoot = 
             new LittleShootSearcher(srm, uuid, shootCopy, bean.getKeywords());
 
         final RestSearcher<LimeWireJsonResult> limeWireSearcher = 
             new LimeWireSearcher(limewire, srm, uuid, bean);
-        final Searcher searcher = new MetaSearcher(srm, uuid, littleShoot,
-                limeWireSearcher, paramMap);
+            */
+        final Searcher searcher = new MetaSearcher(srm, uuid, paramMap);
         searcher.search(bean);
 
         final JSONObject json = new JSONObject();

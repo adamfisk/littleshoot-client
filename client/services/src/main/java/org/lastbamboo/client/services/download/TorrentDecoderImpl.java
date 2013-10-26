@@ -1,16 +1,12 @@
 package org.lastbamboo.client.services.download;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.SystemUtils;
 import org.lastbamboo.common.bencode.BDecoderUtils;
-import org.limewire.bittorrent.bencoding.Token;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,6 +44,7 @@ public class TorrentDecoderImpl implements TorrentDecoder
             m_log.error("BDecoder parsing error for file at: "+torrentFile, e);
             }
         
+        /*
         if (torrentMap == null)
             {
             try 
@@ -68,6 +65,7 @@ public class TorrentDecoderImpl implements TorrentDecoder
                 copyToErrorDir(torrentFile, "bdecoder-and-limewire");
                 }
             }
+            */
         if (torrentMap != null)
             {
             this.m_delegate = new MapTorrentDecoder(torrentMap);

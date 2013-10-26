@@ -4,17 +4,15 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.apache.commons.id.uuid.UUID;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.lastbamboo.common.rest.RestSearcher;
 import org.lastbamboo.common.rest.SearchRequestBean;
 import org.lastbamboo.common.searchers.flickr.FlickrSearcher;
 import org.lastbamboo.common.searchers.isohunt.IsoHuntSearcher;
-import org.lastbamboo.common.searchers.limewire.LimeWireJsonResult;
-import org.lastbamboo.common.searchers.littleshoot.JsonLittleShootResult;
-//import org.lastbamboo.common.searchers.yahoo.YahooImageSearcher;
 import org.lastbamboo.common.searchers.youtube.YouTubeGDataSearcher;
 import org.littleshoot.util.DaemonThread;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+//import org.lastbamboo.common.searchers.yahoo.YahooImageSearcher;
 
 /**
  * Class that aggregates searchers according to type.  All searchers search 
@@ -32,9 +30,11 @@ public class MetaSearcher implements Searcher {
 
     private final UUID m_uuid;
 
+    /*
     private final RestSearcher<JsonLittleShootResult> m_littleShootSearcher;
 
     private final RestSearcher<LimeWireJsonResult> m_limeWireSearcher;
+    */
 
     private final Map<String, String> m_paramMap;
     
@@ -49,13 +49,13 @@ public class MetaSearcher implements Searcher {
      * @param paramMap Map of original request params. 
      */
     public MetaSearcher(final SearchResultProcessor processor, final UUID uuid,
-            final RestSearcher<JsonLittleShootResult> littleShootSearcher,
-            final RestSearcher<LimeWireJsonResult> limeWireSearcher,
+            //final RestSearcher<JsonLittleShootResult> littleShootSearcher,
+            //final RestSearcher<LimeWireJsonResult> limeWireSearcher,
             final Map<String, String> paramMap) {
         this.m_searchResultProcessor = processor;
         this.m_uuid = uuid;
-        this.m_littleShootSearcher = littleShootSearcher;
-        this.m_limeWireSearcher = limeWireSearcher;
+        //this.m_littleShootSearcher = littleShootSearcher;
+        //this.m_limeWireSearcher = limeWireSearcher;
         this.m_paramMap = paramMap;
     }
 
@@ -88,6 +88,7 @@ public class MetaSearcher implements Searcher {
     }
 
     public UUID search(final SearchRequestBean request) {
+        /*
         if (request.isLittleShoot()) {
             search(this.m_littleShootSearcher);
         } else {
@@ -97,6 +98,7 @@ public class MetaSearcher implements Searcher {
         if (request.isLimeWire()) {
             search(this.m_limeWireSearcher);
         }
+        */
         if (request.isIsoHunt()) {
             search(new IsoHuntSearcher(this.m_searchResultProcessor,
                     this.m_uuid, request.getKeywords()));
